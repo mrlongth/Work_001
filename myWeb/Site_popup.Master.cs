@@ -26,7 +26,7 @@ namespace myWeb
                 ScriptManager.RegisterStartupScript(Page, Page.GetType(), "ClosePage", strScript, true);
                 return;
             }            
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
+            //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
         }
 
         protected void AddJavaScriptInclude()

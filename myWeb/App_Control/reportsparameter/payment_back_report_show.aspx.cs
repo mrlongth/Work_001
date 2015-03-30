@@ -134,7 +134,7 @@ namespace myWeb.App_Control.reportsparameter
             //getQueryString();
             //printData();
             //CrystalReportViewer1.ReportSource = rptSource;
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
+            //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
             //lblError.Text = string.Empty;
             if (IsPostBack)
             {

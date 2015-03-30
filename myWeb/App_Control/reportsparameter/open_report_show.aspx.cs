@@ -71,7 +71,7 @@ namespace myWeb.App_Control.reportsparameter
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
+            //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
             //lblError.Text = string.Empty;
             if (!IsPostBack)
             {
@@ -127,7 +127,7 @@ namespace myWeb.App_Control.reportsparameter
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
+            //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
             if (IsPostBack)
             {
                 getQueryString();

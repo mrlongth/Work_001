@@ -22,7 +22,7 @@ namespace myWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             AddJavaScriptInclude();
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
+            //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
             //Thread.Sleep(1000);
             ASPxMenu1.Visible = false;
             if (!IsPostBack)

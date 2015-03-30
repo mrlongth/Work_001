@@ -71,7 +71,7 @@ namespace myWeb.Person_Manage
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
+            //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
             //lblError.Text = string.Empty;
             if (!IsPostBack)
             {
@@ -135,7 +135,7 @@ namespace myWeb.Person_Manage
             //getQueryString();
             //printData();
             //CrystalReportViewer1.ReportSource = rptSource;
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
+            //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
             //lblError.Text = string.Empty;
             if (IsPostBack)
             {

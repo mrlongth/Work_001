@@ -16,19 +16,19 @@ namespace myWeb.App_Control.payment
     public partial class payment_report_income : PageBase
     {
         private string strPrefixCtr = "ctl00$ASPxRoundPanel1$ASPxRoundPanel2$ContentPlaceHolder1$";
-    
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
+            //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
             if (!IsPostBack)
             {
 
                 imgList_person.Attributes.Add("onclick", "OpenPopUp('900px','500px','94%','ค้นหาข้อมูลบุคคลากร' ,'../lov/person_lov.aspx?year='+document.forms[0]." + strPrefixCtr +
-      "cboYear.options[document.forms[0]." + strPrefixCtr + "cboYear.selectedIndex].value+" +
-      "'&person_code='+document.forms[0]." + strPrefixCtr + "txtperson_code.value+" +
-      "'&person_name='+document.forms[0]." + strPrefixCtr + "txtperson_name.value+" +
-      "'&ctrl1=" + txtperson_code.ClientID + "&ctrl2=" + txtperson_name.ClientID + "', '1');return false;");
+                  "cboYear.options[document.forms[0]." + strPrefixCtr + "cboYear.selectedIndex].value+" +
+                  "'&person_code='+document.forms[0]." + strPrefixCtr + "txtperson_code.value+" +
+                  "'&person_name='+document.forms[0]." + strPrefixCtr + "txtperson_name.value+" +
+                  "'&ctrl1=" + txtperson_code.ClientID + "&ctrl2=" + txtperson_name.ClientID + "', '1');return false;");
                 imgClear_person.Attributes.Add("onclick", "document.getElementById('" + txtperson_code.ClientID + "').value='';document.getElementById('" + txtperson_name.ClientID + "').value=''; return false;");
 
 
@@ -115,7 +115,7 @@ namespace myWeb.App_Control.payment
                 cboYear.SelectedIndex = -1;
                 cboYear.Items.FindByValue(strYear).Selected = true;
             }
-           // InitcboRound();
+            // InitcboRound();
             InitcboDirector();
             InitcboProduce();
             if (IsPostBack)
@@ -492,7 +492,7 @@ namespace myWeb.App_Control.payment
             DataTable dt = new DataTable();
             strCriteria = " and c_active='Y'  ";
             strCriteria += " order by person_group_name";
-           // strCriteria += " and person_group_code IN (" + PersonGroupList + ") ";
+            // strCriteria += " and person_group_code IN (" + PersonGroupList + ") ";
 
             if (oPerson_group.SP_PERSON_GROUP_SEL(strCriteria, ref ds, ref strMessage))
             {
@@ -748,8 +748,8 @@ namespace myWeb.App_Control.payment
             }
         }
 
-        
-        
+
+
         #endregion
 
         protected void imgPrint_Click(object sender, ImageClickEventArgs e)
@@ -836,7 +836,7 @@ namespace myWeb.App_Control.payment
             if (!txtperson_code.Text.Equals(""))
             {
                 strCriteria = strCriteria + "  And  view_payment.person_code= '" + txtperson_code.Text.Trim() + "' ";
-            }        
+            }
 
 
             // strCriteria += " and (view_payment.person_group_code IN (" + PersonGroupList + ") ";
@@ -887,7 +887,7 @@ namespace myWeb.App_Control.payment
                 else
                 {
                     strCriteria2 = " and  report_group_code='" + cboDoctype.SelectedValue + "' and person_group_code=''  " + " And report_year='" + strYear + "' and  report_group_show='" + RadioButtonList1.SelectedValue + "' ";
-                    
+
                     //strCriteria2 = " and  report_group_code='" + cboDoctype.SelectedValue + "' and person_group_code=''  " + " And report_year='" + strYear + "' "; ;
                     if (oPayment.SP_PAYMENT_REPORT_SEL(strCriteria2, ref ds, ref strMessage))
                     {

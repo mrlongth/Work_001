@@ -58,7 +58,7 @@ namespace myWeb
                 return;
             }
 
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
+            //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
             // Thread.Sleep(1000);
         }
     }

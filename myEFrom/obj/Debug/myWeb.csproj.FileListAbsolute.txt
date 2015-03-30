@@ -1,8 +1,0 @@
-D:\myData\MJU\Payroll\Code\myWeb\bin\myWeb.dll
-D:\myData\MJU\Payroll\Code\myWeb\bin\myWeb.pdb
-D:\myData\MJU\Payroll\Code\myWeb\bin\myDLL.dll
-D:\myData\MJU\Payroll\Code\myWeb\bin\myDLL.pdb
-D:\myData\MJU\Payroll\Code\myWeb\obj\Debug\ResolveAssemblyReference.cache
-D:\myData\MJU\Payroll\Code\myWeb\obj\Debug\myWeb.dll.licenses
-D:\myData\MJU\Payroll\Code\myWeb\obj\Debug\myWeb.dll
-D:\myData\MJU\Payroll\Code\myWeb\obj\Debug\myWeb.pdb
