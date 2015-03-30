@@ -1,0 +1,103 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site_lov.Master.cs" Inherits="myEFrom.Site_lov" %>
+
+<%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073"
+    Namespace="DevExpress.Web.ASPxPanel" TagPrefix="dxp" %>
+<%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073"
+    Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-874" />
+    <title>ค้นหาข้อมูล</title>
+    <link href="StyleSheet_popup.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" EnableScriptGlobalization="true" runat="server">
+    </asp:ScriptManager>
+    <asp:UpdatePanel ID="updatePanel1" runat="server">
+        <ContentTemplate>
+            <table cellpadding="2" cellspacing="2" border="0" style="width: 100%">
+                <tr>
+                    <td>
+                        <dxrp:ASPxRoundPanel runat="server" HeaderText="" ShowHeader="False" Width="100%"
+                            CssPostfix="Aqua" CssFilePath="~/App_Themes/Aqua/{0}/styles.css" BackColor="White"
+                            ID="ASPxRoundPanel2">
+                            <TopEdge>
+                                <BackgroundImage ImageUrl="~/App_Themes/Aqua/Web/rpTopEdge.gif" Repeat="RepeatX"
+                                    VerticalPosition="Top"></BackgroundImage>
+                            </TopEdge>
+                            <ContentPaddings Padding="0px"></ContentPaddings>
+                            <HeaderStyle BackColor="#E0EDFF">
+                                <BorderBottom BorderColor="#AECAF0" BorderStyle="Solid" BorderWidth="1px"></BorderBottom>
+                            </HeaderStyle>
+                            <TopLeftCorner Height="7px" Width="7px" Url="~/App_Themes/Aqua/Web/rpTopLeft.png">
+                            </TopLeftCorner>
+                            <NoHeaderTopLeftCorner Height="7px" Width="7px" Url="~/App_Themes/Aqua/Web/rpNoHeaderTopLeft.png">
+                            </NoHeaderTopLeftCorner>
+                            <TopRightCorner Height="7px" Width="7px" Url="~/App_Themes/Aqua/Web/rpTopRight.png">
+                            </TopRightCorner>
+                            <NoHeaderTopRightCorner Height="7px" Width="7px" Url="~/App_Themes/Aqua/Web/rpNoHeaderTopRight.png">
+                            </NoHeaderTopRightCorner>
+                            <BottomRightCorner Height="7px" Width="7px" Url="~/App_Themes/Aqua/Web/rpBottomRight.png">
+                            </BottomRightCorner>
+                            <BottomLeftCorner Height="7px" Width="7px" Url="~/App_Themes/Aqua/Web/rpBottomLeft.png">
+                            </BottomLeftCorner>
+                            <HeaderLeftEdge>
+                                <BackgroundImage ImageUrl="~/App_Themes/Aqua/Web/rpHeaderBackground.gif" Repeat="RepeatX"
+                                    VerticalPosition="Top"></BackgroundImage>
+                            </HeaderLeftEdge>
+                            <HeaderContent>
+                                <BackgroundImage ImageUrl="~/App_Themes/Aqua/Web/rpHeaderBackground.gif" Repeat="RepeatX"
+                                    VerticalPosition="Top"></BackgroundImage>
+                            </HeaderContent>
+                            <HeaderRightEdge>
+                                <BackgroundImage ImageUrl="~/App_Themes/Aqua/Web/rpHeaderBackground.gif" Repeat="RepeatX"
+                                    VerticalPosition="Top"></BackgroundImage>
+                            </HeaderRightEdge>
+                            <NoHeaderTopEdge BackColor="White">
+                                <BackgroundImage ImageUrl="~/App_Themes/Aqua/Web/rpNoHeaderTopEdge.gif" Repeat="RepeatX"
+                                    VerticalPosition="Top"></BackgroundImage>
+                            </NoHeaderTopEdge>
+                            <RightEdge>
+                                <BackgroundImage ImageUrl="~/App_Themes/Aqua/Web/rpRightEdge.gif" Repeat="RepeatY"
+                                    VerticalPosition="Top"></BackgroundImage>
+                            </RightEdge>
+                            <BottomEdge>
+                                <BackgroundImage ImageUrl="~/App_Themes/Aqua/Web/rpBottomEdge.gif" Repeat="RepeatX"
+                                    VerticalPosition="Bottom"></BackgroundImage>
+                            </BottomEdge>
+                            <LeftEdge>
+                                <BackgroundImage ImageUrl="~/App_Themes/Aqua/Web/rpLeftEdge.gif" Repeat="RepeatY"
+                                    VerticalPosition="Top"></BackgroundImage>
+                            </LeftEdge>
+                            <PanelCollection>
+                                <dxp:PanelContent ID="PanelContent1" runat="server">
+                                    <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolder1">
+                                    </asp:ContentPlaceHolder>
+                                </dxp:PanelContent>
+                            </PanelCollection>
+                            <Border BorderColor="#AECAF0" BorderStyle="Solid" BorderWidth="1px"></Border>
+                        </dxrp:ASPxRoundPanel>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolder2">
+                        </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+            </table>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+        <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="updatePanel1">
+        <ProgressTemplate>
+            <iframe frameborder="0" src="about:blank" class="overlay"></iframe>
+            <asp:Panel ID="Panel2" CssClass="loader" runat="server" >
+                <asp:Image ID="Image1" runat="server" ImageAlign="Middle" ImageUrl="~/images/Loading.gif" />
+            </asp:Panel>
+        </ProgressTemplate>
+    </asp:UpdateProgress>
+    </form>
+</body>
+</html>

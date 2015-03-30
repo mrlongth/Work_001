@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E39C0F2A-7B23-47A6-B080-22F2AF35857D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>myDLL</RootNamespace>
+    <AssemblyName>myDLL</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aware.DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\360Feedback_Sln\Aware.DAL\bin\Debug\Aware.DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="eFrom\cefOpen.cs" />
+    <Compile Include="eFrom\cefOpenItem.cs" />
+    <Compile Include="eFrom\cefApprove.cs" />
+    <Compile Include="eFrom\cefOpenApprove.cs" />
+    <Compile Include="eFrom\c3dCount.cs" />
+    <Compile Include="eFrom\c3dMaterial.cs" />
+    <Compile Include="eFrom\cefLoan.cs" />
+    <Compile Include="eFrom\cefUser.cs" />
+    <Compile Include="eFrom\cefApproveBudget.cs" />
+    <Compile Include="Payroll\cActivity.cs" />
+    <Compile Include="Payroll\cBudget.cs" />
+    <Compile Include="Payroll\cExcelExtender.cs" />
+    <Compile Include="Payroll\cFund.cs" />
+    <Compile Include="Payroll\cDirector.cs" />
+    <Compile Include="Payroll\cLot.cs" />
+    <Compile Include="Payroll\cBank.cs" />
+    <Compile Include="Payroll\cBranch.cs" />
+    <Compile Include="Payroll\cMember_type.cs" />
+    <Compile Include="Payroll\cItem_group.cs" />
+    <Compile Include="Payroll\cMember.cs" />
+    <Compile Include="Payroll\cBudget_plan.cs" />
+    <Compile Include="Payroll\cItem.cs" />
+    <Compile Include="Payroll\cCommon.cs" />
+    <Compile Include="Payroll\cBudget_money.cs" />
+    <Compile Include="Payroll\cCheque.cs" />
+    <Compile Include="Payroll\cItem_acc.cs" />
+    <Compile Include="Payroll\cNews.cs" />
+    <Compile Include="Payroll\cItem_person_group.cs" />
+    <Compile Include="Payroll\cBudget_rev.cs" />
+    <Compile Include="Payroll\cEdu.cs" />
+    <Compile Include="Payroll\cOpen.cs" />
+    <Compile Include="Payroll\cMaterial.cs" />
+    <Compile Include="Payroll\cPerson_retire.cs" />
+    <Compile Include="Payroll\cPerson_center.cs" />
+    <Compile Include="Payroll\cPayment_return.cs" />
+    <Compile Include="Payroll\cUser_menu.cs" />
+    <Compile Include="Payroll\cUser_group.cs" />
+    <Compile Include="Payroll\cUser.cs" />
+    <Compile Include="Payroll\cPayment_back.cs" />
+    <Compile Include="Payroll\cPayment.cs" />
+    <Compile Include="Payroll\cPayment_round.cs" />
+    <Compile Include="Payroll\cPerson.cs" />
+    <Compile Include="Payroll\cPerson_manage.cs" />
+    <Compile Include="Payroll\cPerson_group.cs" />
+    <Compile Include="Payroll\cPerson_work_status.cs" />
+    <Compile Include="Payroll\cPosition.cs" />
+    <Compile Include="Common\CryptorEngine.cs" />
+    <Compile Include="Payroll\cUnit.cs" />
+    <Compile Include="Payroll\cWork.cs" />
+    <Compile Include="Payroll\cPlan.cs" />
+    <Compile Include="Payroll\cProduce.cs" />
+    <Compile Include="Payroll\cTitle.cs" />
+    <Compile Include="eFrom\cefDoctype.cs" />
+    <Compile Include="eFrom\cefMenu.cs" />
+    <Compile Include="Common\Helper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Payroll\UserMenuBLL.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

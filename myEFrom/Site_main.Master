@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site_main.Master.cs"
+    Inherits="myEFrom.Site_main" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ระบบจัดการแบบฟอร์มออนไลน์ กองคลัง มหาวิทยาลัยแม่โจ้</title>
+    <link href="css/default.css" rel="stylesheet" type="text/css" />
+    <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+
+    <script src="../scripts/form.js" type="text/javascript"></script>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="site">
+        <div class="header_home">
+        </div>
+        <div class="content_home">
+            <asp:ScriptManager ID="ScriptManager1" runat="server">
+            </asp:ScriptManager>
+            <asp:UpdatePanel ID="updatePanel1" runat="server">
+                <ContentTemplate>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+            <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="updatePanel1">
+                <ProgressTemplate>
+                    <iframe frameborder="0" src="about:blank" class="overlay"></iframe>
+                    <asp:Panel ID="Panel2" CssClass="loader" runat="server">
+                        <asp:Image ID="Image1" runat="server" ImageAlign="Middle" ImageUrl="~/images/Loading.gif" />
+                    </asp:Panel>
+                </ProgressTemplate>
+            </asp:UpdateProgress>
+        </div>
+        <div class="footer_home">
+            ระบบจัดการแบบฟอร์มออนไลน์ มหาวิทยาลัยแม่โจ้
+        </div>
+    </div>
+    </form>
+</body>
+</html>

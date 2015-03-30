@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20140826 01:41:45.555" generator="Robot 2.8.5 (Python 2.7.8 on win32)">
+<suite source="D:\myData\MJU\Payroll\Code\Robot\login.txt" id="s1" name="Login">
+<kw type="setup" name="Selenium2Library.Open Browser">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>http://localhost:51703/</arg>
+</arguments>
+<msg timestamp="20140826 01:41:45.669" level="INFO">Opening browser 'firefox' to base url 'http://localhost:51703/'</msg>
+<status status="PASS" endtime="20140826 01:41:57.134" starttime="20140826 01:41:45.669"></status>
+</kw>
+<test id="s1-t1" name="ValidateGradeD">
+<kw type="setup" name="Selenium2Library.Go To">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>http://localhost:51703/App_Control/open/open_list.aspx</arg>
+</arguments>
+<msg timestamp="20140826 01:41:57.137" level="INFO">Opening url 'http://localhost:51703/App_Control/open/open_list.aspx'</msg>
+<status status="PASS" endtime="20140826 01:41:58.232" starttime="20140826 01:41:57.136"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Input Text">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>ctl00_ContentPlaceHolder1_txtUser</arg>
+<arg>srianong</arg>
+</arguments>
+<msg timestamp="20140826 01:41:58.233" level="INFO">Typing text 'srianong' into text field 'ctl00_ContentPlaceHolder1_txtUser'</msg>
+<status status="PASS" endtime="20140826 01:41:58.848" starttime="20140826 01:41:58.233"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Input Password">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>ctl00_ContentPlaceHolder1_txtPass</arg>
+<arg>774645</arg>
+</arguments>
+<msg timestamp="20140826 01:41:58.849" level="INFO">Typing password into text field 'ctl00_ContentPlaceHolder1_txtPass'</msg>
+<status status="PASS" endtime="20140826 01:41:58.950" starttime="20140826 01:41:58.848"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Click Button">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>ctl00_ContentPlaceHolder1_ImageButton1</arg>
+</arguments>
+<msg timestamp="20140826 01:41:58.951" level="INFO">Clicking button 'ctl00_ContentPlaceHolder1_ImageButton1'.</msg>
+<status status="PASS" endtime="20140826 01:41:59.114" starttime="20140826 01:41:58.951"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Wait Until Page Contains">
+<doc>Waits until `text` appears on current page.</doc>
+<arguments>
+<arg>ยินดีต้อนรับ</arg>
+</arguments>
+<kw type="kw" name="Selenium2Library.Capture Page Screenshot">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<arguments>
+</arguments>
+<msg timestamp="20140826 01:42:04.700" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20140826 01:42:04.700" starttime="20140826 01:42:04.241"></status>
+</kw>
+<msg timestamp="20140826 01:42:04.701" level="FAIL">Text 'ยินดีต้อนรับ' did not appear in 5 seconds</msg>
+<status status="FAIL" endtime="20140826 01:42:04.701" starttime="20140826 01:41:59.115"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="FAIL" endtime="20140826 01:42:04.702" critical="yes" starttime="20140826 01:41:57.135">Text 'ยินดีต้อนรับ' did not appear in 5 seconds</status>
+</test>
+<doc></doc>
+<metadata>
+</metadata>
+<status status="FAIL" endtime="20140826 01:42:04.704" starttime="20140826 01:41:45.555"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="1" pass="0" id="s1" name="Login">Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

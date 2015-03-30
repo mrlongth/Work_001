@@ -1,0 +1,346 @@
+﻿body, div, p, h1, h2, h3, h4, ul, li, table
+{
+	border:none;
+	font-family: Tahoma;
+	font-size: 12px;
+	color: #333333;
+	background-color: #FFFFFFF;
+	background-position: 0px 0px;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+h3
+{
+	font-size:small;
+}
+
+select{max-width:300px;}
+
+.label_d {
+	color:#495E88;
+	font-size:9pt;
+}
+.label_r {
+	color:#FF0000;
+	font-weight: bold;
+	font-size:9pt;
+}
+.label_w {
+	color:#FFFFFF;
+	font-weight: bold;
+	font-size:9pt;
+}
+.label_h {
+	color:#495E88;
+	font-weight: bold;
+	font-size:9pt;
+	text-align: right;
+}
+.label_error {
+	font-size:9pt;
+	color:Red ;
+}
+.link_error {
+	color:#495E88;
+	font-weight: bold;
+	font-size:9pt;
+	text-decoration: none;
+}
+.link_error :hover {
+	color:#495E88;
+	font-weight: bold;
+	font-size:9pt;
+	text-decoration: underline;
+}
+.label_hbk {
+	color:#000000;
+	font-weight:normal;
+	font-family:Tahoma;
+	font-size:9pt;
+}
+.label_hb {
+	color:#000000;
+	font-size:9pt;
+}
+.label_r 
+{
+	color:#FF0000;
+	font-weight: bold;
+	font-size:9pt;
+}
+
+.title_h {
+	color:#495E88;
+	font-weight: bold;
+	font-size:11pt;
+}
+
+.text1
+{
+	behavior:url(../behaviors/maxlength.htc);
+	color:#000000;
+	border-right: #FFCC00 1px solid;
+	border-top: #FFCC00 1px solid;
+	background: #FEF7ED;
+	border-left: #FFCC00 1px solid;
+	border-bottom: #FFCC00 1px solid;
+	font-family: "tahoma";
+	font-size: 9pt;
+}
+.text_d
+{
+	behavior:url(../behaviors/maxlength.htc);
+	color:#000000;
+	border-right: #FF6600 1px solid;
+	border-top: #FF6600 1px solid;
+	background: #FFFFFF;
+	border-left: #FF6600 1px solid;
+	border-bottom: #FF6600 1px solid;
+	font-family: "tahoma";
+	font-size: 9pt;
+	text-align:right;
+}
+.textdisable
+{
+	color:#000000;
+	border-right: #FF6600 1px solid;
+	border-top: #FF6600 1px solid;
+	background: #EAEAEA;
+	border-left: #FF6600 1px solid;
+	border-bottom: #FF6600 1px solid;
+	font-family: "tahoma";
+	font-size: 9pt;
+}
+.textdisable_r
+{
+	color:#000000;
+	border-right: #FF6600 1px solid;
+	border-top: #FF6600 1px solid;
+	background: #EAEAEA;
+	border-left: #FF6600 1px solid;
+	border-bottom: #FF6600 1px solid;
+	font-family: "tahoma";
+	font-size: 9pt;
+	text-align:right;
+}
+.button_a
+{
+	font-weight: bold;
+	font-size: 9pt;
+	background: #FF9966;
+	cursor: hand;
+	color:#333333;
+	font-family: "Tahoma";
+	text-decoration: none;
+	border-right: #133852 1px solid;
+	border-top: #afc4d5 1px solid;
+	border-left: #afc4d5 1px solid;
+	border-bottom: #133852 1px solid;
+}
+
+.stGrid { border: solid 1px #AECAF0; }
+
+.stGridHeader
+{
+    font-weight: bold;  
+	font-family: "Tahoma";
+    /*background-color: #AECAF0;*/
+	background-color: #586F9C;
+}
+
+.textbox {
+	FONT-SIZE: 13px;BACKGROUND: #F2F9FF;FONT-FAMILY: "Tahoma";border: 1px solid #AECAF0;
+	margin-top: 0px;
+}
+
+.textboxdis {
+		FONT-SIZE: 13px;BACKGROUND: #FFF5E6;FONT-FAMILY: "Tahoma";border: 1px solid #AECAF0;
+	/*FONT-SIZE: 13px;BACKGROUND: #FFCCCC;FONT-FAMILY: "Tahoma";border: 1px solid #CCCCCC;*/
+}
+
+.numberbox {
+	FONT-SIZE: 13px;BACKGROUND: #F2F9FF;FONT-FAMILY: "Tahoma";border: 1px solid #AECAF0;
+	text-align:right ; 
+	margin-top: 0px;
+}
+
+.AwNumericDefault {
+	FONT-SIZE: 13px;BACKGROUND: #F2F9FF;FONT-FAMILY: "Tahoma";border: 1px solid #AECAF0;
+	text-align:right ; 
+	margin-top: 0px;
+}
+
+.AwNumericView {
+	FONT-SIZE: 13px;FONT-FAMILY: "Tahoma";border: 0px solid #AECAF0;
+	text-align:right ; 
+	margin-top: 0px;
+}
+
+.AwNumericReadOnly {
+		FONT-SIZE: 13px;BACKGROUND: #FFF5E6;FONT-FAMILY: "Tahoma";border: 0px solid #AECAF0;
+		text-align:right ; 
+}
+
+
+.numberdis {
+		FONT-SIZE: 13px;BACKGROUND: #FFF5E6;FONT-FAMILY: "Tahoma";border: 1px solid #AECAF0;
+		text-align:right ; 
+		
+}
+
+
+
+.validatorCalloutHighlight
+{
+    background-color: lemonchiffon;
+}
+
+/* Div container to wrap the datagrid for Budget*/
+div#div-gridfix{
+width: 100%;
+height:370px;
+overflow:auto;
+scrollbar-base-color:#AECAF0;
+
+
+}
+
+div#div-gridfix2{
+width: 100%;
+height:370px;
+overflow:auto;
+scrollbar-base-color:#AECAF0;
+}
+
+div#div-gridfix3{
+width: 100%;
+height:370px;
+overflow:auto;
+scrollbar-base-color:#AECAF0;
+}
+
+
+/*Modal Popup*/
+.modalBackground {
+	background-color:Black;
+	filter:alpha(opacity=20);
+	opacity:0.7;
+}
+
+div.div-lov4{
+width: 100%;
+height:240px;
+overflow:auto;
+text-align:center; 
+scrollbar-base-color:#AECAF0;
+}
+
+div.div-lov3{
+width: 100%;
+height:255px;
+overflow:auto;
+text-align:center; 
+scrollbar-base-color:#AECAF0;
+}
+
+div.div-lov2{
+width: 100%;
+height:275px;
+overflow:auto;
+text-align:center; 
+scrollbar-base-color:#AECAF0;
+}
+
+div.div-lov{
+padding:0px 0px  0px  0px ; 
+margin:0px 0px  0px  0px ; 
+width: 100%;
+height:275px;
+overflow:auto ;
+text-align:center; 
+scrollbar-base-color:#AECAF0;
+}
+
+div.div-lovex{
+width: 100%;
+height:275px;
+overflow:scroll ;
+text-align:center;  
+scrollbar-base-color:#AECAF0;
+}
+
+
+.overlay
+{
+	position: fixed;
+	z-index: 99;
+	top: 0px;
+	left: 0px;
+	background-color: #FFFFFF;
+	width: 100%;
+	height: 100%;
+	filter: Alpha(Opacity=70);
+	opacity: 0.70;
+	-moz-opacity: 0.70;
+}
+
+* html .overlay
+{
+	position: absolute;
+	height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px' );
+	width: expression(document.body.scrollWidth > document.body.offsetWidth ? document.body.scrollWidth : document.body.offsetWidth + 'px' );
+}
+
+.loader
+{
+	font-weight: bold;
+	z-index: 100;
+	position: fixed;
+	width: 250px;
+	height: 30px;
+	margin-left: -60px;
+	top: 45%;
+	left: 50%;
+	vertical-align: middle;
+}
+
+* html .loader
+{
+	position: absolute;
+	margin-top: expression((document.body.scrollHeight / 4) + (0 - parseInt(this.offsetParent.clientHeight / 2) + (document.documentElement && document.documentElement.scrollTop || document.body.scrollTop)) + 'px' );
+}
+
+a:hover {color: #495E88;}
+a:link { color: #495E88; }
+a:visited { color: #495E88; }
+a:active { color: #495E88; }
+
+
+.stGridHeader
+{
+	border-bottom: 1px solid rgb(174, 202, 240); 
+	padding: 0px 0px 0px 0px; 
+	background-color: rgb(224, 237, 255);
+    white-space: nowrap; 
+	background-repeat: repeat-x;
+    background-image: url('images/rpHeaderBackground.gif'); 
+    background-position: left top ;  
+}
+
+.stGrid { border: solid 1px #AECAF0; }
+
+.table_h{
+	color:#495E88;
+	font-weight:bold ;
+	font-size:9pt;
+	height:20px ;
+}
+
+
+.ui-datepicker-trigger 
+{
+	padding-left: 3px;
+	vertical-align: middle;
+	cursor: pointer;
+}

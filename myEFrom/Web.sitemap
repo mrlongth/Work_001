@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode title="Administration System"  description="Administration System">
+    <siteMapNode url="~/manage/Menu.aspx" title="Menu management"  description="Menu management" />
+    <siteMapNode url="~/manage/Usermanagement.aspx" title="User management"  description="User management" />
+    <siteMapNode url="~/manage/UserGroupMenu.aspx" title="Menu for Group User"  description="Menu for Group User" />
+    <siteMapNode url="~/manage/UserMenuAccess.aspx" title="Menu for User"  description="Menu for User" />
+  </siteMapNode>
+</siteMap>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="nusoap" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="nusoap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="nusoap">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="verifyuserRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="verifyuserResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="verifyuserWDRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="verifyuserWDResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="verifyuserNDRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="verifyuserNDResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="authenUserCheckRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="authenUserCheckResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="debug_verifyuserNDRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="debug_verifyuserNDResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="verifyuserPortType">
+    <wsdl:operation name="verifyuser">
+      <wsdl:input message="tns:verifyuserRequest" />
+      <wsdl:output message="tns:verifyuserResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="verifyuserWD">
+      <wsdl:input message="tns:verifyuserWDRequest" />
+      <wsdl:output message="tns:verifyuserWDResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="verifyuserND">
+      <wsdl:input message="tns:verifyuserNDRequest" />
+      <wsdl:output message="tns:verifyuserNDResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="authenUserCheck">
+      <wsdl:input message="tns:authenUserCheckRequest" />
+      <wsdl:output message="tns:authenUserCheckResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="debug_verifyuserND">
+      <wsdl:input message="tns:debug_verifyuserNDRequest" />
+      <wsdl:output message="tns:debug_verifyuserNDResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="verifyuserBinding" type="tns:verifyuserPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="verifyuser">
+      <soap:operation soapAction="http://ouop.mju.ac.th/ws.php/verifyuser" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="nusoap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="nusoap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verifyuserWD">
+      <soap:operation soapAction="http://ouop.mju.ac.th/ws.php/verifyuserWD" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="nusoap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="nusoap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verifyuserND">
+      <soap:operation soapAction="http://ouop.mju.ac.th/ws.php/verifyuserND" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="nusoap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="nusoap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authenUserCheck">
+      <soap:operation soapAction="http://ouop.mju.ac.th/ws.php/authenUserCheck" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="nusoap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="nusoap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="debug_verifyuserND">
+      <soap:operation soapAction="http://ouop.mju.ac.th/ws.php/debug_verifyuserND" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="nusoap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="nusoap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="verifyuser">
+    <wsdl:port name="verifyuserPort" binding="tns:verifyuserBinding">
+      <soap:address location="http://ouop.mju.ac.th/ws.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,20 @@
+*** Settings ***
+Library          Selenium2Library
+Suite Setup      Open Browser    http://localhost:51703/
+Test Setup       GO To    http://localhost:51703/App_Control/open/open_list.aspx
+
+*** Variables ***
+
+*** Testcases ***
+ValidateGradeD
+
+	Input Text    ctl00_ContentPlaceHolder1_txtUser    srianong
+	Input Password    ctl00_ContentPlaceHolder1_txtPass    774645
+	Click Button    ctl00_ContentPlaceHolder1_ImageButton1
+	Wait Until Page Contains    ยินดีต้อนรับ
+
+
+
+
+
+*** Keywords ***

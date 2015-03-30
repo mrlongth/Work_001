@@ -1,0 +1,35 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site_popup.master.cs"
+    Inherits="myEFrom.Site_popup" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxtoolkit" %>
+<%@ Import Namespace="System.Globalization" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>จัดการข้อมูล</title>
+    <link href="StyleSheet_popup.css" rel="stylesheet" type="text/css" />
+    <link href="js/style.css" rel="stylesheet" type="text/css" />
+    <link href="themes/start/jquery-ui-1.8.22.custom.css" rel="stylesheet" type="text/css" />
+  
+</head>
+<body onload="on_load_list()">
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" EnableScriptGlobalization="true" runat="server">
+    </asp:ScriptManager>
+    <asp:UpdatePanel ID="updatePanel1" runat="server">
+        <ContentTemplate>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+    <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="updatePanel1">
+        <ProgressTemplate>
+            <iframe frameborder="0" src="about:blank" class="overlay"></iframe>
+            <asp:Panel ID="Panel2" CssClass="loader" runat="server">
+                <asp:Image ID="Image1" runat="server" ImageAlign="Middle" ImageUrl="~/images/Loading.gif" />
+            </asp:Panel>
+        </ProgressTemplate>
+    </asp:UpdateProgress>
+    </form>
+</body>
+</html>
