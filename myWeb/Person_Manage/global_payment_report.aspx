@@ -1,8 +1,10 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="global_payment_report.aspx.cs"
     Inherits="myWeb.Person_Manage.global_payment_report" Debug="true" %>
 
-<%@ Register Assembly="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304"
+<%@ Register Assembly="CrystalDecisions.Web, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304"
     Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -24,7 +26,7 @@
     <div>
         <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" 
             HasCrystalLogo="False" Height="50px" PrintMode="ActiveX"
-            Width="350px" DisplayGroupTree="False" HasExportButton="False" />
+            Width="350px"  HasExportButton="False" />
         <asp:Label runat="server"  ID="lblError"></asp:Label>
     </div> 
     </form>

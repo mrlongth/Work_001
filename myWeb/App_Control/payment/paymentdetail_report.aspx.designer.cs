@@ -58,6 +58,24 @@ namespace myWeb.App_Control.payment {
         protected global::System.Web.UI.WebControls.Label lblPage2;
         
         /// <summary>
+        /// pnlCboPerson_group_dropdown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlCboPerson_group_dropdown;
+        
+        /// <summary>
+        /// cboPerson_group_dropdown_checkboxes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Saplin.Controls.DropDownCheckBoxes cboPerson_group_dropdown_checkboxes;
+        
+        /// <summary>
         /// cboPerson_group control.
         /// </summary>
         /// <remarks>

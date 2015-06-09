@@ -55,6 +55,8 @@ namespace myWeb.App_Control.payment
                 cboProduce.Visible = false;
                 lblBank.Visible = false;
                 cboBank.Visible = false;
+                pnlCboPerson_group_dropdown.Style.Add("display", "none");
+
 
                 //if (this.BudgetType == "R")
                 //{
@@ -163,7 +165,7 @@ namespace myWeb.App_Control.payment
                         cboPay_Year.Items.FindByValue(strPay_Year).Selected = true;
                     }
 
-                   
+
 
                     #endregion
 
@@ -280,24 +282,33 @@ namespace myWeb.App_Control.payment
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
             strCriteria = " and c_active='Y' ";
+
+            if (this.BudgetType == "B")
+                strCriteria += " and person_group_code IN (" + PersonGroupList + ") ";
+
             strCriteria += " order by person_group_name";
-            //strCriteria += " and person_group_code IN (" + PersonGroupList + ") ";
+
+
             if (oPerson_group.SP_PERSON_GROUP_SEL(strCriteria, ref ds, ref strMessage))
             {
                 dt = ds.Tables[0];
                 cboPerson_group.Items.Clear();
+                cboPerson_group_dropdown_checkboxes.Items.Clear();
+
                 cboPerson_group.Items.Add(new ListItem("---- เลือกข้อมูลทั้งหมด ----", ""));
                 for (i = 0; i <= dt.Rows.Count - 1; i++)
                 {
                     cboPerson_group.Items.Add(new ListItem(dt.Rows[i]["person_group_name"].ToString(), dt.Rows[i]["person_group_code"].ToString()));
+                    cboPerson_group_dropdown_checkboxes.Items.Add(new ListItem(dt.Rows[i]["person_group_name"].ToString(), dt.Rows[i]["person_group_code"].ToString()));
                 }
-                cboPerson_group.Items.Add(new ListItem("พนักงานกลุ่มอื่นๆ", ""));
-                if (cboPerson_group.Items.FindByValue(strperson_group_code) != null)
-                {
-                    cboPerson_group.SelectedIndex = -1;
-                    cboPerson_group.Items.FindByValue(strperson_group_code).Selected = true;
-                }
+
+                cboPerson_group_dropdown_checkboxes.Style.SelectBoxCssClass = "dd_chk_select_cust";
+                cboPerson_group_dropdown_checkboxes.Style.SelectBoxWidth = 200;
+                cboPerson_group_dropdown_checkboxes.Style.DropDownBoxBoxWidth = 300;
+
             }
+
+
         }
 
         private void InitcboDirector()
@@ -468,6 +479,7 @@ namespace myWeb.App_Control.payment
             string strYear = string.Empty;
             string strActive = string.Empty;
             string strperson_group_code = string.Empty;
+            string strperson_group_name_list = string.Empty;
             string strdirector_code = string.Empty;
             string strunit_code = string.Empty;
             string stritem_code = string.Empty;
@@ -481,7 +493,6 @@ namespace myWeb.App_Control.payment
             string strCriteriaDesc = string.Empty;
             stritem_code = txtitem_code.Text;
             strYear = cboYear.SelectedValue;
-            strperson_group_code = cboPerson_group.SelectedValue;
             strdirector_code = cboDirector.SelectedValue;
             strunit_code = cboUnit.SelectedValue;
             strPay_Month = cboPay_Month.SelectedValue;
@@ -489,6 +500,27 @@ namespace myWeb.App_Control.payment
             strProduce = cboProduce.SelectedValue;
             strLot = cboLot.SelectedValue;
             strBankCode = cboBank.SelectedValue;
+
+            if (RadioButtonList1.SelectedValue == "A2" ||
+                RadioButtonList1.SelectedValue == "A4")
+            {
+                foreach (ListItem item in cboPerson_group_dropdown_checkboxes.Items)
+                {
+                    if (item.Selected)
+                    {
+                        strperson_group_code += "'" + item.Value + "',";
+                        strperson_group_name_list += item.Text + ", ";
+                    }
+                }
+                if (strperson_group_code.Length > 0)
+                    strperson_group_code = strperson_group_code.Substring(0, strperson_group_code.Length - 1);
+                if (strperson_group_name_list.Length > 0)
+                    strperson_group_name_list = strperson_group_name_list.Substring(0, strperson_group_name_list.Length - 2);
+            }
+            else
+            {
+                strperson_group_code = cboPerson_group.SelectedValue;
+            }
 
             if (!strYear.Equals(""))
             {
@@ -513,8 +545,17 @@ namespace myWeb.App_Control.payment
 
             if (!strperson_group_code.Equals(""))
             {
-                strCriteria = strCriteria + "  And  view_payment.payment_detail_person_group_code ='" + strperson_group_code + "' ";
-                strCriteriaDesc += "กลุ่มบุคคลากร : " + cboPerson_group.SelectedItem.Text + "  ";
+                if (RadioButtonList1.SelectedValue == "A2" ||
+                    RadioButtonList1.SelectedValue == "A4")
+                {
+                    strCriteria = strCriteria + "  And  view_payment.payment_detail_person_group_code IN (" + strperson_group_code + ") ";
+                    strCriteriaDesc += "กลุ่มบุคคลากร : " + strperson_group_name_list + "  ";
+                }
+                else
+                {
+                    strCriteria = strCriteria + "  And  view_payment.payment_detail_person_group_code ='" + strperson_group_code + "' ";
+                    strCriteriaDesc += "กลุ่มบุคคลากร : " + cboPerson_group.SelectedItem.Text + "  ";
+                }
             }
 
             if (!strdirector_code.Equals(""))
@@ -569,7 +610,7 @@ namespace myWeb.App_Control.payment
                 if (base.myBudgetType != "R")
                 {
                     strCriteria += " and view_payment.payment_detail_person_group_code IN (" + PersonGroupList + ") ";
-                   // strCriteria += " or view_payment.person_group_item IN (" + PersonGroupList + ") )";
+                    // strCriteria += " or view_payment.person_group_item IN (" + PersonGroupList + ") )";
                 }
             }
 
@@ -681,7 +722,7 @@ namespace myWeb.App_Control.payment
                 strReport_code = "Rep_paymentbycreditall";
                 strCriteria = strCriteria.Replace("view_payment.", "");
             }
-        
+
             else if (RadioButtonList1.SelectedValue.Equals("A1"))
             {
                 if (!strperson_group_code.Equals(""))
@@ -733,7 +774,7 @@ namespace myWeb.App_Control.payment
                 }
                 else
                 {
-                    strReport_code = "Rep_payment_bank_cover";               
+                    strReport_code = "Rep_payment_bank_cover";
                 }
 
                 strCriteria = strCriteria.Replace("view_payment.", "");
@@ -756,15 +797,15 @@ namespace myWeb.App_Control.payment
                 }
                 if (!strBankCode.Equals(""))
                 {
-                    strCriteria += "  And  loan_code ='" + strBankCode + "' ";                  
+                    strCriteria += "  And  loan_code ='" + strBankCode + "' ";
                 }
-                strReport_code = "Rep_payment_loan" ;
+                strReport_code = "Rep_payment_loan";
                 strCriteria = strCriteria.Replace("view_payment.", "").Replace("payment_detail_", "");
             }
             else if (RadioButtonList1.SelectedValue.Equals("A7"))
             {
                 strReport_code = "Rep_paymentdirectpay";
-                strCriteria = strCriteria.Replace("view_payment.", "").Replace("payment_detail_","");
+                strCriteria = strCriteria.Replace("view_payment.", "").Replace("payment_detail_", "");
             }
 
             else if (RadioButtonList1.SelectedValue.Equals("A8"))
@@ -800,6 +841,9 @@ namespace myWeb.App_Control.payment
             lblLot.Visible = false;
             cboLot.Visible = false;
             Label15.Visible = false;
+            cboPerson_group.Visible = true;
+            pnlCboPerson_group_dropdown.Style.Add("display", "none");
+
 
             if ((RadioButtonList1.SelectedValue == "2") || (RadioButtonList1.SelectedValue == "A3"))
             {
@@ -916,9 +960,9 @@ namespace myWeb.App_Control.payment
                 lblLot.Visible = true;
                 cboLot.Visible = true;
             }
-            else if (RadioButtonList1.SelectedValue == "A2" || 
-                RadioButtonList1.SelectedValue == "A4" || 
-                RadioButtonList1.SelectedValue == "A5" )
+            else if (RadioButtonList1.SelectedValue == "A2" ||
+                RadioButtonList1.SelectedValue == "A4" ||
+                RadioButtonList1.SelectedValue == "A5")
             {
                 txtitem_code.Text = "";
                 txtitem_name.Text = "";
@@ -932,6 +976,7 @@ namespace myWeb.App_Control.payment
                 cboLot.Visible = false;
                 lblBank.Visible = true;
                 cboBank.Visible = true;
+
                 InitcboBank();
             }
 
@@ -963,6 +1008,14 @@ namespace myWeb.App_Control.payment
                 cboLot.Visible = false;
                 lblBank.Visible = false;
                 cboBank.Visible = false;
+            }
+
+            if (RadioButtonList1.SelectedValue == "A2" ||
+                RadioButtonList1.SelectedValue == "A4")
+            {
+                cboPerson_group.Visible = false;
+                pnlCboPerson_group_dropdown.Style.Remove("display");
+
             }
 
 

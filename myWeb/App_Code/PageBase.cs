@@ -52,7 +52,7 @@ namespace myWeb
             {
                 if (ViewState["PageTitle"] == null)
                 {
-                    ViewState["PageTitle"] = string.Format(Resources.Resource.PageTitle, string.Empty, ProgramVersion);
+                    ViewState["PageTitle"] = string.Format("{0} ({1})", string.Empty, ProgramVersion);
                 }
                 return ViewState["PageTitle"].ToString();
             }
@@ -68,7 +68,7 @@ namespace myWeb
             {
                 if (ViewState["PageDes"] == null)
                 {
-                    ViewState["PageDes"] = string.Format(Resources.Resource.PageTitle, string.Empty, ProgramVersion);
+                    ViewState["PageDes"] = string.Format("{0} ({1})", string.Empty, ProgramVersion);
                 }
                 return ViewState["PageDes"].ToString();
             }
@@ -411,7 +411,7 @@ namespace myWeb
                         {
                             IsUserExtra = true;
                         }
-                        PageTitle = string.Format(Resources.Resource.PageTitle, rowArray["MenuName"].ToString(), ProgramVersion);
+                        PageTitle = string.Format("{0} ({1})", rowArray["MenuName"].ToString(), ProgramVersion);
                         PageDes = rowArray["MenuName"].ToString();
                     }
                 }

@@ -19,7 +19,7 @@ namespace myWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             lblError.Text = string.Empty;
-            Title = String.Format(Resources.Resource.PageTitle, "Login", ConfigurationManager.AppSettings["ProgramVersion"].ToString());
+            Title = String.Format("{0} ({1})", "Login", ConfigurationManager.AppSettings["ProgramVersion"].ToString());
             if (!IsPostBack)
             {
                 if (Session["username"] != null && Session["username"].ToString() == "0")

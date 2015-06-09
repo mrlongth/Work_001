@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{5D2419E3-0AFE-47AA-ADD1-8BE06747C919}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -50,10 +50,18 @@
     </Reference>
     <Reference Include="Aware.WebControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="cAware, Version=1.0.2351.27739, Culture=neutral" />
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Web, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DevExpress.Data.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -61,6 +69,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\DevExpress 2009.1\\Components\Sources\DevExpress.DLL\DevExpress.Web.v9.1.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="DropDownCheckBoxes, Version=1.1.0.27408, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\ASPControl\DropDownCheckBoxes.dll</HintPath>
     </Reference>
     <Reference Include="MattBerseth.WebControls.AJAX, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -1420,21 +1432,6 @@
     <Compile Include="App_Control\work\work_view.aspx.designer.cs">
       <DependentUpon>work_view.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_GlobalResources\Label.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Label.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\Message.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Message.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\Resource.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource.resx</DependentUpon>
-    </Compile>
     <Compile Include="Person_Manage\global_budget_plan_report.aspx.cs">
       <DependentUpon>global_budget_plan_report.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1666,26 +1663,10 @@
     <Content Include="bin\DevExpress.Data.v9.1.dll" />
     <Content Include="bin\DevExpress.Web.ASPxEditors.v9.1.dll" />
     <Content Include="bin\DevExpress.Web.v9.1.dll" />
-    <Content Include="bin\myWeb.dll" />
     <Content Include="StyleSheet_popup.css" />
     <Content Include="Site_list.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\Label.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Label.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="App_GlobalResources\Message.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Message.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="App_GlobalResources\Resource.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Resource.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
@@ -1986,7 +1967,6 @@
     <Content Include="App_Control\work\work_list.aspx" />
     <Content Include="App_Control\work\work_view.aspx" />
     <Content Include="bin\Aware.DAL.dll" />
-    <Content Include="bin\myDLL.pdb" />
     <Content Include="MainPerson.aspx" />
     <Content Include="javascript\AwNumeric.js" />
     <Content Include="javascript\AwTextBox.js" />
@@ -2010,6 +1990,7 @@
     <Content Include="App_Control\person_retire\person_retire_list.aspx" />
     <Content Include="App_Control\person\person_global_list.aspx" />
     <Content Include="App_Control\reportsparameter\open_report_show.aspx" />
+    <Content Include="bin\myDLL.pdb" />
     <Content Include="css\default.css" />
     <Content Include="css\menu_style.css" />
     <Content Include="images\3bt_bg.png" />
@@ -2360,14 +2341,11 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51706</DevelopmentServerPort>
+          <DevelopmentServerPort>57992</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

@@ -2046,6 +2046,7 @@ namespace myWeb.App_Control.reportsparameter
                 rptSource.SetParameterValue("pYear", ViewState["year"].ToString());
                 rptSource.SetParameterValue("BankName", Session["BankName"].ToString());
                 rptSource.SetParameterValue("MoneyType", Session["MoneyType"].ToString());
+                rptSource.SetParameterValue("Criteriadesc", Session["criteriadesc"].ToString());
                 CrystalReportViewer1.LogOnInfo = tableLogOnInfos;
             }
             catch (Exception ex)
@@ -2113,6 +2114,8 @@ namespace myWeb.App_Control.reportsparameter
                 rptSource.SetParameterValue("BankName", Session["BankName"].ToString());
                 rptSource.SetParameterValue("MoneyType", Session["MoneyType"].ToString());
                 rptSource.SetParameterValue("DatePay", Session["DatePay"].ToString());
+                rptSource.SetParameterValue("Criteriadesc", Session["criteriadesc"].ToString());
+             
                 CrystalReportViewer1.LogOnInfo = tableLogOnInfos;
             }
             catch (Exception ex)
