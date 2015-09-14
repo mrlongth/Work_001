@@ -354,12 +354,24 @@ namespace myWeb.App_Control.lov
                             }
                             else
                             {
-                                strScript = "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + stritem_code + "';\n " +
-                                                "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + stritem_name + "';\n" +
-                                                "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl3"].ToString() + "').value='" + stritem_type + "';\n" +
-                                                "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl4"].ToString() + "').value='" + stritem_group_name + "';\n" +
-                                                "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl5"].ToString() + "').value='" + strlot_name + "';\n" +
-                                                "ClosePopUp('" + ViewState["show"].ToString() + "');";
+                                //strScript = "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + stritem_code + "';\n " +
+                                //                "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + stritem_name + "';\n" +
+                                //                "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl3"].ToString() + "').value='" + stritem_type + "';\n" +
+                                //                "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl4"].ToString() + "').value='" + stritem_group_name + "';\n" +
+                                //                "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl5"].ToString() + "').value='" + strlot_name + "';\n" +
+                                //                "ClosePopUp('" + ViewState["show"].ToString() + "');";
+                                if (!string.IsNullOrEmpty(ViewState["ctrl1"].ToString()))
+                                    strScript = "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + stritem_code + "';\n ";
+                                if (!string.IsNullOrEmpty(ViewState["ctrl2"].ToString()))
+                                    strScript += "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + stritem_name + "';\n";
+                                if (!string.IsNullOrEmpty(ViewState["ctrl2"].ToString()))
+                                    strScript += "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl3"].ToString() + "').value='" + stritem_type + "';\n";
+                                if (!string.IsNullOrEmpty(ViewState["ctrl2"].ToString()))
+                                    strScript += "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl4"].ToString() + "').value='" + stritem_group_name + "';\n";
+                                if (!string.IsNullOrEmpty(ViewState["ctrl2"].ToString()))
+                                    strScript += "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl5"].ToString() + "').value='" + strlot_name + "';\n";
+                                strScript += "ClosePopUp('" + ViewState["show"].ToString() + "');";
+
 
                             }    
 
@@ -481,14 +493,28 @@ namespace myWeb.App_Control.lov
 
                     else
                     {
-                        lblitem_code.Text = "<a href=\"\" onclick=\"" +
-                        "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + lblitem_code.Text + "';\n " +
-                        "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + lblitem_name.Text + "';\n" +
-                        "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl3"].ToString() + "').value='" + lblitem_type.Text + "';\n" +
-                        "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl4"].ToString() + "').value='" + lblitem_group_name.Text + "';\n" +
-                        "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl5"].ToString() + "').value='" + lbllot_name.Text + "';\n" +
-                        "ClosePopUp('" + ViewState["show"].ToString() + "');" +
-                        "return false;\" >" + lblitem_code.Text + "</a>";
+                        //lblitem_code.Text = "<a href=\"\" onclick=\"" +
+                        //"window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + lblitem_code.Text + "';\n " +
+                        //"window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + lblitem_name.Text + "';\n" +
+                        //"window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl3"].ToString() + "').value='" + lblitem_type.Text + "';\n" +
+                        //"window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl4"].ToString() + "').value='" + lblitem_group_name.Text + "';\n" +
+                        //"window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl5"].ToString() + "').value='" + lbllot_name.Text + "';\n" +
+                        //"ClosePopUp('" + ViewState["show"].ToString() + "');" +
+                        //"return false;\" >" + lblitem_code.Text + "</a>";
+                        var strscript = "<a href=\"\" onclick=\"";
+                        if (!string.IsNullOrEmpty(ViewState["ctrl1"].ToString()))
+                            strscript += "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl1"].ToString() + "').value='" + lblitem_code.Text + "';\n ";
+                        if (!string.IsNullOrEmpty(ViewState["ctrl2"].ToString()))
+                            strscript += "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl2"].ToString() + "').value='" + lblitem_name.Text + "';\n";
+                        if (!string.IsNullOrEmpty(ViewState["ctrl3"].ToString()))
+                            strscript += "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl3"].ToString() + "').value='" + lblitem_type.Text + "';\n";
+                        if (!string.IsNullOrEmpty(ViewState["ctrl4"].ToString()))
+                            strscript += "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl4"].ToString() + "').value='" + lblitem_group_name.Text + "';\n";
+                        if (!string.IsNullOrEmpty(ViewState["ctrl5"].ToString()))
+                            strscript += "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].document.getElementById('" + ViewState["ctrl5"].ToString() + "').value='" + lbllot_name.Text + "';\n";
+                        strscript += "ClosePopUp('" + ViewState["show"].ToString() + "');";
+                        strscript += "return false;\" >" + lblitem_code.Text + "</a>";
+                        lblitem_code.Text = strscript;
                     }
 
                 }

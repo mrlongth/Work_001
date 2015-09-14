@@ -367,7 +367,7 @@ namespace myEFrom.App_Control.open
 
             if (base.UserGroupCode != "Admin")
             {
-                strCriteria += " and person_code ='" + base.PersonCode + "' ";
+                strCriteria += " and person_code IN ('" + base.PersonCode + "','" + base.ApproveFor + "')";
             }
 
             #endregion
@@ -494,11 +494,14 @@ namespace myEFrom.App_Control.open
                 imgView.Attributes.Add("onclick", "OpenPopUp('950px','550px','95%','แสดงรายละเอียด" + base.PageDes + "','open_control.aspx?budget_type=" + dv["budget_type"].ToString() + "&mode=view&open_head_id="
                                                             + hhdopen_head_id.Value + "&page=" + GridView1.PageIndex.ToString() + "&canEdit=Y','1');return false;");
 
-
                 ImageButton imgCopy = (ImageButton)e.Row.FindControl("imgCopy");
-                imgCopy.Attributes.Add("onclick", "OpenPopUp('950px','550px','95%','คัดลอก" + base.PageDes + "','open_control.aspx?budget_type=" + dv["budget_type"].ToString() + "&mode=copy&open_head_id="
-                                                            + hhdopen_head_id.Value + "&page=" + GridView1.PageIndex.ToString() + "&canEdit=Y','1');return false;");
-                
+                imgCopy.Visible = false;
+                if (Helper.CStr(dv["approve_head_status"]) == "C" || Helper.CStr(dv["approve_head_status"]) == "N")
+                {
+                    imgCopy.Attributes.Add("onclick", "OpenPopUp('950px','550px','95%','คัดลอก" + base.PageDes + "','open_control.aspx?budget_type=" + dv["budget_type"].ToString() + "&mode=copy&open_head_id="
+                                                                + hhdopen_head_id.Value + "&page=" + GridView1.PageIndex.ToString() + "&canEdit=Y','1');return false;");
+                    imgCopy.Visible = true;
+                }
                 
                 imgView.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgView"].Rows[0]["img"].ToString();
                 imgView.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgView"].Rows[0]["title"].ToString());
@@ -535,7 +538,8 @@ namespace myEFrom.App_Control.open
                 imgPrint.Visible = true;
                 if (base.UserGroupCode != "Admin")
                 {
-                    imgPrint.Visible = imgPrint.Visible && Helper.CStr(dv["person_code"]) == base.PersonCode;
+                    
+                    imgPrint.Visible = imgPrint.Visible && (Helper.CStr(dv["person_code"]) == base.PersonCode || Helper.CStr(dv["person_code"]) == base.ApproveFor);
                 }
 
                 if (!imgDelete.Visible && Helper.CStr(dv["approve_head_status"]) == "C")

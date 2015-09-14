@@ -151,6 +151,12 @@ namespace myWeb
 
             script = new HtmlGenericControl("script");
             script.Attributes["type"] = "text/javascript";
+            script.Attributes["src"] = (cCommon.AbsoluteWebRoot + "js/jquery-ui-1.8.22.custom.js");
+            Page.Header.Controls.Add(script);
+
+
+            script = new HtmlGenericControl("script");
+            script.Attributes["type"] = "text/javascript";
             script.Attributes["src"] = (cCommon.AbsoluteWebRoot + "scripts/form.js");
             Page.Header.Controls.Add(script);
 

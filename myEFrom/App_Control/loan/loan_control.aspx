@@ -80,7 +80,8 @@
                                     <asp:TextBox ID="txtloan_no" runat="server" CssClass="textbox" MaxLength="255" Width="300px"></asp:TextBox>
                                 </font>
                             </td>
-                            <td align="left" nowrap style="vertical-align: bottom; width: 1%;" valign="middle">&nbsp;
+                            <td align="left" nowrap style="vertical-align: bottom; width: 1%;" valign="middle">
+                                &nbsp;
                             </td>
                         </tr>
                         <tr align="left">
@@ -88,20 +89,30 @@
                                 <asp:Label ID="Label1" runat="server">ประเภทงบประมาณ :</asp:Label>
                             </td>
                             <td align="left" nowrap style="width: 38%" valign="middle">
-                                <asp:DropDownList ID="cboBudget_type" runat="server" CssClass="textbox">
+                                <asp:DropDownList ID="cboBudget_type" runat="server" CssClass="textbox" AutoPostBack="True"
+                                    OnSelectedIndexChanged="cboBudget_type_SelectedIndexChanged">
                                 </asp:DropDownList>
                                 <asp:HiddenField ID="hddBudget_type" runat="server" />
                             </td>
                             <td align="left" colspan="2" nowrap style="text-align: right" valign="middle">
+                                <asp:Label ID="Label114" runat="server" CssClass="label_error">*</asp:Label>
                                 <asp:Label ID="lblBudget_type" runat="server">ระบุ :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle" colspan="3">
                                 <font face="Tahoma">
                                     <asp:TextBox ID="txtbudget_type_text" runat="server" CssClass="textbox" MaxLength="255"
                                         Width="300px"></asp:TextBox>
+                                <font face="Tahoma">
+                                <br />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" 
+                                    ControlToValidate="txtbudget_type_text" Display="None" 
+                                    ErrorMessage="กรุณาระบุประเภทงบประมาณอื่นๆ" SetFocusOnError="True" 
+                                    ValidationGroup="A"></asp:RequiredFieldValidator>
+                                </font>
                                 </font>
                             </td>
-                            <td align="left" nowrap style="vertical-align: bottom; width: 1%;" valign="middle">&nbsp;&nbsp;
+                            <td align="left" nowrap style="vertical-align: bottom; width: 1%;" valign="middle">
+                                &nbsp;&nbsp;
                             </td>
                         </tr>
                         <tr align="left">
@@ -117,7 +128,8 @@
                                         Width="250px"></asp:TextBox>
                                 </font>
                             </td>
-                            <td align="left" nowrap style="vertical-align: bottom; width: 1%;" valign="middle">&nbsp;&nbsp;
+                            <td align="left" nowrap style="vertical-align: bottom; width: 1%;" valign="middle">
+                                &nbsp;&nbsp;
                             </td>
                         </tr>
                         <tr align="left">
@@ -133,7 +145,8 @@
                                     ValidationGroup="A"></asp:RequiredFieldValidator>
                             </td>
                             <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;"
-                                rowspan="9">&nbsp;&nbsp;
+                                rowspan="9">
+                                &nbsp;&nbsp;
                             </td>
                         </tr>
                         <tr align="left">
@@ -156,6 +169,9 @@
                                     OnSelectedIndexChanged="cboBudget_SelectedIndexChanged" Width="350px">
                                 </asp:DropDownList>
                                 <asp:HiddenField ID="hddBudget" runat="server" />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" 
+                                    ControlToValidate="cboBudget" Display="None" ErrorMessage="กรุณาเลือกแผนงาน" 
+                                    SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
                             </td>
                         </tr>
                         <tr align="left">
@@ -254,8 +270,8 @@
                                     </asp:DropDownList>
                                     <asp:HiddenField ID="hddLot" runat="server" />
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="cboLot"
-                                        Display="None" ErrorMessage="กรุณาเลือกงบ" SetFocusOnError="True"
-                                        ValidationGroup="A" Visible="False"></asp:RequiredFieldValidator>
+                                        Display="None" ErrorMessage="กรุณาเลือกงบ" SetFocusOnError="True" ValidationGroup="A"
+                                        Visible="False"></asp:RequiredFieldValidator>
                                 </font>
                             </td>
                         </tr>
@@ -339,15 +355,18 @@
                             </td>
                         </tr>
                         <tr align="left">
-                            <td align="right" nowrap valign="middle">&nbsp;&nbsp;
+                            <td align="right" nowrap valign="middle">
+                                &nbsp;&nbsp;
                             </td>
                             <td align="left" nowrap style="width: 38%" valign="middle">
                                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True"
                                     ShowSummary="False" ValidationGroup="A" />
                             </td>
-                            <td align="left" nowrap style="text-align: right" valign="middle">&nbsp;&nbsp;
+                            <td align="left" nowrap style="text-align: right" valign="middle">
+                                &nbsp;&nbsp;
                             </td>
-                            <td align="left" colspan="4" nowrap valign="middle">&nbsp;&nbsp;
+                            <td align="left" colspan="4" nowrap valign="middle">
+                                &nbsp;&nbsp;
                             </td>
                         </tr>
                     </table>
@@ -399,12 +418,12 @@
                                     <ItemTemplate>
                                         <cc1:AwNumeric ID="txtloan_detail_amount" runat="server" Width="80px" LeadZero="Show"
                                             DisplayMode="Control" Value='<% # DataBinder.Eval(Container, "DataItem.loan_detail_amount")%>'>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         </cc1:AwNumeric>
                                     </ItemTemplate>
                                     <FooterTemplate>
                                         <cc1:AwNumeric ID="txtloan_amount" runat="server" Width="80px" LeadZero="Show" DisplayMode="Control">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         </cc1:AwNumeric>
                                     </FooterTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="5%" Wrap="True" />
@@ -433,7 +452,7 @@
                         BorderWidth="0px" Style="text-align: left" Width="98%">
                         <ajaxtoolkit:TabPanel ID="TabPanel6" runat="server" HeaderText="ข้อมูลการขอยืมเงิน">
                             <HeaderTemplate>
-                                รายละเอียดของการรับเงิน 
+                                รายละเอียดของการรับเงิน
                             </HeaderTemplate>
                             <ContentTemplate>
                                 <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
@@ -442,13 +461,18 @@
                                             <asp:Label ID="Label4" runat="server">ประเภทการชำระ :</asp:Label>
                                         </td>
                                         <td align="left" nowrap valign="middle" style="width: 30%">
-                                            <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
+                                            <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True" RepeatDirection="Horizontal"
+                                                OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
                                                 <asp:ListItem Selected="True" Value="C">เช็ค</asp:ListItem>
                                                 <asp:ListItem Value="B">บัญชีธนาคาร</asp:ListItem>
                                             </asp:RadioButtonList>
                                         </td>
-                                        <td align="right" nowrap valign="middle">&nbsp;</td>
-                                        <td align="left" nowrap valign="middle" style="width: 30%">&nbsp;</td>
+                                        <td align="right" nowrap valign="middle">
+                                            &nbsp;
+                                        </td>
+                                        <td align="left" nowrap valign="middle" style="width: 30%">
+                                            &nbsp;
+                                        </td>
                                     </tr>
                                     <tr align="left">
                                         <td align="right" colspan="4" nowrap valign="middle" width="20%">
@@ -459,15 +483,13 @@
                                                             <asp:Label ID="lblpay_acc_no" runat="server">เลขที่เช็ค :</asp:Label>
                                                         </td>
                                                         <td align="left" nowrap style="width: 30%" valign="middle">
-                                                            <asp:TextBox ID="txtpay_acc_no" runat="server" CssClass="textbox"
-                                                                Text='<%# DataBinder.Eval(Container, "DataItem.pay_acc_no") %>'></asp:TextBox>
+                                                            <asp:TextBox ID="txtpay_acc_no" runat="server" CssClass="textbox" Text='<%# DataBinder.Eval(Container, "DataItem.pay_acc_no") %>'></asp:TextBox>
                                                         </td>
                                                         <td align="right" nowrap valign="middle">
                                                             <asp:Label ID="lblpay_name" runat="server">ชื่อผู้จ่ายเช็ค :</asp:Label>
                                                         </td>
                                                         <td align="left" nowrap style="width: 30%" valign="middle">
-                                                            <asp:TextBox ID="txtpay_name" runat="server" CssClass="textbox" Width="98%"
-                                                                Text='<%# DataBinder.Eval(Container, "DataItem.pay_name") %>'></asp:TextBox>
+                                                            <asp:TextBox ID="txtpay_name" runat="server" CssClass="textbox" Width="98%" Text='<%# DataBinder.Eval(Container, "DataItem.pay_name") %>'></asp:TextBox>
                                                         </td>
                                                     </tr>
                                                     <tr align="left">
@@ -475,14 +497,16 @@
                                                             <asp:Label ID="lblpay_bank" runat="server">เช็คธนาคาร :</asp:Label>
                                                         </td>
                                                         <td align="left" nowrap style="width: 30%" valign="middle">
-                                                            <asp:DropDownList ID="cboPay_bank" runat="server" CssClass="textbox"  AutoPostBack="true"
-                                                                OnSelectedIndexChanged="cboPay_bank_SelectedIndexChanged"></asp:DropDownList>
+                                                            <asp:DropDownList ID="cboPay_bank" runat="server" CssClass="textbox" AutoPostBack="true"
+                                                                OnSelectedIndexChanged="cboPay_bank_SelectedIndexChanged">
+                                                            </asp:DropDownList>
                                                         </td>
                                                         <td align="right" nowrap valign="middle">
                                                             <asp:Label ID="lblpay_bank_branch" runat="server">สาขาธนาคาร :</asp:Label>
                                                         </td>
                                                         <td align="left" nowrap style="width: 30%" valign="middle">
-                                                            <asp:DropDownList ID="cboPay_bank_branch" runat="server" CssClass="textbox"></asp:DropDownList>                                                            
+                                                            <asp:DropDownList ID="cboPay_bank_branch" runat="server" CssClass="textbox">
+                                                            </asp:DropDownList>
                                                         </td>
                                                     </tr>
                                                     <tr align="left">
@@ -490,8 +514,7 @@
                                                             <asp:Label ID="lblpay_remark" runat="server">หมายเหตุ :</asp:Label>
                                                         </td>
                                                         <td align="left" nowrap style="width: 30%" valign="middle" colspan="3">
-                                                            <asp:TextBox ID="txtpay_remark" runat="server" CssClass="textbox" Width="400px"
-                                                                Text='<%# DataBinder.Eval(Container, "DataItem.pay_remark") %>'></asp:TextBox>
+                                                            <asp:TextBox ID="txtpay_remark" runat="server" CssClass="textbox" Width="400px" Text='<%# DataBinder.Eval(Container, "DataItem.pay_remark") %>'></asp:TextBox>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -534,9 +557,11 @@
                                         </td>
                                     </tr>
                                     <tr align="left">
-                                        <td align="right" nowrap valign="middle" width="12%">&nbsp;
+                                        <td align="right" nowrap valign="middle" width="12%">
+                                            &nbsp;
                                         </td>
-                                        <td align="left" nowrap valign="middle" colspan="3">&nbsp;
+                                        <td align="left" nowrap valign="middle" colspan="3">
+                                            &nbsp;
                                         </td>
                                     </tr>
                                 </table>
@@ -554,7 +579,8 @@
                         <asp:GridView runat="server" AllowSorting="True" AutoGenerateColumns="False" CellPadding="2"
                             BackColor="White" BorderWidth="1px" CssClass="stGrid" Font-Bold="False" Font-Size="10pt"
                             Width="100%" ID="GridView2" OnRowCreated="GridView2_RowCreated" OnRowDataBound="GridView2_RowDataBound"
-                            OnSorting="GridView2_Sorting" OnRowDeleting="GridView2_RowDeleting" OnRowCommand="GridView2_RowCommand" EnableModelValidation="True">
+                            OnSorting="GridView2_Sorting" OnRowDeleting="GridView2_RowDeleting" OnRowCommand="GridView2_RowCommand"
+                            EnableModelValidation="True">
                             <AlternatingRowStyle BackColor="#EAEAEA"></AlternatingRowStyle>
                             <Columns>
                                 <asp:TemplateField HeaderText="No.">
@@ -579,7 +605,7 @@
                                     <ItemTemplate>
                                         <cc1:AwNumeric ID="txtapprove_level" runat="server" Width="60px" LeadZero="Show"
                                             DisplayMode="Control" DecimalPlaces="0" Text='<%# DataBinder.Eval(Container, "DataItem.approve_level") %>'>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         </cc1:AwNumeric>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="5%" Wrap="True" />
@@ -688,7 +714,7 @@
                                         <asp:HiddenField ID="hddopen_date" runat="server" Value='<%# DataBinder.Eval(Container, "DataItem.open_date") %>' />
                                         <cc1:AwLabelDateTime ID="txtopen_date" runat="server" Value='<% # DataBinder.Eval(Container, "DataItem.open_date")%>'
                                             DateFormat="dd/MM/yyyy">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         </cc1:AwLabelDateTime>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="10%" Wrap="True" />
@@ -698,13 +724,13 @@
                                         <asp:HiddenField ID="hddopen_amount" runat="server" Value='<%# DataBinder.Eval(Container, "DataItem.open_amount") %>' />
                                         <cc1:AwLabelNumeric ID="txtopen_amount" runat="server" Width="80px" LeadZero="Show"
                                             Value='<% # DataBinder.Eval(Container, "DataItem.open_amount")%>'>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         </cc1:AwLabelNumeric>
                                     </ItemTemplate>
                                     <FooterTemplate>
                                         <cc1:AwNumeric ID="txttotal_open_amount" runat="server" Width="80px" LeadZero="Show"
                                             DisplayMode="View">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         </cc1:AwNumeric>
                                     </FooterTemplate>
                                     <ItemStyle HorizontalAlign="Right" Width="10%" Wrap="True" />

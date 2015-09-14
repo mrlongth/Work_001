@@ -145,17 +145,25 @@
                                 <asp:Label ID="Label1" runat="server">ประเภทงบประมาณ :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle" style="width: 38%">
-                                <asp:DropDownList ID="cboBudget_type" runat="server" CssClass="textbox">
+                                <asp:DropDownList ID="cboBudget_type" runat="server" CssClass="textbox" 
+                                    AutoPostBack="True" OnSelectedIndexChanged="cboBudget_type_SelectedIndexChanged">
                                 </asp:DropDownList>
                                 <asp:HiddenField ID="hddBudget_type" runat="server" />
                             </td>
                             <td align="left" nowrap style="text-align: right" valign="middle" colspan="2">
+                                <asp:Label ID="lblReqBudget_type_text" runat="server" CssClass="label_error" 
+                                    Visible="False">*</asp:Label>
                                 <asp:Label ID="lblBudget_type" runat="server">ระบุ :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle">
                                 <font face="Tahoma">
                                     <asp:TextBox ID="txtbudget_type_text" runat="server" CssClass="textbox" MaxLength="255"
                                         Width="300px"></asp:TextBox>
+                                <br />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" 
+                                    ControlToValidate="txtbudget_type_text" Display="None" 
+                                    ErrorMessage="กรุณาระบุประเภทงบประมาณอื่นๆ" SetFocusOnError="True" 
+                                    ValidationGroup="A" Enabled="False"></asp:RequiredFieldValidator>
                                 </font>
                             </td>
                             <td align="left" nowrap style="vertical-align: bottom; width: 1%;" valign="middle">
@@ -175,7 +183,7 @@
                                     ImageAlign="AbsBottom" ImageUrl="../../images/controls/erase.gif" OnClick="imgClear_budget_plan_Click" />
                             </td>
                             <td align="left" nowrap style="text-align: right" valign="middle">
-                                <asp:Label ID="Label104" runat="server" CssClass="label_error">*</asp:Label>
+                                <asp:Label ID="lblReqBudget" runat="server" CssClass="label_error">*</asp:Label>
                                 <asp:Label ID="Label103" runat="server" CssClass="label_hbk">แผนงบ :</asp:Label>
                             </td>
                             <td align="left" colspan="2" nowrap valign="middle">
@@ -189,7 +197,7 @@
                         </tr>
                         <tr align="left">
                             <td align="right" nowrap valign="middle">
-                                <asp:Label ID="Label105" runat="server" CssClass="label_error">*</asp:Label>
+                                <asp:Label ID="lblReqProduce" runat="server" CssClass="label_error">*</asp:Label>
                                 <asp:Label ID="Label55" runat="server" CssClass="label_hbk">ผลผลิต :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle" style="width: 38%">
@@ -201,7 +209,7 @@
                                     Display="None" ErrorMessage="กรุณาเลือกผลผลิต" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
                             </td>
                             <td align="left" nowrap style="text-align: right" valign="middle">
-                                <asp:Label ID="Label106" runat="server" CssClass="label_error">*</asp:Label>
+                                <asp:Label ID="lblReqActivity" runat="server" CssClass="label_error">*</asp:Label>
                                 <asp:Label ID="Label53" runat="server" CssClass="label_hbk">กิจกรรม :</asp:Label>
                             </td>
                             <td align="left" colspan="2" nowrap valign="middle">
@@ -214,7 +222,7 @@
                         </tr>
                         <tr align="left">
                             <td align="right" nowrap valign="middle">
-                                <asp:Label ID="Label107" runat="server" CssClass="label_error">*</asp:Label>
+                                <asp:Label ID="lblReqPlan" runat="server" CssClass="label_error">*</asp:Label>
                                 <asp:Label ID="Label56" runat="server" CssClass="label_hbk">แผนงาน :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle" style="width: 38%">
@@ -225,7 +233,7 @@
                                     Display="None" ErrorMessage="กรุณาเลือกแผนงาน" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
                             </td>
                             <td align="left" nowrap style="text-align: right" valign="middle">
-                                <asp:Label ID="Label108" runat="server" CssClass="label_error">*</asp:Label>
+                                <asp:Label ID="lblReqWork" runat="server" CssClass="label_error">*</asp:Label>
                                 <asp:Label ID="Label57" runat="server" CssClass="label_hbk">งาน :</asp:Label>
                             </td>
                             <td align="left" colspan="2" nowrap valign="middle">
@@ -238,7 +246,7 @@
                         </tr>
                         <tr align="left">
                             <td align="right" nowrap valign="middle">
-                                <asp:Label ID="Label109" runat="server" CssClass="label_error">*</asp:Label>
+                                <asp:Label ID="lblReqFund" runat="server" CssClass="label_error">*</asp:Label>
                                 <asp:Label ID="Label58" runat="server" CssClass="label_hbk">กองทุน :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle" style="width: 38%">
@@ -249,7 +257,7 @@
                                     Display="None" ErrorMessage="กรุณาเลือกกองทุน" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
                             </td>
                             <td align="left" nowrap style="text-align: right" valign="middle">
-                                <asp:Label ID="Label98" runat="server" CssClass="label_error">*</asp:Label>
+                                <asp:Label ID="lblReqDirector" runat="server" CssClass="label_error">*</asp:Label>
                                 <asp:Label ID="Label60" runat="server" CssClass="label_hbk">สังกัด :</asp:Label>
                             </td>
                             <td align="left" colspan="2" nowrap valign="middle">
@@ -263,7 +271,7 @@
                         </tr>
                         <tr align="left">
                             <td align="right" nowrap valign="middle">
-                                <asp:Label runat="server" CssClass="label_error" ID="Label99">*</asp:Label>
+                                <asp:Label ID="lblReqUnit" runat="server" CssClass="label_error">*</asp:Label>
                                 <asp:Label ID="Label61" runat="server" CssClass="label_hbk">หน่วยงาน :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle" style="width: 38%">
@@ -274,7 +282,7 @@
                                     Display="None" ErrorMessage="กรุณาเลือกหน่วยงาน" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
                             </td>
                             <td align="left" nowrap style="text-align: right" valign="middle">
-                                <asp:Label ID="Label110" runat="server" CssClass="label_error" Visible="False">*</asp:Label>
+                                <asp:Label ID="lblReqLot" runat="server" CssClass="label_error" Visible="False">*</asp:Label>
                                 <asp:Label ID="Label62" runat="server" CssClass="label_hbk">งบ :</asp:Label>
                             </td>
                             <td align="left" colspan="2" nowrap valign="middle">
@@ -477,12 +485,12 @@
                                     <ItemTemplate>
                                         <cc1:AwNumeric ID="txtopen_detail_amount" runat="server" Width="80px" LeadZero="Show"
                                             DisplayMode="Control" Value='<% # DataBinder.Eval(Container, "DataItem.open_detail_amount") %>'>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         </cc1:AwNumeric>
                                     </ItemTemplate>
                                     <FooterTemplate>
                                         <cc1:AwNumeric ID="txtopen_amount" runat="server" Width="80px" LeadZero="Show" DisplayMode="Control">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         </cc1:AwNumeric>
                                     </FooterTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="5%" Wrap="True" />
@@ -541,7 +549,7 @@
                                     <ItemTemplate>
                                         <cc1:AwNumeric ID="txtapprove_level" runat="server" Width="60px" LeadZero="Show"
                                             DisplayMode="Control" DecimalPlaces="0" Text='<%# DataBinder.Eval(Container, "DataItem.approve_level") %>'>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         </cc1:AwNumeric>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="5%" Wrap="True" />
@@ -643,7 +651,7 @@
                                         <asp:HiddenField ID="hddloan_date" runat="server" Value='<%# DataBinder.Eval(Container, "DataItem.loan_date") %>' />
                                         <cc1:AwLabelDateTime ID="txtloan_date" runat="server" Value='<% # DataBinder.Eval(Container, "DataItem.loan_date") %>'
                                             DateFormat="dd/MM/yyyy">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         </cc1:AwLabelDateTime>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="10%" Wrap="True" />
@@ -653,13 +661,13 @@
                                         <asp:HiddenField ID="hddloan_req" runat="server" Value='<%# DataBinder.Eval(Container, "DataItem.loan_req") %>' />
                                         <cc1:AwLabelNumeric ID="txtloan_req" runat="server" Width="80px" LeadZero="Show"
                                             Value='<% # DataBinder.Eval(Container, "DataItem.loan_req") %>'>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         </cc1:AwLabelNumeric>
                                     </ItemTemplate>
                                     <FooterTemplate>
                                         <cc1:AwNumeric ID="txttotal_loan_req" runat="server" Width="80px" LeadZero="Show"
                                             DisplayMode="View">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         </cc1:AwNumeric>
                                     </FooterTemplate>
                                     <ItemStyle HorizontalAlign="Right" Width="10%" Wrap="True" />

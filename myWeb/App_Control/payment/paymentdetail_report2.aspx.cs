@@ -534,7 +534,33 @@ namespace myWeb.App_Control.payment
                 }
                 strCriteria = strCriteria.Replace("view_payment.", "");
             }
-
+            //กองทุนสำรองเลี้ยงชีพ
+            else if (RadioButtonList1.SelectedValue.Equals("A04"))
+            {
+                if (cboPayType.SelectedValue == "N")
+                {
+                    strReport_code = "Rep_PVDbydirector";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-110' ";
+                }
+                else
+                {
+                    strReport_code = "Rep_PVD_backbydirector";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-110A' ";
+                }
+            }
+            if (RadioButtonList1.SelectedValue.Equals("A03"))
+            {
+                if (cboPayType.SelectedValue == "N")
+                {
+                    strReport_code = "Rep_PVD";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-110' ";
+                }
+                else
+                {
+                    strReport_code = "Rep_PVD_back";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-110A' ";
+                }
+            }
 
             else if (RadioButtonList1.SelectedValue.Equals("A01"))
             {
@@ -552,6 +578,31 @@ namespace myWeb.App_Control.payment
                     strReport_code = "Rep_paymentGSJbyyear&item_des=" + HttpUtility.HtmlEncode("  And  substring(pa.item_code,5,7)= '09-038A' ");
                 strCriteria = strCriteria.Replace("view_payment.", "psa.");
             }
+
+            else if (RadioButtonList1.SelectedValue.Equals("A05"))
+            {
+                if (cboPayType.SelectedValue == "N")
+                    strReport_code = "Rep_paymentPVDbyyear&item_des=" + HttpUtility.HtmlEncode("  And  substring(pa.item_code,5,7)= '09-110' ");
+                else
+                    strReport_code = "Rep_paymentPVDbyyear&item_des=" + HttpUtility.HtmlEncode("  And  substring(pa.item_code,5,7)= '09-110A' ");
+                strCriteria = strCriteria.Replace("view_payment.", "pa.");
+            }
+
+            if (RadioButtonList1.SelectedValue.Equals("A06"))
+            {
+                if (cboPayType.SelectedValue == "N")
+                {
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-110' ";
+                    strReport_code = "Rep_payment_pvd_bank";
+                }
+                else
+                {
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-110A' ";
+                    strReport_code = "Rep_payment_pvd_bank_back";
+                }
+            }
+
+
 
             Session["criteria"] = strCriteria;
             strScript = "windowOpenMaximize(\"../../App_Control/reportsparameter/payment_report_show.aspx?report_code=" + strReport_code +

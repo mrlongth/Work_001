@@ -50,6 +50,7 @@ namespace myEFrom
             strUser += cboDomain.SelectedItem.Text;
             strMessage = string.Empty;
             strPersonID = MjuVerifyUser(strUser, strPass, ref strMessage);
+            //strPersonID = "3501500288110";
             if (strPersonID.Length > 0)
             {
                 if (SetPersonUserProfile(strPersonID, ref strMessage))

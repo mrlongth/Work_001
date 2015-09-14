@@ -575,18 +575,21 @@ namespace myWeb.App_Control.payment_member_type
             string strpay_year = cboPay_Year.SelectedValue;
             string strGBK = string.Empty;
             string strGBK2 = string.Empty;
+            string strPVD = string.Empty;
             strGBK = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["GBK"].ToString();
             strGBK2 = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["GBK2"].ToString();
+            strPVD = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["PVD"].ToString();
+            
             try
             {
                 if (!strmember_type_code.Equals(strGBK2))
                 {
-                    strCriteria = "  and  member_type_code= '" + strmember_type_code + "' " +
-                                           " and person_work_status_code='01' " +
-                                           " and payment_year='" + strpayment_year + "' " +
-                                           " and pay_month='" + strpay_month + "' " +
-                                           " and pay_year='" + strpay_year + "' " +
-                                           " and person_group_code IN (" + PersonGroupList + ") ";
+                    strCriteria = "  and  member_type_code like '%" + strmember_type_code + "%' " +
+                                         " and person_work_status_code='01' " +
+                                         " and payment_year='" + strpayment_year + "' " +
+                                         " and pay_month='" + strpay_month + "' " +
+                                         " and pay_year='" + strpay_year + "' " +
+                                         " and person_group_code IN (" + PersonGroupList + ") ";
                 }
                 else
                 {
@@ -649,7 +652,7 @@ namespace myWeb.App_Control.payment_member_type
 
                         if (double.Parse(txtrate1.Value.ToString()) > 0.0)
                         {
-                            if (strmember_type_code.Equals(strSOS))
+                            if (strmember_type_code.Equals(strSOS) || strmember_type_code.Equals(strPVD))
                             {
                                 ds.Tables[0].Rows[i]["membertype_credit"] = Math.Round(((double.Parse(txtrate1.Value.ToString())) * dblperson_salaly) / 100, 0, MidpointRounding.AwayFromZero);
                             }
@@ -664,7 +667,7 @@ namespace myWeb.App_Control.payment_member_type
                         }
                         if (double.Parse(txtrate2.Value.ToString()) > 0.0)
                         {
-                            if (strmember_type_code.Equals(strSOS))
+                            if (strmember_type_code.Equals(strSOS) || strmember_type_code.Equals(strPVD))
                             {
                                 ds.Tables[0].Rows[i]["company_credit"] = Math.Round((double.Parse(txtrate2.Value.ToString()) * dblperson_salaly) / 100, 0, MidpointRounding.AwayFromZero);
                             }
@@ -969,7 +972,7 @@ namespace myWeb.App_Control.payment_member_type
                 lbldebitextra_code.Visible = false;
                 lbldebitextra_name.Visible = false;
                 lblextra_mid.Visible = false;
-                BindGridView();
+                BindGridViewTmp();
 
                 //cboYear.Enabled = true;
                 //cboPay_Month.Enabled = true;

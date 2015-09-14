@@ -6,81 +6,85 @@
     <table cellpadding="1" cellspacing="1" style="width: 100%" border="0">
         <tr>
             <td style="text-align: left; width: 20%; vertical-align: top;">
-                <asp:radiobuttonlist id="RadioButtonList1" runat="server" autopostback="True" onselectedindexchanged="RadioButtonList1_SelectedIndexChanged">
-                    <asp:listitem value="9" selected="True">รายงานสรุปรวม กสจ.</asp:listitem>
-                    <asp:listitem value="10">รายงานสรุป กสจ.แยกตามสังกัด</asp:listitem>
-                    <asp:listitem value="11">รายงานสรุปรวม กบข.</asp:listitem>
-                    <asp:listitem value="12">รายงานสรุปรวม กบข.แยกตามสังกัด</asp:listitem>
-                    <asp:listitem value="13">รายงานสรุปรวม กบข.ส่วนเพิ่ม</asp:listitem>
-                    <asp:listitem value="A01">รายงานการเบิกจ่าย กบข.ประจำปี</asp:listitem>
-                    <asp:listitem value="A02">รายงานการเบิกจ่าย กสจ.ประจำประจำปี</asp:listitem>
-                </asp:radiobuttonlist>
+                <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
+                    <asp:ListItem Value="9" Selected="True">รายงานสรุปรวม กสจ.</asp:ListItem>
+                    <asp:ListItem Value="10">รายงานสรุป กสจ.แยกตามสังกัด</asp:ListItem>
+                    <asp:ListItem Value="A02">รายงานการเบิกจ่าย กสจ.ประจำประจำปี</asp:ListItem>
+                    <asp:ListItem Value="11">รายงานสรุปรวม กบข.</asp:ListItem>
+                    <asp:ListItem Value="12">รายงานสรุปรวม กบข.แยกตามสังกัด</asp:ListItem>
+                    <asp:ListItem Value="A01">รายงานการเบิกจ่าย กบข.ประจำปี</asp:ListItem>
+                    <asp:ListItem Value="13">รายงานสรุปรวม กบข.ส่วนเพิ่ม</asp:ListItem>
+                    <asp:ListItem Value="A03">รายงานสรุปรวมกองทุนสำรองเลี้ยงชีพ (พม.)</asp:ListItem>
+                    <asp:ListItem Value="A04">รายงานสรุปกองทุนสำรองเลี้ยงชีพ (พม.) แยกตามสังกัด</asp:ListItem>
+                    <asp:ListItem Value="A05">รายงานการเบิกจ่ายกองทุนสำรองเลี้ยงชีพ (พม.) ประจำประจำปี</asp:ListItem>
+                    <asp:ListItem Value="A06">แบบนำส่งเงินสะสม - สมทบ</asp:ListItem>                    
+                </asp:RadioButtonList>
             </td>
             <td style="text-align: right; width: 70%; vertical-align: top;">
                 <table cellpadding="1" cellspacing="1" style="width: 100%;" border="0">
                     <tr>
                         <td style="text-align: right; width: 20%;">
-                            <asp:label runat="server" cssclass="label_h" id="lblPage4">ปีงบประมาณ :</asp:label>
+                            <asp:Label runat="server" CssClass="label_h" ID="lblPage4">ปีงบประมาณ :</asp:Label>
                         </td>
                         <td style="width: 1%; text-align: left;">
-                            <asp:dropdownlist runat="server" cssclass="textbox" id="cboYear" autopostback="True"
-                                onselectedindexchanged="cboYear_SelectedIndexChanged">
-                            </asp:dropdownlist>
-                            <asp:label runat="server" cssclass="label_error" id="lblError"></asp:label>
+                            <asp:DropDownList runat="server" CssClass="textbox" ID="cboYear" AutoPostBack="True"
+                                OnSelectedIndexChanged="cboYear_SelectedIndexChanged">
+                            </asp:DropDownList>
+                            <asp:Label runat="server" CssClass="label_error" ID="lblError"></asp:Label>
                         </td>
                         <td style="width: 20%; text-align: right;">
-                            <asp:label runat="server" cssclass="label_h" id="lblPage2" visible="False">กลุ่มบุคคลากร :</asp:label>
+                            <asp:Label runat="server" CssClass="label_h" ID="lblPage2" Visible="False">กลุ่มบุคคลากร :</asp:Label>
                         </td>
                         <td style="height: 23px; text-align: left;">
-                            <asp:dropdownlist runat="server" cssclass="textbox" id="cboPerson_group" visible="False">
-                            </asp:dropdownlist>
+                            <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group" Visible="False">
+                            </asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
                         <td style="text-align: right; width: 20%;">
-                            <asp:label runat="server" cssclass="label_h" id="lblPage10">รอบปีที่จ่าย :</asp:label>
+                            <asp:Label runat="server" CssClass="label_h" ID="lblPage10">รอบปีที่จ่าย :</asp:Label>
                         </td>
                         <td style="width: 1%; text-align: left;">
-                            <asp:dropdownlist runat="server" cssclass="textbox" id="cboPay_Year">
-                            </asp:dropdownlist>
+                            <asp:DropDownList runat="server" CssClass="textbox" ID="cboPay_Year">
+                            </asp:DropDownList>
                         </td>
                         <td style="width: 20%; text-align: right;">
-                            <asp:label runat="server" cssclass="label_h" id="lblPage1">รอบเดือนที่จ่าย :</asp:label>
+                            <asp:Label runat="server" CssClass="label_h" ID="lblPage1">รอบเดือนที่จ่าย :</asp:Label>
                         </td>
                         <td style="height: 23px; text-align: left;">
-                            <asp:dropdownlist runat="server" cssclass="textbox" id="cboPay_Month">
-                            </asp:dropdownlist>
+                            <asp:DropDownList runat="server" CssClass="textbox" ID="cboPay_Month">
+                            </asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
                         <td style="text-align: right; width: 20%;">
-                            <asp:label runat="server" cssclass="label_h" id="lblPage7">สังกัด :
-                            </asp:label>
+                            <asp:Label runat="server" CssClass="label_h" ID="lblPage7">สังกัด :
+                            </asp:Label>
                         </td>
                         <td style="width: 1%; text-align: left;">
-                            <asp:dropdownlist runat="server" cssclass="textbox" id="cboDirector" autopostback="True"
-                                onselectedindexchanged="cboDirector_SelectedIndexChanged">
-                            </asp:dropdownlist>
+                            <asp:DropDownList runat="server" CssClass="textbox" ID="cboDirector" AutoPostBack="True"
+                                OnSelectedIndexChanged="cboDirector_SelectedIndexChanged">
+                            </asp:DropDownList>
                         </td>
                         <td style="width: 20%; text-align: right;">
-                            <asp:label runat="server" cssclass="label_h" id="lblPage8">หน่วยงาน :
-                            </asp:label>
+                            <asp:Label runat="server" CssClass="label_h" ID="lblPage8">หน่วยงาน :
+                            </asp:Label>
                         </td>
                         <td style="height: 23px; text-align: left;">
-                            <asp:dropdownlist runat="server" cssclass="textbox" id="cboUnit">
-                            </asp:dropdownlist>
+                            <asp:DropDownList runat="server" CssClass="textbox" ID="cboUnit">
+                            </asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
                         <td style="text-align: right; width: 20%;">
-                            <asp:label runat="server" id="Label16" cssclass="label_h">ประเภทการเบิก :</asp:label>
+                            <asp:Label runat="server" ID="Label16" CssClass="label_h">ประเภทการเบิก :</asp:Label>
                         </td>
                         <td style="width: 1%; text-align: left;">
                             <font face="Tahoma">
-                                <asp:dropdownlist runat="server" cssclass="textbox" id="cboPayType">
-                                    <asp:listitem value="N">ปกติ</asp:listitem>
-                                    <asp:listitem value="B">ตกเบิก</asp:listitem>
-                                </asp:dropdownlist>
+                                <asp:DropDownList runat="server" CssClass="textbox" ID="cboPayType">
+                                    <asp:ListItem Value="N">ปกติ</asp:ListItem>
+                                    <asp:ListItem Value="B">ตกเบิก</asp:ListItem>
+                                </asp:DropDownList>
                             </font>
                         </td>
                         <td style="width: 20%; text-align: right;">
@@ -92,37 +96,36 @@
                     </tr>
                     <tr>
                         <td style="text-align: right; width: 20%;">
-                            <asp:label runat="server" id="lblPage9" cssclass="label_h" visible="False">รายได้/จ่าย :</asp:label>
+                            <asp:Label runat="server" ID="lblPage9" CssClass="label_h" Visible="False">รายได้/จ่าย :</asp:Label>
                         </td>
                         <td style="text-align: left;" colspan="3">
-                            <asp:textbox runat="server" cssclass="textbox" width="80px" id="txtitem_code" maxlength="20"
-                                visible="False">
-                            </asp:textbox>
-                            &nbsp;<asp:imagebutton runat="server" imagealign="AbsBottom" imageurl="../../images/controls/view2.gif"
-                                id="imgList_item" visible="False"></asp:imagebutton>
-                            <asp:imagebutton runat="server" causesvalidation="False" imagealign="AbsBottom" imageurl="../../images/controls/erase.gif"
-                                id="imgClear_item" visible="False">
-                            </asp:imagebutton>
-                            &nbsp;<asp:textbox runat="server" cssclass="textbox" width="230px" id="txtitem_name"
-                                maxlength="100" visible="False"></asp:textbox>
+                            <asp:TextBox runat="server" CssClass="textbox" Width="80px" ID="txtitem_code" MaxLength="20"
+                                Visible="False">
+                            </asp:TextBox>
+                            &nbsp;<asp:ImageButton runat="server" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif"
+                                ID="imgList_item" Visible="False"></asp:ImageButton>
+                            <asp:ImageButton runat="server" CausesValidation="False" ImageAlign="AbsBottom" ImageUrl="../../images/controls/erase.gif"
+                                ID="imgClear_item" Visible="False"></asp:ImageButton>
+                            &nbsp;<asp:TextBox runat="server" CssClass="textbox" Width="230px" ID="txtitem_name"
+                                MaxLength="100" Visible="False"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
                         <td style="text-align: right; width: 20%;">
-                            <asp:label runat="server" id="Label15" cssclass="label_h" visible="False">ผลผลิต :</asp:label>
+                            <asp:Label runat="server" ID="Label15" CssClass="label_h" Visible="False">ผลผลิต :</asp:Label>
                         </td>
                         <td style="text-align: left;">
                             <font face="Tahoma">
-                                <asp:dropdownlist runat="server" cssclass="textbox" id="cboProduce" visible="False">
-                                </asp:dropdownlist>
+                                <asp:DropDownList runat="server" CssClass="textbox" ID="cboProduce" Visible="False">
+                                </asp:DropDownList>
                             </font>
                         </td>
                         <td style="text-align: right;">
-                            <asp:label runat="server" id="lblLot" cssclass="label_h" visible="False">งบ :</asp:label>
+                            <asp:Label runat="server" ID="lblLot" CssClass="label_h" Visible="False">งบ :</asp:Label>
                         </td>
                         <td style="height: 23px; text-align: left;">
-                            <asp:dropdownlist runat="server" cssclass="textbox" id="cboLot" visible="False">
-                            </asp:dropdownlist>
+                            <asp:DropDownList runat="server" CssClass="textbox" ID="cboLot" Visible="False">
+                            </asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
@@ -133,9 +136,8 @@
                             &nbsp;
                         </td>
                         <td style="height: 23px; text-align: right;">
-                            <asp:imagebutton runat="server" alternatetext="พิมพ์ข้อมูล" imageurl="~/images/button/print.png"
-                                id="imgPrint" onclick="imgPrint_Click">
-                            </asp:imagebutton>
+                            <asp:ImageButton runat="server" AlternateText="พิมพ์ข้อมูล" ImageUrl="~/images/button/print.png"
+                                ID="imgPrint" OnClick="imgPrint_Click"></asp:ImageButton>
                         </td>
                     </tr>
                 </table>
@@ -143,5 +145,5 @@
         </tr>
     </table>
 </asp:content>
-<asp:content id="Content2" contentplaceholderid="ContentPlaceHolder2" runat="server">
-</asp:content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+</asp:Content>

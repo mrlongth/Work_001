@@ -85,29 +85,7 @@ namespace myEFrom.App_Control.open
                         }
                         ViewState["dtOpenDetail"] = dtTemp;
                     }
-                    else
-                    {
-                        DataRow rw;
-                        cefOpenItem objEfloanItem = new cefOpenItem();
-                        _strCriteria = " and open_code = " + Helper.CInt(txtopen_code.Text);
-                        DataTable dt = objEfloanItem.SP_OPEN_ITEM_SEL(_strCriteria);
-                        dt.Columns.Add("row_status");
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            rw = dtTemp.NewRow();
-                            rw["open_detail_id"] = ++this.OpenDetailID;
-                            rw["material_id"] = Helper.CInt(dr["material_id"]);
-                            rw["material_name"] = Helper.CStr(dr["material_name"]);
-                            rw["material_detail"] = string.Empty;
-                            rw["open_detail_amount"] = 0;
-                            rw["open_detail_remark"] = string.Empty;
-                            rw["row_status"] = "N";
-                            dtTemp.Rows.Add(rw);
-                        }
-                        ViewState["dtOpenDetail"] = dtTemp;
-                    }
                 }
-
                 return (DataTable)ViewState["dtOpenDetail"];
             }
             set
@@ -115,6 +93,56 @@ namespace myEFrom.App_Control.open
                 ViewState["dtOpenDetail"] = value;
             }
         }
+
+        //private DataTable dtOpenDetail
+        //{
+        //    get
+        //    {
+        //        if (ViewState["dtOpenDetail"] == null)
+        //        {
+        //            cefOpen objEfloan = new cefOpen();
+        //            _strMessage = string.Empty;
+        //            _strCriteria = " and open_head_id = " + Helper.CInt(ViewState["open_head_id"]) + " order by open_detail_id";
+        //            DataTable dtTemp = objEfloan.SP_OPEN_DETAIL_SEL(_strCriteria);
+        //            dtTemp.Columns.Add("row_status");
+        //            if (dtTemp.Rows.Count > 0)
+        //            {
+        //                foreach (DataRow dr in dtTemp.Rows)
+        //                {
+        //                    dr["row_status"] = "O";
+        //                }
+        //                ViewState["dtOpenDetail"] = dtTemp;
+        //            }
+        //            else
+        //            {
+        //                DataRow rw;
+        //                cefOpenItem objEfloanItem = new cefOpenItem();
+        //                _strCriteria = " and open_code = " + Helper.CInt(txtopen_code.Text);
+        //                DataTable dt = objEfloanItem.SP_OPEN_ITEM_SEL(_strCriteria);
+        //                dt.Columns.Add("row_status");
+        //                foreach (DataRow dr in dt.Rows)
+        //                {
+        //                    rw = dtTemp.NewRow();
+        //                    rw["open_detail_id"] = ++this.OpenDetailID;
+        //                    rw["material_id"] = Helper.CInt(dr["material_id"]);
+        //                    rw["material_name"] = Helper.CStr(dr["material_name"]);
+        //                    rw["material_detail"] = string.Empty;
+        //                    rw["open_detail_amount"] = 0;
+        //                    rw["open_detail_remark"] = string.Empty;
+        //                    rw["row_status"] = "N";
+        //                    dtTemp.Rows.Add(rw);
+        //                }
+        //                ViewState["dtOpenDetail"] = dtTemp;
+        //            }
+        //        }
+
+        //        return (DataTable)ViewState["dtOpenDetail"];
+        //    }
+        //    set
+        //    {
+        //        ViewState["dtOpenDetail"] = value;
+        //    }
+        //}
 
         private bool bIsGridApproveEmpty
         {
@@ -146,6 +174,86 @@ namespace myEFrom.App_Control.open
                 ViewState["OpenApproveID"] = value;
             }
         }
+        //private DataTable dtOpenApprove
+        //{
+        //    get
+        //    {
+        //        if (ViewState["dtOpenApprove"] == null)
+        //        {
+        //            cefOpen objEfloan = new cefOpen();
+        //            _strMessage = string.Empty;
+        //            _strCriteria = " and open_head_id = " + Helper.CInt(ViewState["open_head_id"]) +
+        //                           " order by approve_level";
+        //            DataTable dtTemp = objEfloan.SP_OPEN_DETAIL_APPROVE_SEL(_strCriteria);
+        //            dtTemp.Columns.Add("row_status");
+        //            if (dtTemp.Rows.Count > 0)
+        //            {
+        //                foreach (DataRow dr in dtTemp.Rows)
+        //                {
+        //                    dr["row_status"] = "O";
+        //                }
+        //                ViewState["dtOpenApprove"] = dtTemp;
+        //            }
+        //            else
+        //            {
+        //                DataRow rw;
+        //                cefApproveBudget objApproveBudget = new cefApproveBudget();
+
+        //                if (Helper.CInt(txtopen_code.Text) == 0)
+        //                {
+        //                    DataTable dtBudget = objApproveBudget.SP_APPROVE_BUDGET_SEL(" and ef_budget_type_approve in ('" + cboBudget_type.SelectedValue + "','H')");
+        //                    foreach (DataRow dr in dtBudget.Rows)
+        //                    {
+        //                        rw = dtTemp.NewRow();
+        //                        rw["open_detail_approve_id"] = ++this.OpenApproveID;
+        //                        rw["approve_code"] = Helper.CInt(dr["approve_code"]);
+        //                        rw["approve_name"] = Helper.CStr(dr["approve_name"]);
+        //                        rw["approve_level"] = Helper.CInt(dr["approve_level"]);
+        //                        rw["approve_remark"] = string.Empty;
+        //                        rw["person_code"] = Helper.CStr(dr["ef_person_code_approve"]);
+        //                        rw["person_thai_name"] = Helper.CStr(dr["title_name"]) + Helper.CStr(dr["person_thai_name"]) + " " + Helper.CStr(dr["person_thai_surname"]);
+        //                        rw["person_manage_code"] = Helper.CStr(dr["ef_approve_position"]);
+        //                        rw["person_manage_name"] = Helper.CStr(dr["ef_approve_position_name"]);
+        //                        rw["row_status"] = "N";
+        //                        dtTemp.Rows.Add(rw);
+        //                    }
+        //                }
+        //                else
+        //                {
+
+        //                    cefOpenApprove objEfloanApprove = new cefOpenApprove();
+        //                    string strbudget_type = cboBudget_type.SelectedValue;
+        //                    strbudget_type = strbudget_type == "X" ? "R" : strbudget_type;
+
+        //                    _strCriteria = " and open_code = " + Helper.CInt(txtopen_code.Text) + " and budget_type = '" + strbudget_type + "' ";
+        //                    DataTable dt = objEfloanApprove.SP_OPEN_APPROVE_SEL(_strCriteria);
+        //                    foreach (DataRow dr in dt.Rows)
+        //                    {
+        //                        rw = dtTemp.NewRow();
+        //                        rw["open_detail_approve_id"] = ++this.OpenApproveID;
+        //                        rw["approve_code"] = Helper.CInt(dr["approve_code"]);
+        //                        rw["approve_name"] = Helper.CStr(dr["approve_name"]);
+        //                        rw["approve_level"] = Helper.CInt(dr["approve_level"]);
+        //                        rw["approve_remark"] = string.Empty;
+        //                        rw["person_code"] = Helper.CStr(dr["person_approve_code"]);
+        //                        rw["person_thai_name"] = Helper.CStr(dr["title_name"]) + Helper.CStr(dr["person_thai_name"]) + " " + Helper.CStr(dr["person_thai_surname"]);
+        //                        rw["person_manage_code"] = Helper.CStr(dr["person_manage_code"]);
+        //                        rw["person_manage_name"] = Helper.CStr(dr["person_manage_name"]);
+        //                        rw["row_status"] = "N";
+        //                        dtTemp.Rows.Add(rw);
+        //                    }
+        //                }
+        //                ViewState["dtOpenApprove"] = dtTemp;
+        //            }
+        //        }
+        //        return (DataTable)ViewState["dtOpenApprove"];
+        //    }
+        //    set
+        //    {
+        //        ViewState["dtOpenApprove"] = value;
+        //        ViewState["dtOpenApproveChk"] = null;
+        //    }
+        //}
         private DataTable dtOpenApprove
         {
             get
@@ -154,8 +262,7 @@ namespace myEFrom.App_Control.open
                 {
                     cefOpen objEfloan = new cefOpen();
                     _strMessage = string.Empty;
-                    _strCriteria = " and open_head_id = " + Helper.CInt(ViewState["open_head_id"]) +
-                                   " order by approve_level";
+                    _strCriteria = " and open_head_id = " + Helper.CInt(ViewState["open_head_id"]) + " order by approve_level";
                     DataTable dtTemp = objEfloan.SP_OPEN_DETAIL_APPROVE_SEL(_strCriteria);
                     dtTemp.Columns.Add("row_status");
                     if (dtTemp.Rows.Count > 0)
@@ -164,52 +271,8 @@ namespace myEFrom.App_Control.open
                         {
                             dr["row_status"] = "O";
                         }
-                        ViewState["dtOpenApprove"] = dtTemp;
                     }
-                    else
-                    {
-                        DataRow rw;
-                        cefApproveBudget objApproveBudget = new cefApproveBudget();
-                        DataTable dtBudget = objApproveBudget.SP_APPROVE_BUDGET_SEL(" and ef_budget_type_approve in ('" + cboBudget_type.SelectedValue + "','H')");
-                        foreach (DataRow dr in dtBudget.Rows)
-                        {
-                            rw = dtTemp.NewRow();
-                            rw["open_detail_approve_id"] = ++this.OpenApproveID;
-                            rw["approve_code"] = Helper.CInt(dr["approve_code"]);
-                            rw["approve_name"] = Helper.CStr(dr["approve_name"]);
-                            rw["approve_level"] = Helper.CInt(dr["approve_level"]);
-                            rw["approve_remark"] = string.Empty;
-                            rw["person_code"] = Helper.CStr(dr["ef_person_code_approve"]);
-                            rw["person_thai_name"] = Helper.CStr(dr["title_name"]) + Helper.CStr(dr["person_thai_name"]) + " " + Helper.CStr(dr["person_thai_surname"]);
-                            rw["person_manage_code"] = Helper.CStr(dr["ef_approve_position"]);
-                            rw["person_manage_name"] = Helper.CStr(dr["ef_approve_position_name"]);
-                            rw["row_status"] = "N";
-                            dtTemp.Rows.Add(rw);
-                        }
-
-                        cefOpenApprove objEfloanApprove = new cefOpenApprove();
-                        string strbudget_type = cboBudget_type.SelectedValue;
-                        strbudget_type = strbudget_type == "X" ? "R" : strbudget_type;
-
-                        _strCriteria = " and open_code = " + Helper.CInt(txtopen_code.Text) + " and budget_type = '" + strbudget_type + "' ";
-                        DataTable dt = objEfloanApprove.SP_OPEN_APPROVE_SEL(_strCriteria);
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            rw = dtTemp.NewRow();
-                            rw["open_detail_approve_id"] = ++this.OpenApproveID;
-                            rw["approve_code"] = Helper.CInt(dr["approve_code"]);
-                            rw["approve_name"] = Helper.CStr(dr["approve_name"]);
-                            rw["approve_level"] = Helper.CInt(dr["approve_level"]);
-                            rw["approve_remark"] = string.Empty;
-                            rw["person_code"] = string.Empty;
-                            rw["person_thai_name"] = Helper.CStr(dr["title_name"]) + Helper.CStr(dr["person_thai_name"]) + " " + Helper.CStr(dr["person_thai_surname"]);
-                            rw["person_manage_code"] = Helper.CStr(dr["person_manage_code"]);
-                            rw["person_manage_name"] = Helper.CStr(dr["person_manage_name"]);
-                            rw["row_status"] = "N";
-                            dtTemp.Rows.Add(rw);
-                        }
-                        ViewState["dtOpenApprove"] = dtTemp;
-                    }
+                    ViewState["dtOpenApprove"] = dtTemp;
                 }
                 return (DataTable)ViewState["dtOpenApprove"];
             }
@@ -219,6 +282,7 @@ namespace myEFrom.App_Control.open
                 ViewState["dtOpenApproveChk"] = null;
             }
         }
+
         private DataTable dtApprove
         {
             get
@@ -519,21 +583,6 @@ namespace myEFrom.App_Control.open
                     setData();
                     ViewState["open_head_id"] = null;
                     txtopen_doc.Text = "";
-                    foreach (DataRow dr in this.dtOpenDetail.Rows) {
-                        dr["open_detail_id"] = ++this.OpenDetailID;
-                        dr["row_status"] = "N";                         
-                    }
-                    foreach (DataRow dr in this.dtOpenApprove.Rows)
-                    {
-                        dr["open_detail_approve_id"] = ++this.OpenApproveID;
-                        dr["row_status"] = "N";
-                    }
-                    foreach (DataRow dr in this.dtOpenAttach.Rows)
-                    {
-                        dr["open_attach_id"] = ++this.OpenAttachID;
-                        dr["row_status"] = "N";
-                    }
-                    this.dtOpenLoan = null;
 
                 }
                 else if (ViewState["mode"].ToString().ToLower().Equals("view"))
@@ -1053,8 +1102,11 @@ namespace myEFrom.App_Control.open
                         cboWork.SelectedValue, cboFund.SelectedValue, cboLot.SelectedValue, txtopen_person.Text,
                         txtopen_tel.Text, txtopen_remark.Text, 0, txtopen_doc.Text, cboDoctype.SelectedValue, strUserName))
                     {
+                        this.StoreAllData();
+
                         SaveDetail();
                         SaveApprove();
+
                         SaveLoan();
                         SaveAttach();
 
@@ -1069,6 +1121,30 @@ namespace myEFrom.App_Control.open
                     //    string strScript = "alert(\"ไม่สามารถแก้ไขข้อมูล เนื่องจากข้อมูล ข้อมูลเลขที่สัญญายืมเงิน  ซ้ำ\");\n";
                     //    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "frMainPage", strScript, true);               
                     //}                   
+                    #endregion
+                }
+                else if (ViewState["mode"].ToString().ToLower().Equals("copy"))
+                {
+                    #region insert
+                    if (objEfloan.SP_OPEN_HEAD_INS(ref intopen_head_id, ref stropen_doc, cboYear.SelectedValue, txtopen_date.Text,
+                        txtopen_path.Text, txtopen_no.Text, Helper.CInt(txtopen_code.Text), strloanTo, txtopen_title.Text,
+                        txtopen_command_desc.Text, txtopen_desc.Text, cboBudget_type.SelectedValue, txtbudget_type_text.Text, txtbudget_plan_code.Text, cboDirector.SelectedValue,
+                       cboUnit.SelectedValue, cboBudget.SelectedValue, cboProduce.SelectedValue, cboActivity.SelectedValue, cboPlan.SelectedValue,
+                        cboWork.SelectedValue, cboFund.SelectedValue, cboLot.SelectedValue, txtopen_person.Text, txtopen_tel.Text, txtopen_remark.Text, 0, txtopen_doc.Text, cboDoctype.SelectedValue, strUserName))
+                    {
+                        ViewState["open_head_id"] = intopen_head_id;
+
+                        SaveDetail();
+                        SaveApprove();
+                        SaveLoan();
+                        SaveAttach();
+
+                        objEfloan.SP_OPEN_HEAD_APPROVE_UPD(intopen_head_id, strUserName);
+                        objEfloan.SP_OPEN_HEAD_SUM_UPD(intopen_head_id, strUserName);
+
+                        blnResult = true;
+
+                    }
                     #endregion
                 }
             }
@@ -1123,6 +1199,52 @@ namespace myEFrom.App_Control.open
                         cboBudget_type.SelectedIndex = -1;
                         cboBudget_type.Items.FindByValue(dt.Rows[0]["budget_type"].ToString()).Selected = true;
                     }
+                    if (cboBudget_type.SelectedValue == "X")
+                    {
+                        RequiredFieldValidator16.Enabled = true;
+                        RequiredFieldValidator9.Enabled = false;
+                        RequiredFieldValidator10.Enabled = false;
+                        RequiredFieldValidator11.Enabled = false;
+                        RequiredFieldValidator12.Enabled = false;
+                        RequiredFieldValidator13.Enabled = false;
+                        RequiredFieldValidator14.Enabled = false;
+                        RequiredFieldValidator15.Enabled = false;
+                        RequiredFieldValidator5.Enabled = false;
+                        RequiredFieldValidator6.Enabled = false;
+                        lblReqActivity.Visible = false;
+                        lblReqBudget.Visible = false;
+                        lblReqFund.Visible = false;
+                        lblReqPlan.Visible = false;
+                        lblReqProduce.Visible = false;
+                        lblReqWork.Visible = false;
+                        lblReqUnit.Visible = false;
+                        lblReqDirector.Visible = false;
+                        lblReqBudget_type_text.Visible = true;
+
+                    }
+                    else
+                    {
+                        RequiredFieldValidator16.Enabled = false;
+                        RequiredFieldValidator9.Enabled = true;
+                        RequiredFieldValidator10.Enabled = true;
+                        RequiredFieldValidator11.Enabled = true;
+                        RequiredFieldValidator12.Enabled = true;
+                        RequiredFieldValidator13.Enabled = true;
+                        RequiredFieldValidator14.Enabled = true;
+                        RequiredFieldValidator15.Enabled = true;
+                        RequiredFieldValidator5.Enabled = true;
+                        RequiredFieldValidator6.Enabled = true;
+                        lblReqActivity.Visible = true;
+                        lblReqBudget.Visible = true;
+                        lblReqFund.Visible = true;
+                        lblReqPlan.Visible = true;
+                        lblReqProduce.Visible = true;
+                        lblReqWork.Visible = true;
+                        lblReqUnit.Visible = true;
+                        lblReqDirector.Visible = true;
+                        lblReqBudget_type_text.Visible = false;
+                    }
+
 
                     if (cboDoctype.Items.FindByValue(dt.Rows[0]["ef_doctype_code"].ToString()) != null)
                     {
@@ -1229,9 +1351,16 @@ namespace myEFrom.App_Control.open
 
                     txtUpdatedBy.Text = strUpdatedBy;
                     txtUpdatedDate.Text = strUpdatedDate;
+                    this.dtOpenDetail = null;
                     BindGridDetail();
+
+                    this.dtOpenApprove = null;
                     BindGridApprove();
+
+                    this.dtOpenLoan = null;
                     BindGridLoan();
+
+                    this.dtOpenAttach = null;
                     BindGridAttach();
                     #endregion
 
@@ -1364,6 +1493,14 @@ namespace myEFrom.App_Control.open
             DataView dv = null;
             try
             {
+                if (ViewState["mode"].ToString() == "copy")
+                {
+                    foreach (DataRow dr in this.dtOpenDetail.Rows)
+                    {
+                        dr["open_detail_id"] = ++this.OpenDetailID;
+                        dr["row_status"] = "N";
+                    }
+                }
                 dv = new DataView(this.dtOpenDetail, "row_status<>'D'", (ViewState["sort"] + " " + ViewState["direction"]), DataViewRowState.CurrentRows);
                 GridView1.DataSource = dv.ToTable();
                 GridView1.DataBind();
@@ -1394,7 +1531,7 @@ namespace myEFrom.App_Control.open
             try
             {
                 string strUserName = Session["username"].ToString();
-                StoreAllData();
+                //StoreAllData();
                 foreach (DataRow dr in this.dtOpenDetail.Rows)
                 {
                     if (Helper.CStr(dr["row_status"]) == "N")
@@ -1659,6 +1796,15 @@ namespace myEFrom.App_Control.open
             DataView dv = null;
             try
             {
+                if (ViewState["mode"].ToString() == "copy")
+                {
+                    foreach (DataRow dr in this.dtOpenApprove.Rows)
+                    {
+                        dr["open_detail_approve_id"] = ++this.OpenApproveID;
+                        dr["row_status"] = "N";
+                        dr["approve_status"] = "p";
+                    }
+                }
                 dv = new DataView(this.dtOpenApprove, "row_status<>'D'", (ViewState["sort2"] + " " + ViewState["direction2"]), DataViewRowState.CurrentRows);
                 GridView2.DataSource = dv.ToTable();
                 GridView2.DataBind();
@@ -1688,10 +1834,10 @@ namespace myEFrom.App_Control.open
             try
             {
                 string strUserName = Session["username"].ToString();
-                StoreAllData();
+                //StoreAllData();
                 foreach (DataRow dr in this.dtOpenApprove.Rows)
                 {
-                    if (Helper.CInt(dr["approve_code"]) > 0 && Helper.CStr(dr["person_code"]).Trim().Length > 0)
+                    if (Helper.CStr(dr["person_code"]).Trim().Length > 0)
                     {
                         if (Helper.CStr(dr["row_status"]) == "N")
                         {
@@ -1867,7 +2013,7 @@ namespace myEFrom.App_Control.open
                 int i = 0;
                 foreach (DataRow dr in this.dtOpenApprove.Rows)
                 {
-                    if (Helper.CInt(dr["open_detail_approve_id"]) == Helper.CInt(hddopen_detail_approve_id.Value))
+                    if (Helper.CInt(dr["open_detail_approve_id"]) == Helper.CLong(hddopen_detail_approve_id.Value))
                     {
                         dr["row_status"] = "D";
                         break;
@@ -1942,7 +2088,7 @@ namespace myEFrom.App_Control.open
                             dr["loan_reason"] = hddloan_reason.Value;
                             if (hddloan_date.Value.Length > 0)
                                 dr["loan_date"] = hddloan_date.Value;
-                            dr["loan_req"] = hddloan_req.Value;
+                            dr["loan_req"] = Helper.CDbl(hddloan_req.Value);
                             break;
                         }
                     }
@@ -1962,6 +2108,10 @@ namespace myEFrom.App_Control.open
             DataView dv = null;
             try
             {
+                if (ViewState["mode"].ToString() == "copy")
+                {
+                    this.dtOpenLoan = null;
+                }
                 dv = new DataView(this.dtOpenLoan, "row_status<>'D'", (ViewState["sort3"] + " " + ViewState["direction3"]), DataViewRowState.CurrentRows);
                 GridView3.DataSource = dv.ToTable();
             }
@@ -1990,7 +2140,7 @@ namespace myEFrom.App_Control.open
             try
             {
                 string strUserName = Session["username"].ToString();
-                StoreAllData();
+                //StoreAllData();
                 foreach (DataRow dr in this.dtOpenLoan.Rows)
                 {
                     if (Helper.CStr(dr["loan_doc"]).Length > 0)
@@ -2232,6 +2382,14 @@ namespace myEFrom.App_Control.open
             DataView dv = null;
             try
             {
+                if (ViewState["mode"].ToString() == "copy")
+                {
+                    foreach (DataRow dr in this.dtOpenAttach.Rows)
+                    {
+                        dr["open_attach_id"] = ++this.OpenAttachID;
+                        dr["row_status"] = "N";
+                    }
+                }
                 dv = new DataView(this.dtOpenAttach, "row_status<>'D'", (ViewState["sort4"] + " " + ViewState["direction4"]), DataViewRowState.CurrentRows);
                 GridView4.DataSource = dv.ToTable();
             }
@@ -2305,7 +2463,7 @@ namespace myEFrom.App_Control.open
             try
             {
                 string strUserName = Session["username"].ToString();
-                StoreAllData();
+                //StoreAllData();
                 if (UploadFile())
                 {
                     foreach (DataRow dr in this.dtOpenAttach.Rows)
@@ -2538,11 +2696,19 @@ namespace myEFrom.App_Control.open
                     txtopen_remark.Text = Helper.CStr(dt.Rows[0]["open_remark"]);
                     InitcboOpen_to(stropen_to);
 
-                    this.dtOpenDetail = null;
+                    //this.dtOpenDetail = null;
+                    foreach (DataRow dr in this.dtOpenDetail.Rows)
+                    {
+                        dr["row_status"] = "D";
+                    }
+                    this.GetOpenDetail();
                     BindGridDetail();
 
-
-                    this.dtOpenApprove = null;
+                    foreach (DataRow dr in this.dtOpenApprove.Rows)
+                    {
+                        dr["row_status"] = "D";
+                    }
+                    this.GetOpenApprove();
                     BindGridApprove();
                 }
             }
@@ -2655,6 +2821,11 @@ namespace myEFrom.App_Control.open
             if (saveData())
             {
                 string strScript1 = "$('#divdes1').text().replace('เพิ่ม','แก้ไข');PopUpListPost('1','1');";
+                if (ViewState["mode"].ToString().ToLower().Equals("copy"))
+                {
+                    strScript1 = "$('#divdes1').text().replace('คัดลอก','แก้ไข');PopUpListPost('1','1');";
+                    ViewState["mode"] = "add";
+                }
                 ScriptManager.RegisterStartupScript(Page, Page.GetType(), "loanPage", strScript1, true);
                 MsgBox("บันทึกข้อมูลสมบูรณ์");
                 setData();
@@ -2705,7 +2876,144 @@ namespace myEFrom.App_Control.open
             txtopen_to.Text = cboOpen_to.SelectedValue;
         }
 
+        protected void cboBudget_type_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            InitcboBudget();
+            cboBudget.SelectedIndex = 0;
 
+            InitcboDirector();
+            //cboDirector.SelectedIndex = 0;
+
+            InitcboPlan();
+            cboPlan.SelectedIndex = 0;
+
+            InitcboWork();
+            cboWork.SelectedIndex = 0;
+
+            InitcboFund();
+            cboFund.SelectedIndex = 0;
+
+            InitcboLot();
+            cboLot.SelectedIndex = 0;
+
+            if (cboBudget_type.SelectedValue == "X")
+            {
+                RequiredFieldValidator16.Enabled = true;
+                RequiredFieldValidator9.Enabled = false;
+                RequiredFieldValidator10.Enabled = false;
+                RequiredFieldValidator11.Enabled = false;
+                RequiredFieldValidator12.Enabled = false;
+                RequiredFieldValidator13.Enabled = false;
+                RequiredFieldValidator14.Enabled = false;
+                RequiredFieldValidator15.Enabled = false;
+                RequiredFieldValidator5.Enabled = false;
+                RequiredFieldValidator6.Enabled = false;
+                lblReqActivity.Visible = false;
+                lblReqBudget.Visible = false;
+                lblReqFund.Visible = false;
+                lblReqPlan.Visible = false;
+                lblReqProduce.Visible = false;
+                lblReqWork.Visible = false;
+                lblReqUnit.Visible = false;
+                lblReqDirector.Visible = false;
+                lblReqBudget_type_text.Visible = true;
+
+            }
+            else
+            {
+                RequiredFieldValidator16.Enabled = false;
+                RequiredFieldValidator9.Enabled = true;
+                RequiredFieldValidator10.Enabled = true;
+                RequiredFieldValidator11.Enabled = true;
+                RequiredFieldValidator12.Enabled = true;
+                RequiredFieldValidator13.Enabled = true;
+                RequiredFieldValidator14.Enabled = true;
+                RequiredFieldValidator15.Enabled = true;
+                RequiredFieldValidator5.Enabled = true;
+                RequiredFieldValidator6.Enabled = true;
+                lblReqActivity.Visible = true;
+                lblReqBudget.Visible = true;
+                lblReqFund.Visible = true;
+                lblReqPlan.Visible = true;
+                lblReqProduce.Visible = true;
+                lblReqWork.Visible = true;
+                lblReqUnit.Visible = true;
+                lblReqDirector.Visible = true;
+                lblReqBudget_type_text.Visible = false;
+            }
+        }
+
+        private void GetOpenApprove()
+        {
+
+            cefOpen objEfloan = new cefOpen();
+            _strMessage = string.Empty;
+
+            DataRow rw;
+            cefApproveBudget objApproveBudget = new cefApproveBudget();
+
+            cefOpenApprove objEfloanApprove = new cefOpenApprove();
+            string strbudget_type = cboBudget_type.SelectedValue;
+            strbudget_type = strbudget_type == "X" ? "R" : strbudget_type;
+
+            _strCriteria = " and open_code = " + Helper.CInt(txtopen_code.Text) + " and budget_type = '" + strbudget_type + "' ";
+            DataTable dt = objEfloanApprove.SP_OPEN_APPROVE_SEL(_strCriteria);
+            foreach (DataRow dr in dt.Rows)
+            {
+                rw = dtOpenApprove.NewRow();
+                rw["open_detail_approve_id"] = ++this.OpenApproveID;
+                rw["approve_code"] = Helper.CInt(dr["approve_code"]);
+                rw["approve_name"] = Helper.CStr(dr["approve_name"]);
+                rw["approve_level"] = Helper.CInt(dr["approve_level"]);
+                rw["approve_remark"] = string.Empty;
+                rw["person_code"] = Helper.CStr(dr["person_approve_code"]);
+                rw["person_thai_name"] = Helper.CStr(dr["title_name"]) + Helper.CStr(dr["person_thai_name"]) + " " + Helper.CStr(dr["person_thai_surname"]);
+                rw["person_manage_code"] = Helper.CStr(dr["person_manage_code"]);
+                rw["person_manage_name"] = Helper.CStr(dr["person_manage_name"]);
+                rw["row_status"] = "N";
+                this.dtOpenApprove.Rows.Add(rw);
+            }
+            if (dt.Rows.Count == 0)
+            {
+                DataTable dtBudget = objApproveBudget.SP_APPROVE_BUDGET_SEL(" and ef_budget_type_approve in ('" + strbudget_type + "','H')");
+                foreach (DataRow dr in dtBudget.Rows)
+                {
+                    rw = dtOpenApprove.NewRow();
+                    rw["open_detail_approve_id"] = ++this.OpenApproveID;
+                    rw["approve_code"] = Helper.CInt(dr["approve_code"]);
+                    rw["approve_name"] = Helper.CStr(dr["approve_name"]);
+                    rw["approve_level"] = Helper.CInt(dr["approve_level"]);
+                    rw["approve_remark"] = string.Empty;
+                    rw["person_code"] = Helper.CStr(dr["ef_person_code_approve"]);
+                    rw["person_thai_name"] = Helper.CStr(dr["title_name"]) + Helper.CStr(dr["person_thai_name"]) + " " + Helper.CStr(dr["person_thai_surname"]);
+                    rw["person_manage_code"] = Helper.CStr(dr["ef_approve_position"]);
+                    rw["person_manage_name"] = Helper.CStr(dr["ef_approve_position_name"]);
+                    rw["row_status"] = "N";
+                    this.dtOpenApprove.Rows.Add(rw);
+                }
+            }
+        }
+
+
+        private void GetOpenDetail()
+        {
+            DataRow rw;
+            cefOpenItem objEfloanItem = new cefOpenItem();
+            _strCriteria = " and open_code = " + Helper.CInt(txtopen_code.Text);
+            DataTable dt = objEfloanItem.SP_OPEN_ITEM_SEL(_strCriteria);
+            foreach (DataRow dr in dt.Rows)
+            {
+                rw = this.dtOpenDetail.NewRow();
+                rw["open_detail_id"] = ++this.OpenDetailID;
+                rw["material_id"] = Helper.CInt(dr["material_id"]);
+                rw["material_name"] = Helper.CStr(dr["material_name"]);
+                rw["material_detail"] = string.Empty;
+                rw["open_detail_amount"] = 0;
+                rw["open_detail_remark"] = string.Empty;
+                rw["row_status"] = "N";
+                this.dtOpenDetail.Rows.Add(rw);
+            }
+        }
 
     }
 }

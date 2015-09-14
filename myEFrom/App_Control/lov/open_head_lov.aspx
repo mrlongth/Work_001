@@ -18,6 +18,8 @@
             <td rowspan="2">
                 <asp:ImageButton runat="server" AlternateText="ค้นหาข้อมูล" ImageUrl="~/images/button/Search.png"
                     ID="imgFind" OnClick="imgFind_Click"></asp:ImageButton>
+                <asp:ImageButton runat="server" AlternateText="เพิ่มข้อมุล" ImageUrl="~/images/button/Save.png"
+                    ID="imgNew"></asp:ImageButton>
             </td>
         </tr>
         <tr>
@@ -78,6 +80,7 @@
                     <ItemTemplate>
                         <cc1:AwLabelDateTime ID="txtopen_date" runat="server" Value='<% # DataBinder.Eval(Container, "DataItem.open_date") %>'
                             DateFormat="dd/MM/yyyy">
+                        &nbsp;
                         </cc1:AwLabelDateTime>
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center" Width="10%" Wrap="True" />
@@ -86,6 +89,7 @@
                     <ItemTemplate>
                         <cc1:AwNumeric ID="txtopen_amount" runat="server" Width="98%" LeadZero="Show" DisplayMode="View"
                             Value='<% # DataBinder.Eval(Container, "DataItem.open_amount") %>'>
+                        &nbsp;
                         </cc1:AwNumeric>
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Right" Width="10%" Wrap="True" />

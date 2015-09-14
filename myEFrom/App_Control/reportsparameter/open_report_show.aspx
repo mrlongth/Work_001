@@ -1,8 +1,9 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="open_report_show.aspx.cs"
     Inherits="myEFrom.App_Control.reportsparameter.open_report_show" Debug="true" %>
 
-<%@ Register Assembly="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304"
+<%@ Register Assembly="CrystalDecisions.Web, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304"
     Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -23,12 +24,11 @@
             border="0" />
     </asp:HyperLink>
     <div>
-        <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" HasCrystalLogo="False"
-            Height="50px" PrintMode="ActiveX" Width="350px" DisplayGroupTree="False" OnNavigate="CrystalReportViewer1_Navigate" />
-        <%--  <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" ClientTarget="Uplevel" HasCrystalLogo="False"
-                        Height="100%" PrintMode="ActiveX" ReuseParameterValuesOnRefresh="True" 
-                        Width="100%" HasToggleGroupTreeButton="False" DisplayGroupTree="False" />
-            --%>
+         <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" HasCrystalLogo="False" DisplayGroupTree="False"
+            Height="50px" PrintMode="ActiveX" Width="350px"  OnNavigate="CrystalReportViewer1_Navigate" />
+       <%-- <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" ClientTarget="Uplevel"
+            HasCrystalLogo="False" Height="100%" PrintMode="ActiveX" ReuseParameterValuesOnRefresh="True"
+            Width="100%" HasToggleGroupTreeButton="False" DisplayGroupTree="False" />--%>
         <asp:Label runat="server" ID="lblError"></asp:Label>
     </div>
     </form>

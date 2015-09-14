@@ -42,7 +42,7 @@
                         <td align="right" nowrap valign="middle" width="17%">
                             <asp:Label runat="server" ID="Label15">รหัสบุคคลากร :</asp:Label>
                         </td>
-                        <td align="left" nowrap valign="middle" colspan="2" height="20px">
+                        <td align="left" nowrap valign="middle" colspan="4" height="20px">
                             &nbsp;<asp:Label runat="server" ID="lblperson_code" Font-Bold="True" ForeColor="#3366CC">P001</asp:Label>
                             <asp:Label runat="server" ID="lblPersoncode0" Font-Bold="True" ForeColor="#3366CC">-</asp:Label>
                             <asp:Label runat="server" ID="lblperson_name" Font-Bold="True" ForeColor="#3366CC">XXXXX</asp:Label>
@@ -52,7 +52,7 @@
                         <td align="right" nowrap valign="middle">
                             <asp:Label runat="server" ID="Label14">ปีงบประมาณ :</asp:Label>
                         </td>
-                        <td align="left" nowrap valign="middle" colspan="2">
+                        <td align="left" nowrap valign="middle" colspan="4">
                             <asp:TextBox runat="server" CssClass="textboxdis" Width="120px" ID="txtyear"></asp:TextBox>
                         </td>
                     </tr>
@@ -61,7 +61,7 @@
                             <asp:Label runat="server" CssClass="label_error" ID="Label71">*</asp:Label>
                             <asp:Label runat="server" ID="lblPage9">รายได้/จ่าย :</asp:Label>
                         </td>
-                        <td align="left" colspan="2" nowrap valign="middle">
+                        <td align="left" colspan="4" nowrap valign="middle">
                             <asp:TextBox runat="server" CssClass="textbox" Width="120px" ID="txtitem_code" MaxLength="10"></asp:TextBox>
                             &nbsp;<asp:ImageButton runat="server" ImageAlign="AbsBottom" ImageUrl="../../images/controls/view2.gif"
                                 ID="imgList_item"></asp:ImageButton>
@@ -75,7 +75,7 @@
                         <td align="right" nowrap valign="middle">
                             <asp:Label runat="server" ID="lblPage3">ประเภทรายการ :</asp:Label>
                         </td>
-                        <td align="left" colspan="2" nowrap valign="middle">
+                        <td align="left" colspan="4" nowrap valign="middle">
                             <asp:TextBox runat="server" CssClass="textboxdis" Width="120px" ID="txtitem_type"></asp:TextBox>
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtitem_code" ErrorMessage="กรุณาป้อนรหัสรายได้/จ่าย"
                                 Display="None" SetFocusOnError="True" ValidationGroup="A" ID="RequiredFieldValidator1"></asp:RequiredFieldValidator>
@@ -88,7 +88,7 @@
                         <td align="right" nowrap valign="middle" style="height: 22px">
                             <asp:Label runat="server" ID="lblPage4">หมวดรายได้/จ่าย :</asp:Label>
                         </td>
-                        <td align="left" colspan="2" nowrap valign="middle">
+                        <td align="left" colspan="4" nowrap valign="middle">
                             <asp:TextBox runat="server" AutoPostBack="True" CssClass="textboxdis" Width="330px"
                                 ID="txtitem_group_name" MaxLength="100"></asp:TextBox>
                         </td>
@@ -97,7 +97,7 @@
                         <td align="right" nowrap valign="middle">
                             <asp:Label runat="server" ID="lblPage15">งบ :</asp:Label>
                         </td>
-                        <td align="left" nowrap valign="middle" colspan="2">
+                        <td align="left" nowrap valign="middle" colspan="4">
                             <asp:TextBox runat="server" CssClass="textboxdis" Width="330px" ID="txtlot_name"
                                 MaxLength="100"></asp:TextBox>
                         </td>
@@ -107,10 +107,11 @@
                             <asp:Label runat="server" CssClass="label_error" ID="Label72">*</asp:Label>
                             <asp:Label runat="server" ID="lblPage7">จำนวนเงิน :</asp:Label>
                         </td>
-                        <td align="left" nowrap valign="middle">
+                        <td align="left" nowrap valign="middle" colspan="3">
                             <asp:TextBox runat="server" CssClass="numberbox" Width="120px" ID="txtamount" MaxLength="15">0.00</asp:TextBox>
                             <ajaxtoolkit:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server"
-                                TargetControlID="txtamount" FilterType="Custom, Numbers" ValidChars="." />
+                                TargetControlID="txtamount" FilterType="Custom, Numbers" ValidChars="." 
+                                Enabled="True" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtamount" ErrorMessage="กรุณาป้อนจำนวนเงิน"
                                 Display="None" SetFocusOnError="True" ValidationGroup="A" ID="RequiredFieldValidator2"></asp:RequiredFieldValidator>
                             <ajaxtoolkit:ValidatorCalloutExtender runat="server" HighlightCssClass="validatorCalloutHighlight"
@@ -127,12 +128,18 @@
                         <td align="left" nowrap valign="middle">
                             <asp:CheckBox runat="server" Text="ปกติ" ID="chkStatus"></asp:CheckBox>
                         </td>
+                        <td align="right" nowrap valign="middle">
+                            <asp:Label ID="Label74" runat="server">คิดภาษี :</asp:Label>
+                        </td>
+                        <td align="left" nowrap valign="middle">
+                            <asp:CheckBox ID="chkPayment_item_tax" runat="server" Text="คำนวณ" />
+                        </td>
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle">
                             &nbsp;
                         </td>
-                        <td align="left" nowrap valign="middle">
+                        <td align="left" nowrap valign="middle" colspan="3">
                             &nbsp;
                         </td>
                     </tr>
@@ -140,7 +147,7 @@
                         <td align="right" nowrap valign="middle">
                             &nbsp;
                         </td>
-                        <td align="left" nowrap valign="middle">
+                        <td align="left" nowrap valign="middle" colspan="3">
                             &nbsp;
                         </td>
                     </tr>

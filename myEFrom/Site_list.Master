@@ -282,7 +282,7 @@
                         PopupControlID="panelShow1" PopupDragHandleControlID="panelShow1" DropShadow="true"
                         TargetControlID="btnShow" BehaviorID="show1_ModalPopupExtender">
                     </ajaxToolkit:ModalPopupExtender>
-                    <asp:Button ID="btnShow" runat="server" />
+                    <asp:Button ID="btnShow" runat="server" />                  
                 </div>
             </td>
             <td class="right_2">

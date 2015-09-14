@@ -16,6 +16,12 @@ namespace myEFrom.App_Control.lov
                 imgFind.Attributes.Add("onMouseOver", "src='../../images/button/Search2.png'");
                 imgFind.Attributes.Add("onMouseOut", "src='../../images/button/Search.png'");
 
+
+                imgNew.Attributes.Add("onclick", "OpenPopUp('950px','550px','95%','เพิ่มข้อมูลการขออนุมัติยืมเงิน" + "','../loan/loan_control.aspx?&mode=add&page=0','1');return false;");
+                //strScript = "OpenPopUp('950px','550px','95%','เพิ่มข้อมูลการขออนุมัติยืมเงิน','../loan/loan_control.aspx?open_head_id=" + stropen_head_id + "&mode=add_edit&page=0','1');return false;";
+                //lblopen_doc.Attributes.Add("onclick", "if(confirm('กดปุ่ม OK เพื่อบันทึกข้อมูลการยืมเงินโดยการอ้างอิงเลขที่ใบเบิกเลขที่ :" + stropen_doc + "')){ " + strScript + " };");
+
+
                 if (Request.QueryString["open_doc"] != null)
                 {
                     ViewState["open_doc"] = Request.QueryString["open_doc"].ToString();
@@ -185,6 +191,8 @@ namespace myEFrom.App_Control.lov
             {
                 strCriteria = strCriteria + "  And  open_doc not in (" + ViewState["open_doc_list"] + ") ";
             }
+
+            strCriteria = strCriteria + " And [approve_head_status] <>  'C' ";
 
             try
             {

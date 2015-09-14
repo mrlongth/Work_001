@@ -232,7 +232,7 @@ namespace myWeb.App_Control.person
                     stritem_debit = "0";
                     stritem_credit = txtamount.Text;
                 }
-                strperson_item_tax = "Y";
+                strperson_item_tax = chkPayment_item_tax.Checked ? "Y" : "N";
                 strperson_item_sos = "Y";
                 if (chkStatus.Checked == true)
                 {
@@ -250,7 +250,7 @@ namespace myWeb.App_Control.person
                     #region edit
                     if (!blnDup)
                     {
-                        if (oPerson.SP_PERSON_ITEM_UPD(strperson_code, strperson_item_year, stritem_code, stritem_debit, stritem_credit, "Y", "Y",
+                        if (oPerson.SP_PERSON_ITEM_UPD(strperson_code, strperson_item_year, stritem_code, stritem_debit, stritem_credit, strperson_item_tax, "Y",
                                strActive, strUpdatedBy, txtbudget_plan_code.Text, cboLot.SelectedValue, cboBudget_type.SelectedValue, ref strMessage))
                         {
                             blnResult = true;
@@ -290,7 +290,7 @@ namespace myWeb.App_Control.person
                     #region insert
                     if (!blnDup)
                     {
-                        if (oPerson.SP_PERSON_ITEM_INS(strperson_code, strperson_item_year, stritem_code, stritem_debit, stritem_credit, "Y", "Y",
+                        if (oPerson.SP_PERSON_ITEM_INS(strperson_code, strperson_item_year, stritem_code, stritem_debit, stritem_credit, strperson_item_tax, "Y",
                             strActive, strCreatedBy, txtbudget_plan_code.Text, cboLot.SelectedValue, cboBudget_type.SelectedValue, ref strMessage))
                         {
                             ViewState["item_code"] = stritem_code;
@@ -378,6 +378,7 @@ namespace myWeb.App_Control.person
                 strbudget_plan_year = string.Empty,
                 strperson_item_lot_code = string.Empty,
                 strbudget_type = string.Empty,
+                strperson_item_tax = string.Empty,               
                 strUpdatedDate = string.Empty;
 
             try
@@ -400,6 +401,7 @@ namespace myWeb.App_Control.person
                         stritem_type = ds.Tables[0].Rows[0]["item_type"].ToString();
                         stritem_credit = ds.Tables[0].Rows[0]["item_credit"].ToString();
                         stritem_debit = ds.Tables[0].Rows[0]["item_debit"].ToString();
+                        strperson_item_tax = ds.Tables[0].Rows[0]["person_item_tax"].ToString();
                         if (stritem_type.Equals("D"))
                         {
                             stritem_type = "Debit";
@@ -492,6 +494,7 @@ namespace myWeb.App_Control.person
                         txtdirector_name.Text = strdirector_name;
                         txtunit_name.Text = strunit_name;
                         txtbudget_plan_year.Text = strbudget_plan_year;
+                        chkPayment_item_tax.Checked = strperson_item_tax == "Y";
 
                         txtUpdatedBy.Text = strUpdatedBy;
                         txtUpdatedDate.Text = strUpdatedDate;

@@ -127,15 +127,15 @@ namespace myWeb.App_Control.person
                 #endregion
 
                 #region add ajax method to control
-                string strGBK = string.Empty,
-                            strGSJ = string.Empty,
-                            strSOS = string.Empty;
-                strGBK = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["GBK"].ToString();
-                strGSJ = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["GSJ"].ToString();
-                strSOS = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["SOS"].ToString();
+                //string strGBK = string.Empty,
+                //            strGSJ = string.Empty,
+                //            strSOS = string.Empty;
+                //strGBK = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["GBK"].ToString();
+                //strGSJ = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["GSJ"].ToString();
+                //strSOS = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["SOS"].ToString();
 
-                cboPerson_group.Attributes.Add("onchange", "changeMembertype(this,'" + strGBK + "','" + strGSJ + "','" + strSOS + "');");
-                cboPerson_group.AutoPostBack = false;
+                //cboPerson_group.Attributes.Add("onchange", "changeMembertype(this,'" + strGBK + "','" + strGSJ + "','" + strSOS + "');");
+                //cboPerson_group.AutoPostBack = false;
                 #endregion
 
                 #region Set Image
@@ -346,6 +346,9 @@ namespace myWeb.App_Control.person
             strGBK = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["GBK"].ToString();
             strGSJ = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["GSJ"].ToString();
             strSOS = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["SOS"].ToString();
+            string strPVD = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["PVD"].ToString();
+            string strPVD2 = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["PVD2"].ToString();
+          
             strmember_type = cboMember_type.SelectedValue;
             strperson_group_code = cboPerson_group.SelectedValue;
             if (strperson_group_code.Equals(strGBK))
@@ -355,6 +358,14 @@ namespace myWeb.App_Control.person
             else if (strperson_group_code.Equals(strGSJ))
             {
                 strCriteria = " and member_type_code='" + strGSJ + "' and c_active='Y' ";
+            }
+            else if (strperson_group_code.Equals("03"))
+            {
+                strCriteria = " and member_type_code IN ('" + strSOS + "','" + strPVD + "') and c_active='Y' ";
+            }
+            else if (strperson_group_code.Equals("11"))
+            {
+                strCriteria = " and member_type_code IN ('" + strSOS + "','" + strPVD2 + "') and c_active='Y' ";
             }
             else
             {
@@ -367,10 +378,22 @@ namespace myWeb.App_Control.person
                 dt = ds.Tables[0];
                 cboMember_type.Items.Clear();
                 cboMember_type.Items.Add(new ListItem("N", ""));
+                //for (i = 0; i <= dt.Rows.Count - 1; i++)
+                //{
+                //    cboMember_type.Items.Add(new ListItem(dt.Rows[i]["member_type_name"].ToString(), dt.Rows[i]["member_type_code"].ToString()));
+                //}
+                string code = string.Empty;
+                string str = string.Empty;
                 for (i = 0; i <= dt.Rows.Count - 1; i++)
                 {
+                    code += dt.Rows[i]["member_type_code"].ToString() + ",";
+                    str += dt.Rows[i]["member_type_name"].ToString() + ",";
                     cboMember_type.Items.Add(new ListItem(dt.Rows[i]["member_type_name"].ToString(), dt.Rows[i]["member_type_code"].ToString()));
                 }
+                if (dt.Rows.Count > 1)
+                {
+                    cboMember_type.Items.Add(new ListItem(str.Substring(0, str.Length - 1), code.Substring(0, code.Length - 1)));
+                } 
                 if (cboMember_type.Items.FindByValue(strmember_type) != null)
                 {
                     cboMember_type.SelectedIndex = -1;
@@ -2853,6 +2876,11 @@ namespace myWeb.App_Control.person
         protected void BtnR4_Click(object sender, EventArgs e)
         {
             BindGridViewLoan();
+        }
+
+        protected void cboPerson_group_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            InitcboMember_type();
         }
 
     }

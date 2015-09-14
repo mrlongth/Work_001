@@ -359,7 +359,7 @@ namespace myEFrom.App_Control.loan
 
             if (base.UserGroupCode == "User" || base.UserGroupCode == "Supervisor")
             {
-                strCriteria += " and person_code ='" + base.PersonCode + "' ";
+                strCriteria += " and person_code IN ('" + base.PersonCode + "','" + base.ApproveFor + "')";
             }
 
             #endregion
@@ -508,7 +508,7 @@ namespace myEFrom.App_Control.loan
                 imgDelete.Visible = base.IsUserDelete && Helper.CStr(dv["loan_status"]) != "C"; ;
                 if (base.UserGroupCode != "Admin")
                 {
-                    imgDelete.Visible = imgDelete.Visible && Helper.CStr(dv["loan_status"]) == "W" && base.PersonCode == Helper.CStr(dv["person_code"]);
+                    imgDelete.Visible = imgDelete.Visible && Helper.CStr(dv["loan_status"]) == "W" && (Helper.CStr(dv["person_code"]) == base.PersonCode || Helper.CStr(dv["person_code"]) == base.ApproveFor);
                 }
 
                 ImageButton imgPrint = (ImageButton)e.Row.FindControl("imgPrint");
@@ -519,7 +519,7 @@ namespace myEFrom.App_Control.loan
                 imgPrint.Visible = true;
                 if (base.UserGroupCode != "Admin" && base.UserGroupCode != "Loan")
                 {
-                    imgPrint.Visible = imgPrint.Visible && Helper.CStr(dv["person_code"]) == base.PersonCode;
+                    imgPrint.Visible = imgPrint.Visible && (Helper.CStr(dv["person_code"]) == base.PersonCode && Helper.CStr(dv["person_code"]) == base.ApproveFor);
                 }
                 #endregion
 
@@ -546,11 +546,12 @@ namespace myEFrom.App_Control.loan
                     imgPass.Visible = Helper.CStr(dv["loan_status"]) == "W";
                     if (base.UserGroupCode != "Admin")
                     {
-                        imgPass.Visible &= base.PersonCode == Helper.CStr(dv["person_code"]);
+                        imgPass.Visible = (base.PersonCode == Helper.CStr(dv["person_code"]) || base.ApproveFor == Helper.CStr(dv["person_code"]));
                     }
                 }
 
-                if ((Helper.CStr(dv["loan_status"]) == "A" || Helper.CStr(dv["loan_status"]) == "S" || Helper.CStr(dv["loan_status"]) == "F") && base.UserGroupCode != "Loan")
+                if ((Helper.CStr(dv["loan_status"]) == "A" || Helper.CStr(dv["loan_status"]) == "S" || Helper.CStr(dv["loan_status"]) == "F") && (base.UserGroupCode != "Loan" && base.UserGroupCode != "Admin"))
+                //if (base.UserGroupCode != "Loan" && base.UserGroupCode != "Admin")
                 {
                     imgEdit.Visible = false;
                 }

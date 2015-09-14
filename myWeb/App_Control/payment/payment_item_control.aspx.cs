@@ -202,16 +202,9 @@ namespace myWeb.App_Control.payment
                     stritem_debit = "0";
                     stritem_credit = txtamount.Text;
                 }
-                strperson_item_tax = "Y";
+                strperson_item_tax = chkPayment_item_tax.Checked ? "Y" : "N";
                 strperson_item_sos = "Y";
-                if (chkStatus.Checked == true)
-                {
-                    strActive = "Y";
-                }
-                else
-                {
-                    strActive = "N";
-                }
+                strActive = chkStatus.Checked ? "Y" : "N";
                 strcomments_sub = txtcomments_sub.Text.Trim();
                 strCreatedBy = Session["username"].ToString();
                 strUpdatedBy = Session["username"].ToString();
@@ -223,7 +216,7 @@ namespace myWeb.App_Control.payment
                     #region edit
                     if (!blnDup)
                     {
-                        if (oPayment.SP_PAYMENT_DETAIL_UPD(strpayment_doc, stritem_code, stritem_debit, stritem_credit, "Y", "Y",
+                        if (oPayment.SP_PAYMENT_DETAIL_UPD(strpayment_doc, stritem_code, stritem_debit, stritem_credit, strperson_item_tax, "Y",
                                                             strcomments_sub, strActive, strUpdatedBy, cboBudget_type.SelectedValue, strpayment_detail_id, ref strMessage))
                         {
                             oPayment.SP_PAYMENT_DETAIL_BUDGET_UPD(strpayment_doc, stritem_code, txtbudget_plan_code.Text,
@@ -268,7 +261,7 @@ namespace myWeb.App_Control.payment
                     #region insert
                     if (!blnDup)
                     {
-                        if (oPayment.SP_PAYMENT_DETAIL_BUDGET_INS(strpayment_doc, stritem_code, stritem_debit, stritem_credit, "Y", "Y",
+                        if (oPayment.SP_PAYMENT_DETAIL_BUDGET_INS(strpayment_doc, stritem_code, stritem_debit, stritem_credit, strperson_item_tax, "Y",
                                  strcomments_sub, strActive, strCreatedBy, "N", txtbudget_plan_code.Text,
                                  "N", cboLot.SelectedValue, cboBudget_type.SelectedValue, strperson_group ,ref strMessage))
                         {
@@ -344,6 +337,7 @@ namespace myWeb.App_Control.payment
                 strYear = string.Empty,
                 strcommentsub = string.Empty,
                 strC_active = string.Empty,
+                strPayment_item_tax = string.Empty,
                 strCreatedBy = string.Empty,
                 strUpdatedBy = string.Empty,
                 strCreatedDate = string.Empty,
@@ -389,6 +383,7 @@ namespace myWeb.App_Control.payment
                         stritem_group_name = ds.Tables[0].Rows[0]["item_group_name"].ToString();
                         strlot_code = ds.Tables[0].Rows[0]["item_lot_code"].ToString();
                         strlot_name = ds.Tables[0].Rows[0]["item_lot_name"].ToString();
+                        strPayment_item_tax = ds.Tables[0].Rows[0]["payment_item_tax"].ToString();
                         strcommentsub = ds.Tables[0].Rows[0]["comments_sub"].ToString();
                         strC_active = ds.Tables[0].Rows[0]["c_active_detail"].ToString();
                         strCreatedBy = ds.Tables[0].Rows[0]["c_created_by"].ToString();
@@ -436,6 +431,7 @@ namespace myWeb.App_Control.payment
                             txtamount.CssClass = "numberdis";
                             chkStatus.Checked = false;
                         }
+                        chkPayment_item_tax.Checked = strPayment_item_tax == "Y";
 
                         string strbudget_plan_code = ds.Tables[0].Rows[0]["payment_detail_budget_plan_code"].ToString();
                         string strperson_item_lot_code = ds.Tables[0].Rows[0]["payment_detail_lot_code"].ToString();

@@ -418,7 +418,7 @@
                                         <asp:Label ID="Label50" runat="server" CssClass="label_hbk">กลุ่มบุคคลากร :</asp:Label>
                                     </td>
                                     <td>
-                                        <asp:DropDownList ID="cboPerson_group" runat="server" CssClass="textbox">
+                                        <asp:DropDownList ID="cboPerson_group" runat="server" CssClass="textbox" AutoPostBack="True" OnSelectedIndexChanged="cboPerson_group_SelectedIndexChanged">
                                         </asp:DropDownList>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="cboPerson_group"
                                             Display="None" ErrorMessage="กรุณาเลือกกลุ่มบุคคลากร" SetFocusOnError="True"

@@ -123,11 +123,16 @@ namespace myEFrom.App_Control.reportsparameter
 
                 string strFilename;
                 strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
-                oRpt.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("~/temp/") + strFilename + ".pdf");
-                lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
-                imgPdf.Src = "~/images/icon_pdf.gif";
-                lnkExcelFile.Visible = false;
-                CrystalReportViewer1.ReportSource = oRpt;
+                var path =  "~/temp/" + strFilename + ".pdf" ;
+                oRpt.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath(path));
+                //Server.Transfer(path);
+                Response.Redirect(path);
+
+                //lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
+
+                //imgPdf.Src = "~/images/icon_pdf.gif";
+                //lnkExcelFile.Visible = false;
+                //CrystalReportViewer1.ReportSource = oRpt;
             }
         }
 
@@ -203,6 +208,10 @@ namespace myEFrom.App_Control.reportsparameter
                 ViewState["report_code"].ToString().Equals("Rep_loan02"))
             {
                 Retive_Rep_loan01();
+            }
+            else if (ViewState["report_code"].ToString() == "Rep_loan_record")
+            {
+                Retive_Rep_loan_record();
             }
             else
             {
@@ -339,6 +348,7 @@ namespace myEFrom.App_Control.reportsparameter
                 ViewState["criteria"] = " and loan_id = " + ViewState["loan_id"];
                 ViewState["criteria2"] = " and loan_id <> " + ViewState["loan_id"] + " and person_code = '" + ViewState["person_code"] + "' and loan_approve > loan_return and loan_status = 'A' ";
             }
+           
 
         }
 
@@ -396,6 +406,36 @@ namespace myEFrom.App_Control.reportsparameter
                 tableLogOnInfos.Add(logOnInfo);
                 oRpt.SetParameterValue("@vc_criteria", ViewState["criteria"].ToString());
                 oRpt.SetParameterValue("@vc_criteria2", ViewState["criteria2"].ToString());
+                CrystalReportViewer1.LogOnInfo = tableLogOnInfos;
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.ToString();
+            }
+        }
+
+        private void Retive_Rep_loan_record()
+        {
+            try
+            {
+                string strPath = "~/reports/" + ViewState["report_code"].ToString() + ".rpt";
+                oRpt.Load(Server.MapPath(strPath));
+                TableLogOnInfo logOnInfo = new TableLogOnInfo();
+                TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
+                string strUsername = Session["username"].ToString();
+                string strCompanyname = ((DataSet)Application["xmlconfig"]).Tables["default"].Rows[0]["companyname"].ToString();
+                string strServername = System.Configuration.ConfigurationSettings.AppSettings["servername"];
+                string strDbname = System.Configuration.ConfigurationSettings.AppSettings["dbname"];
+                string strDbuser = System.Configuration.ConfigurationSettings.AppSettings["dbuser"];
+                string strDbpassword = System.Configuration.ConfigurationSettings.AppSettings["dbpassword"];
+                logOnInfo.ConnectionInfo.ServerName = strServername;
+                logOnInfo.ConnectionInfo.DatabaseName = strDbname;
+                logOnInfo.ConnectionInfo.UserID = strDbuser;
+                logOnInfo.ConnectionInfo.Password = strDbpassword;
+                tableLogOnInfos.Add(logOnInfo);
+                oRpt.SetParameterValue("@vc_criteria", Session["criteria"].ToString());
+                oRpt.SetParameterValue("UserName", strUsername);
+                oRpt.SetParameterValue("CompanyName", strCompanyname);
                 CrystalReportViewer1.LogOnInfo = tableLogOnInfos;
             }
             catch (Exception ex)

@@ -1414,16 +1414,13 @@ namespace myDLL
             DataSet ds = null;
             string strMessage = string.Empty ;
             string strCriteria = " and person_code = '" + person_code + "' ";
-            List<string> defineName = new List<string>()
-	        {
-	           "title_name", "person_thai_name", "person_thai_surname", "position_name", "director_name", "unit_name", "work_name"
-	        };
-
+            var defineName = System.Configuration.ConfigurationSettings.AppSettings["DefineName"].ToString();
+            List<string> defineNameList = new List<string>(defineName.Split(','));
             try
             {
                 if (oPerson.SP_PERSON_ALL_SEL(strCriteria, ref ds, ref strMessage))
                 {
-                    foreach (var name in defineName)
+                    foreach (var name in defineNameList)
                     {
                         if (strOpenDesc.Contains(name))
                         {

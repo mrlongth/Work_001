@@ -41,7 +41,7 @@
                 </asp:DropDownList>
             </td>
             <td style="text-align: right;">
-                <asp:Label runat="server" ID="lblPage9" CssClass="label_h">ผู้ขอยืม  :</asp:Label>
+                <asp:Label runat="server" ID="lblPage9" CssClass="label_h">ผู้ขอยืม :</asp:Label>
             </td>
             <td colspan="2" style="white-space: nowrap;">
                 <asp:TextBox runat="server" CssClass="textbox" Width="80px" ID="txtperson_code" MaxLength="20"></asp:TextBox>
@@ -147,6 +147,7 @@
                 <ItemTemplate>
                     <cc1:AwLabelDateTime ID="txtloan_date" runat="server" Value='<% # DataBinder.Eval(Container, "DataItem.loan_date")%>'
                         DateFormat="dd/MM/yyyy">
+                    &nbsp;
                     </cc1:AwLabelDateTime>
                 </ItemTemplate>
                 <ItemStyle HorizontalAlign="Center" Width="5%" Wrap="True" />
@@ -157,6 +158,7 @@
                 <ItemTemplate>
                     <cc1:AwLabelDateTime ID="txtprocess_date" runat="server" Value='<% # DataBinder.Eval(Container, "DataItem.d_process_date") %>'
                         DateFormat="dd/MM/yyyy HH:mm">
+                    &nbsp;
                     </cc1:AwLabelDateTime>
                 </ItemTemplate>
                 <ItemStyle HorizontalAlign="Center" Width="10%" Wrap="True" />

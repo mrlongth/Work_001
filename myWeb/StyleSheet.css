@@ -678,3 +678,11 @@ div.dd_chk_drop div#checks {
 div.dd_chk_select_cust:hover {
     cursor: pointer;
 }
+
+
+.ui-datepicker-trigger 
+{
+	padding-left: 3px;
+	vertical-align: middle;
+	cursor: pointer;
+}

@@ -489,7 +489,7 @@ namespace myEFrom.App_Control.open
                 strCriteria += "  And  (open_date <= '" + strend_date + "') ";
                 strCriteriaLoan += "  And  (loan_date <=  '" + strend_date + "') ";
             }
-            
+
             strCriteria += "  And  (approve_head_status not in ('C','W')) ";
             strCriteriaLoan += "  And  (loan_status not in ('C','W')) ";
 
@@ -548,8 +548,7 @@ namespace myEFrom.App_Control.open
                             if (_strCriteria.Length > 0)
                             {
                                 _strCriteria = _strCriteria.Substring(0, _strCriteria.Length - 1);
-                                // _strCriteria = " and loan_doc in (" + _strCriteria + ") and person_code ='" + base.PersonCode + "'";
-                                _strCriteria = " and person_code in ('" + base.PersonCode + "','" + base.ApproveFor + "') ";
+                                 _strCriteria = " and loan_doc in (" + _strCriteria + ")  and person_code in ('" + base.PersonCode + "','" + base.ApproveFor + "') ";
                                 _strCriteria += "  And  (select count(1) from ef_loan_detail_approve " +
                                    "  Where ef_loan_detail_approve.loan_id= view_ef_loan_detail_approve.loan_id " +
                                    "  And view_ef_loan_detail_approve.approve_level > ef_loan_detail_approve.approve_level " +
@@ -571,7 +570,8 @@ namespace myEFrom.App_Control.open
                                     drNew["open_doc"] = Helper.CStr(drTemp["loan_doc"]);
                                     drNew["open_date"] = cCommon.CheckDate(drTemp["loan_date"].ToString());
 
-                                    drNew["d_process_date"] = cCommon.CheckDateTime(drTemp["d_process_date"].ToString());
+                                    if (drTemp["d_process_date"].ToString().Length > 0)
+                                        drNew["d_process_date"] = cCommon.CheckDateTime(drTemp["d_process_date"].ToString());
 
                                     drNew["director_code"] = Helper.CStr(drTemp["director_code"]);
                                     drNew["director_name"] = Helper.CStr(drTemp["director_name"]);
@@ -609,8 +609,9 @@ namespace myEFrom.App_Control.open
                         drNew["open_doc"] = Helper.CStr(dr["loan_doc"]);
                         drNew["open_date"] = cCommon.CheckDate(dr["loan_date"].ToString());
 
-                        drNew["d_process_date"] = cCommon.CheckDateTime(dr["d_process_date"].ToString());
-                        
+                        if (dr["d_process_date"].ToString().Length > 0)
+                            drNew["d_process_date"] = cCommon.CheckDateTime(dr["d_process_date"].ToString());
+
                         drNew["director_code"] = Helper.CStr(dr["director_code"]);
                         drNew["director_name"] = Helper.CStr(dr["director_name"]);
                         drNew["unit_name"] = Helper.CStr(dr["unit_name"]);
@@ -662,9 +663,9 @@ namespace myEFrom.App_Control.open
                                     drNew["open_head_id"] = Helper.CInt(drTemp["open_head_id"]);
                                     drNew["open_doc"] = Helper.CStr(drTemp["open_doc"]);
                                     drNew["open_date"] = cCommon.CheckDate(drTemp["open_date"].ToString());
+                                    if (drTemp["d_process_date"].ToString().Length > 0)
+                                        drNew["d_process_date"] = cCommon.CheckDateTime(drTemp["d_process_date"].ToString());
 
-                                    drNew["d_process_date"] = cCommon.CheckDateTime(drTemp["d_process_date"].ToString());
-                        
                                     drNew["director_code"] = Helper.CStr(drTemp["director_code"]);
                                     drNew["director_name"] = Helper.CStr(drTemp["director_name"]);
                                     drNew["unit_name"] = Helper.CStr(drTemp["unit_name"]);
@@ -774,7 +775,7 @@ namespace myEFrom.App_Control.open
                 {
                     imgView.Attributes.Add("onclick", "OpenPopUp('950px','550px','95%','แสดงรายละเอียดการขออนุมัติเบิก','open_control.aspx?mode=view&open_head_id="
                         + hhdopen_head_id.Value + "&page=" + GridView1.PageIndex + "&canEdit=N','1');return false;");
-                   
+
                     string strScript = "window.open(\"../../App_Control/reportsparameter/open_report_show.aspx?report_code=Rep_open01&open_head_id=" + hhdopen_head_id.Value + "\", \"_blank\");return false;\n";
                     imgPrint.Attributes.Add("onclick", strScript);
 

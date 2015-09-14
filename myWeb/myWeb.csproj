@@ -379,6 +379,20 @@
     <Compile Include="App_Control\lov\open_lov.aspx.designer.cs">
       <DependentUpon>open_lov.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Control\material\material_control.aspx.cs">
+      <DependentUpon>material_control.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\material\material_control.aspx.designer.cs">
+      <DependentUpon>material_control.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\material\material_list.aspx.cs">
+      <DependentUpon>material_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\material\material_list.aspx.designer.cs">
+      <DependentUpon>material_list.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Control\open\open_item_control.aspx.cs">
       <DependentUpon>open_item_control.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -427,6 +441,20 @@
     </Compile>
     <Compile Include="App_Control\payment_adj\payment_export.aspx.designer.cs">
       <DependentUpon>payment_export.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\payment_back\payment_back_excel_upload.aspx.cs">
+      <DependentUpon>payment_back_excel_upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\payment_back\payment_back_excel_upload.aspx.designer.cs">
+      <DependentUpon>payment_back_excel_upload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\payment_back\payment_back_import.aspx.cs">
+      <DependentUpon>payment_back_import.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\payment_back\payment_back_import.aspx.designer.cs">
+      <DependentUpon>payment_back_import.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Control\person\person_loan_control.aspx.cs">
       <DependentUpon>person_loan_control.aspx</DependentUpon>
@@ -1978,6 +2006,8 @@
     <Content Include="App_Control\lov\direct_pay_item_lov.aspx" />
     <Content Include="App_Control\lov\material_lov.aspx" />
     <Content Include="App_Control\lov\open_lov.aspx" />
+    <Content Include="App_Control\material\material_control.aspx" />
+    <Content Include="App_Control\material\material_list.aspx" />
     <Content Include="App_Control\open\open_item_control.aspx" />
     <Content Include="App_Control\open\open_item_list.aspx" />
     <Content Include="App_Control\open\open_list.aspx" />
@@ -1985,6 +2015,8 @@
     <Content Include="App_Control\open\open_person_select.aspx" />
     <Content Include="App_Control\payment\payment_loan_control.aspx" />
     <Content Include="App_Control\payment_adj\payment_export.aspx" />
+    <Content Include="App_Control\payment_back\payment_back_excel_upload.aspx" />
+    <Content Include="App_Control\payment_back\payment_back_import.aspx" />
     <Content Include="App_Control\person\person_loan_control.aspx" />
     <Content Include="App_Control\person_retire\person_retire_control.aspx" />
     <Content Include="App_Control\person_retire\person_retire_list.aspx" />
@@ -2341,7 +2373,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>57992</DevelopmentServerPort>
+          <DevelopmentServerPort>19266</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

@@ -47,7 +47,7 @@
                         <td align="right" nowrap valign="middle" width="17%">
                             <asp:label runat="server" id="Label15">เลขที่เอกสาร :</asp:label>
                         </td>
-                        <td align="left" nowrap valign="middle" colspan="2" style="width: 55%">
+                        <td align="left" nowrap valign="middle" colspan="4" style="width: 55%">
                             <asp:label runat="server" id="lblpayment_doc" font-bold="True" forecolor="#3366CC">XXXXX</asp:label>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <asp:label runat="server" id="Label73x">รหัสบุคคลากร :</asp:label>
@@ -60,9 +60,8 @@
                         <td align="right" nowrap valign="middle">
                             <asp:label runat="server" id="Label14">ปีงบประมาณ :</asp:label>
                         </td>
-                        <td align="left" nowrap valign="middle" colspan="2">
-                            <asp:textbox runat="server" cssclass="textboxdis" width="100px" id="txtyear">
-                            </asp:textbox>
+                        <td align="left" nowrap valign="middle" colspan="4">
+                            <asp:textbox runat="server" cssclass="textboxdis" width="100px" id="txtyear"></asp:textbox>
                         </td>
                     </tr>
                     <tr align="left">
@@ -70,10 +69,9 @@
                             <asp:label runat="server" cssclass="label_error" id="Label71">*</asp:label>
                             <asp:label runat="server" id="lblPage9">รายได้/จ่าย :</asp:label>
                         </td>
-                        <td align="left" colspan="2" nowrap valign="middle">
+                        <td align="left" colspan="4" nowrap valign="middle">
                             <asp:HiddenField ID="hddpayment_detail_id" runat="server" />
-                            <asp:textbox runat="server" cssclass="textbox" width="100px" id="txtitem_code" maxlength="10">
-                            </asp:textbox>
+                            <asp:textbox runat="server" cssclass="textbox" width="100px" id="txtitem_code" maxlength="10"></asp:textbox>
                             &nbsp;<asp:imagebutton runat="server" imagealign="AbsBottom" imageurl="../../images/controls/view2.gif"
                                 id="imgList_item"></asp:imagebutton>
                             <asp:imagebutton runat="server" causesvalidation="False" imagealign="AbsBottom" imageurl="../../images/controls/erase.gif"
@@ -87,42 +85,37 @@
                         <td align="right" nowrap valign="middle">
                             <asp:label runat="server" id="lblPage16">รายละเอียดรายการ :</asp:label>
                         </td>
-                        <td align="left" colspan="2" nowrap valign="middle">
+                        <td align="left" colspan="4" nowrap valign="middle">
                             <asp:textbox runat="server" cssclass="textbox" width="490px" id="txtcomments_sub"
-                                maxlength="255">
-                            </asp:textbox>
+                                maxlength="255"></asp:textbox>
                         </td>
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle">
                             <asp:label runat="server" id="lblPage3">ประเภทรายการ :</asp:label>
                         </td>
-                        <td align="left" colspan="2" nowrap valign="middle">
-                            <asp:textbox runat="server" cssclass="textboxdis" width="100px" id="txtitem_type">
-                            </asp:textbox>
+                        <td align="left" colspan="4" nowrap valign="middle">
+                            <asp:textbox runat="server" cssclass="textboxdis" width="100px" id="txtitem_type"></asp:textbox>
                             <asp:requiredfieldvalidator runat="server" controltovalidate="txtitem_code" errormessage="กรุณาป้อนรหัสรายได้/จ่าย"
-                                display="None" setfocusonerror="True" validationgroup="A" id="RequiredFieldValidator1">
-                            </asp:requiredfieldvalidator>
+                                display="None" setfocusonerror="True" validationgroup="A" id="RequiredFieldValidator1"></asp:requiredfieldvalidator>
                         </td>
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle" style="height: 22px">
                             <asp:label runat="server" id="lblPage4">หมวดรายได้/จ่าย :</asp:label>
                         </td>
-                        <td align="left" colspan="2" nowrap valign="middle">
+                        <td align="left" colspan="4" nowrap valign="middle">
                             <asp:textbox runat="server" autopostback="True" cssclass="textboxdis" width="330px"
-                                id="txtitem_group_name" maxlength="100" readonly="True">
-                            </asp:textbox>
+                                id="txtitem_group_name" maxlength="100" readonly="True"></asp:textbox>
                         </td>
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle">
                             <asp:label runat="server" id="lblPage15">งบ :</asp:label>
                         </td>
-                        <td align="left" nowrap valign="middle">
+                        <td align="left" nowrap valign="middle" colspan="3">
                             <asp:textbox runat="server" cssclass="textboxdis" width="330px" id="txtlot_name"
-                                maxlength="100" readonly="True">
-                            </asp:textbox>
+                                maxlength="100" readonly="True"></asp:textbox>
                         </td>
                         <td align="left" nowrap valign="middle" rowspan="3" style="width: 1%; vertical-align: bottom;
                             text-align: right;">
@@ -133,13 +126,12 @@
                             <asp:label runat="server" cssclass="label_error" id="Label72">*</asp:label>
                             <asp:label runat="server" id="lblPage7">จำนวนเงิน :</asp:label>
                         </td>
-                        <td align="left" nowrap valign="middle">
-                            <cc1:awnumeric id="txtamount" runat="server" cssclass="textbox" leadzero="Show" maxvalue="99999999"
+                        <td align="left" nowrap valign="middle" colspan="3">
+                            <cc1:awnumeric id="txtamount" runat="server" cssclass="textbox" maxvalue="99999999"
                                 minvalue="-99999999" width="100px">
                             </cc1:awnumeric>
                             <asp:requiredfieldvalidator runat="server" controltovalidate="txtamount" errormessage="กรุณาป้อนจำนวนเงิน"
-                                display="None" setfocusonerror="True" validationgroup="A" id="RequiredFieldValidator2">
-                            </asp:requiredfieldvalidator>
+                                display="None" setfocusonerror="True" validationgroup="A" id="RequiredFieldValidator2"></asp:requiredfieldvalidator>
                             <ajaxtoolkit:ValidatorCalloutExtender runat="server" HighlightCssClass="validatorCalloutHighlight"
                                 Enabled="True" TargetControlID="RequiredFieldValidator2" ID="RequiredFieldValidator2_ValidatorCalloutExtender">
                             </ajaxtoolkit:ValidatorCalloutExtender>
@@ -152,6 +144,12 @@
                         <td align="left" nowrap valign="middle">
                             <asp:checkbox runat="server" text="ปกติ" id="chkStatus">
                             </asp:checkbox>
+                        </td>
+                        <td align="right" nowrap valign="middle">
+                            <asp:Label ID="Label74" runat="server">คิดภาษี :</asp:Label>
+                        </td>
+                        <td align="left" nowrap valign="middle">
+                            <asp:CheckBox ID="chkPayment_item_tax" runat="server" Text="คำนวณ" />
                         </td>
                     </tr>
                 </table>

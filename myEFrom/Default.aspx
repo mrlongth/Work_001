@@ -34,7 +34,7 @@
                     <td width="31%" align="right">
                         &nbsp;</td>
                     <td width="69%">
-                        <asp:CheckBox ID="chkRemeber" runat="server" Text="Remenber" />
+                        <asp:CheckBox ID="chkRemeber" runat="server" Text="Remember" />
                     </td>
                 </tr>
             </table>

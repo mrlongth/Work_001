@@ -357,7 +357,7 @@
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Left" Width="30%" Wrap="True" />
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="ประเภทงบประมาณ" SortExpression="budget_type">
+                                            <asp:TemplateField HeaderText="ประเภทงบประมาณ" SortExpression="payment_detail_budget_type">
                                                 <ItemTemplate>
                                                     <asp:HiddenField ID="hddbudget_type" runat="server" Value='<%# DataBinder.Eval(Container, "DataItem.payment_detail_budget_type") %>' />
                                                     <asp:Label ID="lblbudget_type" runat="server" CssClass="label_hbk" Text='<%# DataBinder.Eval(Container, "DataItem.payment_detail_budget_type") %>' />
@@ -394,13 +394,13 @@
                                                 </ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Right" Width="8%" Wrap="False" />
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="สถานะ" Visible="False">
+                                            <asp:TemplateField HeaderText="ภาษี" Visible="False">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="lblc_active" runat="server" CssClass="label_hbk" Text='<%# DataBinder.Eval(Container, "DataItem.c_active_detail") %>'> </asp:Label></ItemTemplate>
+                                                    <asp:Label ID="lblc_active" runat="server" CssClass="label_hbk" Text='<%# DataBinder.Eval(Container, "DataItem.payment_item_tax") %>'> </asp:Label></ItemTemplate>
                                                 <HeaderStyle HorizontalAlign="Center" Width="2%"></HeaderStyle>
                                                 <ItemStyle HorizontalAlign="Center" />
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="สถานะ" SortExpression="c_active">
+                                            <asp:TemplateField HeaderText="ภาษี" SortExpression="c_active">
                                                 <ItemTemplate>
                                                     <asp:ImageButton ID="imgStatus" runat="server" CausesValidation="False" /></ItemTemplate>
                                                 <ItemStyle HorizontalAlign="Center" Width="5%"></ItemStyle>

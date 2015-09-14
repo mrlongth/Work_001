@@ -50,10 +50,11 @@
     </Reference>
     <Reference Include="Aware.WebControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="cAware, Version=1.0.2351.27739, Culture=neutral" />
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\DevExpress.Data.v9.1.dll</HintPath>
@@ -307,6 +308,13 @@
     </Compile>
     <Compile Include="App_Control\open\open_list.aspx.designer.cs">
       <DependentUpon>open_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Control\report_viewer\loan_report.aspx.cs">
+      <DependentUpon>loan_report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Control\report_viewer\loan_report.aspx.designer.cs">
+      <DependentUpon>loan_report.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Control\upload\person_sign_upload.aspx.cs">
       <DependentUpon>person_sign_upload.aspx</DependentUpon>
@@ -608,8 +616,6 @@
     <Content Include="App_Themes\Aqua\Web\ucProgressIndicatorBack.gif" />
     <Content Include="bin\AjaxControlToolkit.dll" />
     <Content Include="bin\cAware.dll" />
-    <Content Include="bin\CrystalDecisions.CrystalReports.Engine.dll" />
-    <Content Include="bin\CrystalDecisions.Shared.dll" />
     <Content Include="bin\myDLL.dll" />
     <Content Include="img\cal.gif" />
     <Content Include="img\icon_demo.gif" />
@@ -667,6 +673,7 @@
     <Content Include="App_Control\open\open_item_control.aspx" />
     <Content Include="App_Control\open\open_item_list.aspx" />
     <Content Include="App_Control\open\open_list.aspx" />
+    <Content Include="App_Control\report_viewer\loan_report.aspx" />
     <Content Include="App_Control\upload\person_sign_upload.aspx" />
     <Content Include="App_Control\upload\file_upload.aspx" />
     <Content Include="App_Control\user\person_sign_list.aspx" />
@@ -1142,7 +1149,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>57996</DevelopmentServerPort>
+          <DevelopmentServerPort>19262</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

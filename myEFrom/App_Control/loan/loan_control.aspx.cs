@@ -120,6 +120,56 @@ namespace myEFrom.App_Control.loan
                 ViewState["LoanApproveID"] = value;
             }
         }
+        //private DataTable dtLoanApprove
+        //{
+        //    get
+        //    {
+        //        if (ViewState["dtLoanApprove"] == null)
+        //        {
+        //            cefLoan objEfloan = new cefLoan();
+        //            _strMessage = string.Empty;
+        //            _strCriteria = " and loan_id = " + Helper.CLong(ViewState["loan_id"]) +
+        //                           " order by approve_level";
+        //            DataTable dtTemp = objEfloan.SP_LOAN_DETAIL_APPROVE_SEL(_strCriteria);
+        //            dtTemp.Columns.Add("row_status");
+        //            if (dtTemp.Rows.Count > 0)
+        //            {
+        //                foreach (DataRow dr in dtTemp.Rows)
+        //                {
+        //                    dr["row_status"] = "O";
+        //                }
+        //            }
+        //            else
+        //            {
+        //                DataRow rw;
+        //                cefApproveBudget objApproveBudget = new cefApproveBudget();
+        //                DataTable dtBudget = objApproveBudget.SP_APPROVE_BUDGET_SEL(" and ef_budget_type_approve in ('L','R','H') ");
+        //                foreach (DataRow drow in dtBudget.Rows)
+        //                {
+        //                    rw = dtTemp.NewRow();
+        //                    rw["loan_detail_approve_id"] = ++this.LoanApproveID;
+        //                    rw["approve_code"] = Helper.CInt(drow["approve_code"]);
+        //                    rw["approve_name"] = Helper.CStr(drow["approve_name"]);
+        //                    rw["approve_level"] = Helper.CInt(drow["approve_level"]);
+        //                    rw["approve_remark"] = Helper.CStr(drow["ef_budget_type_approve"]) == "H" ? "ผู้อนุมัติ" : "เจ้าหน้าที่ผู้ตรวจสอบ";
+        //                    rw["person_code"] = Helper.CStr(drow["ef_person_code_approve"]);
+        //                    rw["person_thai_name"] = Helper.CStr(drow["title_name"]) + Helper.CStr(drow["person_thai_name"]) + " " + Helper.CStr(drow["person_thai_surname"]);
+        //                    rw["person_manage_code"] = Helper.CStr(drow["ef_approve_position"]);
+        //                    rw["person_manage_name"] = Helper.CStr(drow["ef_approve_position_name"]);
+        //                    rw["approve_status"] = "P";
+        //                    rw["row_status"] = "N";
+        //                    dtTemp.Rows.Add(rw);
+        //                }
+        //            }
+        //            ViewState["dtLoanApprove"] = dtTemp;
+        //        }
+        //        return (DataTable)ViewState["dtLoanApprove"];
+        //    }
+        //    set
+        //    {
+        //        ViewState["dtLoanApprove"] = value;
+        //    }
+        //}
         private DataTable dtLoanApprove
         {
             get
@@ -137,28 +187,6 @@ namespace myEFrom.App_Control.loan
                         foreach (DataRow dr in dtTemp.Rows)
                         {
                             dr["row_status"] = "O";
-                        }
-                    }
-                    else
-                    {
-                        DataRow rw;
-                        cefApproveBudget objApproveBudget = new cefApproveBudget();
-                        DataTable dtBudget = objApproveBudget.SP_APPROVE_BUDGET_SEL(" and ef_budget_type_approve in ('L','H') ");
-                        foreach (DataRow drow in dtBudget.Rows)
-                        {
-                            rw = dtTemp.NewRow();
-                            rw["loan_detail_approve_id"] = ++this.LoanApproveID;
-                            rw["approve_code"] = Helper.CInt(drow["approve_code"]);
-                            rw["approve_name"] = Helper.CStr(drow["approve_name"]);
-                            rw["approve_level"] = Helper.CInt(drow["approve_level"]);
-                            rw["approve_remark"] = "เจ้าหน้าที่ผู้ตรวจสอบ";
-                            rw["person_code"] = Helper.CStr(drow["ef_person_code_approve"]);
-                            rw["person_thai_name"] = Helper.CStr(drow["title_name"]) + Helper.CStr(drow["person_thai_name"]) + " " + Helper.CStr(drow["person_thai_surname"]);
-                            rw["person_manage_code"] = Helper.CStr(drow["ef_approve_position"]);
-                            rw["person_manage_name"] = Helper.CStr(drow["ef_approve_position_name"]);
-                            rw["approve_status"] = "P";
-                            rw["row_status"] = "N";
-                            dtTemp.Rows.Add(rw);
                         }
                     }
                     ViewState["dtLoanApprove"] = dtTemp;
@@ -460,7 +488,7 @@ namespace myEFrom.App_Control.loan
                     txtloan_person_name.Text = this.PersonFullName;
                     txtposition_code.Text = this.PositionCode;
                     txtposition_name.Text = this.PositionName;
-
+                    VisibleValidation();
                 }
                 else if (ViewState["mode"].ToString().ToLower().Equals("edit"))
                 {
@@ -482,6 +510,25 @@ namespace myEFrom.App_Control.loan
 
                         txtloan_return_remark.ReadOnly = false;
                         txtloan_return_remark.CssClass = "textbox";
+
+                        RadioButtonList1.Enabled = true;
+                        //RadioButtonList1.CssClass = "textbox";
+
+                        txtpay_acc_no.ReadOnly = false;
+                        txtpay_acc_no.CssClass = "textbox";
+
+                        txtpay_name.ReadOnly = false;
+                        txtpay_name.CssClass = "textbox";
+
+
+                        cboPay_bank.Enabled = true;
+                        cboPay_bank.CssClass = "textbox";
+
+                        cboPay_bank_branch.Enabled = true;
+                        cboPay_bank_branch.CssClass = "textbox";
+
+                        txtpay_remark.ReadOnly = false;
+                        txtpay_remark.CssClass = "textbox";
 
                         foreach (Control ctrl in TabContainer1.Tabs[0].Controls[1].Controls)
                         {
@@ -1086,6 +1133,8 @@ namespace myEFrom.App_Control.loan
                             Helper.CStr(dr["work_code"]), Helper.CStr(dr["fund_code"]), Helper.CStr(dr["lot_code"]), "0", "0", "W", Helper.CStr(dr["open_tel"]), Helper.CStr(dr["open_remark"]), 0, "", Helper.CStr(dr["ef_doctype_code"]), strUserName))
                         {
                             ViewState["loan_id"] = lintloan_id;
+                            GetdtLoanApprove();
+                            SaveApprove();
                             ViewState["mode"] = "edit";
                             blnResult = true;
                         }
@@ -1133,6 +1182,8 @@ namespace myEFrom.App_Control.loan
                         cboWork.SelectedValue, cboFund.SelectedValue, cboLot.SelectedValue, "0", "0", "W", txtloan_tel.Text, txtloan_remark.Text, 0, "", cboDoctype.SelectedValue, strUserName))
                     {
                         ViewState["loan_id"] = lintloan_id;
+                        GetdtLoanApprove();
+                        SaveApprove();
                         ViewState["mode"] = "edit";
                         blnResult = true;
                     }
@@ -1208,6 +1259,8 @@ namespace myEFrom.App_Control.loan
                         cboBudget_type.SelectedIndex = -1;
                         cboBudget_type.Items.FindByValue(dt.Rows[0]["budget_type"].ToString()).Selected = true;
                     }
+
+                    VisibleValidation();
 
 
                     txtloan_date.Text = cCommon.CheckDate(dt.Rows[0]["loan_date"].ToString());
@@ -2180,7 +2233,7 @@ namespace myEFrom.App_Control.loan
                             dr["open_title"] = hddopen_title.Value;
                             if (hddopen_date.Value.Length > 0)
                                 dr["open_date"] = hddopen_date.Value;
-                            dr["open_amount"] = hddopen_amount.Value;
+                            dr["open_amount"] = Helper.CDbl(hddopen_amount.Value);
                             break;
                         }
                     }
@@ -2892,19 +2945,19 @@ namespace myEFrom.App_Control.loan
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetPayLabel(RadioButtonList1.SelectedValue);
-            txtpay_name.Text = this.PersonFullName;
             if (RadioButtonList1.SelectedValue == "B")
             {
                 DataSet ds = new DataSet();
-                DataRow dr ;
+                DataRow dr;
                 cPerson oPerson = new cPerson();
                 string strMessage = "";
                 string strCriteria = "and [person_code] = '" + txtloan_person.Text + "'  ";
-               
+
                 if (oPerson.SP_PERSON_ALL_SEL(strCriteria, ref ds, ref strMessage))
                 {
                     dr = ds.Tables[0].Rows[0];
                     txtpay_acc_no.Text = Helper.CStr(dr["bank_no"]);
+                    txtpay_name.Text = Helper.CStr(dr["title_name"]) + Helper.CStr(dr["person_thai_name"]) + " " + Helper.CStr(dr["person_thai_surname"]);
                     InitcboBank();
                     if (cboPay_bank.Items.FindByValue(dr["bank_name"].ToString()) != null)
                     {
@@ -2918,7 +2971,7 @@ namespace myEFrom.App_Control.loan
                         cboPay_bank_branch.SelectedIndex = -1;
                         cboPay_bank_branch.Items.FindByValue(dr["branch_name"].ToString()).Selected = true;
                     }
-                }               
+                }
             }
             else
             {
@@ -2949,6 +3002,157 @@ namespace myEFrom.App_Control.loan
         protected void cboPay_bank_SelectedIndexChanged(object sender, EventArgs e)
         {
             InitcboBank_Branch();
+        }
+
+        protected void cboBudget_type_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            InitcboBudget();
+            cboBudget.SelectedIndex = 0;
+
+            InitcboDirector();
+            //cboDirector.SelectedIndex = 0;
+
+            InitcboPlan();
+            cboPlan.SelectedIndex = 0;
+
+            InitcboWork();
+            cboWork.SelectedIndex = 0;
+
+            InitcboFund();
+            cboFund.SelectedIndex = 0;
+
+            InitcboLot();
+            cboLot.SelectedIndex = 0;
+
+            if (cboBudget_type.SelectedValue == "X")
+            {
+                RequiredFieldValidator16.Enabled = true;
+                RequiredFieldValidator9.Enabled = false;
+                RequiredFieldValidator10.Enabled = false;
+                RequiredFieldValidator11.Enabled = false;
+                RequiredFieldValidator12.Enabled = false;
+                RequiredFieldValidator13.Enabled = false;
+                RequiredFieldValidator14.Enabled = false;
+                RequiredFieldValidator15.Enabled = false;
+                RequiredFieldValidator5.Enabled = false;
+                RequiredFieldValidator6.Enabled = false;
+
+                Label114.Visible = true;
+                Label106.Visible = false;
+                Label107.Visible = false;
+                Label108.Visible = false;
+                Label109.Visible = false;
+                Label110.Visible = false;
+                Label111.Visible = false;
+                Label101.Visible = false;
+                Label100.Visible = false;
+
+            }
+            else
+            {
+                RequiredFieldValidator16.Enabled = false;
+                RequiredFieldValidator9.Enabled = true;
+                RequiredFieldValidator10.Enabled = true;
+                RequiredFieldValidator11.Enabled = true;
+                RequiredFieldValidator12.Enabled = true;
+                RequiredFieldValidator13.Enabled = true;
+                RequiredFieldValidator14.Enabled = true;
+                RequiredFieldValidator15.Enabled = true;
+                RequiredFieldValidator5.Enabled = true;
+                RequiredFieldValidator6.Enabled = true;
+
+                Label114.Visible = false;
+                Label106.Visible = true;
+                Label107.Visible = true;
+                Label108.Visible = true;
+                Label109.Visible = true;
+                Label110.Visible = true;
+                Label111.Visible = true;
+                Label101.Visible = true;
+                Label100.Visible = true;
+
+            }
+        }
+
+        private void VisibleValidation()
+        {
+            if (cboBudget_type.SelectedValue == "X")
+            {
+                RequiredFieldValidator16.Enabled = true;
+                RequiredFieldValidator9.Enabled = false;
+                RequiredFieldValidator10.Enabled = false;
+                RequiredFieldValidator11.Enabled = false;
+                RequiredFieldValidator12.Enabled = false;
+                RequiredFieldValidator13.Enabled = false;
+                RequiredFieldValidator14.Enabled = false;
+                RequiredFieldValidator15.Enabled = false;
+                RequiredFieldValidator5.Enabled = false;
+                RequiredFieldValidator6.Enabled = false;
+
+                Label114.Visible = true;
+                Label106.Visible = false;
+                Label107.Visible = false;
+                Label108.Visible = false;
+                Label109.Visible = false;
+                Label110.Visible = false;
+                Label111.Visible = false;
+                Label101.Visible = false;
+                Label100.Visible = false;
+
+            }
+            else
+            {
+                RequiredFieldValidator16.Enabled = false;
+                RequiredFieldValidator9.Enabled = true;
+                RequiredFieldValidator10.Enabled = true;
+                RequiredFieldValidator11.Enabled = true;
+                RequiredFieldValidator12.Enabled = true;
+                RequiredFieldValidator13.Enabled = true;
+                RequiredFieldValidator14.Enabled = true;
+                RequiredFieldValidator15.Enabled = true;
+                RequiredFieldValidator5.Enabled = true;
+                RequiredFieldValidator6.Enabled = true;
+
+                Label114.Visible = false;
+                Label106.Visible = true;
+                Label107.Visible = true;
+                Label108.Visible = true;
+                Label109.Visible = true;
+                Label110.Visible = true;
+                Label111.Visible = true;
+                Label101.Visible = true;
+                Label100.Visible = true;
+
+            }
+        }
+
+        private void GetdtLoanApprove()
+        {
+            cefLoan objEfloan = new cefLoan();
+            _strMessage = string.Empty;
+            _strCriteria = " and 1=2 ";
+            DataTable dtTemp = objEfloan.SP_LOAN_DETAIL_APPROVE_SEL(_strCriteria);
+            dtTemp.Columns.Add("row_status");
+            DataRow rw;
+            cefApproveBudget objApproveBudget = new cefApproveBudget();
+            DataTable dtBudget = objApproveBudget.SP_APPROVE_BUDGET_SEL(" and ef_budget_type_approve in ('L','R','H') ");
+            foreach (DataRow drow in dtBudget.Rows)
+            {
+                rw = dtTemp.NewRow();
+                rw["loan_detail_approve_id"] = ++this.LoanApproveID;
+                rw["approve_code"] = Helper.CInt(drow["approve_code"]);
+                rw["approve_name"] = Helper.CStr(drow["approve_name"]);
+                rw["approve_level"] = Helper.CInt(drow["approve_level"]);
+                rw["approve_remark"] = Helper.CStr(drow["ef_budget_type_approve"]) == "H" ? "ผู้อนุมัติ" : "เจ้าหน้าที่ผู้ตรวจสอบ";
+                rw["person_code"] = Helper.CStr(drow["ef_person_code_approve"]);
+                rw["person_thai_name"] = Helper.CStr(drow["title_name"]) + Helper.CStr(drow["person_thai_name"]) + " " + Helper.CStr(drow["person_thai_surname"]);
+                rw["person_manage_code"] = Helper.CStr(drow["ef_approve_position"]);
+                rw["person_manage_name"] = Helper.CStr(drow["ef_approve_position_name"]);
+                rw["approve_status"] = "P";
+                rw["row_status"] = "N";
+                dtTemp.Rows.Add(rw);
+            }
+            ViewState["dtLoanApprove"] = dtTemp;
         }
 
     }

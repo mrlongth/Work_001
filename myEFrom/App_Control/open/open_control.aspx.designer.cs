@@ -266,6 +266,15 @@ namespace myEFrom.App_Control.open {
         protected global::System.Web.UI.WebControls.HiddenField hddBudget_type;
         
         /// <summary>
+        /// lblReqBudget_type_text control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblReqBudget_type_text;
+        
+        /// <summary>
         /// lblBudget_type control.
         /// </summary>
         /// <remarks>
@@ -282,6 +291,15 @@ namespace myEFrom.App_Control.open {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtbudget_type_text;
+        
+        /// <summary>
+        /// RequiredFieldValidator16 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator16;
         
         /// <summary>
         /// Label52 control.
@@ -320,13 +338,13 @@ namespace myEFrom.App_Control.open {
         protected global::System.Web.UI.WebControls.ImageButton imgClear_budget_plan;
         
         /// <summary>
-        /// Label104 control.
+        /// lblReqBudget control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label104;
+        protected global::System.Web.UI.WebControls.Label lblReqBudget;
         
         /// <summary>
         /// Label103 control.
@@ -365,13 +383,13 @@ namespace myEFrom.App_Control.open {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
         
         /// <summary>
-        /// Label105 control.
+        /// lblReqProduce control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label105;
+        protected global::System.Web.UI.WebControls.Label lblReqProduce;
         
         /// <summary>
         /// Label55 control.
@@ -410,13 +428,13 @@ namespace myEFrom.App_Control.open {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator10;
         
         /// <summary>
-        /// Label106 control.
+        /// lblReqActivity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label106;
+        protected global::System.Web.UI.WebControls.Label lblReqActivity;
         
         /// <summary>
         /// Label53 control.
@@ -455,13 +473,13 @@ namespace myEFrom.App_Control.open {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator11;
         
         /// <summary>
-        /// Label107 control.
+        /// lblReqPlan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label107;
+        protected global::System.Web.UI.WebControls.Label lblReqPlan;
         
         /// <summary>
         /// Label56 control.
@@ -500,13 +518,13 @@ namespace myEFrom.App_Control.open {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator12;
         
         /// <summary>
-        /// Label108 control.
+        /// lblReqWork control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label108;
+        protected global::System.Web.UI.WebControls.Label lblReqWork;
         
         /// <summary>
         /// Label57 control.
@@ -545,13 +563,13 @@ namespace myEFrom.App_Control.open {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator13;
         
         /// <summary>
-        /// Label109 control.
+        /// lblReqFund control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label109;
+        protected global::System.Web.UI.WebControls.Label lblReqFund;
         
         /// <summary>
         /// Label58 control.
@@ -590,13 +608,13 @@ namespace myEFrom.App_Control.open {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator14;
         
         /// <summary>
-        /// Label98 control.
+        /// lblReqDirector control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label98;
+        protected global::System.Web.UI.WebControls.Label lblReqDirector;
         
         /// <summary>
         /// Label60 control.
@@ -635,13 +653,13 @@ namespace myEFrom.App_Control.open {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
         
         /// <summary>
-        /// Label99 control.
+        /// lblReqUnit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label99;
+        protected global::System.Web.UI.WebControls.Label lblReqUnit;
         
         /// <summary>
         /// Label61 control.
@@ -680,13 +698,13 @@ namespace myEFrom.App_Control.open {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
         
         /// <summary>
-        /// Label110 control.
+        /// lblReqLot control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label110;
+        protected global::System.Web.UI.WebControls.Label lblReqLot;
         
         /// <summary>
         /// Label62 control.

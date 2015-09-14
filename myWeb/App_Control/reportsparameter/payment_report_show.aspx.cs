@@ -291,6 +291,24 @@ namespace myWeb.App_Control.reportsparameter
             {
                 Retive_Rep_paymentGBK_sum();
             }
+            else if (ViewState["report_code"].ToString().Equals("Rep_paymentPVD"))
+            {
+                Retive_Rep_paymentGBK();
+            }
+
+
+
+            else if (ViewState["report_code"].ToString().Equals("Rep_payment_pvd_bank"))
+            {
+                Retive_Rep_paymentPVDBank();
+            }
+            
+
+
+            else if (ViewState["report_code"].ToString().Equals("Rep_paymentPVD_sum"))
+            {
+                Retive_Rep_paymentGBK_sum();
+            }
             else if (ViewState["report_code"].ToString().Equals("Rep_allcredit")
                 || ViewState["report_code"].ToString().Equals("Rep_allcredit_1"))
             {
@@ -341,13 +359,18 @@ namespace myWeb.App_Control.reportsparameter
             {
                 Retive_Rep_cheque_print();
             }
-            else if (ViewState["report_code"].ToString().Equals("Rep_GSJ")
-                || ViewState["report_code"].ToString().Equals("Rep_GSJ_back"))
+            else if (
+                ViewState["report_code"].ToString().Equals("Rep_GSJ")
+                || ViewState["report_code"].ToString().Equals("Rep_GSJ_back")
+                || ViewState["report_code"].ToString().Equals("Rep_PVD")
+                || ViewState["report_code"].ToString().Equals("Rep_PVD_back"))
             {
                 Retive_Rep_GBK();
             }
             else if (ViewState["report_code"].ToString().Equals("Rep_GSJbydirector")
-                || ViewState["report_code"].ToString().Equals("Rep_GSJ_backbydirector"))
+                || ViewState["report_code"].ToString().Equals("Rep_PVDbydirector")
+                || ViewState["report_code"].ToString().Equals("Rep_GSJ_backbydirector")
+                || ViewState["report_code"].ToString().Equals("Rep_PVD_backbydirector"))
             {
                 Retive_Rep_GBK();
             }
@@ -420,7 +443,8 @@ namespace myWeb.App_Control.reportsparameter
                 Retive_Rep_budget_plan_cumulative();
             }
             else if (ViewState["report_code"].ToString().Equals("Rep_paymentGBKbyyear") ||
-                    ViewState["report_code"].ToString().Equals("Rep_paymentGSJbyyear"))
+                    ViewState["report_code"].ToString().Equals("Rep_paymentGSJbyyear") ||
+                    ViewState["report_code"].ToString().Equals("Rep_paymentPVDbyyear"))
             {
                 Retive_Rep_paymentGBKbyyear();
             }
@@ -1421,6 +1445,40 @@ namespace myWeb.App_Control.reportsparameter
             }
         }
 
+        private void Retive_Rep_paymentPVDBank()
+        {
+            try
+            {
+                string strPath = "~/reports/" + ViewState["report_code"].ToString() + ".rpt";
+                rptSource.Load(Server.MapPath(strPath));
+                TableLogOnInfo logOnInfo = new TableLogOnInfo();
+                TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
+                string strUsername = Session["username"].ToString();
+                string strCompanyname = ((DataSet)Application["xmlconfig"]).Tables["default"].Rows[0]["companyname"].ToString();
+                string strServername = System.Configuration.ConfigurationSettings.AppSettings["servername"];
+                string strDbname = System.Configuration.ConfigurationSettings.AppSettings["dbname"];
+                string strDbuser = System.Configuration.ConfigurationSettings.AppSettings["dbuser"];
+                string strDbpassword = System.Configuration.ConfigurationSettings.AppSettings["dbpassword"];
+                this.Title = "แบบนำส่งเงินสะสม - สมทบ";
+                logOnInfo.ConnectionInfo.ServerName = strServername;
+                logOnInfo.ConnectionInfo.DatabaseName = strDbname;
+                logOnInfo.ConnectionInfo.UserID = strDbuser;
+                logOnInfo.ConnectionInfo.Password = strDbpassword;
+                tableLogOnInfos.Add(logOnInfo);
+                rptSource.SetParameterValue("@vc_criteria", Session["criteria"].ToString());
+                rptSource.SetParameterValue("@vc_yearmonth", ViewState["year"].ToString() + '/' + ViewState["months"].ToString());
+                rptSource.SetParameterValue("UserName", strUsername);
+                rptSource.SetParameterValue("CompanyName", strCompanyname);
+                rptSource.SetParameterValue("pMonth", getMonth());
+                rptSource.SetParameterValue("pYear", ViewState["year"].ToString());
+                //CrystalReportViewer1.ReportSource = rptSource;
+                CrystalReportViewer1.LogOnInfo = tableLogOnInfos;
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.ToString();
+            }
+        }
 
 
         private void Retive_Rep_paymentbydirector()

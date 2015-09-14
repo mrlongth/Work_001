@@ -264,6 +264,10 @@
     <!--ลูกจ้างประจำ||กสจ.-->
     <entry name="SOS">03</entry>
     <entry name="GBK2">04</entry>
+    <!--สำรองเลี้ยงชีพ พม.-->
+    <entry name="PVD">05</entry>
+    <!--สำรองเลี้ยงชีพ พม รด.-->
+    <entry name="PVD2">06</entry>
   </section>
   <section name="PersonMange">
     <entry name="00001">00001</entry>

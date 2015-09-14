@@ -506,6 +506,208 @@ namespace myDLL
         }
         #endregion      
 
+
+
+        #region SP_IMPORT_PAYMENT_BACK_INS
+        public bool SP_IMPORT_PAYMENT_BACK_INS
+            (
+                string ppayment_year,
+                string ppay_year,
+                string ppay_month,
+                string pbk_person_code,
+                string pbk_person_name,
+                string pbk_person_surname,
+                string pitem_code,
+                string ppayment_item_old,
+                string ppayment_item_new,
+                string ppayment_item_diff,
+                string ppayment_item_back,
+                string pcomments_sub,
+                string pc_created_by,
+                ref string strMessage
+            )
+        {
+            bool blnResult = false;
+            var oConn = new SqlConnection();
+            var oCommand = new SqlCommand();
+            var oAdapter = new SqlDataAdapter();
+            try
+            {
+                oConn.ConnectionString = _strConn;
+                oConn.Open();
+                oCommand.Connection = oConn;
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.CommandText = "sp_IMPORT_PAYMENT_BACK_INS";
+                oCommand.Parameters.Add("ppayment_year", SqlDbType.VarChar).Value = ppayment_year;
+                oCommand.Parameters.Add("ppay_year", SqlDbType.VarChar).Value = ppay_year;
+                oCommand.Parameters.Add("ppay_month", SqlDbType.VarChar).Value = ppay_month;
+                oCommand.Parameters.Add("pbk_person_code", SqlDbType.VarChar).Value = pbk_person_code;
+                oCommand.Parameters.Add("pbk_person_name", SqlDbType.VarChar).Value = pbk_person_name;
+                oCommand.Parameters.Add("pbk_person_surname", SqlDbType.VarChar).Value = pbk_person_surname;
+                oCommand.Parameters.Add("pitem_code", SqlDbType.VarChar).Value = pitem_code;
+                oCommand.Parameters.Add("ppayment_item_old", SqlDbType.Money).Value = double.Parse(ppayment_item_old);
+                oCommand.Parameters.Add("ppayment_item_new", SqlDbType.Money).Value = double.Parse(ppayment_item_new);
+                oCommand.Parameters.Add("ppayment_item_diff", SqlDbType.Money).Value = double.Parse(ppayment_item_diff);
+                oCommand.Parameters.Add("ppayment_item_back", SqlDbType.Money).Value = double.Parse(ppayment_item_back);
+                oCommand.Parameters.Add("pcomments_sub", SqlDbType.VarChar).Value = pcomments_sub;
+                oCommand.Parameters.Add("pc_created_by", SqlDbType.VarChar).Value = pc_created_by;
+                // - - - - - - - - - - - -             
+                oCommand.ExecuteNonQuery();
+                blnResult = true;
+            }
+            catch (Exception ex)
+            {
+                strMessage = ex.Message.ToString();
+            }
+            finally
+            {
+                oConn.Close();
+                oCommand.Dispose();
+                oConn.Dispose();
+            }
+            return blnResult;
+        }
+        #endregion
+
+        #region SP_IMPORT_PAYMENT_BACK_DEL
+        public bool SP_IMPORT_PAYMENT_BACK_DEL
+            (
+                string pc_created_by,
+                ref string strMessage
+            )
+        {
+            bool blnResult = false;
+            var oConn = new SqlConnection();
+            var oCommand = new SqlCommand();
+            var oAdapter = new SqlDataAdapter();
+            try
+            {
+                oConn.ConnectionString = _strConn;
+                oConn.Open();
+                oCommand.Connection = oConn;
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.CommandText = "sp_IMPORT_PAYMENT_BACK_DEL";
+                oCommand.Parameters.Add("pc_created_by", SqlDbType.VarChar).Value = pc_created_by;
+                // - - - - - - - - - - - -             
+                oCommand.ExecuteNonQuery();
+                blnResult = true;
+            }
+            catch (Exception ex)
+            {
+                strMessage = ex.Message.ToString();
+            }
+            finally
+            {
+                oConn.Close();
+                oCommand.Dispose();
+                oConn.Dispose();
+            }
+            return blnResult;
+        }
+        #endregion
+
+        #region SP_IMPORT_PAYMENT_BACK_SEL
+        public bool SP_IMPORT_PAYMENT_BACK_SEL(string strCriteria, ref DataSet ds, ref string strMessage)
+        {
+            bool blnResult = false;
+            var oConn = new SqlConnection();
+            var oCommand = new SqlCommand();
+            var oAdapter = new SqlDataAdapter();
+            try
+            {
+                oConn.ConnectionString = _strConn;
+                oConn.Open();
+                oCommand.Connection = oConn;
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.CommandText = "sp_IMPORT_PAYMENT_BACK_SEL";
+                var oParamI_vc_criteria = new SqlParameter("vc_criteria", SqlDbType.NVarChar);
+                oParamI_vc_criteria.Direction = ParameterDirection.Input;
+                oParamI_vc_criteria.Value = strCriteria;
+                oCommand.Parameters.Add(oParamI_vc_criteria);
+                oAdapter = new SqlDataAdapter(oCommand);
+                ds = new DataSet();
+                oAdapter.Fill(ds, "sp_IMPORT_PAYMENT_BACK_SEL");
+                blnResult = true;
+            }
+            catch (Exception ex)
+            {
+                strMessage = ex.Message.ToString();
+            }
+            finally
+            {
+                oConn.Close();
+                oCommand.Dispose();
+                oConn.Dispose();
+            }
+            return blnResult;
+        }
+        #endregion
+
+        #region SP_IMPORT_PAYMENT_BACK_SAVE
+        public bool SP_IMPORT_PAYMENT_BACK_SAVE
+            (
+                string ppayment_doc,
+                string ppayment_back_type,
+                string pdate_begin,
+                string pdate_end,
+                string pdate_count_day,
+                string pdate_count_month,
+                string pdate_count_year,
+                string pdate_count_des,
+                string pitem_code,
+                string ppayment_item_old,
+                string ppayment_item_new,
+                string ppayment_item_diff,
+                string ppayment_item_back,
+                string pcomments_sub,
+                string pc_created_by,
+                ref string strMessage
+            )
+        {
+            bool blnResult = false;
+            var oConn = new SqlConnection();
+            var oCommand = new SqlCommand();
+            var oAdapter = new SqlDataAdapter();
+            try
+            {
+                oConn.ConnectionString = _strConn;
+                oConn.Open();
+                oCommand.Connection = oConn;
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.CommandText = "sp_IMPORT_PAYMENT_BACK_SAVE";
+                oCommand.Parameters.Add("ppayment_doc", SqlDbType.VarChar).Value = ppayment_doc;
+                oCommand.Parameters.Add("ppayment_back_type", SqlDbType.VarChar).Value = ppayment_back_type;
+                oCommand.Parameters.Add("pdate_begin", SqlDbType.DateTime).Value = cCommon.CheckDate(pdate_begin); ;
+                oCommand.Parameters.Add("pdate_end", SqlDbType.DateTime).Value = cCommon.CheckDate(pdate_end); ;
+                oCommand.Parameters.Add("pdate_count_day", SqlDbType.Int).Value = int.Parse(pdate_count_day);
+                oCommand.Parameters.Add("pdate_count_month", SqlDbType.Int).Value = int.Parse(pdate_count_month);
+                oCommand.Parameters.Add("pdate_count_year", SqlDbType.Int).Value = int.Parse(pdate_count_year);
+                oCommand.Parameters.Add("pdate_count_des", SqlDbType.VarChar).Value = pdate_count_des;
+                oCommand.Parameters.Add("pitem_code", SqlDbType.VarChar).Value = pitem_code;
+                oCommand.Parameters.Add("ppayment_item_old", SqlDbType.Money).Value = double.Parse(ppayment_item_old);
+                oCommand.Parameters.Add("ppayment_item_new", SqlDbType.Money).Value = double.Parse(ppayment_item_new);
+                oCommand.Parameters.Add("ppayment_item_diff", SqlDbType.Money).Value = double.Parse(ppayment_item_diff);
+                oCommand.Parameters.Add("ppayment_item_back", SqlDbType.Money).Value = double.Parse(ppayment_item_back);
+                oCommand.Parameters.Add("pcomments_sub", SqlDbType.VarChar).Value = pcomments_sub;
+                oCommand.Parameters.Add("pc_created_by", SqlDbType.VarChar).Value = pc_created_by;
+                oCommand.ExecuteNonQuery();
+                blnResult = true;
+            }
+            catch (Exception ex)
+            {
+                strMessage = ex.Message.ToString();
+            }
+            finally
+            {
+                oConn.Close();
+                oCommand.Dispose();
+                oConn.Dispose();
+            }
+            return blnResult;
+        }
+        #endregion
+
+
         #region IDisposable Members
 
         void IDisposable.Dispose()
