@@ -204,6 +204,11 @@ namespace myEFrom.App_Control.open
         protected void Page_Load(object sender, System.EventArgs e)
         {
             lblError.Text = "";
+            if (!ScriptManager.GetCurrent(this).IsInAsyncPostBack)
+            {
+                ScriptManager.RegisterOnSubmitStatement(this, this.GetType(), "BeforePostback", "BeforePostback()");
+            }
+      
             if (!IsPostBack)
             {
                 imgSaveOnly.Attributes.Add("onMouseOver", "src='../../images/button/save_add2.png'");

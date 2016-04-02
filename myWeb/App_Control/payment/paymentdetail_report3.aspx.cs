@@ -24,7 +24,7 @@ namespace myWeb.App_Control.payment
         {
             if (!IsPostBack)
             {
-                imgList_item.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลรายได้/ค่าใช้จ่าย' ,'../lov/direct_pay_item_lov.aspx?year='+document.forms[0]." + strPrefixCtr +
+                imgList_item.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลรายได้/ค่าใช้จ่าย' ,'../lov/item_lov.aspx?year='+document.forms[0]." + strPrefixCtr +
                                                        "cboYear.options[document.forms[0]." + strPrefixCtr + "cboYear.selectedIndex].value+" +
                                                        "'&item_code='+document.forms[0]." + strPrefixCtr + "txtitem_code.value+" +
                                                        "'&item_name='+document.forms[0]." + strPrefixCtr + "txtitem_name.value+" +
@@ -554,6 +554,7 @@ namespace myWeb.App_Control.payment
             strLot = cboLot.SelectedValue;
             if (!RadioButtonList1.SelectedValue.Equals("20") &&
                 !RadioButtonList1.SelectedValue.Equals("A2") &&
+                !RadioButtonList1.SelectedValue.Equals("A9") &&
                 !RadioButtonList1.SelectedValue.Equals("A3") &&
                 !RadioButtonList1.SelectedValue.Equals("A4") &&
                 !RadioButtonList1.SelectedValue.Equals("A6") &&
@@ -570,13 +571,14 @@ namespace myWeb.App_Control.payment
                     !RadioButtonList1.SelectedValue.Equals("A6") &&
                     !RadioButtonList1.SelectedValue.Equals("A7") &&
                     !RadioButtonList1.SelectedValue.Equals("A2") &&
+                    !RadioButtonList1.SelectedValue.Equals("A9") &&
                     !RadioButtonList1.SelectedValue.Equals("A8"))
                 {
                     strCriteria = strCriteria + "  And  view_payment.payment_year = '" + strYear + "'  ";
                 }
                 else
                 {
-                    if (RadioButtonList1.SelectedValue.Equals("A2"))
+                    if (RadioButtonList1.SelectedValue.Equals("A2") || RadioButtonList1.SelectedValue.Equals("A9"))
                     {
                         strCriteria = strCriteria + "  And  item_acc_year = '" + strYear + "'  ";
                     }
@@ -632,7 +634,8 @@ namespace myWeb.App_Control.payment
             if (!strperson_group_code.Equals(""))
             {
                 if (!RadioButtonList1.SelectedValue.Equals("A4") &&
-                    !RadioButtonList1.SelectedValue.Equals("A2"))
+                    !RadioButtonList1.SelectedValue.Equals("A2") &&
+                    !RadioButtonList1.SelectedValue.Equals("A9"))
                 {
                     if (cboBudget_type.SelectedValue != "R")
                     {
@@ -652,6 +655,7 @@ namespace myWeb.App_Control.payment
             {
                 if (!RadioButtonList1.SelectedValue.Equals("20") &&
                     !RadioButtonList1.SelectedValue.Equals("A2") &&
+                    !RadioButtonList1.SelectedValue.Equals("A9") &&
                     !RadioButtonList1.SelectedValue.Equals("A3") &&
                     !RadioButtonList1.SelectedValue.Equals("A4") &&
                     !RadioButtonList1.SelectedValue.Equals("A6") &&
@@ -671,6 +675,7 @@ namespace myWeb.App_Control.payment
             {
                 if (!RadioButtonList1.SelectedValue.Equals("20") &&
                     !RadioButtonList1.SelectedValue.Equals("A2") &&
+                    !RadioButtonList1.SelectedValue.Equals("A9") &&
                     !RadioButtonList1.SelectedValue.Equals("A3") &&
                     !RadioButtonList1.SelectedValue.Equals("A4") &&
                     !RadioButtonList1.SelectedValue.Equals("A6") &&
@@ -700,7 +705,7 @@ namespace myWeb.App_Control.payment
 
             if (!strLot.Equals(""))
             {
-                if (!RadioButtonList1.SelectedValue.Equals("A2"))
+                if (!RadioButtonList1.SelectedValue.Equals("A2") && !RadioButtonList1.SelectedValue.Equals("A9"))
                 {
                     strCriteria = strCriteria + "  And  view_payment.payment_detail_lot_code= '" + strLot + "' ";
                 }
@@ -730,6 +735,7 @@ namespace myWeb.App_Control.payment
             if (!RadioButtonList1.SelectedValue.Equals("A4") &&
                 !RadioButtonList1.SelectedValue.Equals("20") &&
                 !RadioButtonList1.SelectedValue.Equals("A2") &&
+                !RadioButtonList1.SelectedValue.Equals("A9") &&
                 !RadioButtonList1.SelectedValue.Equals("A3") &&
                 !RadioButtonList1.SelectedValue.Equals("A7") &&
                 !RadioButtonList1.SelectedValue.Equals("A6"))
@@ -744,6 +750,7 @@ namespace myWeb.App_Control.payment
             {
                 if (!RadioButtonList1.SelectedValue.Equals("A2") &&
                     !RadioButtonList1.SelectedValue.Equals("20") &&
+                    !RadioButtonList1.SelectedValue.Equals("A9") &&
                     !RadioButtonList1.SelectedValue.Equals("A3") &&
                     !RadioButtonList1.SelectedValue.Equals("A6") &&
                     !RadioButtonList1.SelectedValue.Equals("A7") &&
@@ -864,6 +871,15 @@ namespace myWeb.App_Control.payment
 
                 strCriteria = strCriteria.Replace("view_payment.", "");
             }
+
+            else if (RadioButtonList1.SelectedValue.Equals("A9"))
+            {
+                strCriteria += "  And  c_created_by = '" + base.UserLoginName + "' ";
+                strReport_code = "Rep_item_acc_income2";
+
+                strCriteria = strCriteria.Replace("view_payment.", "");
+            }
+
             else if (RadioButtonList1.SelectedValue.Equals("A3"))
             {
                 strReport_code = "Rep_payment_return";
@@ -1069,7 +1085,7 @@ namespace myWeb.App_Control.payment
                 cboProduce.Enabled = true;
             }
 
-            else if (RadioButtonList1.SelectedValue == "A2")
+            else if (RadioButtonList1.SelectedValue == "A2" || RadioButtonList1.SelectedValue == "A9")
             {
                 txtitem_code.Text = "";
                 txtitem_name.Text = "";

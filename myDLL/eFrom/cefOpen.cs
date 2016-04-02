@@ -94,12 +94,23 @@ namespace myDLL
                                 "[open_report_code],[open_remark],[c_created_by],[d_created_date]) values ( " +
                                 "'" + popen_to + "'," +
                                 "'" + popen_title + "'," +
-                                "'" + popen_command_desc + "'," +
-                                "'" + popen_desc + "'," +
+                                "@open_command_desc," +
+                                "@open_desc," +
                                 "'" + popen_report_code + "'," +
                                 "'" + popen_remark + "'," +
                                 "'" + pc_created_by + "'," +
                                 "'" + cCommon.GetDateTimeNow() + "')";
+
+                SqlParameter oParamopen_command_desc = new SqlParameter("@open_command_desc", SqlDbType.NVarChar);
+                oParamopen_command_desc.Direction = ParameterDirection.Input;
+                oParamopen_command_desc.Value = popen_command_desc;
+                oCommand.Parameters.Add(oParamopen_command_desc);
+
+                SqlParameter oParamOpen_desc = new SqlParameter("@open_desc", SqlDbType.NVarChar);
+                oParamOpen_desc.Direction = ParameterDirection.Input;
+                oParamOpen_desc.Value = popen_desc;
+                oCommand.Parameters.Add(oParamOpen_desc);
+
                 oConn.ConnectionString = _strConn;
                 oConn.Open();
                 oCommand.Connection = oConn;
@@ -144,13 +155,25 @@ namespace myDLL
                 string strSql = "Update ef_OPEN Set " +
                                 "open_to = '" + popen_to + "'," +
                                 "open_title= '" + popen_title + "'," +
-                                "open_command_desc= '" + popen_command_desc + "'," +
-                                "open_desc= '" + popen_desc + "'," +
+                                "open_command_desc= @open_command_desc," +
+                                "open_desc= @open_desc," +
                                 "open_report_code = '" + popen_report_code + "'," +
                                 "open_remark = '" + popen_remark + "'," +
                                 "c_updated_by = '" + pc_updated_by + "'," +
                                 "d_updated_date = '" + cCommon.GetDateTimeNow() + "' " +
                                 "Where open_code = " + popen_code;
+
+                SqlParameter oParamopen_command_desc = new SqlParameter("@open_command_desc", SqlDbType.NVarChar);
+                oParamopen_command_desc.Direction = ParameterDirection.Input;
+                oParamopen_command_desc.Value = popen_command_desc;
+                oCommand.Parameters.Add(oParamopen_command_desc);
+
+                SqlParameter oParamOpen_desc = new SqlParameter("@open_desc", SqlDbType.NVarChar);
+                oParamOpen_desc.Direction = ParameterDirection.Input;
+                oParamOpen_desc.Value = popen_desc;
+                oCommand.Parameters.Add(oParamOpen_desc);
+
+
                 oConn.ConnectionString = _strConn;
                 oConn.Open();
                 oCommand.Connection = oConn;
@@ -375,6 +398,7 @@ namespace myDLL
            double popen_amount,
            string ploan_doc,
            string pdoctype_code,
+           string popen_old_year,
            string pc_created_by)
         {
             bool blnResult = false;
@@ -383,7 +407,7 @@ namespace myDLL
             SqlDataAdapter oAdapter = new SqlDataAdapter();
             try
             {
-                var dtMaxCode = SP_OPEN_HEAD_SEL(" and open_head_id = (select max(open_head_id) from [ef_open_head])");
+                var dtMaxCode = SP_OPEN_HEAD_SEL(" and open_head_id = (select max(open_head_id) from [ef_open_head] Where open_year = '" + popen_year + "')");
                 int maxCode = (dtMaxCode.Rows.Count > 0) ? Helper.CInt(dtMaxCode.Rows[0]["open_head_id"]) : 0;
                 maxCode++;
                 popen_doc = maxCode.ToString().PadLeft(10, '0');
@@ -392,7 +416,7 @@ namespace myDLL
                 string strSql = "Insert into ef_open_head ([open_doc],[open_year],[open_date],[open_path],[open_no],[open_code],[open_to]," +
                                 "[open_title],[open_command_desc],[open_desc],[budget_type],[budget_type_text],[budget_plan_code],[director_code],[unit_code],[budget_code]," +
                                 "[produce_code],[activity_code],[plan_code],[work_code],[fund_code],[lot_code],[person_open],[open_tel],[open_remark]," +
-                                "[open_amount],[loan_doc],[approve_head_status],[ef_doctype_code],[c_created_by],[d_created_date]) values ( " +
+                                "[open_amount],[loan_doc],[approve_head_status],[ef_doctype_code],[open_old_year],[c_created_by],[d_created_date]) values ( " +
                                 "'" + popen_doc + "'," +
                                 "'" + popen_year + "'," +
                                 "'" + cCommon.SaveDate(popen_date) + "'," +
@@ -401,8 +425,8 @@ namespace myDLL
                                 "" + popen_code + "," +
                                 "'" + popen_to + "'," +
                                 "'" + popen_title + "'," +
-                                "'" + popen_command_desc + "'," +
-                                "'" + popen_desc + "'," +
+                                "@open_command_desc," +
+                                "@open_desc," +
                                 "'" + pbudget_type + "'," +
                                 "'" + pbudget_type_text + "'," +
                                 "'" + pbudget_plan_code + "'," +
@@ -422,8 +446,21 @@ namespace myDLL
                                 "'" + ploan_doc + "'," +
                                 "'W'," +
                                 "" + pdoctype_code + "," +
+                                "'" + popen_old_year + "'," +
                                 "'" + pc_created_by + "'," +
                                 "'" + cCommon.GetDateTimeNow() + "')";
+
+
+                SqlParameter oParamopen_command_desc = new SqlParameter("@open_command_desc", SqlDbType.NVarChar);
+                oParamopen_command_desc.Direction = ParameterDirection.Input;
+                oParamopen_command_desc.Value = popen_command_desc.TrimEnd();
+                oCommand.Parameters.Add(oParamopen_command_desc);
+
+                SqlParameter oParamOpen_desc = new SqlParameter("@open_desc", SqlDbType.NVarChar);
+                oParamOpen_desc.Direction = ParameterDirection.Input;
+                oParamOpen_desc.Value = popen_desc.TrimEnd();
+                oCommand.Parameters.Add(oParamOpen_desc);
+
                 oConn.ConnectionString = _strConn;
                 oConn.Open();
                 oCommand.Connection = oConn;
@@ -478,6 +515,7 @@ namespace myDLL
            double popen_amount,
            string ploan_doc,
            string pdoctype_code,
+           string popen_old_year,
            string pc_updated_by)
         {
             bool blnResult = false;
@@ -494,8 +532,8 @@ namespace myDLL
                                 "open_code = " + popen_code + "," +
                                 "open_to = '" + popen_to + "'," +
                                 "open_title = '" + popen_title + "'," +
-                                "open_command_desc = '" + popen_command_desc + "'," +
-                                "open_desc = '" + popen_desc + "'," +
+                                "open_command_desc = @open_command_desc," +
+                                "open_desc = @open_desc," +
                                 "budget_type = '" + pbudget_type + "'," +
                                 "budget_type_text = '" + pbudget_type_text + "'," +
                                 "budget_plan_code = '" + pbudget_plan_code + "'," +
@@ -514,9 +552,21 @@ namespace myDLL
                                 "open_amount = " + popen_amount + "," +
                                 "loan_doc = '" + ploan_doc + "'," +
                                 "ef_doctype_code = " + pdoctype_code + "," +
+                                "open_old_year = '" + popen_old_year + "'," +                                
                                 "c_updated_by = '" + pc_updated_by + "'," +
                                 "d_updated_date = '" + cCommon.GetDateTimeNow() + "' " +
                                 "Where open_head_id = " + popen_head_id;
+
+                SqlParameter oParamopen_command_desc = new SqlParameter("@open_command_desc", SqlDbType.NVarChar);
+                oParamopen_command_desc.Direction = ParameterDirection.Input;
+                oParamopen_command_desc.Value = popen_command_desc.TrimEnd();
+                oCommand.Parameters.Add(oParamopen_command_desc);
+
+                SqlParameter oParamOpen_desc = new SqlParameter("@open_desc", SqlDbType.NVarChar);
+                oParamOpen_desc.Direction = ParameterDirection.Input;
+                oParamOpen_desc.Value = popen_desc.TrimEnd();
+                oCommand.Parameters.Add(oParamOpen_desc);
+                
                 oConn.ConnectionString = _strConn;
                 oConn.Open();
                 oCommand.Connection = oConn;

@@ -36,7 +36,7 @@ namespace myWeb
                         DataSet ds = new DataSet();
                         string strError = string.Empty;
                         string strScript = " And person_code='" + Session["PersonCode"].ToString() + "'";
-                        strScript += " and substring(item_code,5,6) in ('09-042','09-043','09-068') ";
+                        strScript += " and substring(item_code,5,6) in ('09-042','09-043','09-068','09-106','09-107') ";
                         oPerson.SP_PERSON_ITEM_SEL(strScript, ref ds, ref strError);
                         ASPxMenu1.Items[4].Visible = false;
                         if (ds.Tables[0].Rows.Count > 0)

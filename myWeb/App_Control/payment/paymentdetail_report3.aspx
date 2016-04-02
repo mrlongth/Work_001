@@ -27,6 +27,7 @@
                     <asp:ListItem Value="A4">รายงานข้อมูลบุคคลากร</asp:ListItem>
                     <asp:ListItem Value="A5">รายละเอียดการได้รับเงินประจำตำแหน่ง/เงินตอบแทน</asp:ListItem>
                     <asp:ListItem Value="A8">รายงานสรุปรายการเงินได้และภาษีประจำเดือน</asp:ListItem>
+                    <asp:ListItem Value="A9">รายงานรายละเอียดการจ่ายประจำเดือน</asp:ListItem>
                 </asp:RadioButtonList>
             </td>
             <td style="text-align: right; width: 70%; vertical-align: top;">

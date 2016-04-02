@@ -1,5 +1,5 @@
 <%@ Page Language="C#" MasterPageFile="~/Site_popup.Master" EnableEventValidation="false"
-    AutoEventWireup="true" CodeBehind="open_item_control.aspx.cs" Inherits="myEFrom.App_Control.open.open_item_control" %>
+    ValidateRequest="false" AutoEventWireup="true" CodeBehind="open_item_control.aspx.cs" Inherits="myEFrom.App_Control.open.open_item_control" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxtoolkit" %>
 <%@ Register Assembly="Aware.WebControls" Namespace="Aware.WebControls" TagPrefix="cc1" %>
@@ -26,7 +26,7 @@
         </tr>
     </table>
     <div style="text-align: center; padding-left: 10px">
-        <ajaxtoolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" Height="370px"
+        <ajaxtoolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" Height="380px"
             BorderWidth="0px" Style="text-align: left" Width="98%">
             <ajaxtoolkit:TabPanel ID="TabPanel1" runat="server">
                 <HeaderTemplate>
@@ -60,7 +60,7 @@
                             </td>
                             <td align="left" colspan="3" nowrap valign="middle">
                                 <asp:TextBox ID="txtopen_to" runat="server" CssClass="textbox" TextMode="MultiLine"
-                                    Width="700px" Rows="2"></asp:TextBox>
+                                    Width="700px" Rows="1"></asp:TextBox>
                             </td>
                             <td align="left" nowrap style="vertical-align: bottom; width: 1%;" valign="middle">
                                 &nbsp;
@@ -72,7 +72,7 @@
                             </td>
                             <td align="left" nowrap valign="middle" colspan="3">
                                 <asp:TextBox ID="txtopen_title" runat="server" CssClass="textbox" MaxLength="255"
-                                    Width="700px" TextMode="MultiLine" Rows="2"></asp:TextBox>
+                                    Width="700px" TextMode="MultiLine" Rows="1"></asp:TextBox>
                             </td>
                             <td align="left" nowrap valign="middle" style="vertical-align: bottom; width: 1%;"
                                 rowspan="6">
@@ -84,8 +84,8 @@
                                 <asp:Label ID="Label86" runat="server" CssClass="label_hbk">รายละเอียด :</asp:Label>
                             </td>
                             <td align="left" colspan="3" nowrap valign="middle">
-                                <asp:TextBox ID="txtopen_desc" runat="server" CssClass="textbox" MaxLength="255"
-                                    Rows="7" TextMode="MultiLine" Width="700px"></asp:TextBox>
+                                <asp:TextBox ID="txtopen_desc" runat="server" CssClass="textbox" MaxLength="4000"
+                                    Rows="6" TextMode="MultiLine" Width="700px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr align="left">
@@ -93,8 +93,8 @@
                                 <asp:Label ID="Label93" runat="server" CssClass="label_hbk">รายละเอียดการขออนุมัติ :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle" colspan="3">
-                                <asp:TextBox ID="txtopen_command_desc" runat="server" CssClass="textbox" MaxLength="255"
-                                    Rows="7" TextMode="MultiLine" Width="700px"></asp:TextBox>
+                                <asp:TextBox ID="txtopen_command_desc" runat="server" CssClass="textbox" MaxLength="4000"
+                                    Rows="6" TextMode="MultiLine" Width="700px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr align="left">
@@ -350,6 +350,27 @@
     </div>
 
     <script type="text/javascript">
+    
+        $(function() {
+            LoadTinyMCE();
+        });
+
+
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler_Page);
+        function BeforePostback() {tinyMCE.triggerSave(); }
+      
+        function EndRequestHandler_Page(sender, args) { 
+            LoadTinyMCE();
+        }
+        
+        function LoadTinyMCE() {
+        
+            tinyMCE.remove('#<%=txtopen_command_desc.ClientID%>');
+            tinyMCE.remove('#<%=txtopen_desc.ClientID%>');
+            tinyMCE.init({selector: "#<%=txtopen_command_desc.ClientID%>" , height : 140,statusbar: false,toolbar: false ,  menubar: false , plugins: ['preview','code','paste'], paste_auto_cleanup_on_paste : true });
+            tinyMCE.init({selector: "#<%=txtopen_desc.ClientID%>" ,height : 140,statusbar: false, toolbar: false ,  menubar: false , plugins: ['preview','code','paste'], paste_auto_cleanup_on_paste : true });
+        }
+    
         function RegisterScript() {
             $("input[id*=imgClear_material]").click(function() {
                 $('#' + this.id.replace('imgClear_material', 'hddmaterial_id')).val('0');

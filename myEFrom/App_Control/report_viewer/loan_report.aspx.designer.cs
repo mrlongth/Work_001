@@ -131,13 +131,13 @@ namespace myEFrom.App_Control.report_viewer {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// txtloan_reason control.
+        /// cboLoan_path control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtloan_reason;
+        protected global::System.Web.UI.WebControls.DropDownList cboLoan_path;
         
         /// <summary>
         /// lblPage7 control.
@@ -176,40 +176,139 @@ namespace myEFrom.App_Control.report_viewer {
         protected global::System.Web.UI.WebControls.DropDownList cboUnit;
         
         /// <summary>
-        /// lblPage19 control.
+        /// lblfrom_loan_date control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPage19;
+        protected global::System.Web.UI.WebControls.Label lblfrom_loan_date;
         
         /// <summary>
-        /// txtfrom_date control.
+        /// txtfrom_loan_date control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtfrom_date;
+        protected global::System.Web.UI.WebControls.TextBox txtfrom_loan_date;
         
         /// <summary>
-        /// lblPage20 control.
+        /// lblto_loan_date control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPage20;
+        protected global::System.Web.UI.WebControls.Label lblto_loan_date;
         
         /// <summary>
-        /// txtto_date control.
+        /// txtto_loan_date control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtto_date;
+        protected global::System.Web.UI.WebControls.TextBox txtto_loan_date;
+        
+        /// <summary>
+        /// lblfrom_loan_date_due control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblfrom_loan_date_due;
+        
+        /// <summary>
+        /// txtfrom_loan_date_due control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtfrom_loan_date_due;
+        
+        /// <summary>
+        /// lblto_loan_date_due control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblto_loan_date_due;
+        
+        /// <summary>
+        /// txtto_loan_date_due control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtto_loan_date_due;
+        
+        /// <summary>
+        /// lblprint_date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblprint_date;
+        
+        /// <summary>
+        /// txtprint_date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtprint_date;
+        
+        /// <summary>
+        /// LinkButton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        
+        /// <summary>
+        /// lnkPdfFile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkPdfFile;
+        
+        /// <summary>
+        /// imgPdf control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage imgPdf;
+        
+        /// <summary>
+        /// lnkExcelFile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkExcelFile;
+        
+        /// <summary>
+        /// img1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage img1;
         
         /// <summary>
         /// lblError control.

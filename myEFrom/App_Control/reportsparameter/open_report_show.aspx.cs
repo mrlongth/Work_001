@@ -122,11 +122,31 @@ namespace myEFrom.App_Control.reportsparameter
                 Helper.DeleteUnusedFile(strReportDirectoryTempPhysicalPath, ReportAliveTime);
 
                 string strFilename;
-                strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
-                var path =  "~/temp/" + strFilename + ".pdf" ;
-                oRpt.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath(path));
+                strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss-fff");
+                var pathPdf = "~/temp/" + strFilename + ".pdf";
+                oRpt.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath(pathPdf));
+                var pathExcel = "~/temp/" + strFilename + ".xls";
+                oRpt.ExportToDisk(ExportFormatType.ExcelRecord, Server.MapPath(pathExcel));
+
+
+
+                Session["ExportPdfUrl"] = pathPdf;
+                Session["ExportExcelUrl"] = pathExcel;
+
+
+                if (Helper.CStr(Session["ExportExcel"]) == "true")
+                {
+                    Session["ExportExcel"] = null;
+                    //var strMyScript = "window.opener.__doPostBack('ctl00$ASPxRoundPanel1$ASPxRoundPanel2$ContentPlaceHolder1$LinkButton1','');window.close();return false;";
+                    var strMyScript = "window.opener.__doPostBack('ctl00$ASPxRoundPanel1$ASPxRoundPanel2$ContentPlaceHolder1$LinkButton1','');window.close();";
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", strMyScript, true);
+                }
+                else
+                {
+                    Response.Redirect(pathPdf);
+                }
+
                 //Server.Transfer(path);
-                Response.Redirect(path);
 
                 //lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
 
@@ -180,21 +200,29 @@ namespace myEFrom.App_Control.reportsparameter
 
                 string strReportDirectoryTempPhysicalPath = Server.MapPath(this.ReportDirectoryTemp);
                 Helper.DeleteUnusedFile(strReportDirectoryTempPhysicalPath, ReportAliveTime);
-
                 string strFilename;
                 strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
-                oRpt.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("~/temp/") + strFilename + ".pdf");
-                lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
-                imgPdf.Src = "~/images/icon_pdf.gif";
-                lnkExcelFile.Visible = false;
-                if (ViewState["report_code"].ToString() == "Rep_exceldebitall")
+                var pathPdf = "~/temp/" + strFilename + ".pdf";
+                oRpt.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath(pathPdf));
+                var pathExcel = "~/temp/" + strFilename + ".xls";
+                oRpt.ExportToDisk(ExportFormatType.ExcelRecord, Server.MapPath(pathExcel));
+
+
+
+                Session["ExportPdfUrl"] = pathPdf;
+                Session["ExportExcelUrl"] = pathExcel;
+
+
+                if (Helper.CStr(Session["ExportExcel"]) == "true")
                 {
-                    oRpt.ExportToDisk(ExportFormatType.ExcelRecord, Server.MapPath("~/temp/") + strFilename + ".xls");
-                    lnkExcelFile.NavigateUrl = "~/temp/" + strFilename + ".xls";
-                    imgExcel.Src = "~/images/icon_excel.gif";
-                    lnkExcelFile.Visible = true;
+                    var strMyScript = "window.parent.__doPostBack('ctl00$ASPxRoundPanel1$ASPxRoundPanel2$ContentPlaceHolder1$LinkButton1','');window.close();return false;";
+                    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "close", strMyScript, true);
+                    Session["ExportExcel"] = null;
                 }
-                CrystalReportViewer1.ReportSource = oRpt;
+                else
+                {
+                    Response.Redirect(pathPdf);
+                }
             }
         }
 
@@ -212,6 +240,14 @@ namespace myEFrom.App_Control.reportsparameter
             else if (ViewState["report_code"].ToString() == "Rep_loan_record")
             {
                 Retive_Rep_loan_record();
+            }
+            else if (ViewState["report_code"].ToString() == "Rep_loan_remain")
+            {
+                Retive_Rep_loan_remain();
+            }
+            else if (ViewState["report_code"].ToString() == "Rep_loan_collection" || ViewState["report_code"].ToString() == "Rep_loan_collection_cover")
+            {
+                Retive_Rep_loan_collection();
             }
             else
             {
@@ -337,7 +373,9 @@ namespace myEFrom.App_Control.reportsparameter
                 ViewState["open_to_desc"] = string.Empty;
                 ViewState["companyname"] = "";
                 ViewState["criteria"] = " and loan_id = " + ViewState["loan_id"];
-                ViewState["criteria2"] = " and loan_id <> " + ViewState["loan_id"] + " and person_code = '" + ViewState["person_code"] + "' and loan_approve > loan_return and loan_status = 'A' ";
+                //ViewState["criteria2"] = " and loan_id <> " + ViewState["loan_id"] + " and person_code = '" + ViewState["person_code"] + "' and loan_approve > loan_return and loan_status = 'A' ";
+                ViewState["criteria2"] = " and loan_id <> " + ViewState["loan_id"] + " and person_code = '" + ViewState["person_code"] + "' and loan_approve > loan_return and loan_status IN ('A','S') and loan_date_due is not null and nullif(loan_doc_no,'') is not null ";
+
             }
             else if (ViewState["report_code"].ToString() == "Rep_loan02")
             {
@@ -346,9 +384,19 @@ namespace myEFrom.App_Control.reportsparameter
                 ViewState["open_to_desc"] = string.Empty;
                 ViewState["companyname"] = "";
                 ViewState["criteria"] = " and loan_id = " + ViewState["loan_id"];
-                ViewState["criteria2"] = " and loan_id <> " + ViewState["loan_id"] + " and person_code = '" + ViewState["person_code"] + "' and loan_approve > loan_return and loan_status = 'A' ";
+                //ViewState["criteria2"] = " and loan_id <> " + ViewState["loan_id"] + " and person_code = '" + ViewState["person_code"] + "' and loan_approve > loan_return and loan_status = 'A' ";
+                ViewState["criteria2"] = " and loan_id <> " + ViewState["loan_id"] + " and person_code = '" + ViewState["person_code"] + "' and loan_approve > loan_return and loan_status IN ('A','S') and loan_date_due is not null and nullif(loan_doc_no,'') is not null ";
             }
-           
+
+            else if (ViewState["report_code"].ToString() == "Rep_loan_collection")
+            {
+                ViewState["report_title"] = "หนังสือทวงหนี้";
+
+                ViewState["open_to_desc"] = string.Empty;
+                ViewState["companyname"] = "";
+                ViewState["criteria2"] = "";
+            }
+
 
         }
 
@@ -436,6 +484,73 @@ namespace myEFrom.App_Control.reportsparameter
                 oRpt.SetParameterValue("@vc_criteria", Session["criteria"].ToString());
                 oRpt.SetParameterValue("UserName", strUsername);
                 oRpt.SetParameterValue("CompanyName", strCompanyname);
+                oRpt.SetParameterValue("Condition", Session["Condition"].ToString());
+                CrystalReportViewer1.LogOnInfo = tableLogOnInfos;
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.ToString();
+            }
+        }
+
+        private void Retive_Rep_loan_remain()
+        {
+            try
+            {
+                string strPath = "~/reports/" + ViewState["report_code"].ToString() + ".rpt";
+                oRpt.Load(Server.MapPath(strPath));
+                TableLogOnInfo logOnInfo = new TableLogOnInfo();
+                TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
+                string strUsername = Session["username"].ToString();
+                string strCompanyname = ((DataSet)Application["xmlconfig"]).Tables["default"].Rows[0]["companyname"].ToString();
+                string strServername = System.Configuration.ConfigurationSettings.AppSettings["servername"];
+                string strDbname = System.Configuration.ConfigurationSettings.AppSettings["dbname"];
+                string strDbuser = System.Configuration.ConfigurationSettings.AppSettings["dbuser"];
+                string strDbpassword = System.Configuration.ConfigurationSettings.AppSettings["dbpassword"];
+                logOnInfo.ConnectionInfo.ServerName = strServername;
+                logOnInfo.ConnectionInfo.DatabaseName = strDbname;
+                logOnInfo.ConnectionInfo.UserID = strDbuser;
+                logOnInfo.ConnectionInfo.Password = strDbpassword;
+                tableLogOnInfos.Add(logOnInfo);
+                oRpt.SetParameterValue("@vc_criteria", Session["criteria"].ToString());
+                oRpt.SetParameterValue("@vc_criteria2", "");
+                oRpt.SetParameterValue("UserName", strUsername);
+                oRpt.SetParameterValue("CompanyName", strCompanyname);
+                oRpt.SetParameterValue("Condition", Session["Condition"].ToString());
+                oRpt.SetParameterValue("Report_title", Session["report_title"].ToString());
+                CrystalReportViewer1.LogOnInfo = tableLogOnInfos;
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.ToString();
+            }
+        }
+
+        private void Retive_Rep_loan_collection()
+        {
+            try
+            {
+                string strPath = "~/reports/" + ViewState["report_code"].ToString() + ".rpt";
+                oRpt.Load(Server.MapPath(strPath));
+                TableLogOnInfo logOnInfo = new TableLogOnInfo();
+                TableLogOnInfos tableLogOnInfos = new TableLogOnInfos();
+                string strUsername = Session["username"].ToString();
+                string strCompanyname = ((DataSet)Application["xmlconfig"]).Tables["default"].Rows[0]["companyname"].ToString();
+                string strServername = System.Configuration.ConfigurationSettings.AppSettings["servername"];
+                string strDbname = System.Configuration.ConfigurationSettings.AppSettings["dbname"];
+                string strDbuser = System.Configuration.ConfigurationSettings.AppSettings["dbuser"];
+                string strDbpassword = System.Configuration.ConfigurationSettings.AppSettings["dbpassword"];
+                logOnInfo.ConnectionInfo.ServerName = strServername;
+                logOnInfo.ConnectionInfo.DatabaseName = strDbname;
+                logOnInfo.ConnectionInfo.UserID = strDbuser;
+                logOnInfo.ConnectionInfo.Password = strDbpassword;
+                tableLogOnInfos.Add(logOnInfo);
+                oRpt.SetParameterValue("@vc_criteria", Session["criteria"].ToString());
+                oRpt.SetParameterValue("@vc_criteria2", "");
+                oRpt.SetParameterValue("date_print", Session["date_print"].ToString());
+                //oRpt.SetParameterValue("UserName", strUsername);
+                //oRpt.SetParameterValue("CompanyName", strCompanyname);
+                //oRpt.SetParameterValue("Condition", Session["Condition"].ToString());
                 CrystalReportViewer1.LogOnInfo = tableLogOnInfos;
             }
             catch (Exception ex)
@@ -490,17 +605,17 @@ namespace myEFrom.App_Control.reportsparameter
             string strFilename;
             strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
             oRpt.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("~/temp/") + strFilename + ".pdf");
-            lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
-            imgPdf.Src = "~/images/icon_pdf.gif";
-            lnkExcelFile.Visible = false;
-            if (ViewState["report_code"].ToString() == "Rep_exceldebitall")
-            {
-                oRpt.ExportToDisk(ExportFormatType.ExcelRecord, Server.MapPath("~/temp/") + strFilename + ".xls");
-                lnkExcelFile.NavigateUrl = "~/temp/" + strFilename + ".xls";
-                imgExcel.Src = "~/images/icon_excel.gif";
-                lnkExcelFile.Visible = true;
-            }
-            CrystalReportViewer1.ReportSource = oRpt;
+            //lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
+            //imgPdf.Src = "~/images/icon_pdf.gif";
+            //lnkExcelFile.Visible = false;
+            //if (ViewState["report_code"].ToString() == "Rep_exceldebitall")
+            //{
+            //    oRpt.ExportToDisk(ExportFormatType.ExcelRecord, Server.MapPath("~/temp/") + strFilename + ".xls");
+            //    lnkExcelFile.NavigateUrl = "~/temp/" + strFilename + ".xls";
+            //    imgExcel.Src = "~/images/icon_excel.gif";
+            //    lnkExcelFile.Visible = true;
+            //}
+            //CrystalReportViewer1.ReportSource = oRpt;
         }
 
     }

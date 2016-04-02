@@ -113,6 +113,24 @@ namespace myEFrom.App_Control.loan {
         protected global::System.Web.UI.WebControls.HiddenField hddloan_id;
         
         /// <summary>
+        /// LinkButton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        
+        /// <summary>
+        /// hddOpenIdRef control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hddOpenIdRef;
+        
+        /// <summary>
         /// Label82 control.
         /// </summary>
         /// <remarks>
@@ -219,6 +237,24 @@ namespace myEFrom.App_Control.loan {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hddBudget_type;
+        
+        /// <summary>
+        /// Label115 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label115;
+        
+        /// <summary>
+        /// txtloan_old_year control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtloan_old_year;
         
         /// <summary>
         /// Label114 control.

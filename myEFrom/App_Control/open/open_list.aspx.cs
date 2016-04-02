@@ -79,7 +79,7 @@ namespace myEFrom.App_Control.open
 
                 imgClear_person.Attributes.Add("onclick", "document.getElementById('" + txtperson_code.ClientID + "').value='';document.getElementById('" + txtperson_name.ClientID + "').value=''; return false;");
 
-                txtfrom_date.Text = cCommon.CheckDate(DateTime.Now.AddMonths(-6).ToShortDateString());
+                txtfrom_date.Text = cCommon.CheckDate(DateTime.Now.AddMonths(-12).ToShortDateString());
                 txtto_date.Text = cCommon.CheckDate(DateTime.Now.ToShortDateString());
 
                 imgNew.Attributes.Add("onclick", "OpenPopUp('950px','550px','95%','เพิ่ม" + base.PageDes + "','open_control.aspx?budget_type='+document.forms[0]." + cboBudget_type.UniqueID + ".options[document.forms[0]." + cboBudget_type.UniqueID + ".selectedIndex].value+" + "'&mode=add&page=0','1');return false;");

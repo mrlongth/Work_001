@@ -870,6 +870,45 @@ namespace myDLL
         }
         #endregion
 
+        #region SP_PAYMENT_MEMBER_PVD_TEMP_SEL
+        public bool SP_PAYMENT_MEMBER_PVD_TEMP_SEL(string strCriteria, ref DataSet ds, ref string strMessage)
+        {
+            bool blnResult = false;
+            SqlConnection oConn = new SqlConnection();
+            SqlCommand oCommand = new SqlCommand();
+            SqlDataAdapter oAdapter = new SqlDataAdapter();
+            try
+            {
+                oConn.ConnectionString = _strConn;
+                oConn.Open();
+                oCommand.Connection = oConn;
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.CommandText = "sp_PAYMENT_MEMBER_PVD_TEMP_SEL";
+                SqlParameter oParamI_vc_criteria = new SqlParameter("vc_criteria", SqlDbType.NVarChar);
+                oParamI_vc_criteria.Direction = ParameterDirection.Input;
+                oParamI_vc_criteria.Value = strCriteria;
+                oCommand.Parameters.Add(oParamI_vc_criteria);
+                oAdapter = new SqlDataAdapter(oCommand);
+                ds = new DataSet();
+                oAdapter.Fill(ds, "sp_PAYMENT_MEMBER_PVD_TEMP_SEL");
+                blnResult = true;
+            }
+            catch (Exception ex)
+            {
+                strMessage = ex.Message.ToString();
+            }
+            finally
+            {
+                oConn.Close();
+                oCommand.Dispose();
+                oConn.Dispose();
+            }
+            return blnResult;
+        }
+        #endregion
+
+        
+        
         #region SP_PAYMENT_ITEM_TEMP_SEL
         public bool SP_PAYMENT_ITEM_TEMP_SEL(string strCriteria, ref DataSet ds, ref string strMessage)
         {

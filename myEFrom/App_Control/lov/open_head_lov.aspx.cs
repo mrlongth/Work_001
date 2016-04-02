@@ -61,6 +61,16 @@ namespace myEFrom.App_Control.lov
                 }
                 else
                 {
+                    //var oEfOpen = new cefOpen();
+                    //var dt = oEfOpen.SP_OPEN_LOAN_SEL(" and person_code ='" + txtperson_code.Text + "'");
+                    //var listOpenHeadDoc = "";
+                    //foreach (DataRow row in dt.Rows) 
+                    //{
+                    //    listOpenHeadDoc += "'" + Helper.CStr(row["open_doc"]) + "',";
+                    //}
+                    //if (listOpenHeadDoc.Length > 0)
+                    //    listOpenHeadDoc = listOpenHeadDoc.Substring(0, listOpenHeadDoc.Length - 1);
+                    //ViewState["open_doc_list"] = listOpenHeadDoc;
                     ViewState["open_doc_list"] = string.Empty;
                 }
 
@@ -109,8 +119,17 @@ namespace myEFrom.App_Control.lov
                     ViewState["ctrl5"] = string.Empty;
                 }
 
+                if (Request.QueryString["ctrlOpenIdRef"] != null)
+                {
+                    ViewState["ctrlOpenIdRef"] = Request.QueryString["ctrlOpenIdRef"].ToString();
+                }
+                else
+                {
+                    ViewState["ctrlOpenIdRef"] = string.Empty;
+                }
 
 
+                
 
                 if (Request.QueryString["lbkGetOpen"] != null)
                 {
@@ -192,7 +211,7 @@ namespace myEFrom.App_Control.lov
                 strCriteria = strCriteria + "  And  open_doc not in (" + ViewState["open_doc_list"] + ") ";
             }
 
-            strCriteria = strCriteria + " And [approve_head_status] <>  'C' ";
+            strCriteria = strCriteria + " And [approve_head_status] not in  ('C','N','W') ";
 
             try
             {
@@ -345,11 +364,14 @@ namespace myEFrom.App_Control.lov
                                     "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) +
                                     "'].document.getElementById('" + ViewState["ctrl5"].ToString().Replace("txt", "hdd") +
                                     "').value='" + stropen_amount +
-                                    "';window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) +
-                                    "'].calTotalOpen();";
+                                    "';window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].calTotalOpen();";
 
-
-
+                        if (!string.IsNullOrEmpty(ViewState["ctrlOpenIdRef"].ToString())) 
+                        {
+                            strScript += "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) +
+                                    "'].document.getElementById('" + ViewState["ctrlOpenIdRef"] + "').value='" + stropen_head_id + "';\n ";
+                            strScript += "window.parent.frames['iframeShow" + (int.Parse(ViewState["show"].ToString()) - 1) + "'].__doPostBack('ctl00$ContentPlaceHolder1$TabContainer1$TabPanel1$LinkButton1','');";               
+                        }
                         strScript += "ClosePopUp('" + ViewState["show"] + "');";
 
                         lblopen_doc.Attributes.Add("onclick", strScript);

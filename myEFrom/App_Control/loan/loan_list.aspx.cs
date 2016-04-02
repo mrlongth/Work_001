@@ -77,7 +77,7 @@ namespace myEFrom.App_Control.loan
                 imgNew.Visible = base.IsUserNew;
                 ViewState["sort"] = "loan_doc";
                 ViewState["direction"] = "ASC";
-                txtfrom_date.Text = cCommon.CheckDate(DateTime.Now.AddMonths(-6).ToShortDateString());
+                txtfrom_date.Text = cCommon.CheckDate(DateTime.Now.AddMonths(-12).ToShortDateString());
                 txtto_date.Text = cCommon.CheckDate(DateTime.Now.ToShortDateString());
                 InitcboYear();
                 InitcboBudgetType();
@@ -519,7 +519,7 @@ namespace myEFrom.App_Control.loan
                 imgPrint.Visible = true;
                 if (base.UserGroupCode != "Admin" && base.UserGroupCode != "Loan")
                 {
-                    imgPrint.Visible = imgPrint.Visible && (Helper.CStr(dv["person_code"]) == base.PersonCode && Helper.CStr(dv["person_code"]) == base.ApproveFor);
+                    imgPrint.Visible = imgPrint.Visible && (Helper.CStr(dv["person_code"]) == base.PersonCode || Helper.CStr(dv["person_code"]) == base.ApproveFor);
                 }
                 #endregion
 
@@ -555,6 +555,11 @@ namespace myEFrom.App_Control.loan
                 {
                     imgEdit.Visible = false;
                 }
+
+                //if (Helper.CStr(dv["loan_status"]) == "A")
+                //{
+                //    imgEdit.Visible = false;
+                //}
 
                 Repeater RepeaterOpen = (Repeater)e.Row.FindControl("RepeaterOpen");
                 dt = objEfOpen.SP_OPEN_LOAN_SEL(" and loan_id=" + Helper.CInt(dv["loan_id"]));

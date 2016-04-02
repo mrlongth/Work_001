@@ -335,7 +335,7 @@ namespace myWeb.App_Control.payment_back
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
             strCriteria = " and  produce.c_active='Y' ";
-            strCriteria = strCriteria + "  And produce.budget_type ='" + this.BudgetType + "' ";
+            strCriteria = strCriteria + "  And produce.budget_type ='" + this.BudgetType + "' and  produce.produce_year = '" + strYear + "' ";
 
             if (oProduce.SP_SEL_PRODUCE(strCriteria, ref ds, ref strMessage))
             {

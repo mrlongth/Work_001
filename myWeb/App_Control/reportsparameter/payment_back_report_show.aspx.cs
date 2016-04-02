@@ -242,11 +242,19 @@ namespace myWeb.App_Control.reportsparameter
             {
                 Retive_Rep_paymentGBK();
             }
+            else if (ViewState["report_code"].ToString().Equals("Rep_paymentPVD"))
+            {
+                Retive_Rep_paymentGBK();
+            }
             else if (ViewState["report_code"].ToString().Equals("Rep_paymentGBK_sum"))
             {
                 Retive_Rep_paymentGBK_sum();
             }
             else if (ViewState["report_code"].ToString().Equals("Rep_paymentGSJ_sum"))
+            {
+                Retive_Rep_paymentGBK_sum();
+            }
+            else if (ViewState["report_code"].ToString().Equals("Rep_paymentPVD_sum"))
             {
                 Retive_Rep_paymentGBK_sum();
             }
@@ -969,7 +977,15 @@ namespace myWeb.App_Control.reportsparameter
                 logOnInfo.ConnectionInfo.UserID = strDbuser;
                 logOnInfo.ConnectionInfo.Password = strDbpassword;
                 tableLogOnInfos.Add(logOnInfo);
-                rptSource.SetParameterValue("@vc_criteria", Session["criteria"].ToString());
+
+                var strCriteria = Session["criteria"].ToString();
+                strCriteria = strCriteria.Replace("view_payment_back.payment_year", "view_payment.payment_year");
+                strCriteria = strCriteria.Replace("view_payment_back.pay_month", "view_payment.pay_month");
+                strCriteria = strCriteria.Replace("view_payment_back.pay_year", "view_payment.pay_year");
+                strCriteria = strCriteria.Replace("view_payment_back.payment_detail_person_group_code", "view_payment.payment_detail_person_group_code");
+
+                rptSource.SetParameterValue("@vc_criteria", strCriteria);
+
                 rptSource.SetParameterValue("@vc_yearmonth", ViewState["year"].ToString() + '/' + ViewState["months"].ToString());
                 rptSource.SetParameterValue("UserName", strUsername);
                 rptSource.SetParameterValue("CompanyName", strCompanyname);

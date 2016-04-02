@@ -289,7 +289,7 @@ namespace myEFrom.App_Control.lov
 
                 ViewState["sort"] = "budget_plan_code";
                 ViewState["direction"] = "ASC";
-                txtyear.Text = ((DataSet)Application["xmlconfig"]).Tables["default"].Rows[0]["yearnow"].ToString();
+                //txtyear.Text = ((DataSet)Application["xmlconfig"]).Tables["default"].Rows[0]["yearnow"].ToString();
                 BindGridView();
 
                 //if (this.BudgetType == "R")

@@ -9,20 +9,20 @@
 <head runat="server">
     <%--    <link href="~/StyleSheet.css" rel="stylesheet" type="text/css" />--%>
 
-    <script src="~/scripts/form.js" type="text/javascript"></script>
+  <%--  <script src="~/scripts/form.js" type="text/javascript"></script>--%>
 
     <title>Report Preview</title>
 </head>
 <body style="margin: 1px 10px 1px 1px;">
     <form id="form1" runat="server">
-    <asp:HyperLink ID="lnkPdfFile" runat="server" CssClass="pdf" Target="_blank">
+  <%--  <asp:HyperLink ID="lnkPdfFile" runat="server" CssClass="pdf" Target="_blank">
         <img id="imgPdf" runat="server" alt="ดาวน์โหลดไฟล์" src="../images/button/icon_pdfdisable.gif"
             border="0" />
     </asp:HyperLink>
     <asp:HyperLink ID="lnkExcelFile" runat="server" CssClass="excel" Target="_blank">
         <img id="imgExcel" runat="server" alt="ดาวน์โหลดไฟล์" src="../images/button/icon_exceldisable.gif"
             border="0" />
-    </asp:HyperLink>
+    </asp:HyperLink>--%>
     <div>
          <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" HasCrystalLogo="False" DisplayGroupTree="False"
             Height="50px" PrintMode="ActiveX" Width="350px"  OnNavigate="CrystalReportViewer1_Navigate" />

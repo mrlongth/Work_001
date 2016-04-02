@@ -84,7 +84,7 @@ namespace myEFrom
             {
                 var oServiceClient = new myEFrom.th.ac.mju.ouop.verifyuser();
                 PersonID = oServiceClient.verifyuserND(strUserName, strPassword);
-                //PersonID = "3501400557381";
+                //PersonID = "3501400539650";
                 //PersonID = "3509900876521";
             }
             catch (Exception ex)

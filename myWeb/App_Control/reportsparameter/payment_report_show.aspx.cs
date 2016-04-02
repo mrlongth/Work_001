@@ -434,7 +434,9 @@ namespace myWeb.App_Control.reportsparameter
             {
                 Retive_Rep_excelcreditall();
             }
-            else if (ViewState["report_code"].ToString().Equals("Rep_item_acc") || ViewState["report_code"].ToString().Equals("Rep_item_acc_income"))
+            else if (ViewState["report_code"].ToString().Equals("Rep_item_acc") || 
+                ViewState["report_code"].ToString().Equals("Rep_item_acc_income") ||
+                ViewState["report_code"].ToString().Equals("Rep_item_acc_income2"))
             {
                 Retive_Rep_item_acc();
             }

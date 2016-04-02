@@ -4,3 +4,8 @@
 /myDLL/obj
 /myEFrom/obj
 /myWeb/obj
+/ไฟล์สำรอง Crystal Reports
+/myWeb/App_Data
+/myWeb/Web_.config
+/myEFrom/App_GlobalResources
+/myEFrom/App_Data

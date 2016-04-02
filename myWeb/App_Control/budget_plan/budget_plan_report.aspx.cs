@@ -918,8 +918,9 @@ namespace myWeb.App_Control.budget_plan
                 cboProduce.Visible = true;
 
 
-                lblLot.Visible = false;
-                cboLot.Visible = false;
+                lblLot.Visible = true;
+                cboLot.Visible = true;
+
                 lblItem_group.Visible = false;
                 cboItem_group.Visible = false;
 
@@ -932,6 +933,7 @@ namespace myWeb.App_Control.budget_plan
 
                 imgList_item.Visible = true;
                 imgClear_item.Visible = true;
+                lblitem.Visible = true;
                 txtitem_code.Visible = true;
                 txtitem_name.Visible = true;
 

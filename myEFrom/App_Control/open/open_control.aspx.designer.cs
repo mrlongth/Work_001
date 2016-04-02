@@ -266,6 +266,24 @@ namespace myEFrom.App_Control.open {
         protected global::System.Web.UI.WebControls.HiddenField hddBudget_type;
         
         /// <summary>
+        /// Label104 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label104;
+        
+        /// <summary>
+        /// txtopen_old_year control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtopen_old_year;
+        
+        /// <summary>
         /// lblReqBudget_type_text control.
         /// </summary>
         /// <remarks>

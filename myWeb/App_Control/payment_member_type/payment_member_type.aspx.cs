@@ -602,7 +602,16 @@ namespace myWeb.App_Control.payment_member_type
                                            " and pay_year='" + strpay_year + "' " +
                                            " and person_group_code IN (" + PersonGroupList + ") ";
                 }
-                if (!oPayment.SP_PAYMENT_MEMBER_TYPE_TEMP_SEL(strCriteria, ref ds, ref strMessage))
+                var result = false;
+                if (strmember_type_code.Equals(strPVD))
+                {
+                    result = oPayment.SP_PAYMENT_MEMBER_PVD_TEMP_SEL(strCriteria, ref ds, ref strMessage);
+                }
+                else 
+                {
+                    result = oPayment.SP_PAYMENT_MEMBER_TYPE_TEMP_SEL(strCriteria, ref ds, ref strMessage);                
+                }
+                if (result==false)
                 {
                     lblError.Text = strMessage;
                 }

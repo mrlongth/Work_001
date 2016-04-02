@@ -50,12 +50,47 @@ namespace myEFrom.App_Control.report_viewer
             if (!IsPostBack)
             {
 
-                txtfrom_date.Text = cCommon.CheckDate(DateTime.Now.AddMonths(-6).ToShortDateString());
-                txtto_date.Text = cCommon.CheckDate(DateTime.Now.ToShortDateString());
+
+                lnkExcelFile.Enabled = false;
+                lnkPdfFile.Enabled = false;
+
+                lnkExcelFile.ImageUrl = "~/images/icon_exceldisable.gif";
+                lnkPdfFile.ImageUrl = "~/images/icon_pdfdisable.gif";
+
+                //txtfrom_loan_date.Text = cCommon.CheckDate(DateTime.Now.AddMonths(-6).ToShortDateString());
+                //txtto_loan_date.Text = cCommon.CheckDate(DateTime.Now.ToShortDateString());
+                //txtfrom_loan_date_due.Text = cCommon.CheckDate(DateTime.Now.AddMonths(-6).ToShortDateString());
+                //txtto_loan_date_due.Text = cCommon.CheckDate(DateTime.Now.ToShortDateString());
+                txtprint_date.Text = cCommon.CheckDate(DateTime.Now.ToShortDateString());
+
+
+
                 InitcboYear();
                 InitcboBudgetType();
+                cboLoan_path.Enabled = false;
+                cboLoan_path.CssClass = "textboxdis";
+
+                lblfrom_loan_date.Visible = true;
+                txtfrom_loan_date.Visible = true;
+                txtfrom_loan_date.Text = string.Empty;
+
+                lblto_loan_date.Visible = true;
+                txtto_loan_date.Visible = true;
+                txtto_loan_date.Text = string.Empty;
+
+                lblfrom_loan_date_due.Visible = false;
+                txtfrom_loan_date_due.Visible = false;
+                txtfrom_loan_date_due.Text = string.Empty;
+
+                lblto_loan_date_due.Visible = false;
+                txtto_loan_date_due.Visible = false;
+                txtto_loan_date_due.Text = string.Empty;
+
+                lblprint_date.Visible = false;
+                txtprint_date.Visible = false;
+
                 InitcboDirector();
-                
+
                 imgList_person.Attributes.Add("onclick", "OpenPopUp('900px','500px','94%','ค้นหาข้อมูลบุคคลากร' ,'../lov/person_lov.aspx?" +
                            "from=loan_control&person_code='+getElementById('" + txtperson_code.ClientID + "').value+'" +
                            "&person_name='+getElementById('" + txtperson_name.ClientID + "').value+'" +
@@ -70,7 +105,7 @@ namespace myEFrom.App_Control.report_viewer
         protected void Page_LoadComplete(object sender, EventArgs e)
         {
 
-            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "RegisterScript", "createDate('" + txtfrom_date.ClientID + "','');createDate('" + txtto_date.ClientID + "','');", true);
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "RegisterScript", "createDate('" + txtfrom_loan_date.ClientID + "','');createDate('" + txtto_loan_date.ClientID + "','');createDate('" + txtfrom_loan_date_due.ClientID + "','');createDate('" + txtto_loan_date_due.ClientID + "','');createDate('" + txtprint_date.ClientID + "','');", true);
 
         }
 
@@ -213,10 +248,18 @@ namespace myEFrom.App_Control.report_viewer
 
         protected void imgPrint_Click(object sender, ImageClickEventArgs e)
         {
+
+
+            lnkExcelFile.Enabled = false;
+            lnkPdfFile.Enabled = false;
+
+            lnkExcelFile.ImageUrl = "~/images/icon_exceldisable.gif";
+            lnkPdfFile.ImageUrl = "~/images/icon_pdfdisable.gif";
+
             string strCriteria = string.Empty;
             string strloan_doc = string.Empty;
             string strbudget_plan_year = string.Empty;
-            string strloan_reason = string.Empty;
+            string strloan_path = string.Empty;
             string strbudget_code = string.Empty;
             string strunit_code = string.Empty;
             string strdirector_code = string.Empty;
@@ -226,83 +269,115 @@ namespace myEFrom.App_Control.report_viewer
             string strperson_name = string.Empty;
             string strReport_code = string.Empty;
             string strScript = string.Empty;
+            string strCondition = string.Empty;
+
 
             #region Criteria
             strloan_doc = txtloan_doc.Text;
             strbudget_plan_year = cboYear.SelectedValue;
             strdirector_code = cboDirector.SelectedValue;
             strunit_code = cboUnit.SelectedValue;
-            strloan_reason = txtloan_reason.Text.Trim();
-            strbudget_type = cboBudget_type.SelectedValue;
-            strLoan_status = "A";
+            strloan_path = cboLoan_path.SelectedValue;
+            strLoan_status = "'A','S'";
+
+            if (RadioButtonList1.SelectedValue == "A01") 
+            {
+                strLoan_status = string.Empty;
+            }
+
             strperson_name = txtperson_name.Text.Trim();
             strperson_code = txtperson_code.Text.Trim();
-            var strbegin_date = txtfrom_date.Text.Length > 0 ? cCommon.SeekDate(txtfrom_date.Text) : "";
-            var strend_date = txtto_date.Text.Length > 0 ? cCommon.SeekDate(txtto_date.Text) : "";
-
+            var strbegin_loan_date = txtfrom_loan_date.Text.Length > 0 ? cCommon.SeekDate(txtfrom_loan_date.Text) : "";
+            var strend_loan_date = txtto_loan_date.Text.Length > 0 ? cCommon.SeekDate(txtto_loan_date.Text) : "";
+            var strbegin_loan_date_due = txtfrom_loan_date_due.Text.Length > 0 ? cCommon.SeekDate(txtfrom_loan_date_due.Text) : "";
+            var strend_loan_date_due = txtto_loan_date_due.Text.Length > 0 ? cCommon.SeekDate(txtto_loan_date_due.Text) : "";
             if (!strbudget_plan_year.Equals(""))
             {
                 strCriteria = strCriteria + "  And  (loan_year = '" + strbudget_plan_year + "') ";
+                strCondition += "ปีงบประมาณ : " + strbudget_plan_year + "   ";
             }
             if (!strbudget_type.Equals(""))
             {
                 strCriteria = strCriteria + "  And  (budget_type = '" + strbudget_type + "') ";
+                strCondition += "ประเภทงบประมาณ : " + cboBudget_type.SelectedItem.Text + "   ";
             }
 
             if (!strloan_doc.Equals(""))
             {
                 strCriteria = strCriteria + "  And  (loan_doc like '%" + strloan_doc + "%') ";
+                strCondition += "เลขที่สัญญา : " + strloan_doc + "   ";
             }
 
-            if (!strbudget_code.Equals(""))
-            {
-                strCriteria = strCriteria + "  And  (budget_code ='" + strbudget_code + "') ";
-            }
 
             if (!strdirector_code.Equals(""))
             {
                 strCriteria = strCriteria + "  And  (director_code ='" + strdirector_code + "') ";
+                strCondition += "สังกัด  : " + cboDirector.SelectedItem.Text + "   ";
             }
 
             if (!strunit_code.Equals(""))
             {
                 strCriteria = strCriteria + "  And  (unit_code ='" + strunit_code + "') ";
+                strCondition += "หน่วยงาน  : " + cboUnit.SelectedItem.Text + "   ";
             }
 
-            if (!strloan_reason.Equals(""))
+            if (!strloan_path.Equals(""))
             {
-                strCriteria = strCriteria + "  And  (loan_reason like '%" + strloan_reason + "%') ";
+                if (strloan_path == "U") 
+                {
+                    strCriteria = strCriteria + "  And  (loan_doc_no like 'BR%') ";                
+                }
+                else if (strloan_path == "O")
+                {
+                    strCriteria = strCriteria + "  And  (loan_doc_no not like 'BR%') ";
+                }
+                strCondition += "ส่วนราชการ  : " + cboLoan_path.SelectedItem.Text + " ";
             }
 
             if (!strLoan_status.Equals(""))
             {
-                strCriteria = strCriteria + "  And  (loan_status = '" + strLoan_status + "') ";
+                strCriteria = strCriteria + "  And  loan_status IN (" + strLoan_status + ") ";
+                //strCondition += "รายละเอียดสัญญา  : " + strloan_reason + "   ";
             }
+
             if (!strperson_code.Equals(""))
             {
                 strCriteria = strCriteria + "  And  (person_code like '%" + strperson_code + "%') ";
+                strCondition += "รหัสผู้ขอยืม  : " + strperson_code + "   ";
             }
             if (!strperson_name.Equals(""))
             {
                 strCriteria = strCriteria + "  And  (person_thai_name like '%" + strperson_name + "%'  " +
                                             "  OR person_thai_surname like '%" + strperson_name + "%'  " +
                                             "  OR '" + strperson_name + "' like ('%'+person_thai_name+'%'+person_thai_surname+'%')) ";
+                strCondition += "ชือ-สกุล ผู้ขอยืม  : " + strperson_name + "   ";
             }
 
-            if (!strbegin_date.Equals(""))
+            if (!strbegin_loan_date.Equals("") && txtfrom_loan_date.Visible)
             {
-                strCriteria += "  And  (loan_date >= '" + strbegin_date + "') ";
+                strCriteria += "  And  (loan_date >= '" + strbegin_loan_date + "') ";
+                strCondition += "ตั้งแต่วันที่ทำสัญญา : " + txtfrom_loan_date.Text + "   ";
+            }
+            if (!strend_loan_date.Equals("") && txtto_loan_date.Visible)
+            {
+                strCriteria += "  And  (loan_date <= '" + strend_loan_date + "') ";
+                strCondition += "ถึงวันที่ทำสัญญา : " + txtto_loan_date.Text + "   ";
+            }
+            if (!strbegin_loan_date_due.Equals("") && txtfrom_loan_date_due.Visible)
+            {
+                strCriteria += "  And  (loan_date_due >= '" + strbegin_loan_date_due + "') ";
+                strCondition += "ตั้งแต่วันที่ครบกำหนด : " + txtfrom_loan_date_due.Text + "   ";
+            }
+            if (!strend_loan_date_due.Equals("") && txtto_loan_date_due.Visible)
+            {
+                strCriteria += "  And  (loan_date_due <= '" + strend_loan_date_due + "') ";
+                strCondition += "ถึงวันที่ครบกำหนด : " + txtto_loan_date_due.Text + "   ";
             }
 
-            if (!strend_date.Equals(""))
-            {
-                strCriteria += "  And  (loan_date <= '" + strend_date + "') ";
-            }
-
-            if (base.UserGroupCode == "User" || base.UserGroupCode == "Supervisor")
-            {
-                strCriteria += " and person_code ='" + base.PersonCode + "' ";
-            }
+            //if (base.UserGroupCode == "User" || base.UserGroupCode == "Supervisor")
+            //{
+            //    strCriteria += " and person_code ='" + base.PersonCode + "' ";
+            //}
 
             #endregion
 
@@ -310,14 +385,54 @@ namespace myEFrom.App_Control.report_viewer
             {
                 strReport_code = "Rep_loan_record";
             }
+            else if (RadioButtonList1.SelectedValue.Equals("A02"))
+            {
+                strReport_code = "Rep_loan_remain";
+                strCriteria += "  And  (loan_approve > loan_return) ";
+                Session["report_title"] = "รายละเอียดลูกหนี้คงเหลือครบกำหนด";
+            }
+            else if (RadioButtonList1.SelectedValue.Equals("A03"))
+            {
+                strReport_code = "Rep_loan_remain";
+                strCriteria += "  And  (loan_approve > loan_return) ";
+                var strReport_title = "รายละเอียดลูกหนี้คงเหลือ  ";
+                if (!strbegin_loan_date_due.Equals(""))
+                {
+                    strReport_title += "ตั้งแต่วันที่ครบกำหนด : " + txtfrom_loan_date_due.Text + "  ";
+                }
+                if (!strend_loan_date_due.Equals(""))
+                {
+                    if (!strbegin_loan_date_due.Equals(""))
+                    {
+                        strReport_title += "ถึงวันที่ : " + txtto_loan_date_due.Text;
+                    }
+                    else
+                    {
+                        strReport_title += "ณ วันที่ " + txtto_loan_date_due.Text + "   ";
+                    }
+                }
+                Session["report_title"] = strReport_title;
+
+            }
+            else if (RadioButtonList1.SelectedValue.Equals("A04"))
+            {
+                strReport_code = "Rep_loan_collection";
+                strCriteria += "  And  (loan_approve > loan_return) ";
+            }
+            else if (RadioButtonList1.SelectedValue.Equals("A05"))
+            {
+                strReport_code = "Rep_loan_collection_cover";
+                strCriteria += "  And  (loan_approve > loan_return) ";
+            }
 
             Session["criteria"] = strCriteria;
-            strScript = "window.open(\"../reportsparameter/open_report_show.aspx?report_code=" + strReport_code + "\", \"_blank\");\n";
+            Session["date_print"] = txtprint_date.Text;
+            Session["Condition"] = strCondition;
+
+            Session["ExportExcel"] = "true";
+
+            strScript = "windowOpenMaximize(\"../reportsparameter/open_report_show.aspx?report_code=" + strReport_code + "\", \"_blank\");\n";
             ScriptManager.RegisterStartupScript(Page, Page.GetType(), "OpenPage", strScript, true);
-
-
-            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "OpenPage", strScript, true);
-
         }
 
         protected void cboDirector_SelectedIndexChanged(object sender, EventArgs e)
@@ -335,12 +450,82 @@ namespace myEFrom.App_Control.report_viewer
         {
             this.BudgetType = cboBudget_type.SelectedValue;
             InitcboDirector();
+            if (cboBudget_type.SelectedValue == "R")
+            {
+                cboLoan_path.Enabled = true;
+                cboLoan_path.CssClass = "textbox";
+            }
+            else
+            {
+                cboLoan_path.Enabled = false;
+                cboLoan_path.CssClass = "textboxdis";            
+            }
+            cboLoan_path.SelectedIndex = 0;
         }
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (RadioButtonList1.SelectedValue.Equals("A01") || RadioButtonList1.SelectedValue.Equals("A03"))
+            {
+                lblfrom_loan_date.Visible = true;
+                txtfrom_loan_date.Visible = true;
+                //txtfrom_loan_date.Text = string.Empty;
+
+                lblto_loan_date.Visible = true;
+                txtto_loan_date.Visible = true;
+                //txtto_loan_date.Text = string.Empty;
+              
+                lblfrom_loan_date_due.Visible = false;
+                txtfrom_loan_date_due.Visible = false;
+                //txtfrom_loan_date_due.Text = string.Empty;
+
+                lblto_loan_date_due.Visible = false;
+                txtto_loan_date_due.Visible = false;
+                //txtto_loan_date_due.Text = string.Empty;
+
+                lblprint_date.Visible = false;
+                txtprint_date.Visible = false;
+
+            
+            }
+            if (RadioButtonList1.SelectedValue.Equals("A02") || RadioButtonList1.SelectedValue.Equals("A04") || RadioButtonList1.SelectedValue.Equals("A05"))
+            {
+                lblfrom_loan_date.Visible = false;
+                txtfrom_loan_date.Visible = false;
+               
+                lblto_loan_date.Visible = false;
+                txtto_loan_date.Visible = false;
+               
+                lblfrom_loan_date_due.Visible = true;
+                txtfrom_loan_date_due.Visible = true;
+               
+                lblto_loan_date_due.Visible = true;
+                txtto_loan_date_due.Visible = true;
+               
+                lblprint_date.Visible = false;
+                txtprint_date.Visible = false;
+
+                if (RadioButtonList1.SelectedValue.Equals("A04") || RadioButtonList1.SelectedValue.Equals("A05"))
+                {
+                    lblprint_date.Visible = true;
+                    txtprint_date.Visible = true;
+                }
+                //txtto_loan_date_due.Text = cCommon.CheckDate(DateTime.Now.ToShortDateString());
+            }
+
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            lnkPdfFile.Enabled = true;
+            lnkExcelFile.Enabled = true;
 
 
+            lnkExcelFile.ImageUrl = "~/images/icon_excel.gif";
+            lnkPdfFile.ImageUrl = "~/images/icon_pdf.gif";
+
+            lnkExcelFile.NavigateUrl = Session["ExportExcelUrl"].ToString();
+            lnkPdfFile.NavigateUrl = Session["ExportPdfUrl"].ToString();
 
         }
 

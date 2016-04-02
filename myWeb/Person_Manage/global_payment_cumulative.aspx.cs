@@ -185,7 +185,7 @@ namespace myWeb.Person_Manage
 
                         DataSet dsSum = new DataSet();
                         string strCumulativeStart = System.Configuration.ConfigurationSettings.AppSettings["CumulativeStart"];
-                        strCriteria = " And person_code='" + strperson_code + "' and substring(item_code,5,7) in ('09-042','09-043','09-068')  ";
+                        strCriteria = " And person_code='" + strperson_code + "' and substring(item_code,5,7) in ('09-042','09-043','09-068','09-106','09-107')  ";
                         strCriteria += " And payment_detail_person_group_code ='" + base.PersonGroupCode + "' ";
                         strCriteria += " And (pay_year+'/'+pay_month) >= '" + strCumulativeStart + "'  ";          
                         if (!oPerson.SP_PERSON_CUMULATIVE_SEL(strCriteria, ref dsSum, ref strMessage))
@@ -239,7 +239,7 @@ namespace myWeb.Person_Manage
             if (cboPay_Year.SelectedValue != "") {
                 strCriteria = " And pay_year='" + cboPay_Year.SelectedValue + "' ";
             }
-            strCriteria += " And person_code='" + strperson_code + "' and substring(item_code,5,7) in ('09-042','09-043','09-068')  ";
+            strCriteria += " And person_code='" + strperson_code + "' and substring(item_code,5,7) in ('09-042','09-043','09-068','09-106','09-107')  ";
             strCriteria += " And payment_detail_person_group_code ='" + base.PersonGroupCode + "' ";
             strCriteria += " And (pay_year+'/'+pay_month) >= '" + strCumulativeStart + "'  order by (pay_year+'/'+pay_month) desc ";
             

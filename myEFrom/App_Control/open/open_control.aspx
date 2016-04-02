@@ -1,5 +1,6 @@
 <%@ Page Language="C#" MasterPageFile="~/Site_popup.Master" EnableEventValidation="false"
-    AutoEventWireup="true" CodeBehind="open_control.aspx.cs" Inherits="myEFrom.App_Control.open.open_control" %>
+    ValidateRequest="false" AutoEventWireup="true" CodeBehind="open_control.aspx.cs"
+    Inherits="myEFrom.App_Control.open.open_control" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxtoolkit" %>
 <%@ Register Assembly="Aware.WebControls" Namespace="Aware.WebControls" TagPrefix="cc1" %>
@@ -40,7 +41,7 @@
                             <td align="right" nowrap valign="middle" width="12%">
                                 &nbsp;
                             </td>
-                            <td align="left" nowrap style="width: 38%" valign="middle">
+                            <td align="left" nowrap style="width: 38%" valign="middle" colspan="3">
                                 &nbsp;
                             </td>
                             <td align="left" colspan="2" nowrap style="text-align: right; width: 10%;" valign="middle">
@@ -57,7 +58,7 @@
                             <td align="right" nowrap valign="middle" width="12%">
                                 <asp:Label ID="Label79" runat="server">เลขที่เอกสาร :</asp:Label>
                             </td>
-                            <td align="left" nowrap style="width: 38%" valign="middle">
+                            <td align="left" nowrap style="width: 38%" valign="middle" colspan="3">
                                 <asp:TextBox ID="txtopen_doc" runat="server" CssClass="textboxdis" ReadOnly="True"
                                     Width="100px"></asp:TextBox>
                                 <asp:HiddenField ID="hddopen_head_id" runat="server" />
@@ -76,7 +77,7 @@
                             <td align="right" nowrap valign="middle" width="12%">
                                 <asp:Label ID="Label82" runat="server">ปีงบประมาณ :</asp:Label>
                             </td>
-                            <td align="left" nowrap style="width: 38%" valign="middle">
+                            <td align="left" nowrap style="width: 38%" valign="middle" colspan="3">
                                 <asp:DropDownList ID="cboYear" runat="server" AutoPostBack="True" CssClass="textbox"
                                     OnSelectedIndexChanged="cboYear_SelectedIndexChanged">
                                 </asp:DropDownList>
@@ -95,7 +96,7 @@
                             <td align="right" nowrap valign="middle">
                                 <asp:Label ID="Label96" runat="server">ส่วนราชการ :</asp:Label>
                             </td>
-                            <td align="left" nowrap valign="middle" style="width: 38%">
+                            <td align="left" nowrap valign="middle" style="width: 38%" colspan="3">
                                 <font face="Tahoma">
                                     <asp:TextBox ID="txtopen_path" runat="server" CssClass="textbox" MaxLength="255"
                                         Width="300px"></asp:TextBox>
@@ -117,7 +118,7 @@
                             <td align="right" nowrap valign="middle">
                                 <asp:Label ID="Label97" runat="server">ที่ :</asp:Label>
                             </td>
-                            <td align="left" nowrap style="width: 38%" valign="middle">
+                            <td align="left" nowrap style="width: 38%" valign="middle" colspan="3">
                                 <font face="Tahoma">
                                     <asp:TextBox ID="txtopen_no" runat="server" CssClass="textbox" MaxLength="255" Width="300px"></asp:TextBox>
                                 </font>
@@ -145,28 +146,36 @@
                                 <asp:Label ID="Label1" runat="server">ประเภทงบประมาณ :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle" style="width: 38%">
-                                <asp:DropDownList ID="cboBudget_type" runat="server" CssClass="textbox" 
-                                    AutoPostBack="True" OnSelectedIndexChanged="cboBudget_type_SelectedIndexChanged">
+                                <asp:DropDownList ID="cboBudget_type" runat="server" CssClass="textbox" AutoPostBack="True"
+                                    OnSelectedIndexChanged="cboBudget_type_SelectedIndexChanged">
                                 </asp:DropDownList>
                                 <asp:HiddenField ID="hddBudget_type" runat="server" />
                             </td>
-                            <td align="left" nowrap style="text-align: right" valign="middle" colspan="2">
+                            <td align="left" nowrap style="text-align: right; width: 38%;" valign="middle">
+                                <asp:Label ID="Label104" runat="server">เงินกันฯ/ขยายปี :</asp:Label>
+                            </td>
+                            <td align="left" nowrap valign="middle" style="width: 38%">
+                                <asp:TextBox ID="txtopen_old_year" runat="server" CssClass="textbox" 
+                                    MaxLength="4" Width="100px"></asp:TextBox>
+                            </td>
+                            <td align="left" nowrap style="text-align: right;" valign="middle" colspan="2">
                                 <asp:Label ID="lblReqBudget_type_text" runat="server" CssClass="label_error" 
                                     Visible="False">*</asp:Label>
                                 <asp:Label ID="lblBudget_type" runat="server">ระบุ :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle">
                                 <font face="Tahoma">
-                                    <asp:TextBox ID="txtbudget_type_text" runat="server" CssClass="textbox" MaxLength="255"
-                                        Width="300px"></asp:TextBox>
+                                <asp:TextBox ID="txtbudget_type_text" runat="server" CssClass="textbox" 
+                                    MaxLength="255" Width="300px"></asp:TextBox>
                                 <br />
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" 
-                                    ControlToValidate="txtbudget_type_text" Display="None" 
+                                    ControlToValidate="txtbudget_type_text" Display="None" Enabled="False" 
                                     ErrorMessage="กรุณาระบุประเภทงบประมาณอื่นๆ" SetFocusOnError="True" 
-                                    ValidationGroup="A" Enabled="False"></asp:RequiredFieldValidator>
+                                    ValidationGroup="A"></asp:RequiredFieldValidator>
                                 </font>
                             </td>
-                            <td align="left" nowrap style="vertical-align: bottom; width: 1%;" valign="middle">
+                            <td align="left" nowrap style="vertical-align: bottom; width: 1%;" 
+                                valign="middle">
                                 &nbsp;&nbsp;
                             </td>
                         </tr>
@@ -174,7 +183,7 @@
                             <td align="right" nowrap valign="middle">
                                 <asp:Label ID="Label52" runat="server" CssClass="label_hbk">ผังงบประมาณ :</asp:Label>
                             </td>
-                            <td align="left" nowrap valign="middle" style="width: 38%">
+                            <td align="left" nowrap valign="middle" style="width: 38%" colspan="3">
                                 <asp:TextBox ID="txtbudget_plan_code" runat="server" CssClass="textbox" MaxLength="10"
                                     Width="100px"></asp:TextBox>
                                 &nbsp;<asp:ImageButton ID="imgList_budget_plan" runat="server" CausesValidation="False"
@@ -200,7 +209,7 @@
                                 <asp:Label ID="lblReqProduce" runat="server" CssClass="label_error">*</asp:Label>
                                 <asp:Label ID="Label55" runat="server" CssClass="label_hbk">ผลผลิต :</asp:Label>
                             </td>
-                            <td align="left" nowrap valign="middle" style="width: 38%">
+                            <td align="left" nowrap valign="middle" style="width: 38%" colspan="3">
                                 <asp:DropDownList ID="cboProduce" runat="server" CssClass="textbox" Width="350px"
                                     AutoPostBack="True" OnSelectedIndexChanged="cboProduce_SelectedIndexChanged">
                                 </asp:DropDownList>
@@ -225,7 +234,7 @@
                                 <asp:Label ID="lblReqPlan" runat="server" CssClass="label_error">*</asp:Label>
                                 <asp:Label ID="Label56" runat="server" CssClass="label_hbk">แผนงาน :</asp:Label>
                             </td>
-                            <td align="left" nowrap valign="middle" style="width: 38%">
+                            <td align="left" nowrap valign="middle" style="width: 38%" colspan="3">
                                 <asp:DropDownList ID="cboPlan" runat="server" CssClass="textbox" Width="350px">
                                 </asp:DropDownList>
                                 <asp:HiddenField ID="hddPlan" runat="server" />
@@ -249,7 +258,7 @@
                                 <asp:Label ID="lblReqFund" runat="server" CssClass="label_error">*</asp:Label>
                                 <asp:Label ID="Label58" runat="server" CssClass="label_hbk">กองทุน :</asp:Label>
                             </td>
-                            <td align="left" nowrap valign="middle" style="width: 38%">
+                            <td align="left" nowrap valign="middle" style="width: 38%" colspan="3">
                                 <asp:DropDownList ID="cboFund" runat="server" CssClass="textbox" Width="350px">
                                 </asp:DropDownList>
                                 <asp:HiddenField ID="hddFund" runat="server" />
@@ -274,7 +283,7 @@
                                 <asp:Label ID="lblReqUnit" runat="server" CssClass="label_error">*</asp:Label>
                                 <asp:Label ID="Label61" runat="server" CssClass="label_hbk">หน่วยงาน :</asp:Label>
                             </td>
-                            <td align="left" nowrap valign="middle" style="width: 38%">
+                            <td align="left" nowrap valign="middle" style="width: 38%" colspan="3">
                                 <asp:DropDownList ID="cboUnit" runat="server" CssClass="textbox" Width="350px">
                                 </asp:DropDownList>
                                 <asp:HiddenField ID="hddUnit" runat="server" />
@@ -291,8 +300,8 @@
                                     </asp:DropDownList>
                                     <asp:HiddenField ID="hddLot" runat="server" />
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="cboLot"
-                                        Display="None" ErrorMessage="กรุณาเลือกงบ" SetFocusOnError="True" 
-                                    ValidationGroup="A" Visible="False"></asp:RequiredFieldValidator>
+                                        Display="None" ErrorMessage="กรุณาเลือกงบ" SetFocusOnError="True" ValidationGroup="A"
+                                        Visible="False"></asp:RequiredFieldValidator>
                                 </font>
                             </td>
                         </tr>
@@ -301,7 +310,7 @@
                                 <asp:Label ID="Label72" runat="server" CssClass="label_error">*</asp:Label>
                                 <asp:Label ID="Label81" runat="server">ผู้ขออนุมัติ :</asp:Label>
                             </td>
-                            <td align="left" nowrap valign="middle" colspan="4">
+                            <td align="left" nowrap valign="middle" colspan="6">
                                 <font face="Tahoma">
                                     <asp:TextBox ID="txtopen_person" runat="server" CssClass="textbox" Width="100px"></asp:TextBox>
                                     &nbsp;<asp:ImageButton ID="imgList_person" runat="server" ImageAlign="AbsBottom"
@@ -320,7 +329,7 @@
                             <td align="right" nowrap valign="middle">
                                 &nbsp;
                             </td>
-                            <td align="left" nowrap valign="middle">
+                            <td align="left" nowrap valign="middle" colspan="3">
                                 &nbsp;
                             </td>
                             <td align="left" nowrap style="text-align: right" valign="middle">
@@ -334,7 +343,7 @@
                             <td align="right" nowrap valign="middle">
                                 &nbsp;&nbsp;
                             </td>
-                            <td align="left" nowrap style="width: 38%" valign="middle">
+                            <td align="left" nowrap style="width: 38%" valign="middle" colspan="3">
                                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True"
                                     ShowSummary="False" ValidationGroup="A" />
                             </td>
@@ -401,7 +410,7 @@
                             </td>
                             <td align="left" nowrap valign="middle" colspan="2">
                                 <asp:TextBox ID="txtopen_title" runat="server" CssClass="textbox" MaxLength="255"
-                                    Width="700px" TextMode="MultiLine" Rows="2"></asp:TextBox>
+                                    Width="700px" TextMode="MultiLine" Rows="1"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtopen_title"
                                     Display="None" ErrorMessage="กรุณาระบุเรื่อง" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
                             </td>
@@ -415,7 +424,7 @@
                                 <asp:Label ID="Label86" runat="server" CssClass="label_hbk">รายละเอียด :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle" colspan="2">
-                                <asp:TextBox ID="txtopen_desc" runat="server" CssClass="textbox" MaxLength="255"
+                                <asp:TextBox ID="txtopen_desc" runat="server" CssClass="textbox" MaxLength="4000"
                                     Rows="8" TextMode="MultiLine" Width="700px"></asp:TextBox>
                             </td>
                         </tr>
@@ -424,7 +433,7 @@
                                 <asp:Label ID="Label102" runat="server" CssClass="label_hbk">รายละเอียดการขออนุมัติ :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle" colspan="2" style="height: 1px;">
-                                <asp:TextBox ID="txtopen_command_desc" runat="server" CssClass="textbox" MaxLength="255"
+                                <asp:TextBox ID="txtopen_command_desc" runat="server" CssClass="textbox" MaxLength="4000"
                                     Rows="8" TextMode="MultiLine" Width="700px"></asp:TextBox>
                             </td>
                         </tr>
@@ -485,12 +494,12 @@
                                     <ItemTemplate>
                                         <cc1:AwNumeric ID="txtopen_detail_amount" runat="server" Width="80px" LeadZero="Show"
                                             DisplayMode="Control" Value='<% # DataBinder.Eval(Container, "DataItem.open_detail_amount") %>'>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         </cc1:AwNumeric>
                                     </ItemTemplate>
                                     <FooterTemplate>
                                         <cc1:AwNumeric ID="txtopen_amount" runat="server" Width="80px" LeadZero="Show" DisplayMode="Control">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         </cc1:AwNumeric>
                                     </FooterTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="5%" Wrap="True" />
@@ -549,7 +558,7 @@
                                     <ItemTemplate>
                                         <cc1:AwNumeric ID="txtapprove_level" runat="server" Width="60px" LeadZero="Show"
                                             DisplayMode="Control" DecimalPlaces="0" Text='<%# DataBinder.Eval(Container, "DataItem.approve_level") %>'>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         </cc1:AwNumeric>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="5%" Wrap="True" />
@@ -651,7 +660,7 @@
                                         <asp:HiddenField ID="hddloan_date" runat="server" Value='<%# DataBinder.Eval(Container, "DataItem.loan_date") %>' />
                                         <cc1:AwLabelDateTime ID="txtloan_date" runat="server" Value='<% # DataBinder.Eval(Container, "DataItem.loan_date") %>'
                                             DateFormat="dd/MM/yyyy">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;
                                         </cc1:AwLabelDateTime>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="10%" Wrap="True" />
@@ -661,13 +670,13 @@
                                         <asp:HiddenField ID="hddloan_req" runat="server" Value='<%# DataBinder.Eval(Container, "DataItem.loan_req") %>' />
                                         <cc1:AwLabelNumeric ID="txtloan_req" runat="server" Width="80px" LeadZero="Show"
                                             Value='<% # DataBinder.Eval(Container, "DataItem.loan_req") %>'>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;
                                         </cc1:AwLabelNumeric>
                                     </ItemTemplate>
                                     <FooterTemplate>
                                         <cc1:AwNumeric ID="txttotal_loan_req" runat="server" Width="80px" LeadZero="Show"
                                             DisplayMode="View">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;
                                         </cc1:AwNumeric>
                                     </FooterTemplate>
                                     <ItemStyle HorizontalAlign="Right" Width="10%" Wrap="True" />
@@ -756,8 +765,31 @@
     </div>
 
     <script type="text/javascript">
+        
+        $(function() {
+            LoadTinyMCE();
+        });
 
 
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler_Page);
+        function BeforePostback() {tinyMCE.triggerSave(); }
+      
+        function EndRequestHandler_Page(sender, args) { 
+            LoadTinyMCE();
+        }
+        
+        function LoadTinyMCE() {
+        
+            tinyMCE.remove('#<%=txtopen_command_desc.ClientID%>');
+            tinyMCE.remove('#<%=txtopen_desc.ClientID%>');
+            
+            tinyMCE.init({selector: "#<%=txtopen_command_desc.ClientID%>" , height : 140, statusbar: false, toolbar: false ,  menubar: false , plugins: ['preview','code','paste'], paste_auto_cleanup_on_paste : true });
+            tinyMCE.init({selector: "#<%=txtopen_desc.ClientID%>" , height :  140,statusbar: false, toolbar: false ,  menubar: false , plugins: ['preview','code','paste'], paste_auto_cleanup_on_paste : true });
+
+//            tinyMCE.init({selector: "#<%=txtopen_command_desc.ClientID%>" , height : 140, statusbar: false, toolbar: false ,  menubar: false , plugins: ['preview','code'] });
+//            tinyMCE.init({selector: "#<%=txtopen_desc.ClientID%>" , height :  140,statusbar: false, toolbar: false ,  menubar: false , plugins: ['preview','code'] });
+        }
+      
         function RegisterScript() {
             var strTableName = "<%=GridView1.ClientID%>";
             $(document).on('keypress', 'form input[type=text]', function(event) {

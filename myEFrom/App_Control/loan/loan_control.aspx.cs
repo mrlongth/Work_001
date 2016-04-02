@@ -1130,7 +1130,7 @@ namespace myEFrom.App_Control.loan
                              Helper.CStr(dr["open_path"]), "", Helper.CStr(dr["person_open"]), Helper.CStr(dr["position_code"]), Helper.CStr(dr["position_name"]),
                             strloan_reason, Helper.CStr(dr["open_to"]), Helper.CStr(dr["budget_type"]), Helper.CStr(dr["budget_type_text"]), Helper.CStr(dr["budget_plan_code"]), Helper.CStr(dr["director_code"]),
                             Helper.CStr(dr["unit_code"]), Helper.CStr(dr["budget_code"]), Helper.CStr(dr["produce_code"]), Helper.CStr(dr["activity_code"]), Helper.CStr(dr["plan_code"]),
-                            Helper.CStr(dr["work_code"]), Helper.CStr(dr["fund_code"]), Helper.CStr(dr["lot_code"]), "0", "0", "W", Helper.CStr(dr["open_tel"]), Helper.CStr(dr["open_remark"]), 0, "", Helper.CStr(dr["ef_doctype_code"]), strUserName))
+                            Helper.CStr(dr["work_code"]), Helper.CStr(dr["fund_code"]), Helper.CStr(dr["lot_code"]), "0", "0", "W", Helper.CStr(dr["open_tel"]), Helper.CStr(dr["open_remark"]), 0, "", Helper.CStr(dr["ef_doctype_code"]), Helper.CStr(dr["open_old_year"]), strUserName))
                         {
                             ViewState["loan_id"] = lintloan_id;
                             GetdtLoanApprove();
@@ -1179,7 +1179,7 @@ namespace myEFrom.App_Control.loan
                         txtloan_path.Text, txtloan_no.Text, txtloan_person.Text, txtposition_code.Text, txtposition_name.Text,
                         txtloan_reason.Text, strloanTo, cboBudget_type.SelectedValue, txtbudget_type_text.Text, txtbudget_plan_code.Text, cboDirector.SelectedValue,
                        cboUnit.SelectedValue, cboBudget.SelectedValue, cboProduce.SelectedValue, cboActivity.SelectedValue, cboPlan.SelectedValue,
-                        cboWork.SelectedValue, cboFund.SelectedValue, cboLot.SelectedValue, "0", "0", "W", txtloan_tel.Text, txtloan_remark.Text, 0, "", cboDoctype.SelectedValue, strUserName))
+                        cboWork.SelectedValue, cboFund.SelectedValue, cboLot.SelectedValue, "0", "0", "W", txtloan_tel.Text, txtloan_remark.Text, 0, "", cboDoctype.SelectedValue, txtloan_old_year.Text, strUserName))
                     {
                         ViewState["loan_id"] = lintloan_id;
                         GetdtLoanApprove();
@@ -1199,7 +1199,7 @@ namespace myEFrom.App_Control.loan
                        txtloan_reason.Text, strloanTo, cboBudget_type.SelectedValue, txtbudget_type_text.Text, txtbudget_plan_code.Text, cboDirector.SelectedValue,
                        cboUnit.SelectedValue, cboBudget.SelectedValue, cboProduce.SelectedValue, cboActivity.SelectedValue, cboPlan.SelectedValue,
                        cboWork.SelectedValue, cboFund.SelectedValue, cboLot.SelectedValue, txtloan_tel.Text, txtloan_remark.Text, Helper.CDbl(txtloan_return.Value), txtloan_return_remark.Text, cboDoctype.SelectedValue,
-                       RadioButtonList1.SelectedValue, txtpay_acc_no.Text, txtpay_name.Text, cboPay_bank.SelectedValue, cboPay_bank_branch.SelectedValue, txtpay_remark.Text, strUserName))
+                       RadioButtonList1.SelectedValue, txtpay_acc_no.Text, txtpay_name.Text, cboPay_bank.SelectedValue, cboPay_bank_branch.SelectedValue, txtpay_remark.Text, txtloan_old_year.Text, strUserName))
                     {
                         SaveDetail();
                         SaveApprove();
@@ -1385,12 +1385,12 @@ namespace myEFrom.App_Control.loan
                     txtloan_return.Value = Helper.CDbl(dt.Rows[0]["loan_return"]);
                     txtloan_return_remark.Text = Helper.CStr(dt.Rows[0]["loan_return_remark"]);
                     txtloan_doc_no.Text = Helper.CStr(dt.Rows[0]["loan_doc_no"]);
+                    txtloan_old_year.Text = Helper.CStr(dt.Rows[0]["loan_old_year"]);
 
                     strUpdatedBy = dt.Rows[0]["c_updated_by"].ToString();
                     strUpdatedDate = dt.Rows[0]["d_updated_date"].ToString();
 
                     lblLoan_status.Text = getLoanStatusText(Helper.CStr(dt.Rows[0]["loan_status"]));
-
 
                     #endregion
 
@@ -1483,44 +1483,60 @@ namespace myEFrom.App_Control.loan
 
 
                 //Set Loan Approve              
-                string strbudget_type = cboBudget_type.SelectedValue;
-                strbudget_type = strbudget_type == "X" ? "R" : strbudget_type;
-                _strCriteria = " and open_code = " + Helper.CInt(ViewState["open_code"]) + " and budget_type = '" + strbudget_type + "' ";
-                dt = objOpenApprove.SP_OPEN_APPROVE_SEL(_strCriteria);
-                int countRow = 0;
-                foreach (DataRow drow in dt.Rows)
-                {
-                    countRow++;
-                    dr = this.dtLoanApprove.NewRow();
-                    dr["loan_detail_approve_id"] = ++this.LoanApproveID;
-                    dr["approve_code"] = Helper.CInt(drow["approve_code"]);
-                    dr["approve_name"] = Helper.CStr(drow["approve_name"]);
-                    dr["approve_level"] = Helper.CInt(drow["approve_level"]);
-                    if (countRow != dt.Rows.Count)
-                    {
-                        dr["approve_remark"] = "หัวหน้าผู้ควบคุม";
-                    }
-                    else
-                    {
-                        dr["approve_remark"] = "ผู้อนุมัติ";
-                    }
-                    dr["person_code"] = Helper.CStr(drow["person_approve_code"]);
-                    dr["person_thai_name"] = Helper.CStr(drow["title_name"]) + Helper.CStr(drow["person_thai_name"]) + " " + Helper.CStr(drow["person_thai_surname"]);
-                    dr["person_manage_code"] = Helper.CStr(drow["person_manage_code"]);
-                    dr["person_manage_name"] = Helper.CStr(drow["person_manage_name"]);
-                    dr["approve_status"] = "P";
-                    dr["row_status"] = "N";
-                    this.dtLoanApprove.Rows.Add(dr);
-                }
-                BindGridApprove();
+                //string strbudget_type = cboBudget_type.SelectedValue;
+                //strbudget_type = strbudget_type == "X" ? "R" : strbudget_type;
+                //_strCriteria = " and open_code = " + Helper.CInt(ViewState["open_code"]) + " and budget_type = '" + strbudget_type + "' ";
+                //dt = objOpenApprove.SP_OPEN_APPROVE_SEL(_strCriteria);
+                //int countRow = 0;
+                //foreach (DataRow drow in dt.Rows)
+                //{
+                //    countRow++;
+                //    dr = this.dtLoanApprove.NewRow();
+                //    dr["loan_detail_approve_id"] = ++this.LoanApproveID;
+                //    dr["approve_code"] = Helper.CInt(drow["approve_code"]);
+                //    dr["approve_name"] = Helper.CStr(drow["approve_name"]);
+                //    dr["approve_level"] = Helper.CInt(drow["approve_level"]);
+                //    if (countRow != dt.Rows.Count)
+                //    {
+                //        dr["approve_remark"] = "หัวหน้าผู้ควบคุม";
+                //    }
+                //    else
+                //    {
+                //        dr["approve_remark"] = "ผู้อนุมัติ";
+                //    }
+                //    dr["person_code"] = Helper.CStr(drow["person_approve_code"]);
+                //    dr["person_thai_name"] = Helper.CStr(drow["title_name"]) + Helper.CStr(drow["person_thai_name"]) + " " + Helper.CStr(drow["person_thai_surname"]);
+                //    dr["person_manage_code"] = Helper.CStr(drow["person_manage_code"]);
+                //    dr["person_manage_name"] = Helper.CStr(drow["person_manage_name"]);
+                //    dr["approve_status"] = "P";
+                //    dr["row_status"] = "N";
+                //    this.dtLoanApprove.Rows.Add(dr);
+                //}
+                //BindGridApprove();
 
                 //Open Loan
                 strCriteria = " and open_head_id = '" + ViewState["open_head_id"].ToString() + "' ";
                 dt = objOpen.SP_OPEN_HEAD_SEL(strCriteria);
+                var isNew = false;
                 if (dt.Rows.Count > 0)
                 {
                     DataRow drow = dt.Rows[0];
-                    dr = this.dtOpenLoan.NewRow();
+
+                    dr = null;
+                    foreach (DataRow drTmp in this.dtOpenLoan.Rows)
+                    {
+                        if (Helper.CStr(drTmp["open_doc"]).Length == 0)
+                        {
+                            dr = drTmp;
+                        }
+                    }
+
+                    if (dr == null)
+                    {
+                        dr = this.dtOpenLoan.NewRow();
+                        isNew = true;
+                    }
+
                     dr["open_loan_id"] = ++OpenLoanID;
                     dr["open_head_id"] = Helper.CInt(drow["open_head_id"]);
                     dr["open_doc"] = Helper.CStr(drow["open_doc"]);
@@ -1528,7 +1544,10 @@ namespace myEFrom.App_Control.loan
                     dr["open_amount"] = Helper.CStr(drow["open_amount"]);
                     dr["open_date"] = cCommon.CheckDate(drow["open_date"].ToString());
                     dr["row_status"] = "N";
-                    this.dtOpenLoan.Rows.Add(dr);
+                    if (isNew == true)
+                    {
+                        this.dtOpenLoan.Rows.Add(dr);
+                    }
                     BindGridOpen();
                 }
 
@@ -2893,7 +2912,8 @@ namespace myEFrom.App_Control.loan
 
         protected void cboYear_SelectedIndexChanged(object sender, EventArgs e)
         {
-            InitcboBudget();
+            //InitcboBudget();
+            InitcboYear();
         }
 
         protected void cboBudget_SelectedIndexChanged(object sender, EventArgs e)
@@ -2993,7 +3013,7 @@ namespace myEFrom.App_Control.loan
             else
             {
                 lblpay_acc_no.Text = "เลขที่เช็ค";
-                lblpay_name.Text = "ชื่อผู้จ่ายเช็ค";
+                lblpay_name.Text = "ชื่อผู้รับเช็ค";
                 lblpay_bank.Text = "เช็คธนาคาร";
                 lblpay_bank_branch.Text = "สาขาธนาคาร";
             }
@@ -3135,7 +3155,14 @@ namespace myEFrom.App_Control.loan
             dtTemp.Columns.Add("row_status");
             DataRow rw;
             cefApproveBudget objApproveBudget = new cefApproveBudget();
-            DataTable dtBudget = objApproveBudget.SP_APPROVE_BUDGET_SEL(" and ef_budget_type_approve in ('L','R','H') ");
+
+            //string strbudget_type = cboBudget_type.SelectedValue;
+            //strbudget_type = strbudget_type == "X" ? "R" : strbudget_type;
+
+            DataTable dtBudget;
+
+            dtBudget = objApproveBudget.SP_APPROVE_BUDGET_SEL(" and ef_budget_type_approve in ('L','R','H') ");
+
             foreach (DataRow drow in dtBudget.Rows)
             {
                 rw = dtTemp.NewRow();
@@ -3143,7 +3170,18 @@ namespace myEFrom.App_Control.loan
                 rw["approve_code"] = Helper.CInt(drow["approve_code"]);
                 rw["approve_name"] = Helper.CStr(drow["approve_name"]);
                 rw["approve_level"] = Helper.CInt(drow["approve_level"]);
-                rw["approve_remark"] = Helper.CStr(drow["ef_budget_type_approve"]) == "H" ? "ผู้อนุมัติ" : "เจ้าหน้าที่ผู้ตรวจสอบ";
+                if (Helper.CStr(drow["ef_budget_type_approve"]) == "H")
+                {
+                    rw["approve_remark"] = "ผู้อนุมัติ";
+                }
+                else if (Helper.CStr(drow["ef_budget_type_approve"]) == "R")
+                {
+                    rw["approve_remark"] = "หัวหน้าผู้ควบคุม";
+                }
+                else
+                {
+                    rw["approve_remark"] = "เจ้าหน้าที่ผู้ตรวจสอบ";
+                }
                 rw["person_code"] = Helper.CStr(drow["ef_person_code_approve"]);
                 rw["person_thai_name"] = Helper.CStr(drow["title_name"]) + Helper.CStr(drow["person_thai_name"]) + " " + Helper.CStr(drow["person_thai_surname"]);
                 rw["person_manage_code"] = Helper.CStr(drow["ef_approve_position"]);
@@ -3153,6 +3191,12 @@ namespace myEFrom.App_Control.loan
                 dtTemp.Rows.Add(rw);
             }
             ViewState["dtLoanApprove"] = dtTemp;
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            ViewState["open_head_id"] = Helper.CLong(hddOpenIdRef.Value);
+            setDataFromOpen();
         }
 
     }

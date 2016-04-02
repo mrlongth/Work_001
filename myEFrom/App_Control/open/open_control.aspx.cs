@@ -83,8 +83,8 @@ namespace myEFrom.App_Control.open
                         {
                             dr["row_status"] = "O";
                         }
-                        ViewState["dtOpenDetail"] = dtTemp;
                     }
+                    ViewState["dtOpenDetail"] = dtTemp;
                 }
                 return (DataTable)ViewState["dtOpenDetail"];
             }
@@ -423,6 +423,9 @@ namespace myEFrom.App_Control.open
         {
             ScriptManager.RegisterStartupScript(Page, Page.GetType(), "RegisterScript", "RegisterScript();createDate('" +
                         txtopen_date.ClientID + "','" + DateTime.Now.Date.ToString("dd/MM/yyyy") + "');", true);
+
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "RegisterScriptTinymce", "tinymce.init({selector: '#" + txtopen_desc.ClientID + "' , toolbar: false ,  menubar: false , plugins: ['preview','code']  });", true);
+            //ScriptManager.RegisterOnSubmitStatement(this, this.GetType(), "", "tinyMCE.triggerSave();");
         }
 
         protected void Page_Init(object sender, EventArgs e)
@@ -441,6 +444,11 @@ namespace myEFrom.App_Control.open
         protected void Page_Load(object sender, System.EventArgs e)
         {
             lblError.Text = "";
+            if (!ScriptManager.GetCurrent(this).IsInAsyncPostBack)
+            {
+                ScriptManager.RegisterOnSubmitStatement(this, this.GetType(), "BeforePostback", "BeforePostback()");
+            }
+      
             if (!IsPostBack)
             {
                 imgSaveOnly.Attributes.Add("onMouseOver", "src='../../images/button/save_add2.png'");
@@ -1079,7 +1087,7 @@ namespace myEFrom.App_Control.open
                         txtopen_path.Text, txtopen_no.Text, Helper.CInt(txtopen_code.Text), strloanTo, txtopen_title.Text,
                         txtopen_command_desc.Text, txtopen_desc.Text, cboBudget_type.SelectedValue, txtbudget_type_text.Text, txtbudget_plan_code.Text, cboDirector.SelectedValue,
                        cboUnit.SelectedValue, cboBudget.SelectedValue, cboProduce.SelectedValue, cboActivity.SelectedValue, cboPlan.SelectedValue,
-                        cboWork.SelectedValue, cboFund.SelectedValue, cboLot.SelectedValue, txtopen_person.Text, txtopen_tel.Text, txtopen_remark.Text, 0, txtopen_doc.Text, cboDoctype.SelectedValue, strUserName))
+                        cboWork.SelectedValue, cboFund.SelectedValue, cboLot.SelectedValue, txtopen_person.Text, txtopen_tel.Text, txtopen_remark.Text, 0, txtopen_doc.Text, cboDoctype.SelectedValue,txtopen_old_year.Text,  strUserName))
                     {
                         ViewState["open_head_id"] = intopen_head_id;
                         blnResult = true;
@@ -1100,7 +1108,7 @@ namespace myEFrom.App_Control.open
                         cboUnit.SelectedValue, cboBudget.SelectedValue, cboProduce.SelectedValue,
                         cboActivity.SelectedValue, cboPlan.SelectedValue,
                         cboWork.SelectedValue, cboFund.SelectedValue, cboLot.SelectedValue, txtopen_person.Text,
-                        txtopen_tel.Text, txtopen_remark.Text, 0, txtopen_doc.Text, cboDoctype.SelectedValue, strUserName))
+                        txtopen_tel.Text, txtopen_remark.Text, 0, txtopen_doc.Text, cboDoctype.SelectedValue,txtopen_old_year.Text, strUserName))
                     {
                         this.StoreAllData();
 
@@ -1130,7 +1138,7 @@ namespace myEFrom.App_Control.open
                         txtopen_path.Text, txtopen_no.Text, Helper.CInt(txtopen_code.Text), strloanTo, txtopen_title.Text,
                         txtopen_command_desc.Text, txtopen_desc.Text, cboBudget_type.SelectedValue, txtbudget_type_text.Text, txtbudget_plan_code.Text, cboDirector.SelectedValue,
                        cboUnit.SelectedValue, cboBudget.SelectedValue, cboProduce.SelectedValue, cboActivity.SelectedValue, cboPlan.SelectedValue,
-                        cboWork.SelectedValue, cboFund.SelectedValue, cboLot.SelectedValue, txtopen_person.Text, txtopen_tel.Text, txtopen_remark.Text, 0, txtopen_doc.Text, cboDoctype.SelectedValue, strUserName))
+                        cboWork.SelectedValue, cboFund.SelectedValue, cboLot.SelectedValue, txtopen_person.Text, txtopen_tel.Text, txtopen_remark.Text, 0, txtopen_doc.Text, cboDoctype.SelectedValue,txtopen_old_year.Text, strUserName))
                     {
                         ViewState["open_head_id"] = intopen_head_id;
 
@@ -1192,6 +1200,7 @@ namespace myEFrom.App_Control.open
                     cboYear.SelectedValue = dt.Rows[0]["open_year"].ToString();
                     txtopen_path.Text = dt.Rows[0]["open_path"].ToString();
                     txtopen_no.Text = dt.Rows[0]["open_no"].ToString();
+                    txtopen_old_year.Text = dt.Rows[0]["open_old_year"].ToString();
 
                     InitcboBudgetType();
                     if (cboBudget_type.Items.FindByValue(dt.Rows[0]["budget_type"].ToString()) != null)
@@ -1351,16 +1360,24 @@ namespace myEFrom.App_Control.open
 
                     txtUpdatedBy.Text = strUpdatedBy;
                     txtUpdatedDate.Text = strUpdatedDate;
-                    this.dtOpenDetail = null;
+                    //this.dtOpenDetail = null;
                     BindGridDetail();
 
-                    this.dtOpenApprove = null;
+                    //this.dtOpenApprove = null;
+                    if (string.IsNullOrEmpty(txtopen_code.Text) && string.IsNullOrEmpty(txtopen_title.Text))
+                    {
+                        foreach (DataRow dr in this.dtOpenApprove.Rows)
+                        {
+                            dr["row_status"] = "D";
+                        }
+                        this.GetOpenApprove();
+                    }
                     BindGridApprove();
 
-                    this.dtOpenLoan = null;
+                    //this.dtOpenLoan = null;
                     BindGridLoan();
 
-                    this.dtOpenAttach = null;
+                    //this.dtOpenAttach = null;
                     BindGridAttach();
                     #endregion
 
@@ -1370,6 +1387,9 @@ namespace myEFrom.App_Control.open
                 TabContainer1.Tabs[3].Visible = true;
                 TabContainer1.Tabs[4].Visible = true;
                 TabContainer1.Tabs[5].Visible = true;
+                
+                //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "RegisterScript", "tinymce.init({selector: '#" + txtopen_desc.ClientID + "' , toolbar: false ,  menubar: false , plugins: ['preview','code']  });", true);
+        
             }
             catch (Exception ex)
             {
@@ -2834,7 +2854,8 @@ namespace myEFrom.App_Control.open
 
         protected void cboYear_SelectedIndexChanged(object sender, EventArgs e)
         {
-            InitcboBudget();
+            //InitcboBudget();
+            InitcboYear();
         }
 
         protected void cboBudget_SelectedIndexChanged(object sender, EventArgs e)
@@ -2917,7 +2938,7 @@ namespace myEFrom.App_Control.open
                 lblReqUnit.Visible = false;
                 lblReqDirector.Visible = false;
                 lblReqBudget_type_text.Visible = true;
-
+              
             }
             else
             {
@@ -2940,6 +2961,15 @@ namespace myEFrom.App_Control.open
                 lblReqUnit.Visible = true;
                 lblReqDirector.Visible = true;
                 lblReqBudget_type_text.Visible = false;
+            }
+            if (string.IsNullOrEmpty(txtopen_code.Text) && string.IsNullOrEmpty(txtopen_title.Text)) 
+            {
+                foreach (DataRow dr in this.dtOpenApprove.Rows)
+                {
+                    dr["row_status"] = "D";
+                }
+                this.GetOpenApprove();
+                BindGridApprove();
             }
         }
 

@@ -207,6 +207,7 @@ namespace myDLL
             double ploan_return,
             string ploan_return_remark,
             string pdoctype_code,
+            string ploan_old_year,
             string pc_created_by)
         {
             bool blnResult = false;
@@ -214,7 +215,7 @@ namespace myDLL
             var oCommand = new SqlCommand();
             try
             {
-                var dtMaxCode = SP_LOAN_HEAD_SEL(" and loan_id = (select max(loan_id) from [ef_loan_head])");
+                var dtMaxCode = SP_LOAN_HEAD_SEL(" and loan_id = (select max(loan_id) from [ef_loan_head] where loan_year = '" + ploan_year + "')");
                 int maxCode = (dtMaxCode.Rows.Count > 0) ? Helper.CInt(dtMaxCode.Rows[0]["loan_id"]) : 0;
                 maxCode++;
                 ploan_doc = ploan_year.Substring(2, 2) + "P" + maxCode.ToString(CultureInfo.InvariantCulture).PadLeft(7, '0');
@@ -222,7 +223,7 @@ namespace myDLL
                 string strSql = "Insert into ef_loan_head ([loan_doc],[loan_doc_no],[loan_year],[loan_date],[loan_date_due],[loan_path],[loan_no],[person_code],[position_code]," +
                                 "[position_name],[loan_reason],[loan_offer],[budget_type],[budget_type_text],[budget_plan_code],[director_code],[unit_code]," +
                                 "[budget_code],[produce_code],[activity_code],[plan_code],[work_code],[fund_code],[lot_code],[loan_req],[loan_approve]," +
-                                "[loan_status],[loan_tel],[loan_remark],[loan_return],[loan_return_remark],[ef_doctype_code],[c_created_by],[d_created_date]) values ( " +
+                                "[loan_status],[loan_tel],[loan_remark],[loan_return],[loan_return_remark],[ef_doctype_code],[loan_old_year],[c_created_by],[d_created_date]) values ( " +
                                 "'" + ploan_doc + "'," +
                                 "'" + ploan_doc_no + "'," +
                                 "'" + ploan_year + "'," +
@@ -255,6 +256,7 @@ namespace myDLL
                                 "" + ploan_return + "," +
                                 "'" + ploan_return_remark + "'," +
                                 "" + pdoctype_code + "," +
+                                "'" + ploan_old_year + "'," +
                                 "'" + pc_created_by + "'," +
                                 "'" + cCommon.GetDateTimeNow() + "')";
                 oConn.ConnectionString = _strConn;
@@ -319,6 +321,7 @@ namespace myDLL
             string ppay_bank,
             string ppay_bank_branch,
             string ppay_remark,
+            string ploan_old_year,
             string pc_updated_by)
         {
             bool blnResult = false;
@@ -331,7 +334,6 @@ namespace myDLL
                                 "loan_doc_no = '" + ploan_doc_no + "'," +
                                 "loan_year = '" + ploan_year + "'," +
                                 "loan_date = '" + cCommon.SaveDate(ploan_date) + "'," +
-                    //"loan_date_due = '" + cCommon.SaveDate(ploan_date_due) + "'," +
                                 "loan_date_due =" + (ploan_date_due.Length > 0 ? "'" + cCommon.SaveDate(ploan_date_due) + "'" : "null") + "," +
                                 "loan_path= '" + ploan_path + "'," +
                                 "loan_no = '" + ploan_no + "'," +
@@ -357,14 +359,13 @@ namespace myDLL
                                 "loan_return = " + ploan_return + "," +
                                 "loan_return_remark = '" + ploan_return_remark + "'," +
                                 "ef_doctype_code = " + pdoctype_code + "," +
-
                                 "pay_type= '" + ppay_type + "'," +
                                 "pay_acc_no= '" + ppay_acc_no + "'," +
                                 "pay_name= '" + ppay_name + "'," +
                                 "pay_bank= '" + ppay_bank + "'," +
                                 "pay_bank_branch= '" + ppay_bank_branch + "'," +
                                 "pay_remark= '" + ppay_remark + "'," +
-
+                                "loan_old_year = '" + ploan_old_year + "'," +                                
                                 "c_updated_by = '" + pc_updated_by + "'," +
                                 "d_updated_date = '" + cCommon.GetDateTimeNow() + "' " +
                                 " Where loan_id = " + ploan_id;
