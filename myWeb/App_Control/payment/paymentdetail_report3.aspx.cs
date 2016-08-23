@@ -559,7 +559,10 @@ namespace myWeb.App_Control.payment
                 !RadioButtonList1.SelectedValue.Equals("A4") &&
                 !RadioButtonList1.SelectedValue.Equals("A6") &&
                 !RadioButtonList1.SelectedValue.Equals("A7") &&
-                !RadioButtonList1.SelectedValue.Equals("A8"))
+                !RadioButtonList1.SelectedValue.Equals("A7_1") &&
+                !RadioButtonList1.SelectedValue.Equals("A8") &&
+                !RadioButtonList1.SelectedValue.Equals("A10") &&
+                !RadioButtonList1.SelectedValue.Equals("A11"))
             {
                 strCriteria = "  And  view_payment.payment_detail_budget_type = '" + cboBudget_type.SelectedValue + "'  ";
 
@@ -570,6 +573,7 @@ namespace myWeb.App_Control.payment
                     !RadioButtonList1.SelectedValue.Equals("20") &&
                     !RadioButtonList1.SelectedValue.Equals("A6") &&
                     !RadioButtonList1.SelectedValue.Equals("A7") &&
+                    !RadioButtonList1.SelectedValue.Equals("A7_1") &&
                     !RadioButtonList1.SelectedValue.Equals("A2") &&
                     !RadioButtonList1.SelectedValue.Equals("A9") &&
                     !RadioButtonList1.SelectedValue.Equals("A8"))
@@ -660,6 +664,7 @@ namespace myWeb.App_Control.payment
                     !RadioButtonList1.SelectedValue.Equals("A4") &&
                     !RadioButtonList1.SelectedValue.Equals("A6") &&
                     !RadioButtonList1.SelectedValue.Equals("A7") &&
+                    !RadioButtonList1.SelectedValue.Equals("A7_1") &&
                     !RadioButtonList1.SelectedValue.Equals("A2"))
                 {
                     strCriteria = strCriteria + "  And  view_payment.payment_detail_director_code = '" + strdirector_code + "' ";
@@ -680,6 +685,7 @@ namespace myWeb.App_Control.payment
                     !RadioButtonList1.SelectedValue.Equals("A4") &&
                     !RadioButtonList1.SelectedValue.Equals("A6") &&
                     !RadioButtonList1.SelectedValue.Equals("A7") &&
+                    !RadioButtonList1.SelectedValue.Equals("A7_1") &&
                     !RadioButtonList1.SelectedValue.Equals("A2"))
                 {
                     strCriteria = strCriteria + "  And  view_payment.payment_detail_unit_code= '" + strunit_code + "' ";
@@ -738,6 +744,7 @@ namespace myWeb.App_Control.payment
                 !RadioButtonList1.SelectedValue.Equals("A9") &&
                 !RadioButtonList1.SelectedValue.Equals("A3") &&
                 !RadioButtonList1.SelectedValue.Equals("A7") &&
+                !RadioButtonList1.SelectedValue.Equals("A7_1") &&
                 !RadioButtonList1.SelectedValue.Equals("A6"))
             {
                 if (cboBudget_type.SelectedValue != "R")
@@ -754,6 +761,7 @@ namespace myWeb.App_Control.payment
                     !RadioButtonList1.SelectedValue.Equals("A3") &&
                     !RadioButtonList1.SelectedValue.Equals("A6") &&
                     !RadioButtonList1.SelectedValue.Equals("A7") &&
+                    !RadioButtonList1.SelectedValue.Equals("A7_1") &&
                     !RadioButtonList1.SelectedValue.Equals("A4"))
                 {
                     strCriteria += " and substring(view_payment.payment_detail_director_code,4,2) = substring('" + DirectorCode + "',4,2) ";
@@ -850,12 +858,21 @@ namespace myWeb.App_Control.payment
                 strCriteria = strCriteria.Replace("view_payment.", "");
             }
 
-            else if (RadioButtonList1.SelectedValue.Equals("A7"))
+            else if (RadioButtonList1.SelectedValue.Equals("A7") )
             {
                 strCriteria += "  And  c_created_by = '" + base.UserLoginName + "' ";
                 strCriteria += "  And  cheque_print= 'Y' ";
                 strCriteria += "  And  cheque_money > 0 ";
                 strReport_code = "Rep_cheque_recv2";
+                strCriteria = strCriteria.Replace("view_payment.", "");
+            }
+
+            else if (RadioButtonList1.SelectedValue.Equals("A7_1"))
+            {
+                strCriteria += "  And  c_created_by = '" + base.UserLoginName + "' ";
+                strCriteria += "  And  cheque_print= 'Y' ";
+                strCriteria += "  And  cheque_money > 0 ";
+                strReport_code = "Rep_cheque_recv3";
                 strCriteria = strCriteria.Replace("view_payment.", "");
             }
 
@@ -903,6 +920,19 @@ namespace myWeb.App_Control.payment
                 strReport_code = "Rep_payment_tax";
                 strCriteria = strCriteria.Replace("view_payment.", "view_person_list.").Replace(".payment_detail_", ".");
             }
+            else if (RadioButtonList1.SelectedValue.Equals("A10"))
+            {
+                strCriteria += " and substring(view_payment.item_code,5,6) IN ('09-120') ";
+                strReport_code = "Rep_payment_student_loan";
+                strCriteria = strCriteria.Replace("view_payment.", "");
+            }
+            else if (RadioButtonList1.SelectedValue.Equals("A11"))
+            {
+                strCriteria += " and substring(view_payment.item_code,5,6) IN ('09-121') ";
+                strReport_code = "Rep_payment_student_loan2";
+                strCriteria = strCriteria.Replace("view_payment.", "");
+            }
+
 
             Session["condition"] = strCondition;
             Session["criteria"] = strCriteria;
@@ -1062,7 +1092,8 @@ namespace myWeb.App_Control.payment
             }
             else if (RadioButtonList1.SelectedValue == "20"
                 || RadioButtonList1.SelectedValue == "A6"
-                || RadioButtonList1.SelectedValue == "A7")
+                || RadioButtonList1.SelectedValue == "A7"
+                || RadioButtonList1.SelectedValue == "A7_1")
             {
                 txtitem_code.Text = "";
                 txtitem_name.Text = "";
@@ -1111,7 +1142,7 @@ namespace myWeb.App_Control.payment
                 imgClear_item.Enabled = true;
                 lblLot.Enabled = true;
             }
-            else if (RadioButtonList1.SelectedValue == "A4")
+            else if (RadioButtonList1.SelectedValue == "A4" || RadioButtonList1.SelectedValue == "A10" || RadioButtonList1.SelectedValue == "A11")
             {
                 txtitem_code.Text = "";
                 txtitem_name.Text = "";

@@ -421,7 +421,8 @@ namespace myWeb.App_Control.reportsparameter
             }
             else if (ViewState["report_code"].ToString().Equals("Rep_cheque_record")
                 || ViewState["report_code"].ToString().Equals("Rep_cheque_recv")
-                || ViewState["report_code"].ToString().Equals("Rep_cheque_recv2"))
+                || ViewState["report_code"].ToString().Equals("Rep_cheque_recv2")
+                || ViewState["report_code"].ToString().Equals("Rep_cheque_recv3"))
             {
                 Retive_Rep_cheque_record();
             }
@@ -492,7 +493,9 @@ namespace myWeb.App_Control.reportsparameter
             {
                 Retive_Rep_paymentyearbybudgetall();
             }
-            else if (ViewState["report_code"].ToString().Equals("Rep_payment_loan"))
+            else if (ViewState["report_code"].ToString().Equals("Rep_payment_loan") || 
+                     ViewState["report_code"].ToString().Equals("Rep_payment_student_loan") || 
+                     ViewState["report_code"].ToString().Equals("Rep_payment_student_loan2") )
             {
                 Retive_Rep_payment_loan();
             }
@@ -871,6 +874,7 @@ namespace myWeb.App_Control.reportsparameter
                 rptSource.SetParameterValue("pMonth", getMonth());
                 rptSource.SetParameterValue("pYear", ViewState["year"].ToString());
                 rptSource.SetParameterValue("pReport_title", ViewState["report_title"].ToString());
+                rptSource.SetParameterValue("pReportDate", cCommon.CheckDate(Session["payment_date"].ToString()));
                 //CrystalReportViewer1.ReportSource = rptSource;
                 CrystalReportViewer1.LogOnInfo = tableLogOnInfos;
             }
@@ -908,6 +912,7 @@ namespace myWeb.App_Control.reportsparameter
                 rptSource.SetParameterValue("pReport_title", ViewState["report_title"].ToString());
                 rptSource.SetParameterValue("pGroupNo", ViewState["remark1"].ToString());
                 rptSource.SetParameterValue("pItem_des", ViewState["remark2"].ToString());
+                rptSource.SetParameterValue("pReportDate", cCommon.CheckDate(Session["payment_date"].ToString()));
                 //CrystalReportViewer1.ReportSource = rptSource;
                 CrystalReportViewer1.LogOnInfo = tableLogOnInfos;
             }
@@ -1051,6 +1056,7 @@ namespace myWeb.App_Control.reportsparameter
                 rptSource.SetParameterValue("pMonth", getMonth());
                 rptSource.SetParameterValue("pYear", ViewState["year"].ToString());
                 rptSource.SetParameterValue("pItem_des", ViewState["remark1"].ToString());
+                rptSource.SetParameterValue("pReportDate", cCommon.CheckDate(Session["payment_date"].ToString()));
                 //CrystalReportViewer1.ReportSource = rptSource;
                 CrystalReportViewer1.LogOnInfo = tableLogOnInfos;
             }
@@ -1159,6 +1165,8 @@ namespace myWeb.App_Control.reportsparameter
                 rptSource.SetParameterValue("pMonth", ViewState["months"].ToString());
                 rptSource.SetParameterValue("pYear", ViewState["year"].ToString());
                 rptSource.SetParameterValue("pReport_title", ViewState["report_title"].ToString());
+                rptSource.SetParameterValue("pReportDate", cCommon.CheckDate(Session["payment_date"].ToString()));
+                
                 //CrystalReportViewer1.ReportSource = rptSource;
                 CrystalReportViewer1.LogOnInfo = tableLogOnInfos;
             }
