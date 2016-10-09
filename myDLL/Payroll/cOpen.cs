@@ -292,7 +292,7 @@ namespace myDLL
                 oCommand.Parameters.Add("@popen_item_id", SqlDbType.Int).Value = int.Parse(popen_item_id);
                 oCommand.Parameters.Add("@popen_id", SqlDbType.Int).Value = int.Parse(popen_id);
                 oCommand.Parameters.Add("@pmaterial_id", SqlDbType.Int).Value = int.Parse(pmaterial_id);
-                oCommand.Parameters.Add("@popen_rate", SqlDbType.Money).Value = float.Parse(popen_rate);
+                oCommand.Parameters.Add("@popen_rate", SqlDbType.Money).Value = decimal.Parse(popen_rate);
                 // - - - - - - - - - - - -             
                 oCommand.ExecuteNonQuery();
                 blnResult = true;
@@ -333,7 +333,7 @@ namespace myDLL
                 oCommand.Parameters.Add("@popen_item_id", SqlDbType.Int).Value = int.Parse(popen_item_id);
                 oCommand.Parameters.Add("@popen_id", SqlDbType.Int).Value = int.Parse(popen_id);
                 oCommand.Parameters.Add("@pmaterial_id", SqlDbType.Int).Value = int.Parse(pmaterial_id);
-                oCommand.Parameters.Add("@popen_rate", SqlDbType.Money).Value = float.Parse(popen_rate);
+                oCommand.Parameters.Add("@popen_rate", SqlDbType.Money).Value = decimal.Parse(popen_rate);
                 // - - - - - - - - - - - -             
                 oCommand.ExecuteNonQuery();
                 blnResult = true;
@@ -824,8 +824,8 @@ namespace myDLL
                 oCommand.Parameters.Add("@popen_qty_month", SqlDbType.Int).Value = int.Parse(popen_qty_month);
                 oCommand.Parameters.Add("@popen_qty_day", SqlDbType.Int).Value = int.Parse(popen_qty_day);
                 oCommand.Parameters.Add("@popen_qty_person", SqlDbType.Int).Value = int.Parse(popen_qty_person);
-                oCommand.Parameters.Add("@popen_rate", SqlDbType.Money).Value = float.Parse(popen_rate);
-                oCommand.Parameters.Add("@popen_rate_all", SqlDbType.Money).Value = float.Parse(popen_rate_all);
+                oCommand.Parameters.Add("@popen_rate", SqlDbType.Money).Value = decimal.Parse(popen_rate);
+                oCommand.Parameters.Add("@popen_rate_all", SqlDbType.Money).Value = decimal.Parse(popen_rate_all);
                 // - - - - - - - - - - - -             
                 oCommand.ExecuteNonQuery();
                 blnResult = true;
@@ -877,8 +877,8 @@ namespace myDLL
                 oCommand.Parameters.Add("@popen_qty_month", SqlDbType.Int).Value = int.Parse(popen_qty_month);
                 oCommand.Parameters.Add("@popen_qty_day", SqlDbType.Int).Value = int.Parse(popen_qty_day);
                 oCommand.Parameters.Add("@popen_qty_person", SqlDbType.Int).Value = int.Parse(popen_qty_person);
-                oCommand.Parameters.Add("@popen_rate", SqlDbType.Money).Value = float.Parse(popen_rate);
-                oCommand.Parameters.Add("@popen_rate_all", SqlDbType.Money).Value = float.Parse(popen_rate_all);
+                oCommand.Parameters.Add("@popen_rate", SqlDbType.Money).Value = decimal.Parse(popen_rate);
+                oCommand.Parameters.Add("@popen_rate_all", SqlDbType.Money).Value = decimal.Parse(popen_rate_all);
                 // - - - - - - - - - - - -             
                 oCommand.ExecuteNonQuery();
                 blnResult = true;
@@ -1040,8 +1040,8 @@ namespace myDLL
                 oCommand.Parameters.Add("@popen_qty_month", SqlDbType.Int).Value = int.Parse(popen_qty_month);
                 oCommand.Parameters.Add("@popen_qty_day", SqlDbType.Int).Value = int.Parse(popen_qty_day);
                 oCommand.Parameters.Add("@popen_qty_person", SqlDbType.Int).Value = int.Parse(popen_qty_person);
-                oCommand.Parameters.Add("@popen_rate", SqlDbType.Money).Value = float.Parse(popen_rate);
-                oCommand.Parameters.Add("@popen_rate_all", SqlDbType.Money).Value = float.Parse(popen_rate_all);
+                oCommand.Parameters.Add("@popen_rate", SqlDbType.Money).Value = decimal.Parse(popen_rate);
+                oCommand.Parameters.Add("@popen_rate_all", SqlDbType.Money).Value = decimal.Parse(popen_rate_all);
                 // - - - - - - - - - - - -             
                 oCommand.ExecuteNonQuery();
                 blnResult = true;
@@ -1093,8 +1093,8 @@ namespace myDLL
                 oCommand.Parameters.Add("@popen_qty_month", SqlDbType.Int).Value = int.Parse(popen_qty_month);
                 oCommand.Parameters.Add("@popen_qty_day", SqlDbType.Int).Value = int.Parse(popen_qty_day);
                 oCommand.Parameters.Add("@popen_qty_person", SqlDbType.Int).Value = int.Parse(popen_qty_person);
-                oCommand.Parameters.Add("@popen_rate", SqlDbType.Money).Value = float.Parse(popen_rate);
-                oCommand.Parameters.Add("@popen_rate_all", SqlDbType.Money).Value = float.Parse(popen_rate_all);
+                oCommand.Parameters.Add("@popen_rate", SqlDbType.Money).Value = decimal.Parse(popen_rate);
+                oCommand.Parameters.Add("@popen_rate_all", SqlDbType.Money).Value = decimal.Parse(popen_rate_all);
                 // - - - - - - - - - - - -             
                 oCommand.ExecuteNonQuery();
                 blnResult = true;

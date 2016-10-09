@@ -543,7 +543,7 @@ namespace myWeb.App_Control.payment
 
             strProduce = cboProduce.SelectedValue;
             if (strProduce.Length > 0)
-                strCondition += "ผลผลิต : " + cboProduce.SelectedItem.Text + "   ";
+                strCondition += "รายการ : " + cboProduce.SelectedItem.Text + "   ";
 
             if (txtposition_code.Enabled) strPosition_code = txtposition_code.Text;
             if (txtposition_name.Enabled) strPosition_name = txtposition_name.Text;

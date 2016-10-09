@@ -112,7 +112,7 @@ namespace myWeb.App_Control.activity
                 //    {
                 //        base.SetLabel(c, "กิจกรรม", "งานรอง");
                 //        base.SetLabel(c, "แผนงบประมาณ", "แผนงาน");
-                //        base.SetLabel(c, "ผลผลิต", "งานหลัก");
+                //        base.SetLabel(c, "รายการ", "งานหลัก");
                 //    }
                 //}
 
@@ -643,7 +643,7 @@ namespace myWeb.App_Control.activity
                 ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete");
                 imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
                 imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
-                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบผลผลิตประจำปี   " + lblactivity_code.Text + " : " + lblactivity_name.Text + " ?\");");
+                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบรายการ   " + lblactivity_code.Text + " : " + lblactivity_name.Text + " ?\");");
                 #endregion
 
             }

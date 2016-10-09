@@ -479,7 +479,7 @@ namespace myWeb.App_Control.person
                         txtbranch_name.Text = strbranch_name;
                         txtbank_name.Text = strbank_name;
                         txtbank_no.Text = strbank_no;
-                        txtperson_salaly.Text = String.Format("{0:0.00}", float.Parse(strperson_salaly));
+                        txtperson_salaly.Text = String.Format("{0:0.00}", decimal.Parse(strperson_salaly));
                         InitcboPerson_group();
                         if (cboPerson_group.Items.FindByValue(strperson_group) != null)
                         {
@@ -494,7 +494,7 @@ namespace myWeb.App_Control.person
                             cboMember_type.SelectedIndex = -1;
                             cboMember_type.Items.FindByValue(strmember_type).Selected = true;
                         }
-                        txtmember_type_add.Text = String.Format("{0:0.00}", float.Parse(strmember_type_add));
+                        txtmember_type_add.Text = String.Format("{0:0.00}", decimal.Parse(strmember_type_add));
                         txtperson_manage_code.Text = strperson_manage_code;
                         txtperson_manage_name.Text = strperson_manage_name;
                         txtbudget_plan_code.Text = strbudget_plan_code;
@@ -647,11 +647,11 @@ namespace myWeb.App_Control.person
                 string strStatus = lblc_active.Text;
                 if (!lblitem_debit.Text.Equals(""))
                 {
-                    lblitem_debit.Text = String.Format("{0:0.00}", float.Parse(lblitem_debit.Text));
+                    lblitem_debit.Text = String.Format("{0:0.00}", decimal.Parse(lblitem_debit.Text));
                 }
                 if (!lblitem_debit.Text.Equals(""))
                 {
-                    lblitem_credit.Text = String.Format("{0:0.00}", float.Parse(lblitem_credit.Text));
+                    lblitem_credit.Text = String.Format("{0:0.00}", decimal.Parse(lblitem_credit.Text));
                 }
                 #region set ImageStatus
                 ImageButton imgStatus = (ImageButton)e.Row.FindControl("imgStatus");
@@ -978,8 +978,8 @@ namespace myWeb.App_Control.person
                 if (!lblchange_date.Text.Equals(""))
                 {
                     lblchange_date.Text = cCommon.CheckDate(lblchange_date.Text);
-                    lblsalary_old.Text = String.Format("{0:#,##0.00}", float.Parse(lblsalary_old.Text));
-                    lblsalary_new.Text = String.Format("{0:#,##0.00}", float.Parse(lblsalary_new.Text));
+                    lblsalary_old.Text = String.Format("{0:#,##0.00}", decimal.Parse(lblsalary_old.Text));
+                    lblsalary_new.Text = String.Format("{0:#,##0.00}", decimal.Parse(lblsalary_new.Text));
                 }
                 Label lblc_active = (Label)e.Row.FindControl("lblc_active2");
                 string strStatus = lblc_active.Text;

@@ -111,14 +111,14 @@
             </td>
             <td align="left" nowrap valign="middle" style="text-align: right">
                             <asp:Label runat="server" CssClass="label_error" ID="Label80">*</asp:Label>
-                            <asp:Label runat="server" ID="lblPage11">ผลผลิต :</asp:Label>
+                            <asp:Label runat="server" ID="lblPage11">รายการ :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
                             <asp:DropDownList runat="server" AutoPostBack="True" CssClass="textbox" ID="cboProduce"
                                 OnSelectedIndexChanged="cboProduce_SelectedIndexChanged">
                             </asp:DropDownList>
                 <font face="Tahoma">
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="cboProduce" ErrorMessage="กรุณาเลือกผลผลิต"
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="cboProduce" ErrorMessage="กรุณาเลือกรายการ"
                         Display="None" SetFocusOnError="True" ValidationGroup="A" 
                     ID="RequiredFieldValidator10"></asp:RequiredFieldValidator>
                     <ajaxtoolkit:ValidatorCalloutExtender runat="server" Enabled="True" TargetControlID="RequiredFieldValidator10"

@@ -349,8 +349,8 @@ namespace myWeb.App_Control.person
                         #endregion
 
                         #region set Control                 
-                        txtsalary_old.Text  =  String.Format("{0:0.00}", float.Parse(strsalary_old));
-                        txtsalary_new.Text  =  String.Format("{0:0.00}", float.Parse(strsalary_new));
+                        txtsalary_old.Text  =  String.Format("{0:0.00}", decimal.Parse(strsalary_old));
+                        txtsalary_new.Text  =  String.Format("{0:0.00}", decimal.Parse(strsalary_new));
                         txtposition_old.Text  =strposition_old ;
                         txtposition_old_name.Text = strposition_old_name;
                         txtposition_new.Text = strposition_new;

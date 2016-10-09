@@ -465,7 +465,7 @@ namespace myWeb.App_Control.person
             //if (strBusget_type == "B")
             //{
             //    Label54.Text = "แผนงบ :";
-            //    Label55.Text = "ผลผลิต :";
+            //    Label55.Text = "รายการ :";
             //    Label53.Text = "กิจกรรม :";
             //    Label56.Text = "แผนงาน :";
             //}
@@ -1265,7 +1265,7 @@ namespace myWeb.App_Control.person
                         txtbank_name_2.Text = strbank_name2;
                         txtbank_no_2.Text = strbank_no2;
 
-                        txtperson_salaly.Text = String.Format("{0:0.00}", float.Parse(strperson_salaly));
+                        txtperson_salaly.Text = String.Format("{0:0.00}", decimal.Parse(strperson_salaly));
                         InitcboPerson_group();
                         if (cboPerson_group.Items.FindByValue(strperson_group) != null)
                         {
@@ -1283,7 +1283,7 @@ namespace myWeb.App_Control.person
 
 
 
-                        txtmember_type_add.Text = String.Format("{0:0.00}", float.Parse(strmember_type_add));
+                        txtmember_type_add.Text = String.Format("{0:0.00}", decimal.Parse(strmember_type_add));
                         txtperson_manage_code.Text = strperson_manage_code;
                         txtperson_manage_name.Text = strperson_manage_name;
                         txtbudget_plan_code.Text = strbudget_plan_code;
@@ -1346,7 +1346,7 @@ namespace myWeb.App_Control.person
                         string strCumulative_money = "0.00";
                         try
                         {
-                            strCumulative_money = String.Format("{0:0.00}", float.Parse(ds.Tables[0].Rows[0]["Cumulative_money"].ToString()));
+                            strCumulative_money = String.Format("{0:0.00}", decimal.Parse(ds.Tables[0].Rows[0]["Cumulative_money"].ToString()));
                         }
                         catch 
                         {
@@ -1472,11 +1472,11 @@ namespace myWeb.App_Control.person
                 string strStatus = lblc_active.Text;
                 if (!lblitem_debit.Text.Equals(""))
                 {
-                    lblitem_debit.Text = String.Format("{0:#,##0.00}", float.Parse(lblitem_debit.Text));
+                    lblitem_debit.Text = String.Format("{0:#,##0.00}", decimal.Parse(lblitem_debit.Text));
                 }
                 if (!lblitem_credit.Text.Equals(""))
                 {
-                    lblitem_credit.Text = String.Format("{0:#,##0.00}", float.Parse(lblitem_credit.Text));
+                    lblitem_credit.Text = String.Format("{0:#,##0.00}", decimal.Parse(lblitem_credit.Text));
                 }
                 if (lblbudget_type.Text.Equals("R"))
                 {
@@ -1946,8 +1946,8 @@ namespace myWeb.App_Control.person
                 if (!lblchange_date.Text.Equals(""))
                 {
                     lblchange_date.Text = cCommon.CheckDate(lblchange_date.Text);
-                    lblsalary_old.Text = String.Format("{0:#,##0.00}", float.Parse(lblsalary_old.Text));
-                    lblsalary_new.Text = String.Format("{0:#,##0.00}", float.Parse(lblsalary_new.Text));
+                    lblsalary_old.Text = String.Format("{0:#,##0.00}", decimal.Parse(lblsalary_old.Text));
+                    lblsalary_new.Text = String.Format("{0:#,##0.00}", decimal.Parse(lblsalary_new.Text));
                 }
                 Label lblc_active = (Label)e.Row.FindControl("lblc_active2");
                 string strStatus = lblc_active.Text;
@@ -2763,7 +2763,7 @@ namespace myWeb.App_Control.person
                         txtbank_no.Text = strbank_no;
                         try
                         {
-                            txtperson_salaly.Text = String.Format("{0:0.00}", float.Parse(strperson_salaly));
+                            txtperson_salaly.Text = String.Format("{0:0.00}", decimal.Parse(strperson_salaly));
                         }
                         catch { }
                         InitcboPerson_group();
@@ -2792,7 +2792,7 @@ namespace myWeb.App_Control.person
 
                         try
                         {
-                            txtmember_type_add.Text = String.Format("{0:0.00}", float.Parse(strmember_type_add));
+                            txtmember_type_add.Text = String.Format("{0:0.00}", decimal.Parse(strmember_type_add));
                         }
                         catch { }
                         txtperson_manage_code.Text = strperson_manage_code;

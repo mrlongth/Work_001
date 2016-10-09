@@ -177,7 +177,7 @@
                         <tr align="left">
                             <td align="right" nowrap valign="middle">
                                 <asp:Label ID="Label107" runat="server" CssClass="label_error">*</asp:Label><asp:Label
-                                    ID="Label55" runat="server" CssClass="label_hbk">ผลผลิต :</asp:Label>
+                                    ID="Label55" runat="server" CssClass="label_hbk">รายการ :</asp:Label>
                             </td>
                             <td align="left" nowrap valign="middle" style="width: 38%" colspan="3">
                                 <asp:DropDownList ID="cboProduce" runat="server" AutoPostBack="True" CssClass="textbox"
@@ -185,7 +185,7 @@
                                 </asp:DropDownList>
                                 <asp:HiddenField ID="hddProduce" runat="server" />
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="cboProduce"
-                                    Display="None" ErrorMessage="กรุณาเลือกผลผลิต" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
+                                    Display="None" ErrorMessage="กรุณาเลือกรายการ" SetFocusOnError="True" ValidationGroup="A"></asp:RequiredFieldValidator>
                             </td>
                             <td align="left" nowrap style="text-align: right" valign="middle">
                                 <asp:Label ID="Label108" runat="server" CssClass="label_error">*</asp:Label><asp:Label

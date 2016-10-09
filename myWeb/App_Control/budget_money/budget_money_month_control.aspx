@@ -70,7 +70,7 @@
                 <asp:TextBox runat="server" CssClass="textboxdis" Width="300px" ID="txtbudget_name"></asp:TextBox>
             </td>
             <td align="left" nowrap valign="middle" style="height: 17px; text-align: right">
-                <asp:Label runat="server" CssClass="label_hbk" ID="Label55">ผลผลิต :</asp:Label>
+                <asp:Label runat="server" CssClass="label_hbk" ID="Label55">รายการ :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
                 <asp:TextBox runat="server" CssClass="textboxdis" Width="300px" ID="txtproduce_name"></asp:TextBox>

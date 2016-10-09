@@ -179,14 +179,14 @@
             <td align="right" nowrap valign="middle">
                                         <asp:Label runat="server" CssClass="label_error" 
                     ID="Label72">*</asp:Label>
-                <asp:Label runat="server" ID="Label15">ผลผลิต :</asp:Label>
+                <asp:Label runat="server" ID="Label15">รายการ :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
                 <font face="Tahoma">&nbsp;<asp:DropDownList runat="server" CssClass="textbox" 
                     ID="cboProduce">
                 </asp:DropDownList>
                     <asp:RequiredFieldValidator runat="server" 
-                    ControlToValidate="cboProduce" ErrorMessage="กรุณาเลือกผลผลิต" Display="None" 
+                    ControlToValidate="cboProduce" ErrorMessage="กรุณาเลือกรายการ" Display="None" 
                     SetFocusOnError="True" ValidationGroup="A" ID="RequiredFieldValidator2"></asp:RequiredFieldValidator>
                     <ajaxtoolkit:ValidatorCalloutExtender runat="server" Enabled="True" TargetControlID="RequiredFieldValidator2" 
                         ID="RequiredFieldValidator2_ValidatorCalloutExtender" 
@@ -331,7 +331,7 @@
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Left" Wrap="True" Width="60%"></ItemStyle>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="รหัสผลผลิต"  Visible="false">
+                        <asp:TemplateField HeaderText="รหัสรายการ"  Visible="false">
                             <ItemTemplate>
                                 <asp:Label ID="lblproduce_code" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.produce_code") %>'>
                                 </asp:Label>

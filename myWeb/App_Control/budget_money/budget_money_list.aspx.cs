@@ -44,7 +44,7 @@ namespace myWeb.App_Control.budget_money
             string strNumber = "0.00";
             try
             {
-                strNumber = String.Format("{0:#,##0.00}", float.Parse(pNumber.ToString()));
+                strNumber = String.Format("{0:#,##0.00}", decimal.Parse(pNumber.ToString()));
             }
             catch { }
             return strNumber;
@@ -76,7 +76,7 @@ namespace myWeb.App_Control.budget_money
                 //        base.SetLabel(c, "แผนงาน", "งานย่อย");
                 //        base.SetLabel(c, "กิจกรรม", "งานรอง");
                 //        base.SetLabel(c, "แผนงบประมาณ", "แผนงาน");
-                //        base.SetLabel(c, "ผลผลิต", "งานหลัก");
+                //        base.SetLabel(c, "รายการ", "งานหลัก");
                 //    }
                 //}
 

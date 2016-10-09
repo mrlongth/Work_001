@@ -244,10 +244,10 @@ namespace myDLL
                 oCommand.Parameters.Add("@pdate_count_year", SqlDbType.Int).Value = int.Parse(pdate_count_year);
                 oCommand.Parameters.Add("@pdate_count_des", SqlDbType.VarChar).Value = pdate_count_des;
                 oCommand.Parameters.Add("@pitem_code", SqlDbType.VarChar).Value = pitem_code;
-                oCommand.Parameters.Add("@ppayment_item_old", SqlDbType.Money).Value = float.Parse(ppayment_item_old);
-                oCommand.Parameters.Add("@ppayment_item_new", SqlDbType.Money).Value = float.Parse(ppayment_item_new);
-                oCommand.Parameters.Add("@ppayment_item_diff", SqlDbType.Money).Value = float.Parse(ppayment_item_diff);
-                oCommand.Parameters.Add("@ppayment_item_back", SqlDbType.Money).Value = float.Parse(ppayment_item_back);
+                oCommand.Parameters.Add("@ppayment_item_old", SqlDbType.Money).Value = decimal.Parse(ppayment_item_old);
+                oCommand.Parameters.Add("@ppayment_item_new", SqlDbType.Money).Value = decimal.Parse(ppayment_item_new);
+                oCommand.Parameters.Add("@ppayment_item_diff", SqlDbType.Money).Value = decimal.Parse(ppayment_item_diff);
+                oCommand.Parameters.Add("@ppayment_item_back", SqlDbType.Money).Value = decimal.Parse(ppayment_item_back);
                 oCommand.Parameters.Add("@pcomments_sub", SqlDbType.VarChar).Value =  pcomments_sub;
                 oCommand.Parameters.Add("@pc_created_by", SqlDbType.VarChar).Value = pc_created_by;
                 // - - - - - - - - - - - -             
@@ -307,10 +307,10 @@ namespace myDLL
                 oCommand.Parameters.Add("@pdate_count_year", SqlDbType.Int).Value = int.Parse(pdate_count_year);
                 oCommand.Parameters.Add("@pdate_count_des", SqlDbType.VarChar).Value = pdate_count_des;
                 oCommand.Parameters.Add("@pitem_code", SqlDbType.VarChar).Value = pitem_code;
-                oCommand.Parameters.Add("@ppayment_item_old", SqlDbType.Money).Value = float.Parse(ppayment_item_old);
-                oCommand.Parameters.Add("@ppayment_item_new", SqlDbType.Money).Value = float.Parse(ppayment_item_new);
-                oCommand.Parameters.Add("@ppayment_item_diff", SqlDbType.Money).Value = float.Parse(ppayment_item_diff);
-                oCommand.Parameters.Add("@ppayment_item_back", SqlDbType.Money).Value = float.Parse(ppayment_item_back);
+                oCommand.Parameters.Add("@ppayment_item_old", SqlDbType.Money).Value = decimal.Parse(ppayment_item_old);
+                oCommand.Parameters.Add("@ppayment_item_new", SqlDbType.Money).Value = decimal.Parse(ppayment_item_new);
+                oCommand.Parameters.Add("@ppayment_item_diff", SqlDbType.Money).Value = decimal.Parse(ppayment_item_diff);
+                oCommand.Parameters.Add("@ppayment_item_back", SqlDbType.Money).Value = decimal.Parse(ppayment_item_back);
                 oCommand.Parameters.Add("@pcomments_sub", SqlDbType.VarChar).Value = pcomments_sub;
                 oCommand.Parameters.Add("@pc_updated_by", SqlDbType.VarChar).Value = pc_updated_by;
                 // - - - - - - - - - - - -             
@@ -372,10 +372,10 @@ namespace myDLL
                 oCommand.Parameters.Add("@pdate_count_year", SqlDbType.Int).Value = int.Parse(pdate_count_year);
                 oCommand.Parameters.Add("@pdate_count_des", SqlDbType.VarChar).Value = pdate_count_des;
                 oCommand.Parameters.Add("@pitem_code", SqlDbType.VarChar).Value = pitem_code;
-                oCommand.Parameters.Add("@ppayment_item_old", SqlDbType.Money).Value = float.Parse(ppayment_item_old);
-                oCommand.Parameters.Add("@ppayment_item_new", SqlDbType.Money).Value = float.Parse(ppayment_item_new);
-                oCommand.Parameters.Add("@ppayment_item_diff", SqlDbType.Money).Value = float.Parse(ppayment_item_diff);
-                oCommand.Parameters.Add("@ppayment_item_back", SqlDbType.Money).Value = float.Parse(ppayment_item_back);
+                oCommand.Parameters.Add("@ppayment_item_old", SqlDbType.Money).Value = decimal.Parse(ppayment_item_old);
+                oCommand.Parameters.Add("@ppayment_item_new", SqlDbType.Money).Value = decimal.Parse(ppayment_item_new);
+                oCommand.Parameters.Add("@ppayment_item_diff", SqlDbType.Money).Value = decimal.Parse(ppayment_item_diff);
+                oCommand.Parameters.Add("@ppayment_item_back", SqlDbType.Money).Value = decimal.Parse(ppayment_item_back);
                 oCommand.Parameters.Add("@pcomments_sub", SqlDbType.VarChar).Value = pcomments_sub;
                 oCommand.Parameters.Add("@pc_updated_by", SqlDbType.VarChar).Value = pc_updated_by;
                 // - - - - - - - - - - - -             

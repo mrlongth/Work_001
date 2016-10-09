@@ -103,7 +103,7 @@ namespace myWeb.Person_Manage
                         lblPosition_name.Text = strposition_name;
 
                         lblType_position_name.Text = strtype_position_name;
-                        lblPerson_salaly.Text = String.Format("{0:0.00}", float.Parse(strperson_salaly));
+                        lblPerson_salaly.Text = String.Format("{0:0.00}", decimal.Parse(strperson_salaly));
 
                         string strSal1 = "0.00";
                         string strSal2 = "0.00";
@@ -116,7 +116,7 @@ namespace myWeb.Person_Manage
                         {
                             strSal1 = Helper.CStr(ds.Tables[0].Rows[0]["item_debit_sum"], "0.00");
                         }
-                        lblPerson_position.Text = String.Format("{0:0.00}", float.Parse(strSal1));
+                        lblPerson_position.Text = String.Format("{0:0.00}", decimal.Parse(strSal1));
                         strSQL = "Select Sum(item_debit) as item_debit_sum from [view_person_item] where person_code ='" + base.PersonCode + "' and [item_name] like '%ตอบแทน%' ";
                         ds = null;
                         oCommon.SEL_SQL(strSQL, ref ds, ref strMessage);
@@ -124,7 +124,7 @@ namespace myWeb.Person_Manage
                         {
                             strSal2 = Helper.CStr(ds.Tables[0].Rows[0]["item_debit_sum"], "0.00");
                         }
-                        lblPerson_reward.Text = String.Format("{0:0.00}", float.Parse(strSal2));
+                        lblPerson_reward.Text = String.Format("{0:0.00}", decimal.Parse(strSal2));
                         #endregion
                     }
                 }

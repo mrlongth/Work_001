@@ -101,7 +101,7 @@
                     </tr>
                     <tr>
                         <td style="text-align: right; width: 22%;">
-                            <asp:Label runat="server" ID="lblProduce" CssClass="label_h">ผลผลิต :</asp:Label>
+                            <asp:Label runat="server" ID="lblProduce" CssClass="label_h">รายการ :</asp:Label>
                         </td>
                         <td style="text-align: left;" colspan="3">
                             <font face="Tahoma">

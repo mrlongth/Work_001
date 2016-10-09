@@ -301,7 +301,7 @@ namespace myWeb.App_Control.payment
                         strloan_acc = ds.Tables[0].Rows[0]["loan_acc"].ToString();
 
                         strloan_money = ds.Tables[0].Rows[0]["loan_money"].ToString();
-                        strloan_money = String.Format("{0:#,##0.00}", float.Parse(strloan_money));
+                        strloan_money = String.Format("{0:#,##0.00}", decimal.Parse(strloan_money));
 
                         strCreatedBy = ds.Tables[0].Rows[0]["c_created_by"].ToString();
                         strUpdatedBy = ds.Tables[0].Rows[0]["c_updated_by"].ToString();

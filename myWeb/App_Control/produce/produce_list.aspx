@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site_list.Master" EnableEventValidation="false"
     AutoEventWireup="true" CodeBehind="produce_list.aspx.cs" Inherits="myWeb.App_Control.produce.produce_list"
-    Title="แสดงข้อมูลผลผลิตประจำปี" %>
+    Title="แสดงข้อมูลรายการ" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script type="text/javascript" language="javascript">
       function RetrieveDTCallBack(res){ 
@@ -66,7 +66,7 @@
         </tr>
         <tr>
             <td style="text-align: right; width: 21%;">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage2">รหัสผลผลิตประจำปี :
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage2">รหัสรายการ :
                 </asp:Label>
             </td>
             <td style="width: 21%;">
@@ -81,7 +81,7 @@
         </tr>
         <tr>
             <td style="text-align: right; width: 21%; height: 26px;">
-                <asp:Label runat="server" CssClass="label_h" ID="lblPage1">ผลผลิตประจำปี : </asp:Label>
+                <asp:Label runat="server" CssClass="label_h" ID="lblPage1">รายการ : </asp:Label>
             </td>
             <td colspan="3" style="height: 26px">
                 <asp:TextBox runat="server" CssClass="textbox" Width="450px" ID="txtproduce_name"></asp:TextBox>
@@ -131,14 +131,14 @@
                     <asp:Label ID="lblNo" runat="server"> </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="รหัสผลผลิตประจำปี " SortExpression="produce_code">
+            <asp:TemplateField HeaderText="รหัสรายการ " SortExpression="produce_code">
                 <ItemStyle HorizontalAlign="Center" Width="20%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblproduce_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.produce_code") %>'>
                     </asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="ชื่อผลผลิตประจำปี " SortExpression="produce_name">
+            <asp:TemplateField HeaderText="ชื่อรายการ " SortExpression="produce_name">
                 <ItemStyle HorizontalAlign="Left" Width="30%" Wrap="True" />
                 <ItemTemplate>
                     <asp:Label ID="lblproduce_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.produce_name") %>'>

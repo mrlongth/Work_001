@@ -11,12 +11,12 @@
             <td style="text-align: left; width: 20%; vertical-align: top;">
                 <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
                     <asp:ListItem Value="3" Selected="True">รายงานสรุปรวมขอเบิกประจำเดือน</asp:ListItem>
-                    <asp:ListItem Value="4">รายงานสรุปการเบิกจ่ายแยกตามผลผลิต</asp:ListItem>
+                    <asp:ListItem Value="4">รายงานสรุปการเบิกจ่ายแยกตามรายการ</asp:ListItem>
                     <asp:ListItem Value="5">รายงานสรุปการเบิกจ่ายแยกตามหน่วยงาน</asp:ListItem>
                     <asp:ListItem Value="7">รายงานสรุปการเบิกจ่ายแยกตามสังกัด</asp:ListItem>
                     <asp:ListItem Value="16">รายงานสรุปการเบิกจ่ายแยกตามประเภทงบ</asp:ListItem>
                     <asp:ListItem Value="A1">รายงานสรุปการเบิกจ่ายแยกตามประเภทงบประจำปี</asp:ListItem>
-                    <asp:ListItem Value="A1-2">รายงานสรุปการเบิกจ่ายแยกตามผลผลิตประจำปี</asp:ListItem>
+                    <asp:ListItem Value="A1-2">รายงานสรุปการเบิกจ่ายแยกตามรายการ</asp:ListItem>
                     <asp:ListItem Value="17">รายงานสรุปการเบิกจ่ายแยกตามประเภทงบสะสม</asp:ListItem>
                     <asp:ListItem Value="19">รายงานรายรับรายบุคคลประจำเดือน</asp:ListItem>
                     <asp:ListItem Value="20">รายงานทะเบียนคุมเช็ค</asp:ListItem>
@@ -178,7 +178,7 @@
                     </tr>
                     <tr>
                         <td style="text-align: right; width: 20%;">
-                            <asp:Label runat="server" ID="Label15" CssClass="label_h" Visible="False">ผลผลิต :</asp:Label>
+                            <asp:Label runat="server" ID="Label15" CssClass="label_h" Visible="False">รายการ :</asp:Label>
                         </td>
                         <td style="text-align: left;" colspan="3">
                             <font face="Tahoma">

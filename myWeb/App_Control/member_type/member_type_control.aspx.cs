@@ -262,8 +262,8 @@ namespace myWeb.App_Control.member_type
                         #region get Data
                         strmember_type_code = ds.Tables[0].Rows[0]["member_type_code"].ToString();
                         strmember_type_name = ds.Tables[0].Rows[0]["member_type_name"].ToString();
-                        strmember_type_rate = String.Format("{0:0.00}",float.Parse(ds.Tables[0].Rows[0]["member_type_rate"].ToString()));
-                        strcompany_rate = String.Format("{0:0.00}", float.Parse(ds.Tables[0].Rows[0]["company_rate"].ToString()));
+                        strmember_type_rate = String.Format("{0:0.00}",decimal.Parse(ds.Tables[0].Rows[0]["member_type_rate"].ToString()));
+                        strcompany_rate = String.Format("{0:0.00}", decimal.Parse(ds.Tables[0].Rows[0]["company_rate"].ToString()));
                         strC_active = ds.Tables[0].Rows[0]["c_active"].ToString();
                         strCreatedBy = ds.Tables[0].Rows[0]["c_created_by"].ToString();
                         strUpdatedBy = ds.Tables[0].Rows[0]["c_updated_by"].ToString();

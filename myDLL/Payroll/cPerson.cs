@@ -381,7 +381,7 @@ namespace myDLL
                 // - - - - - - - - - - - -             
                 SqlParameter oParam_person_salaly = new SqlParameter("person_salaly", SqlDbType.Money);
                 oParam_person_salaly.Direction = ParameterDirection.Input;
-                oParam_person_salaly.Value = float.Parse(pperson_salaly);
+                oParam_person_salaly.Value = decimal.Parse(pperson_salaly);
                 oCommand.Parameters.Add(oParam_person_salaly);
                 // - - - - - - - - - - - -             
                 SqlParameter oParam_person_start = new SqlParameter("person_start", SqlDbType.DateTime);
@@ -406,7 +406,7 @@ namespace myDLL
                 // - - - - - - - - - - - -             
                 SqlParameter oParam_member_type_add = new SqlParameter("member_type_add", SqlDbType.Money);
                 oParam_member_type_add.Direction = ParameterDirection.Input;
-                oParam_member_type_add.Value = float.Parse(pmember_type_add);
+                oParam_member_type_add.Value = decimal.Parse(pmember_type_add);
                 oCommand.Parameters.Add(oParam_member_type_add);
                 // - - - - - - - - - - - -             
                 SqlParameter oParam_person_manage_code = new SqlParameter("person_manage_code", SqlDbType.NVarChar);
@@ -845,12 +845,12 @@ namespace myDLL
                 // - - - - - - - - - - - -             
                 SqlParameter oParam_item_debit = new SqlParameter("item_debit", SqlDbType.Float);
                 oParam_item_debit.Direction = ParameterDirection.Input;
-                oParam_item_debit.Value = float.Parse(pitem_debit);
+                oParam_item_debit.Value = decimal.Parse(pitem_debit);
                 oCommand.Parameters.Add(oParam_item_debit);
                 // - - - - - - - - - - - -             
                 SqlParameter oParam_item_credit = new SqlParameter("item_credit", SqlDbType.Float);
                 oParam_item_credit.Direction = ParameterDirection.Input;
-                oParam_item_credit.Value = float.Parse(pitem_credit);
+                oParam_item_credit.Value = decimal.Parse(pitem_credit);
                 oCommand.Parameters.Add(oParam_item_credit);
                 // - - - - - - - - - - - -             
                 SqlParameter oParam_person_item_tax = new SqlParameter("person_item_tax", SqlDbType.NVarChar);
@@ -943,12 +943,12 @@ namespace myDLL
                 // - - - - - - - - - - - -             
                 SqlParameter oParam_item_debit = new SqlParameter("item_debit", SqlDbType.Float);
                 oParam_item_debit.Direction = ParameterDirection.Input;
-                oParam_item_debit.Value = float.Parse(pitem_debit);
+                oParam_item_debit.Value = decimal.Parse(pitem_debit);
                 oCommand.Parameters.Add(oParam_item_debit);
                 // - - - - - - - - - - - -             
                 SqlParameter oParam_item_credit = new SqlParameter("item_credit", SqlDbType.Float);
                 oParam_item_credit.Direction = ParameterDirection.Input;
-                oParam_item_credit.Value = float.Parse(pitem_credit);
+                oParam_item_credit.Value = decimal.Parse(pitem_credit);
                 oCommand.Parameters.Add(oParam_item_credit);
                 // - - - - - - - - - - - -             
                 SqlParameter oParam_person_item_tax = new SqlParameter("person_item_tax", SqlDbType.NVarChar);
@@ -1330,12 +1330,12 @@ namespace myDLL
                 // - - - - - - - - - - - -             
                 SqlParameter oParam_salary_old = new SqlParameter("salary_old", SqlDbType.Float);
                 oParam_salary_old.Direction = ParameterDirection.Input;
-                oParam_salary_old.Value = float.Parse(pSalary_old);
+                oParam_salary_old.Value = decimal.Parse(pSalary_old);
                 oCommand.Parameters.Add(oParam_salary_old);
                 // - - - - - - - - - - - -             
                 SqlParameter oParam_salary_new = new SqlParameter("salary_new", SqlDbType.Float);
                 oParam_salary_new.Direction = ParameterDirection.Input;
-                oParam_salary_new.Value = float.Parse(pSalary_new);
+                oParam_salary_new.Value = decimal.Parse(pSalary_new);
                 oCommand.Parameters.Add(oParam_salary_new);
                 // - - - - - - - - - - - -  
                 SqlParameter oParam_position_old = new SqlParameter("position_old", SqlDbType.VarChar);
@@ -1417,12 +1417,12 @@ namespace myDLL
                 // - - - - - - - - - - - -             
                 SqlParameter oParam_salary_old = new SqlParameter("salary_old", SqlDbType.Float);
                 oParam_salary_old.Direction = ParameterDirection.Input;
-                oParam_salary_old.Value = float.Parse(pSalary_old);
+                oParam_salary_old.Value = decimal.Parse(pSalary_old);
                 oCommand.Parameters.Add(oParam_salary_old);
                 // - - - - - - - - - - - -             
                 SqlParameter oParam_salary_new = new SqlParameter("salary_new", SqlDbType.Float);
                 oParam_salary_new.Direction = ParameterDirection.Input;
-                oParam_salary_new.Value = float.Parse(pSalary_new);
+                oParam_salary_new.Value = decimal.Parse(pSalary_new);
                 oCommand.Parameters.Add(oParam_salary_new);
                 // - - - - - - - - - - - -  
                 SqlParameter oParam_position_old = new SqlParameter("position_old", SqlDbType.VarChar);
@@ -1579,7 +1579,7 @@ namespace myDLL
                 // - - - - - - - - - - - -             
                 SqlParameter oParam_cumulative_money = new SqlParameter("cumulative_money", SqlDbType.Money);
                 oParam_cumulative_money.Direction = ParameterDirection.Input;
-                oParam_cumulative_money.Value = float.Parse(pcumulative_money);
+                oParam_cumulative_money.Value = decimal.Parse(pcumulative_money);
                 oCommand.Parameters.Add(oParam_cumulative_money);
               
                 // - - - - - - - - - - - -             

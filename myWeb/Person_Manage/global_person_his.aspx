@@ -350,7 +350,7 @@
                                 </tr>
                                 <tr align="left">
                                     <td align="right" nowrap valign="middle">
-                                        <asp:Label ID="Label55" runat="server" CssClass="label_h">ผลผลิต :</asp:Label>
+                                        <asp:Label ID="Label55" runat="server" CssClass="label_h">รายการ :</asp:Label>
                                     </td>
                                     <td align="left" nowrap valign="middle">
                                         <asp:TextBox ID="txtproduce_name" runat="server" CssClass="textbox" Width="300px"

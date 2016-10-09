@@ -54,7 +54,7 @@ namespace myWeb.App_Control.payment
                 //        base.SetLabel(c, "แผนงาน", "งานย่อย");
                 //        base.SetLabel(c, "กิจกรรม", "งานรอง");
                 //        base.SetLabel(c, "แผนงบประมาณ", "แผนงาน");
-                //        base.SetLabel(c, "ผลผลิต", "งานหลัก");
+                //        base.SetLabel(c, "รายการ", "งานหลัก");
                 //    }
                 //}
                 txtpayment_date.Text = DateTime.Now.ToString("dd/MM/yyyy");

@@ -74,7 +74,7 @@ namespace myWeb.App_Control.activity
                 //    {
                 //        base.SetLabel(c, "กิจกรรม", "งานรอง");
                 //        base.SetLabel(c, "แผนงบประมาณ", "แผนงาน");
-                //        base.SetLabel(c, "ผลผลิต", "งานหลัก");
+                //        base.SetLabel(c, "รายการ", "งานหลัก");
                 //    }
                 //}
 
@@ -312,7 +312,7 @@ namespace myWeb.App_Control.activity
                 //    {
                 //        base.SetLabel(c, "กิจกรรม", "งานรอง");
                 //        base.SetLabel(c, "แผนงบประมาณ", "แผนงาน");
-                //        base.SetLabel(c, "ผลผลิต", "งานหลัก");
+                //        base.SetLabel(c, "รายการ", "งานหลัก");
                 //    }
                 //}
                 

@@ -23,7 +23,7 @@ namespace myWeb.App_Control.produce
         private string strPageNo = "1";
         private bool[] blnAccessRight = new bool[5] { false, false, false, false, false };
         private string strPrefixCtr = "ctl00$ASPxRoundPanel1$ASPxRoundPanel2$ContentPlaceHolder1$";
-        private string old_str = "ผลผลิตประจำปี";
+        private string old_str = "รายการ";
         private string new_str = "งานหลัก";
         private string BudgetType
         {
@@ -376,7 +376,7 @@ namespace myWeb.App_Control.produce
                 ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete");
                 imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
                 imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
-                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบผลผลิตประจำปี   " + lblproduce_code.Text + " : " + lblproduce_name.Text + " ?\");");
+                imgDelete.Attributes.Add("onclick", "return confirm(\"คุณต้องการลบรายการ   " + lblproduce_code.Text + " : " + lblproduce_name.Text + " ?\");");
                 #endregion
 
             }

@@ -218,7 +218,7 @@ namespace myDLL
                 oCommand.Parameters.Add("@ppayment_doc", SqlDbType.VarChar).Value = ppayment_doc;
                 oCommand.Parameters.Add("@ppayment_doc_pay", SqlDbType.VarChar).Value = ppayment_doc_pay;
                 oCommand.Parameters.Add("@pitem_code", SqlDbType.VarChar).Value = pitem_code;
-                oCommand.Parameters.Add("@ppayment_return_money", SqlDbType.Money).Value = float.Parse(ppayment_return_money);
+                oCommand.Parameters.Add("@ppayment_return_money", SqlDbType.Money).Value = decimal.Parse(ppayment_return_money);
                 oCommand.Parameters.Add("@ppayment_return_ap", SqlDbType.VarChar).Value = ppayment_return_ap;
                 oCommand.Parameters.Add("@pcomments_sub", SqlDbType.VarChar).Value = pcomments_sub;
                 oCommand.Parameters.Add("@pc_created_by", SqlDbType.VarChar).Value = pc_created_by;
@@ -263,7 +263,7 @@ namespace myDLL
                 oCommand.CommandText = "SP_PAYMENT_RETURN_DETAIL_UPD";
                 oCommand.Parameters.Add("@ppayment_return_detail_id", SqlDbType.Int).Value = int.Parse(ppayment_return_detail_id);
                 oCommand.Parameters.Add("@ppayment_doc", SqlDbType.VarChar).Value = ppayment_doc;
-                oCommand.Parameters.Add("@ppayment_return_money", SqlDbType.Money).Value = float.Parse(ppayment_return_money);
+                oCommand.Parameters.Add("@ppayment_return_money", SqlDbType.Money).Value = decimal.Parse(ppayment_return_money);
                 oCommand.Parameters.Add("@ppayment_return_ap", SqlDbType.VarChar).Value = ppayment_return_ap;
                 oCommand.Parameters.Add("@pcomments_sub", SqlDbType.VarChar).Value = pcomments_sub;
                 oCommand.Parameters.Add("@pc_updated_by", SqlDbType.VarChar).Value = pc_updated_by;

@@ -41,7 +41,7 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle" style="height: 25px">
-                <asp:Label runat="server" ID="lblFName">รหัสผลผลิต :</asp:Label>
+                <asp:Label runat="server" ID="lblFName">รหัสรายการ :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle" style="height: 25px">
                 <asp:TextBox ID="txtproduce_code" runat="server" CssClass="textboxdis" MaxLength="30"
@@ -49,7 +49,7 @@
             </td>
             <td align="left" class="style2" nowrap valign="middle" 
                 style="height: 25px; text-align: right">
-                <asp:Label ID="Label11" runat="server">ผลผลิต :</asp:Label>
+                <asp:Label ID="Label11" runat="server">รายการ :</asp:Label>
             </td>
             <td align="left" colspan="2" nowrap valign="middle" style="height: 25px">
                 <font face="Tahoma">&nbsp;<asp:TextBox ID="txtproduce_name" runat="server" CssClass="textboxdis"

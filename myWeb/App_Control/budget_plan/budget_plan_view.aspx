@@ -109,14 +109,14 @@
         </tr>
         <tr align="left">
             <td align="right" nowrap valign="middle">
-                <asp:Label runat="server" ID="lblFName">รหัสผลผลิต :</asp:Label>
+                <asp:Label runat="server" ID="lblFName">รหัสรายการ :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
                 <asp:TextBox ID="txtproduce_code" runat="server" CssClass="textboxdis" MaxLength="30"
                     ReadOnly="True" Width="100px"></asp:TextBox>
             </td>
             <td align="left" nowrap valign="middle" style="text-align: right">
-                <asp:Label ID="Label11" runat="server">ผลผลิต :</asp:Label>
+                <asp:Label ID="Label11" runat="server">รายการ :</asp:Label>
             </td>
             <td align="left" nowrap valign="middle">
                 <font face="Tahoma"><asp:TextBox ID="txtproduce_name" runat="server" CssClass="textboxdis"

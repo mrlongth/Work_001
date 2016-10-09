@@ -10,13 +10,13 @@
                     <asp:ListItem Value="A01" Selected="True">รายงานสรุปยอดเงินงบประมาณสะสมประจำเดือน</asp:ListItem>
                     <asp:ListItem Value="A02">รายงานสรุปยอดเงินงบประมาณตามหมวดรายได้</asp:ListItem>
                     <asp:ListItem Value="A03">รายงานสรุปยอดเงินงบประมาณตามประเภทงบ</asp:ListItem>
-                    <asp:ListItem Value="A04">รายงานสรุปยอดเงินงบประมาณตามผลผลิต</asp:ListItem>
+                    <asp:ListItem Value="A04">รายงานสรุปยอดเงินงบประมาณตามรายการ</asp:ListItem>
                     <asp:ListItem Value="A05">รายงานแผน/ผลการใช้จ่ายงบประมาณรายจ่าย</asp:ListItem>
                     <asp:ListItem Value="A06">รายงานแผน/ผลการใช้จ่ายงบประมาณรายจ่ายตามกิจกรรม</asp:ListItem>
                     <asp:ListItem Value="A06-2">รายงานแผน/ผลการใช้จ่ายงบประมาณรายจ่ายตามไตรมาส</asp:ListItem>
                     <asp:ListItem Value="A06-3">รายงานแผน/ผลการใช้จ่ายงบประมาณรายจ่ายตามบุคลากร</asp:ListItem>
                     <asp:ListItem Value="A07">รายงานสรุปยอดเงินงบประมาณคงเหลือ</asp:ListItem>
-                    <asp:ListItem Value="A08">รายงานแผน/ผลการใช้จ่ายงบประมาณรายจ่ายตามผลผลิต</asp:ListItem>
+                    <asp:ListItem Value="A08">รายงานแผน/ผลการใช้จ่ายงบประมาณรายจ่ายตามรายการ</asp:ListItem>
                 </asp:RadioButtonList>
             </td>
             <td style="text-align: right; width: 65%; vertical-align: top;">
@@ -88,7 +88,7 @@
                     </tr>
                     <tr>
                         <td style="text-align: right; width: 22%;">
-                            <asp:Label runat="server" ID="lblProduce" CssClass="label_h">ผลผลิต :</asp:Label>
+                            <asp:Label runat="server" ID="lblProduce" CssClass="label_h">รายการ :</asp:Label>
                         </td>
                         <td style="text-align: left;" colspan="3">
                             <font face="Tahoma">

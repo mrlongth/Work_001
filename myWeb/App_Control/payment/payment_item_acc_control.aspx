@@ -193,7 +193,7 @@
                     </tr>
                     <tr align="left">
                         <td align="right" nowrap valign="middle">
-                            <asp:label id="Label55" runat="server" cssclass="label_hbk">ผลผลิต :</asp:label>
+                            <asp:label id="Label55" runat="server" cssclass="label_hbk">รายการ :</asp:label>
                         </td>
                         <td align="left" nowrap valign="middle">
                             <asp:textbox id="txtproduce_name" runat="server" cssclass="textboxdis" width="250px">

@@ -16,7 +16,7 @@ namespace myWeb.App_Control.produce
 {
     public partial class produce_control : PageBase
     {
-        private string old_str = "ผลผลิต";
+        private string old_str = "รายการ";
         private string new_str = "งานหลัก";
         private string BudgetType
         {

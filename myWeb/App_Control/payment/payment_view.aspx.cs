@@ -21,7 +21,7 @@ namespace myWeb.App_Control.payment
         {
             if (!pNumber.ToString().Equals(""))
             {
-                string strNumber = String.Format("{0:#,##0.00}", float.Parse(pNumber.ToString()));
+                string strNumber = String.Format("{0:#,##0.00}", decimal.Parse(pNumber.ToString()));
                 return strNumber;
             }
             return "";
@@ -1183,7 +1183,7 @@ namespace myWeb.App_Control.payment
             //if (strBusget_type == "B")
             //{
             //    Label54.Text = "แผนงบ :";
-            //    Label55.Text = "ผลผลิต :";
+            //    Label55.Text = "รายการ :";
             //    Label53.Text = "กิจกรรม :";
             //    Label56.Text = "แผนงาน :";
             //}

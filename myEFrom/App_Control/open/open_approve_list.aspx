@@ -135,7 +135,7 @@
             </td>
             <td style="text-align: right;">
                 <asp:Label ID="lblError" runat="server" CssClass="label_error"></asp:Label>
-                <asp:Label ID="lblPage15" runat="server" CssClass="label_h" Visible="False">ผลผลิต 
+                <asp:Label ID="lblPage15" runat="server" CssClass="label_h" Visible="False">รายการ 
                 :</asp:Label>
             </td>
             <td>

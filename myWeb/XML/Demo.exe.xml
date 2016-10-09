@@ -233,10 +233,11 @@
     <entry name="2557">2557</entry>
 	  <entry name="2558">2558</entry>
     <entry name="2559">2559</entry>
+    <entry name="2560">2560</entry>
   </section>
   <section name="default">
     <entry name="pagetitle">MJU</entry>
-    <entry name="yearnow">2559</entry>
+    <entry name="yearnow">2560</entry>
     <entry name="work_status">'01','02','03'</entry>
 
     <entry name="companyname">มหาวิทยาลัยแม่โจ้</entry>

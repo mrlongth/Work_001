@@ -21,12 +21,12 @@
                     <asp:ListItem Value="18">สรุปการรับ - จ่ายเงินประจำเดือนทุกประเภทที่มีกำหนดจ่ายเป็นรายเดือน</asp:ListItem>
                     <asp:ListItem Value="8">รายงานสรุปรายได้ทั้งหมดแยกตามรหัสรายได้ (Excel)</asp:ListItem>
                     <asp:ListItem Value="A1">รายงานบัญชีคู่จ่ายรายบุคคลประจำเดือน</asp:ListItem>
-                    <asp:ListItem Value="A3">รายงานภาษีแยกตามผลผลิต</asp:ListItem>
+                    <asp:ListItem Value="A3">รายงานภาษีแยกตามรายการ</asp:ListItem>
                     <asp:ListItem Value="A2">รายงานยอดเงินส่งธนาคารประจำเดือน</asp:ListItem>
                     <asp:ListItem Value="A4">ใบนำส่งเช็คและรายละเอียดจำนวนเงินสุทธิ</asp:ListItem>
                     <asp:ListItem Value="A6">รายละเอียดการนำส่งเงินชำระหนี้เงินกู้ธนาคาร</asp:ListItem>
                     <asp:ListItem Value="A7">รายงานสรุปการรับ - จ่ายเงิน ประจำเดือน ระบบเบิกตรง</asp:ListItem>
-                    <asp:ListItem Value="A8">รายงานสรุปการรับ - จ่ายเงินแยกตามผลผลิต ประจำเดือน ระบบเบิกตรง </asp:ListItem>
+                    <asp:ListItem Value="A8">รายงานสรุปการรับ - จ่ายเงินแยกตามรายการ ประจำเดือน ระบบเบิกตรง </asp:ListItem>
 
                 </asp:RadioButtonList>
             </td>
@@ -123,7 +123,7 @@
                     </tr>
                     <tr>
                         <td style="text-align: right; width: 20%;">
-                            <asp:Label runat="server" ID="Label15" CssClass="label_h" Visible="False">ผลผลิต :</asp:Label>
+                            <asp:Label runat="server" ID="Label15" CssClass="label_h" Visible="False">รายการ :</asp:Label>
                         </td>
                         <td style="text-align: left;">
                             <font face="Tahoma">

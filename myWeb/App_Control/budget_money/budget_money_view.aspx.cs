@@ -22,7 +22,7 @@ namespace myWeb.App_Control.budget_money
 
         public static string getNumber(object pNumber)
         {
-            string strNumber = String.Format("{0:#,##0.00}", float.Parse(pNumber.ToString()));
+            string strNumber = String.Format("{0:#,##0.00}", decimal.Parse(pNumber.ToString()));
             return strNumber;
         }
 

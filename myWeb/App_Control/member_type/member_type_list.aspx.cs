@@ -169,7 +169,7 @@ namespace myWeb.App_Control.member_type
                 Label lblmember_type_name = (Label)e.Row.FindControl("lblmember_type_name");
                 Label lblmember_type_rate = (Label)e.Row.FindControl("lblmember_type_rate");
                 Label lblc_active = (Label)e.Row.FindControl("lblc_active");
-                lblmember_type_rate.Text = String.Format("{0:0.00}", float.Parse(lblmember_type_rate.Text));
+                lblmember_type_rate.Text = String.Format("{0:0.00}", decimal.Parse(lblmember_type_rate.Text));
                 string strStatus = lblc_active.Text;
                 #region set ImageStatus
                 ImageButton imgStatus = (ImageButton)e.Row.FindControl("imgStatus");

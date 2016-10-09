@@ -338,12 +338,12 @@ namespace myWeb.App_Control.payment
                         if (stritem_type.Equals("D"))
                         {
                             stritem_type = "Debit";
-                            strAmount = String.Format("{0:#,##0.00}", float.Parse(stritem_debit));
+                            strAmount = String.Format("{0:#,##0.00}", decimal.Parse(stritem_debit));
                         }
                         else
                         {
                             stritem_type = "Credit";
-                            strAmount = String.Format("{0:#,##0.00}", float.Parse(stritem_credit));
+                            strAmount = String.Format("{0:#,##0.00}", decimal.Parse(stritem_credit));
                         }
 
                         stritem_group_code = ds.Tables[0].Rows[0]["item_group_code"].ToString();
@@ -515,7 +515,7 @@ namespace myWeb.App_Control.payment
             //if (strBusget_type == "B")
             //{
             //    Label54.Text = "แผนงบ :";
-            //    Label55.Text = "ผลผลิต :";
+            //    Label55.Text = "รายการ :";
             //    Label53.Text = "กิจกรรม :";
             //    Label56.Text = "แผนงาน :";
             //}

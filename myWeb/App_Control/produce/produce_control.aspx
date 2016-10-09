@@ -174,7 +174,7 @@
                             <table border="0" cellpadding="1" cellspacing="1" style="width: 100%">
                                 <tr align="left">
                                     <td align="right" nowrap valign="middle">
-                                        <asp:Label ID="lblFName" runat="server">รหัสผลผลิต :</asp:Label>
+                                        <asp:Label ID="lblFName" runat="server">รหัสรายการ :</asp:Label>
                                     </td>
                                     <td align="left" nowrap valign="middle">
                                         <asp:TextBox ID="txtproduce_code" runat="server" CssClass="textbox" MaxLength="5"
@@ -191,7 +191,7 @@
                                 <tr align="left">
                                     <td align="right" nowrap valign="middle">
                                         <asp:Label ID="Label72" runat="server" CssClass="label_error">*</asp:Label>
-                                        <asp:Label ID="Label11" runat="server">ผลผลิต :</asp:Label>
+                                        <asp:Label ID="Label11" runat="server">รายการ :</asp:Label>
                                     </td>
                                     <td align="left" nowrap valign="middle">
                                         <font face="Tahoma">
@@ -241,14 +241,14 @@
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Wrap="False" Width="5%"></ItemStyle>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="รหัสผลผลิต " SortExpression="produce_code">
+                            <asp:TemplateField HeaderText="รหัสรายการ " SortExpression="produce_code">
                                 <ItemTemplate>
                                     <asp:Label ID="lblproduce_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.produce_code") %>'>
                                     </asp:Label>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Wrap="True" Width="20%"></ItemStyle>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="ชื่อผลผลิต " SortExpression="produce_name">
+                            <asp:TemplateField HeaderText="ชื่อรายการ " SortExpression="produce_name">
                                 <ItemTemplate>
                                     <asp:Label ID="lblproduce_name" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.produce_name") %>'>
                                     </asp:Label>

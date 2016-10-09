@@ -198,7 +198,7 @@ namespace myWeb.Person_Manage
                 string strStatus = lblc_active.Text;
                 if (!lblitem_credit.Text.Equals(""))
                 {
-                    lblitem_credit.Text = String.Format("{0:#,##0.00}", float.Parse(lblitem_credit.Text));
+                    lblitem_credit.Text = String.Format("{0:#,##0.00}", decimal.Parse(lblitem_credit.Text));
                 }
 
                 #region set ImageStatus

@@ -27,7 +27,7 @@ namespace myWeb.App_Control.produce
             lblError.Text = "";
             if (!IsPostBack)
             {
-                Session["menupopup_name"] = "แสดงข้อมูลผลผลิต";
+                Session["menupopup_name"] = "แสดงข้อมูลรายการ";
 
                 #region set QueryString
                 if (Request.QueryString["produce_code"] != null)

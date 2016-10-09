@@ -106,12 +106,12 @@ namespace myDLL
             // - - - - - - - - - - - -             
             SqlParameter oParam_Member_type_rate = new SqlParameter("member_type_rate", SqlDbType.Float);
             oParam_Member_type_rate.Direction = ParameterDirection.Input;
-            oParam_Member_type_rate.Value = float.Parse(pmember_type_rate);
+            oParam_Member_type_rate.Value = decimal.Parse(pmember_type_rate);
             oCommand.Parameters.Add(oParam_Member_type_rate);
             // - - - - - - - - - - - -             
             SqlParameter oParam_company_rate = new SqlParameter("company_rate", SqlDbType.Float);
             oParam_company_rate.Direction = ParameterDirection.Input;
-            oParam_company_rate.Value = float.Parse(pcompany_rate);
+            oParam_company_rate.Value = decimal.Parse(pcompany_rate);
             oCommand.Parameters.Add(oParam_company_rate);
             // - - - - - - - - - - - -             
             SqlParameter oParam_Active = new SqlParameter("c_active", SqlDbType.NVarChar);
@@ -169,12 +169,12 @@ namespace myDLL
             // - - - - - - - - - - - -             
             SqlParameter oParam_Member_type_rate = new SqlParameter("member_type_rate", SqlDbType.Float);
             oParam_Member_type_rate.Direction = ParameterDirection.Input;
-            oParam_Member_type_rate.Value = float.Parse(pmember_type_rate);
+            oParam_Member_type_rate.Value = decimal.Parse(pmember_type_rate);
             oCommand.Parameters.Add(oParam_Member_type_rate);
             // - - - - - - - - - - - -             
             SqlParameter oParam_company_rate = new SqlParameter("company_rate", SqlDbType.Float);
             oParam_company_rate.Direction = ParameterDirection.Input;
-            oParam_company_rate.Value = float.Parse(pcompany_rate);
+            oParam_company_rate.Value = decimal.Parse(pcompany_rate);
             oCommand.Parameters.Add(oParam_company_rate);
             // - - - - - - - - - - - -             
             SqlParameter oParam_Active = new SqlParameter("C_active", SqlDbType.NVarChar);

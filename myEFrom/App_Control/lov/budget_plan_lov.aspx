@@ -62,7 +62,7 @@
                 </asp:DropDownList>
             </td>
             <td style="width: 15%; text-align: right;">
-                <asp:Label ID="lblPage15" runat="server" CssClass="label_h">ผลผลิต :</asp:Label>
+                <asp:Label ID="lblPage15" runat="server" CssClass="label_h">รายการ :</asp:Label>
             </td>
             <td colspan="2">
                 <asp:DropDownList ID="cboProduce" runat="server" CssClass="textbox" AutoPostBack="True"
@@ -135,7 +135,7 @@
                         </asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="ผลผลิต" SortExpression="produce_name" Visible="false">
+                <asp:TemplateField HeaderText="รายการ" SortExpression="produce_name" Visible="false">
                     <ItemStyle HorizontalAlign="Left" Wrap="false" Width="12%"></ItemStyle>
                     <ItemTemplate>
                         <%--<asp:Label ID="lblproduce_code" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.produce_code") %>' Visible="false"></asp:Label>--%>

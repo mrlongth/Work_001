@@ -86,7 +86,7 @@
                     </tr>
                     <tr>
                         <td style="text-align: right; width: 20%;">
-                            <asp:Label runat="server" ID="Label15" CssClass="label_h">ผลผลิต :</asp:Label>
+                            <asp:Label runat="server" ID="Label15" CssClass="label_h">รายการ :</asp:Label>
                         </td>
                         <td style="text-align: left;">
                             <font face="Tahoma">
