@@ -15,6 +15,7 @@
                     <asp:ListItem Value="A01">รายงานการเบิกจ่าย กบข.ประจำปี</asp:ListItem>
                     <asp:ListItem Value="13">รายงานสรุปรวม กบข.ส่วนเพิ่ม</asp:ListItem>
                     <asp:ListItem Value="A03">รายงานสรุปรวมกองทุนสำรองเลี้ยงชีพ (พม.)</asp:ListItem>
+                    <asp:ListItem Value="A03_01">รายงานสรุปรวมกองทุนสำรองเลี้ยงชีพ (พม.) ส่วนเพิ่ม</asp:ListItem>
                     <asp:ListItem Value="A04">รายงานสรุปกองทุนสำรองเลี้ยงชีพ (พม.) แยกตามสังกัด</asp:ListItem>
                     <asp:ListItem Value="A05">รายงานการเบิกจ่ายกองทุนสำรองเลี้ยงชีพ (พม.) ประจำประจำปี</asp:ListItem>
                     <asp:ListItem Value="A06">แบบนำส่งเงินสะสม - สมทบ</asp:ListItem>                    

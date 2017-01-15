@@ -385,7 +385,9 @@ namespace myWeb.App_Control.reportsparameter
                 Retive_Rep_GBK();
             }
             else if (ViewState["report_code"].ToString().Equals("Rep_GBKadd")
-                || ViewState["report_code"].ToString().Equals("Rep_GBKadd_back"))
+                || ViewState["report_code"].ToString().Equals("Rep_GBKadd_back")
+                || ViewState["report_code"].ToString().Equals("Rep_PVDadd")
+                || ViewState["report_code"].ToString().Equals("Rep_PVDadd_back"))
             {
                 Retive_Rep_GBK();
             }

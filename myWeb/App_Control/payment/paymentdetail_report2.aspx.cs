@@ -534,6 +534,24 @@ namespace myWeb.App_Control.payment
                 }
                 strCriteria = strCriteria.Replace("view_payment.", "");
             }
+
+            else if (RadioButtonList1.SelectedValue.Equals("A03_01"))
+            {
+                if (cboPayType.SelectedValue == "N")
+                {
+                    strReport_code = "Rep_PVDadd";
+                    strCriteria = strCriteria + "  And  substring(item_code,5,7)= '09-123' ";
+                }
+                else
+                {
+                    strReport_code = "Rep_PVDadd_back";
+                    strCriteria = strCriteria + "  And  substring(item_code,5,7)= '09-123A' ";
+                }
+                strCriteria = strCriteria.Replace("view_payment.", "");
+            }
+
+
+
             //กองทุนสำรองเลี้ยงชีพ
             else if (RadioButtonList1.SelectedValue.Equals("A04"))
             {

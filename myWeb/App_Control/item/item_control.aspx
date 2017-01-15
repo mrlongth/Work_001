@@ -102,6 +102,13 @@
                 <asp:DropDownList runat="server" CssClass="textbox"   
                     ID="cboItem_group">
                 </asp:DropDownList>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="cboItem_group" ErrorMessage="กรุณาเลือกหมวดรายได้/จ่าย"
+                    Display="None" SetFocusOnError="True" ValidationGroup="A" 
+                    ID="RequiredFieldValidator4"></asp:RequiredFieldValidator>
+                <ajaxtoolkit:ValidatorCalloutExtender runat="server" HighlightCssClass="validatorCalloutHighlight"
+                    Enabled="True" TargetControlID="RequiredFieldValidator4" 
+                    ID="RequiredFieldValidator4_ValidatorCalloutExtender">
+                </ajaxtoolkit:ValidatorCalloutExtender>
             </td>
             <td align="left" nowrap valign="middle">
                 &nbsp;</td>
