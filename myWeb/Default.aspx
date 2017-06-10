@@ -2,10 +2,7 @@
     CodeBehind="Default.aspx.cs" Inherits="myWeb.Default" Title="ระบบบริหารงานบุคลากร มหาวิทยาลัยแม่โจ้" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
-<%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073"
-    Namespace="DevExpress.Web.ASPxPanel" TagPrefix="dxp" %>
-<%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073"
-    Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content_left">
         <div class="head_news">
