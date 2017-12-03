@@ -499,12 +499,12 @@ namespace myWeb.App_Control.payment
                 if (cboPayType.SelectedValue == "N")
                 {
                     strReport_code = "Rep_GBK";
-                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-037' ";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7) IN ('09-037','09-147') ";
                 }
                 else
                 {
                     strReport_code = "Rep_GBK_back";
-                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-037A' ";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7) IN ('09-037A','09-147A') ";
                 }
             }
             else if (RadioButtonList1.SelectedValue.Equals("12"))
@@ -512,12 +512,12 @@ namespace myWeb.App_Control.payment
                 if (cboPayType.SelectedValue == "N")
                 {
                     strReport_code = "Rep_GBKbydirector";
-                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-037' ";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7) IN ('09-037','09-148') ";
                 }
                 else
                 {
                     strReport_code = "Rep_GBK_backbydirector";
-                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-037A' ";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7) IN ('09-037A','09-148A') ";
                 }
             }
             else if (RadioButtonList1.SelectedValue.Equals("13"))
@@ -525,12 +525,12 @@ namespace myWeb.App_Control.payment
                 if (cboPayType.SelectedValue == "N")
                 {
                     strReport_code = "Rep_GBKadd";
-                    strCriteria = strCriteria + "  And  substring(item_code,5,7)= '09-045' ";
+                    strCriteria = strCriteria + "  And  substring(item_code,5,7) IN ('09-045','09-147') ";
                 }
                 else
                 {
                     strReport_code = "Rep_GBKadd_back";
-                    strCriteria = strCriteria + "  And  substring(item_code,5,7)= '09-045A' ";
+                    strCriteria = strCriteria + "  And  substring(item_code,5,7) IN ('09-045A','09-147A') ";
                 }
                 strCriteria = strCriteria.Replace("view_payment.", "");
             }
@@ -540,12 +540,12 @@ namespace myWeb.App_Control.payment
                 if (cboPayType.SelectedValue == "N")
                 {
                     strReport_code = "Rep_PVDadd";
-                    strCriteria = strCriteria + "  And  substring(item_code,5,7)= '09-123' ";
+                    strCriteria = strCriteria + "  And  substring(item_code,5,7) IN ('09-123','09-155') ";
                 }
                 else
                 {
                     strReport_code = "Rep_PVDadd_back";
-                    strCriteria = strCriteria + "  And  substring(item_code,5,7)= '09-123A' ";
+                    strCriteria = strCriteria + "  And  substring(item_code,5,7)  IN ('09-123A','09-155A')  ";
                 }
                 strCriteria = strCriteria.Replace("view_payment.", "");
             }
@@ -558,12 +558,12 @@ namespace myWeb.App_Control.payment
                 if (cboPayType.SelectedValue == "N")
                 {
                     strReport_code = "Rep_PVDbydirector";
-                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-110' ";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7) IN ('09-110','09-154') ";
                 }
                 else
                 {
                     strReport_code = "Rep_PVD_backbydirector";
-                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-110A' ";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7) IN ('09-110A','09-154A') ";
                 }
             }
             if (RadioButtonList1.SelectedValue.Equals("A03"))
@@ -571,21 +571,21 @@ namespace myWeb.App_Control.payment
                 if (cboPayType.SelectedValue == "N")
                 {
                     strReport_code = "Rep_PVD";
-                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-110' ";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7) IN ('09-110','09-154') ";
                 }
                 else
                 {
                     strReport_code = "Rep_PVD_back";
-                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-110A' ";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7) IN ('09-110A','09-154A') ";
                 }
             }
 
             else if (RadioButtonList1.SelectedValue.Equals("A01"))
             {
                 if (cboPayType.SelectedValue == "N")
-                    strReport_code = "Rep_paymentGBKbyyear&item_des=" + HttpUtility.HtmlEncode("  And  substring(pa.item_code,5,7)= '09-037' ");
+                    strReport_code = "Rep_paymentGBKbyyear&item_des=" + HttpUtility.HtmlEncode("  And  substring(pa.item_code,5,7) in ('09-037','09-147') ");
                 else
-                    strReport_code = "Rep_paymentGBKbyyear&item_des=" + HttpUtility.HtmlEncode("  And  substring(pa.item_code,5,7)= '09-037A' ");
+                    strReport_code = "Rep_paymentGBKbyyear&item_des=" + HttpUtility.HtmlEncode("  And  substring(pa.item_code,5,7) in ('09-037A','09-147A')  ");
                 strCriteria = strCriteria.Replace("view_payment.", "psa.");
             }
             else if (RadioButtonList1.SelectedValue.Equals("A02"))
@@ -610,12 +610,12 @@ namespace myWeb.App_Control.payment
             {
                 if (cboPayType.SelectedValue == "N")
                 {
-                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-110' ";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7) IN ('09-110','09-154') ";
                     strReport_code = "Rep_payment_pvd_bank";
                 }
                 else
                 {
-                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7)= '09-110A' ";
+                    strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7) IN ('09-110A','09-154A') ";
                     strReport_code = "Rep_payment_pvd_bank_back";
                 }
             }

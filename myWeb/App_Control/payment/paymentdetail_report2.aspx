@@ -17,7 +17,8 @@
                     <asp:ListItem Value="A03">รายงานสรุปรวมกองทุนสำรองเลี้ยงชีพ (พม.)</asp:ListItem>
                     <asp:ListItem Value="A03_01">รายงานสรุปรวมกองทุนสำรองเลี้ยงชีพ (พม.) ส่วนเพิ่ม</asp:ListItem>
                     <asp:ListItem Value="A04">รายงานสรุปกองทุนสำรองเลี้ยงชีพ (พม.) แยกตามสังกัด</asp:ListItem>
-                    <asp:ListItem Value="A05">รายงานการเบิกจ่ายกองทุนสำรองเลี้ยงชีพ (พม.) ประจำประจำปี</asp:ListItem>
+                    <asp:ListItem Value="A05">รายงานการเบิกจ่ายกองทุนสำรองเลี้ยงชีพ (พม.) 
+                    ประจำประจำปี</asp:ListItem>
                     <asp:ListItem Value="A06">แบบนำส่งเงินสะสม - สมทบ</asp:ListItem>                    
                 </asp:RadioButtonList>
             </td>
@@ -34,10 +35,10 @@
                             <asp:Label runat="server" CssClass="label_error" ID="lblError"></asp:Label>
                         </td>
                         <td style="width: 20%; text-align: right;">
-                            <asp:Label runat="server" CssClass="label_h" ID="lblPage2" Visible="False">กลุ่มบุคคลากร :</asp:Label>
+                            <asp:Label runat="server" CssClass="label_h" ID="lblPage2">กลุ่มบุคคลากร :</asp:Label>
                         </td>
                         <td style="height: 23px; text-align: left;">
-                            <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group" Visible="False">
+                            <asp:DropDownList runat="server" CssClass="textbox" ID="cboPerson_group">
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -97,7 +98,8 @@
                     </tr>
                     <tr>
                         <td style="text-align: right; width: 20%;">
-                            <asp:Label runat="server" ID="lblPage9" CssClass="label_h" Visible="False">รายได้/จ่าย :</asp:Label>
+                            <asp:Label runat="server" ID="lblPage9" CssClass="label_h" Visible="False">รายได้/จ่าย 
+                            :</asp:Label>
                         </td>
                         <td style="text-align: left;" colspan="3">
                             <asp:TextBox runat="server" CssClass="textbox" Width="80px" ID="txtitem_code" MaxLength="20"
@@ -113,7 +115,8 @@
                     </tr>
                     <tr>
                         <td style="text-align: right; width: 20%;">
-                            <asp:Label runat="server" ID="Label15" CssClass="label_h" Visible="False">รายการ :</asp:Label>
+                            <asp:Label runat="server" ID="Label15" CssClass="label_h" Visible="False">รายการ 
+                            :</asp:Label>
                         </td>
                         <td style="text-align: left;">
                             <font face="Tahoma">

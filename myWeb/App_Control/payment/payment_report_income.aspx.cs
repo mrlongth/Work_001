@@ -974,7 +974,7 @@ namespace myWeb.App_Control.payment
 
         protected void cboPay_Month_SelectedIndexChanged(object sender, EventArgs e)
         {
-            InitRadioList();
+            //InitRadioList();
             InitcboPerson_group();
         }
 

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<profile>
+  <section name="RecordPerPage">
+    <entry name="10">10</entry>
+    <entry name="15">15</entry>
+    <entry name="20">20</entry>
+    <entry name="25">25</entry>
+    <entry name="30">30</entry>
+    <entry name="35">35</entry>
+    <entry name="40">40</entry>
+    <entry name="45">45</entry>
+    <entry name="50">50</entry>
+    <entry name="100">100</entry>
+    <entry name="500">500</entry>
+  </section>
+  <section name="imgView">
+    <entry name="img">../../images/controls/view.png</entry>
+    <entry name="title">คลิกเพื่อแสดงรายละเอียด</entry>
+    <entry name="imgdisable">../../images/controls/view.gif</entry>
+    <entry name="titledisable">Cannot View</entry>
+  </section>
+  <section name="imgEdit">
+    <entry name="title">คลิกเพื่อแก้ไขข้อมูล</entry>
+    <entry name="img">../../images/controls/edit.png</entry>
+    <entry name="imgdisable">../../images/controls/edit_disable.gif</entry>
+    <entry name="titledisable">Cannot Edit</entry>
+  </section>
+  <section name="imgEditMain">
+    <entry name="title">คลิกเพื่อแก้ไขข้อมูล</entry>
+    <entry name="img">../../images/controls/edit_main.gif</entry>
+    <entry name="imgdisable">../../images/controls/edit_disable.gif</entry>
+    <entry name="titledisable">Cannot Edit</entry>
+  </section>
+  <section name="imgDelete">
+    <entry name="img">../../images/controls/delete.png</entry>
+    <entry name="title">คลิกเพื่อทำการลบข้อมูล</entry>
+    <entry name="imgdisable">../../images/controls/delete_disable.gif</entry>
+    <entry name="titledisable">Cannot Delete</entry>
+  </section>
+  <section name="imgCancel">
+    <entry name="img">../../images/controls/cancel.gif</entry>
+    <entry name="title">Cancel</entry>
+    <entry name="imgdisable">../../images/controls/cancel_disable.gif</entry>
+    <entry name="titledisable">Cannot Cancel</entry>
+  </section>
+  <section name="imgSelectDoc">
+    <entry name="img">../../images/controls/select_doc.gif</entry>
+    <entry name="title">Select Document</entry>
+    <entry name="imgdisable">../../images/controls/select_doc_disable.gif</entry>
+    <entry name="titledisable">Cannot Select Document</entry>
+  </section>
+  <section name="imgGridApprove">
+    <entry name="title">Approve</entry>
+    <entry name="img">../../images/controls/approve.gif</entry>
+  </section>
+  <section name="imgGridUnApprove">
+    <entry name="title">Unapprove</entry>
+    <entry name="img">../../images/controls/unapprove.gif</entry>
+  </section>
+  <section name="imgGridCannotApprove">
+    <entry name="title">Cannot Approve and Unapprove</entry>
+    <entry name="img">../../images/controls/cannot_approve.gif</entry>
+  </section>
+  <section name="imgApprove">
+    <entry name="title">Approve</entry>
+    <entry name="img">../../images/controls/approve.gif</entry>
+    <entry name="titledisable">Unapprove</entry>
+    <entry name="imgdisable">../../images/controls/unapprove.gif</entry>
+  </section>
+  <section name="imgCannotApprove">
+    <entry name="title">Cannot Approve</entry>
+    <entry name="img">../../images/controls/cannot_approve.gif</entry>
+  </section>
+  <section name="imgSave">
+    <entry name="img">../../images/controls/save_close.gif</entry>
+    <entry name="title">บันทึกและปิด</entry>
+    <entry name="imgdisable">../../images/controls/save_close_disable.gif</entry>
+    <entry name="titledisable">ไม่สามารถบันทึกและปิด</entry>
+  </section>
+  <section name="imgSaveOnly">
+    <entry name="img">../../images/controls/save.gif</entry>
+    <entry name="title">บันทึก</entry>
+    <entry name="imgdisable">../../images/controls/save_disable.gif</entry>
+    <entry name="titledisable">ไม่สามารถบันทึก</entry>
+  </section>
+  <section name="imgSaveAdd">
+    <entry name="img">../../images/controls/saveadd.gif</entry>
+    <entry name="title">Save</entry>
+    <entry name="imgdisable">../../images/controls/saveadd_disable.gif</entry>
+    <entry name="titledisable">Cannot Save</entry>
+  </section>
+  <section name="imgClose">
+    <entry name="img">../../images/controls/close.gif</entry>
+    <entry name="title">Close</entry>
+    <entry name="imgdisable">../../images/controls/close_disable.gif</entry>
+    <entry name="titledisable">Cannot Close</entry>
+  </section>
+  <section name="imgNew">
+    <entry name="img">../../images/controls/add.gif</entry>
+    <entry name="title">Add</entry>
+    <entry name="imgdisable">../../images/controls/add_disable.gif</entry>
+    <entry name="titledisable">Cannot Add</entry>
+  </section>
+  <section name="imgFind">
+    <entry name="img">../../images/controls/search.gif</entry>
+    <entry name="title">Search</entry>
+    <entry name="imgdisable">../../images/controls/search_disable.gif</entry>
+    <entry name="titledisable">Cannot Search</entry>
+  </section>
+  <section name="imgPrint">
+    <entry name="img">../../images/controls/print.png</entry>
+    <entry name="title">Print</entry>
+    <entry name="imgdisable">../../images/controls/print_dis.png</entry>
+    <entry name="titledisable">Cannot Print</entry>
+  </section>
+  <section name="imgPrintPreview">
+    <entry name="img">../../images/controls/print.png</entry>
+    <entry name="title">Preview Report</entry>
+    <entry name="imgdisable">../../images/controls/print_dis.png</entry>
+    <entry name="titledisable">Cannot Preview Report</entry>
+  </section>
+  <section name="imgAsc">
+    <entry name="img">../../images/controls/tridown.gif</entry>
+    <entry name="title">Order By ASC</entry>
+  </section>
+  <section name="imgDesc">
+    <entry name="img">../../images/controls/triup.gif</entry>
+    <entry name="title">Order By DESC</entry>
+  </section>
+  <section name="imgClear">
+    <entry name="img">../../images/controls/erase.gif</entry>
+    <entry name="title">Clear</entry>
+  </section>
+  <section name="imgList">
+    <entry name="img">../../images/controls/view2.gif</entry>
+    <entry name="title">List</entry>
+  </section>
+  <section name="imgViewDetail">
+    <entry name="title">View Detail</entry>
+    <entry name="img">../../images/controls/view3.gif</entry>
+  </section>
+  <section name="imgGridCalculator">
+    <entry name="img">../../images/controls/grid_calculator.gif</entry>
+    <entry name="title">Calculate</entry>
+    <entry name="imgdisable">../../images/controls/grid_calculator_disable.gif</entry>
+    <entry name="titledisable">Cannot Calculate</entry>
+  </section>
+  <section name="imgGridAdd">
+    <entry name="img">../../images/controls/page_save.png</entry>
+    <entry name="title">Add</entry>
+    <entry name="imgdisable">../../images/controls/grid_add_disable.gif</entry>
+    <entry name="titledisable">Cannot Add</entry>
+  </section>
+  <section name="imgAddSelected">
+    <entry name="img">../../images/controls/bt_previous.gif</entry>
+    <entry name="title">Add Selected</entry>
+    <entry name="imgdisable">../../images/controls/bt_previous_disable.gif</entry>
+    <entry name="titledisable">Cannot Add Selected</entry>
+  </section>
+  <section name="imgAddAll">
+    <entry name="img">../../images/controls/bt_first.gif</entry>
+    <entry name="title">Add All</entry>
+    <entry name="imgdisable">../../images/controls/bt_first_disable.gif</entry>
+    <entry name="titledisable">Cannot Add All</entry>
+  </section>
+  <section name="imgRemoveSelected">
+    <entry name="img">../../images/controls/bt_next.gif</entry>
+    <entry name="title">Delete Selected</entry>
+    <entry name="imgdisable">../../images/controls/bt_next_disable.gif</entry>
+    <entry name="titledisable">Cannot Delete Selected</entry>
+  </section>
+  <section name="imgRemoveAll">
+    <entry name="img">../../images/controls/bt_last.gif</entry>
+    <entry name="title">Delete All</entry>
+    <entry name="imgdisable">../../images/controls/bt_last_disable.gif</entry>
+    <entry name="titledisable">Cannot Delete All</entry>
+  </section>
+  <section name="imgGo">
+    <entry name="img">../../images/controls/go.gif</entry>
+    <entry name="title">Go To Page</entry>
+  </section>
+  <section name="imgStatus">
+    <entry name="title"></entry>
+    <entry name="img">../../images/controls/active.png</entry>
+    <entry name="imgdisable">../../images/controls/inactive.png</entry>
+    <entry name="titledisable"></entry>
+  </section>
+  <section name="imgManage">
+    <entry name="img">../../images/controls/bt_manage.gif</entry>
+    <entry name="title">Manage Data</entry>
+    <entry name="imgdisable">../../images/controls/bt_manage_disable.gif</entry>
+    <entry name="titledisable">Cannot Manage Data</entry>
+  </section>
+  <section name="imgCollapsible">
+    <entry name="img">../../images/menu_e_n.gif</entry>
+    <entry name="title"></entry>
+  </section>
+  <section name="imgGridUpdateHead">
+    <entry name="img">../../images/controls/grid_update_head.gif</entry>
+    <entry name="title">Save All Data</entry>
+    <entry name="imgdisable">../../images/controls/grid_update_head.gif</entry>
+    <entry name="titledisable">Cannot Save All Data</entry>
+  </section>
+  <section name="colorDataGridRow">
+    <entry name="Even">#FFFFFF</entry>
+    <entry name="Odd">#EAEAEA</entry>
+    <entry name="MouseOver">#AECAF0</entry>
+  </section>
+  <section name="colorDataGridRowLevel2">
+    <entry name="Even">#FFFFFF</entry>
+    <entry name="Odd">#EAEAEA</entry>
+    <entry name="MouseOver">#DCDC98</entry>
+  </section>
+  <section name="cboMonth">
+    <entry name="01">มกราคม</entry>
+    <entry name="02">กุมภาพันธ์</entry>
+    <entry name="03">มีนาคม</entry>
+    <entry name="04">เมษายน</entry>
+    <entry name="05">พฤษภาคม</entry>
+    <entry name="06">มิถุนายน</entry>
+    <entry name="07">กรกฏาคม</entry>
+    <entry name="08">สิงหาคม</entry>
+    <entry name="09">กันยายน</entry>
+    <entry name="10">ตุลาคม</entry>
+    <entry name="11">พฤศจิกายน</entry>
+    <entry name="12">ธันวาคม</entry>
+  </section>
+  <section name="cboYear">
+    <entry name="2553">2553</entry>
+    <entry name="2554">2554</entry>
+    <entry name="2555">2555</entry>
+    <entry name="2556">2556</entry>
+    <entry name="2557">2557</entry>
+    <entry name="2558">2558</entry>
+    <entry name="2559">2559</entry>
+    <entry name="2560">2560</entry>
+  </section>
+  <section name="default">
+    <entry name="pagetitle">MJU</entry>
+    <entry name="yearnow">2560</entry>
+    <entry name="work_status">'01','02','03'</entry>
+
+    <entry name="companyname">มหาวิทยาลัยแม่โจ้</entry>
+    <entry name="SOS_MAX">15000</entry>
+    <entry name="SOS_MIN">1650</entry>
+  </section>
+  <section name="seperaterChar">
+    <entry name="sChar">;</entry>
+  </section>
+  <section name="country">
+    <entry name="TH">ประเทศไทย</entry>
+  </section>
+
+  <section name="UserAdmin">
+    <entry name="Username">admin</entry>
+  </section>
+  <section name="Schedule">
+    <entry name="StartTime">8</entry>
+    <entry name="FinishTime">22</entry>
+    <entry name="fullBlock">12</entry>
+  </section>
+  <section name="MemberType">
+    <entry name="GBK">01</entry>
+    <!--ข้าราชการ||กบข.-->
+    <entry name="GSJ">02</entry>
+    <!--ลูกจ้างประจำ||กสจ.-->
+    <entry name="SOS">03</entry>
+    <entry name="GBK2">04</entry>
+  </section>
+  <section name="PersonMange">
+    <entry name="00001">00001</entry>
+    <entry name="00229">00229</entry>
+    <entry name="00135">00135</entry>
+  </section>
+</profile>

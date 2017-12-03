@@ -9,8 +9,7 @@
     <title>จัดการข้อมูล</title>
     <link href="StyleSheet_popup.css" rel="stylesheet" type="text/css" />
     <link href="js/style.css" rel="stylesheet" type="text/css" />
-    <link href="themes/start/jquery-ui-1.8.22.custom.css" rel="stylesheet" type="text/css" />
-  
+    <link href="themes/start/jquery-ui-1.8.22.custom.css" rel="stylesheet" type="text/css" />  
 </head>
 <body onload="on_load_list()">
     <form id="form1" runat="server">

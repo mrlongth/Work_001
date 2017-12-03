@@ -18,7 +18,7 @@
                     <asp:ListItem Value="A1">รายงานสรุปการเบิกจ่ายแยกตามประเภทงบประจำปี</asp:ListItem>
                     <asp:ListItem Value="A1-2">รายงานสรุปการเบิกจ่ายแยกตามรายการ</asp:ListItem>
                     <asp:ListItem Value="17">รายงานสรุปการเบิกจ่ายแยกตามประเภทงบสะสม</asp:ListItem>
-                    <asp:ListItem Value="19">รายงานรายรับรายบุคคลประจำเดือน</asp:ListItem>
+                    <asp:ListItem Value="19">รายงานรายรับรายบุคคลประจำปี</asp:ListItem>
                     <asp:ListItem Value="20">รายงานทะเบียนคุมเช็ค</asp:ListItem>
                     <asp:ListItem Value="A6">รายงานทะเบียนรับเช็ค</asp:ListItem>
                     <asp:ListItem Value="A7">รายงานทะเบียนรายละเอียดเช็ค</asp:ListItem>

@@ -1,0 +1,244 @@
+@charset "utf-8";
+body {
+	background-image: url(../images/bg.jpg);
+	background-repeat:no-repeat;
+	background-color:#f0f9fe;
+	margin:0;
+}
+.site {
+	width:1000px;
+	margin:0 auto;
+	position:relative;
+}
+.site_full {
+	width:95%;
+	margin:0 auto;
+	position:relative;
+}
+.site_full_2 {
+	width:100%;
+	margin:0 auto;
+	position:relative;
+}
+.header_home {
+	background-image:url(../images/head_home.png);
+	width:1000px;
+	height:221px;
+	margin:0 auto;
+	float:left;
+}
+.content_home {
+	background:url(../images/mid_bg.png);
+	background-repeat:repeat-y;
+	width:1000px;
+	margin:0 auto;
+	display:block;
+	float:left;
+}
+.content_left {
+	width:480px;
+	margin-left:82px;
+	float:left;
+}
+.head_news {
+	background:url(../images/head_news.png);
+	width:455;
+	height:39px;
+	font:bold 14px Verdana, Geneva, sans-serif;
+	color:#0082c5;
+	padding:15px 0 0 25px;
+}
+.mid_news {
+	background:url(../images/mid_news.png);
+	width:440px;
+	padding:0 10px 0 25px;
+}
+.bt_news {
+	background:url(../images/bottom.png);
+	width:480px;
+	height:18px;
+}
+.news {
+	padding:0 20px;
+	background:url(../images/bullet_news.png) no-repeat;
+	font: 14px Verdana, Geneva, sans-serif;
+	color:#0083c6;
+}
+.date {
+	padding:0 20px;
+	color:#93a9b5;
+	font: 14px Verdana, Geneva, sans-serif;
+}
+.read_more {
+	background:url(../images/readmore_bt.png);
+	width:58px;
+	height:20px;
+	margin:8px 0 0 20px;
+}
+.divider {
+	width:430px;
+	height:1px;
+	background-color:#CCC;
+	margin:15px 0 15px 10px
+}
+.content_right {
+	float:left;
+	width:364px;
+}
+.footer_home {
+	background:url(../images/footer_home.png);
+	width:880px;
+	height:44px;
+	float:left;
+	padding:35px 0 0 120px;
+	font:12px Verdana, Geneva, sans-serif;
+	color:#FFF;
+}
+.text_f {
+	background:url(../images/text_bg.png);
+	width:203px;
+	height:21px;
+	border:solid;
+	border-width:1px;
+	border-color:#b9b9b9;
+}
+.table_login {
+	margin-top:86px;
+	font:12px Verdana, Geneva, sans-serif;
+	color:#FFF;
+	float:left
+}
+.login_bt {
+	width:81px;
+	height:30px;
+	float:left;
+	margin:15px 0 0 232px;
+}
+.header_full {
+}
+.logo {
+	position:absolute;
+	z-index:2;
+	background:url(../images/logo.png);
+	width:592px;
+	height:182px;
+}
+.logo_2 {
+	position:absolute;
+	z-index:2;
+	background:url(../images/logo.png);
+	width:592px;
+	height:182px;
+	margin-left:-50px;
+}
+.login_detail {
+	position:absolute;
+	z-index:4;
+	background:url(../images/login_detail.png);
+	width:346px;
+	height:128px;
+	right:80px;
+	top:40px;
+}
+.welcome_text {
+	text-align:center;
+	width:200px;
+	float:left;
+	margin:80px 0 0 10px;
+	color:#0094d5;
+	font:12px Verdana, Geneva, sans-serif;
+}
+.log_out_top {
+	background: url(../images/logout_bt.png);
+	width:88px;
+	height:20px;
+	float:left;
+	margin:88px 0 0 17px;
+}
+.top_left_corner {
+	background:url(../images/top_left.png);
+	width:83px;
+	height:182px;
+}
+.top_left_corner_2 {
+	background:url(../images/top_left_2.png);
+	width:33px;
+	height:182px;
+}
+.top_mid {
+	background:url(../images/top_mid.png);
+}
+.left {
+	background:url(../images/bg_left.png);
+	background-repeat:repeat-y
+}
+.left_2 {
+	background:url(../images/bg_left_2.png);
+	background-repeat:repeat-y
+}
+.right {
+	background:url(../images/bg_right.png);
+	background-repeat:repeat-y;
+	width:80px;
+}
+.right_2 {
+	background:url(../images/bg_right_2.png);
+	background-repeat:repeat-y;
+	width:38px;
+}
+.mid {
+	background:url(../images/bg_mid.png)
+}
+.main_nav {
+	background:url(../images/mainnav_bg.png);
+	height:45px;
+	margin-left:0px;
+}
+
+.seven {
+	background:url(../images/75_y.png);
+	width:419px;
+	height:376px;
+	margin:10px 0 0 0px;
+	float:left
+}
+
+.bottom_left {
+	width:83px;
+	height:86px;
+	background:url(../images/bottm_left.png);
+}
+.bottom_left_2 {
+	width:33px;
+	height:86px;
+	background:url(../images/bottm_left_2.png);
+}
+.bottom_mid {
+	background-image:url(../images/bt_mid.png);
+	font:12px Verdana, Geneva, sans-serif;
+	color:#FFF
+}
+.bottom_right {
+	background:url(../images/bottm_right.png);
+	width:102px;
+	height:86px
+}
+.bottom_right_2 {
+	background:url(../images/bottm_right_2.png);
+	width:60px;
+	height:86px
+}
+.main_menu_bg {
+	background:url(images/3bt_bg.png);
+	width:609px;
+	height:371px;
+	margin:40px auto 0 auto;
+}
+.select {
+	text-align:left;
+	font:22px bold Verdana, Geneva, sans-serif;
+	color:#48a7d0;
+	margin:8px 0 0 15px
+}
+.logout{background:url(../images/log_out.png); width:115px; height:32px; margin:40px 0 0 459px; padding:13px 0 0 28px; color:#0079b2}
+.logout_link a, .logout_link  a:link, .logout_link  a:visted{color:#0079b2;}

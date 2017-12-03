@@ -234,10 +234,11 @@
 	  <entry name="2558">2558</entry>
     <entry name="2559">2559</entry>
     <entry name="2560">2560</entry>
+    <entry name="2561">2561</entry>
   </section>
   <section name="default">
     <entry name="pagetitle">MJU</entry>
-    <entry name="yearnow">2560</entry>
+    <entry name="yearnow">2561</entry>
     <entry name="work_status">'01','02','03'</entry>
 
     <entry name="companyname">มหาวิทยาลัยแม่โจ้</entry>
@@ -271,6 +272,10 @@
     <entry name="PVD1">07</entry>
     <!--สำรองเลี้ยงชีพ พม รด.-->
     <entry name="PVD2">06</entry>
+
+    <!--สำรองเลี้ยงชีพ ขร. พม.-->
+    <entry name="PVD3">08</entry>
+    
   </section>
   <section name="PersonMange">
     <entry name="00001">00001</entry>

@@ -193,6 +193,17 @@ namespace myWeb.Person_Manage
             }
         }
 
+        protected void Page_Unload(object sender, EventArgs e)
+        {
+            if (rptSource != null)
+            {
+                rptSource.Close();
+                rptSource.Dispose();
+                CrystalReportViewer1.Dispose();
+                GC.Collect();
+            }
+        }
+
         private void printData()
         {
             if (ViewState["report_code"].ToString().Equals("Rep_payment_req_certificate"))

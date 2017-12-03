@@ -567,7 +567,7 @@ namespace myWeb.App_Control.payment
                 strCriteria = "  And  view_payment.payment_detail_budget_type = '" + cboBudget_type.SelectedValue + "'  ";
 
             }
-            if (!strYear.Equals(""))
+            if (!strYear.Equals("") && !RadioButtonList1.SelectedValue.Equals("A4"))
             {
                 if (!RadioButtonList1.SelectedValue.Equals("A4") &&
                     !RadioButtonList1.SelectedValue.Equals("20") &&
@@ -597,7 +597,7 @@ namespace myWeb.App_Control.payment
                 }
             }
 
-            if (!strPay_Month.Equals(""))
+            if (!strPay_Month.Equals("") && cboPay_Month.Enabled)
             {
                 if (!RadioButtonList1.SelectedValue.Equals("A4") &&
                 !RadioButtonList1.SelectedValue.Equals("17") &&
@@ -616,7 +616,7 @@ namespace myWeb.App_Control.payment
                 }
             }
 
-            if (!strPay_Year.Equals(""))
+            if (!strPay_Year.Equals("") && cboPay_Year.Enabled)
             {
                 if (!RadioButtonList1.SelectedValue.Equals("A4") &&
                     !RadioButtonList1.SelectedValue.Equals("17") &&
@@ -709,7 +709,7 @@ namespace myWeb.App_Control.payment
                 strCriteria = strCriteria + "  And  view_payment.payment_detail_produce_code= '" + strProduce + "' ";
             }
 
-            if (!strLot.Equals(""))
+            if (!strLot.Equals("") && cboLot.Enabled)
             {
                 if (!RadioButtonList1.SelectedValue.Equals("A2") && !RadioButtonList1.SelectedValue.Equals("A9"))
                 {
@@ -958,6 +958,9 @@ namespace myWeb.App_Control.payment
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {
             cboLot.Enabled = false;
+            cboPay_Month.Enabled = true;
+            cboPay_Year.Enabled = true;
+
 
             LabelPosition.Visible = false;
             txtposition_code.Visible = false;
@@ -1195,6 +1198,33 @@ namespace myWeb.App_Control.payment
                 imgClear_item.Enabled = true;
                 cboBudget_type.Enabled = true;
             }
+
+            else if (RadioButtonList1.SelectedValue == "19")
+            {
+                cboLot.Enabled = true;
+                cboPay_Month.Enabled = false;
+                cboPay_Year.Enabled = false;
+                txtitem_code.CssClass = "textbox";
+                txtitem_name.CssClass = "textbox";
+                txtitem_code.Enabled = true;
+                txtitem_name.Enabled = true;
+                imgList_item.Enabled = true;
+                imgClear_item.Enabled = true;
+            }
+            else if (RadioButtonList1.SelectedValue == "5")
+            {
+                cboDirector.Enabled = true;
+                cboUnit.Enabled = true;
+                cboPerson_group.Enabled = true;
+                txtitem_code.CssClass = "textbox";
+                txtitem_name.CssClass = "textbox";
+                txtitem_code.Enabled = true;
+                txtitem_name.Enabled = true;
+                imgList_item.Enabled = true;
+                imgClear_item.Enabled = true;
+                cboLot.Enabled = true;
+            }
+
             else
             {
                 cboDirector.Enabled = true;

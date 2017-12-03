@@ -335,7 +335,8 @@ namespace myDLL
                                         string pperson_postionno, string pbranch_code, string pbank_no,
                                         string pperson_salaly, string pperson_start, string pperson_end, string pperson_group_code, string pmember_type_code,
                                         string pmember_type_add, string pperson_manage_code, string pbudget_plan_code, string pperson_work_status_code,
-                                        string pc_updated_by, string ptype_position_code, string pbranch_code_2, string pbank_no_2, ref string strMessage)
+                                        string pc_updated_by, string ptype_position_code, string pbranch_code_2, string pbank_no_2, 
+                                        string pperson_salaly_2 , string pperson_salaly_3 , ref string strMessage)
         {
             bool blnResult = false;
             SqlConnection oConn = new SqlConnection();
@@ -446,6 +447,20 @@ namespace myDLL
                 oParam_bank_no_2.Direction = ParameterDirection.Input;
                 oParam_bank_no_2.Value = pbank_no_2;
                 oCommand.Parameters.Add(oParam_bank_no_2);
+
+
+                // - - - - - - - - - - - -             
+                SqlParameter oParam_person_salaly_2 = new SqlParameter("person_salaly_2", SqlDbType.Money);
+                oParam_person_salaly_2.Direction = ParameterDirection.Input;
+                oParam_person_salaly_2.Value = decimal.Parse(pperson_salaly_2);
+                oCommand.Parameters.Add(oParam_person_salaly_2);
+
+                // - - - - - - - - - - - -             
+                SqlParameter oParam_person_salaly_3 = new SqlParameter("person_salaly_3", SqlDbType.Money);
+                oParam_person_salaly_3.Direction = ParameterDirection.Input;
+                oParam_person_salaly_3.Value = decimal.Parse(pperson_salaly_3);
+                oCommand.Parameters.Add(oParam_person_salaly_3);
+            
 
                 // - - - - - - - - - - - -             
                 oCommand.ExecuteNonQuery();

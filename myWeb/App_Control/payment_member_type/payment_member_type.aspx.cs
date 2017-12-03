@@ -465,6 +465,7 @@ namespace myWeb.App_Control.payment_member_type
 
                 var strGBK2 = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["GBK2"].ToString();
                 var strPVD1 = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["PVD1"].ToString();
+                var strPVD4 = "09";
 
 
                 GridViewRow gviewRow;
@@ -479,7 +480,7 @@ namespace myWeb.App_Control.payment_member_type
                     AwNumeric txtextra_credit = (AwNumeric)gviewRow.FindControl("txtextra_credit");
 
 
-                    if (!txtrate1.Text.Equals("0.00") || cboMember_type.SelectedValue.Equals(strGBK2) || cboMember_type.SelectedValue.Equals(strPVD1))
+                    if (!txtrate1.Text.Equals("0.00") || cboMember_type.SelectedValue.Equals(strGBK2) || cboMember_type.SelectedValue.Equals(strPVD1) || cboMember_type.SelectedValue.Equals(strPVD4))
                     {
                         DataSet ds = new DataSet();
                         string strCheckDup = string.Empty;
@@ -496,7 +497,7 @@ namespace myWeb.App_Control.payment_member_type
                                 string strBudgetType = ds.Tables[0].Rows[0]["payment_detail_budget_type"].ToString();
                                 string strpayment_detail_id = ds.Tables[0].Rows[0]["payment_detail_id"].ToString();
                                 if (!oPayment.SP_PAYMENT_DETAIL_UPD(hdfpayment_doc.Value, pitem_code, "0", txtmebertype_credit.Value.ToString(), ppayment_item_tax,
-                                                                                            ppayment_item_sos, pcomments_sub, strActive, strUpdatedBy, strBudgetType,strpayment_detail_id, ref strMessage))
+                                                                                            ppayment_item_sos, pcomments_sub, strActive, strUpdatedBy, strBudgetType, strpayment_detail_id, ref strMessage))
                                 {
                                     lblError.Text = strMessage;
                                 }
@@ -570,6 +571,7 @@ namespace myWeb.App_Control.payment_member_type
                         }
                     }
                 }
+                oPayment.SP_UPDATEGBKCHANGE(ref strMessage);
                 blnResult = true;
             }
             catch (Exception ex)
@@ -598,14 +600,26 @@ namespace myWeb.App_Control.payment_member_type
             string strGBK = string.Empty;
             string strGBK2 = string.Empty;
             string strPVD = string.Empty;
+            string strPerson_group_code = string.Empty;
             strGBK = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["GBK"].ToString();
             strGBK2 = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["GBK2"].ToString();
-            strPVD = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["PVD"].ToString();
-            var strPVD1 = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["PVD1"].ToString();
-            
+            // กองทุนสำรองเลี้ยงชีพ (พม.)
+            strPVD = "05";
+            // กองทุนสำรองเลี้ยงชีพ (พม รด.)
+            var strPVD2 = "06";
+
+            //กองทุนสำรองเลี้ยงชีพ (พม. ส่วนเพิ่ม)
+            var strPVD1 = "07";
+
+            //กองทุนสำรองเลี้ยงชีพ (ขร. พม.)
+            var strPVD3 = "08";
+
+            // กองทุนสำรองเลี้ยงชีพ (ขร. พม. ส่วนเพิ่ม)
+            var strPVD4 = "09";
+
             try
             {
-                if (!strmember_type_code.Equals(strGBK2) && !strmember_type_code.Equals(strPVD1))
+                if (!strmember_type_code.Equals(strGBK2) && !strmember_type_code.Equals(strPVD1) && !strmember_type_code.Equals(strPVD4))
                 {
                     strCriteria = "  and  member_type_code like '%" + strmember_type_code + "%' " +
                                          " and person_work_status_code='01' " +
@@ -613,18 +627,23 @@ namespace myWeb.App_Control.payment_member_type
                                          " and pay_month='" + strpay_month + "' " +
                                          " and pay_year='" + strpay_year + "' " +
                                          " and person_group_code IN (" + PersonGroupList + ") ";
-                }             
+                }
                 else
                 {
-                    if(strmember_type_code.Equals(strGBK2))
+                    if (strmember_type_code.Equals(strGBK2))
                     {
                         strmember_type_code = strGBK;
                     }
                     if (strmember_type_code.Equals(strPVD1))
                     {
                         strmember_type_code = strPVD;
-                    } 
- 
+                    }
+                    if (strmember_type_code.Equals(strPVD4))
+                    {
+                        strmember_type_code = strPVD3;
+                    }
+
+
                     strCriteria = "  and  member_type_code= '" + strmember_type_code + "' " +
                                            " and person_work_status_code='01' " +
                                            " and payment_year='" + strpayment_year + "' " +
@@ -634,15 +653,15 @@ namespace myWeb.App_Control.payment_member_type
                                            " and person_group_code IN (" + PersonGroupList + ") ";
                 }
                 var result = false;
-                if (strmember_type_code.Equals(strPVD))
+                if (strmember_type_code.Equals(strPVD) || strmember_type_code.Equals(strPVD3))
                 {
                     result = oPayment.SP_PAYMENT_MEMBER_PVD_TEMP_SEL(strCriteria, ref ds, ref strMessage);
                 }
-                else 
+                else
                 {
-                    result = oPayment.SP_PAYMENT_MEMBER_TYPE_TEMP_SEL(strCriteria, ref ds, ref strMessage);                
+                    result = oPayment.SP_PAYMENT_MEMBER_TYPE_TEMP_SEL(strCriteria, ref ds, ref strMessage);
                 }
-                if (result==false)
+                if (result == false)
                 {
                     lblError.Text = strMessage;
                 }
@@ -662,18 +681,56 @@ namespace myWeb.App_Control.payment_member_type
                         double dblperson_salaly = 0;
                         try
                         {
-                            dblperson_salaly = double.Parse((ds.Tables[0].Rows[i]["person_salaly"].ToString()));
+                            strPerson_group_code = ds.Tables[0].Rows[i]["person_group_code"].ToString();
+
+                            if (strPerson_group_code == "15" && (strmember_type_code == strGBK || strmember_type_code == strGBK2))
+                            {
+                                try
+                                {
+                                    dblperson_salaly = double.Parse((ds.Tables[0].Rows[i]["person_salaly_3"].ToString()));
+                                }
+                                catch
+                                {
+                                    dblperson_salaly = double.Parse((ds.Tables[0].Rows[i]["person_salaly"].ToString()));
+                                }
+                            }
+                            else if (strPerson_group_code == "15" && (strmember_type_code == strPVD3))
+                            {
+                                try
+                                {
+                                    dblperson_salaly = double.Parse((ds.Tables[0].Rows[i]["person_salaly_2"].ToString()));
+                                }
+                                catch
+                                {
+                                    dblperson_salaly = double.Parse((ds.Tables[0].Rows[i]["person_salaly"].ToString()));
+                                }
+                            }
+                            else
+                            {
+                                dblperson_salaly = double.Parse((ds.Tables[0].Rows[i]["person_salaly"].ToString()));
+                            }
+
                         }
                         catch { }
                         double dblpayment_item_amt = 0;
-                        try
+                        if (strmember_type_code != strGBK && strmember_type_code != strGBK2 && strmember_type_code != strPVD3)
                         {
-                            dblpayment_item_amt = double.Parse((ds.Tables[0].Rows[i]["payment_item_amt"].ToString()));
+                            try
+                            {
+                                dblpayment_item_amt = double.Parse((ds.Tables[0].Rows[i]["payment_item_amt"].ToString()));
+                            }
+                            catch
+                            { }
                         }
-                        catch { }
+                        else
+                        {
+                            dblpayment_item_amt = dblperson_salaly;
+                        }
                         double dblsos_max = double.Parse(((DataSet)Application["xmlconfig"]).Tables["default"].Rows[0]["SOS_MAX"].ToString());
                         double dblsos_min = double.Parse(((DataSet)Application["xmlconfig"]).Tables["default"].Rows[0]["SOS_MIN"].ToString());
                         double dblmember_type_add = double.Parse(ds.Tables[0].Rows[i]["member_type_add"].ToString());
+
+
                         ds.Tables[0].Rows[i]["person_salaly"] = dblpayment_item_amt;
                         dblperson_salaly = dblpayment_item_amt;
                         //txtperson_salaly.Value = dblpayment_item_amt;
@@ -692,10 +749,10 @@ namespace myWeb.App_Control.payment_member_type
 
                         if (double.Parse(txtrate1.Value.ToString()) > 0.0)
                         {
-                            if (strmember_type_code.Equals(strSOS) || strmember_type_code.Equals(strPVD))
+                            if (strmember_type_code.Equals(strSOS) || strmember_type_code.Equals(strPVD) || strmember_type_code.Equals(strPVD3))
                             {
                                 ds.Tables[0].Rows[i]["membertype_credit"] = Math.Round(((double.Parse(txtrate1.Value.ToString())) * dblperson_salaly) / 100, 0, MidpointRounding.AwayFromZero);
-                            }                           
+                            }
                             else
                             {
                                 ds.Tables[0].Rows[i]["membertype_credit"] = ((double.Parse(txtrate1.Value.ToString())) * dblperson_salaly) / 100;
@@ -707,7 +764,7 @@ namespace myWeb.App_Control.payment_member_type
                         }
                         if (double.Parse(txtrate2.Value.ToString()) > 0.0)
                         {
-                            if (strmember_type_code.Equals(strSOS) || strmember_type_code.Equals(strPVD))
+                            if (strmember_type_code.Equals(strSOS) || strmember_type_code.Equals(strPVD) || strmember_type_code.Equals(strPVD3))
                             {
                                 ds.Tables[0].Rows[i]["company_credit"] = Math.Round((double.Parse(txtrate2.Value.ToString()) * dblperson_salaly) / 100, 0, MidpointRounding.AwayFromZero);
                             }
@@ -736,6 +793,11 @@ namespace myWeb.App_Control.payment_member_type
                         }
 
                         if (cboMember_type.SelectedValue.Equals(strPVD1))
+                        {
+                            ds.Tables[0].Rows[i]["membertype_credit"] = Math.Round(((dblmember_type_add) * dblperson_salaly) / 100, 0, MidpointRounding.AwayFromZero);
+                        }
+
+                        if (cboMember_type.SelectedValue.Equals(strPVD4))
                         {
                             ds.Tables[0].Rows[i]["membertype_credit"] = Math.Round(((dblmember_type_add) * dblperson_salaly) / 100, 0, MidpointRounding.AwayFromZero);
                         }
@@ -774,7 +836,7 @@ namespace myWeb.App_Control.payment_member_type
                         GridView1.Columns[GridView1.Columns.Count - 1].Visible = false;
                     }
 
-                    if (cboMember_type.SelectedValue.Equals(strGBK2) || cboMember_type.SelectedValue.Equals(strPVD1))
+                    if (cboMember_type.SelectedValue.Equals(strGBK2) || cboMember_type.SelectedValue.Equals(strPVD1) || cboMember_type.SelectedValue.Equals(strPVD4))
                     {
                         GridView1.Columns[GridView1.Columns.Count - 3].Visible = true;
                     }

@@ -181,14 +181,14 @@ namespace myWeb.App_Control.person
                 imgList_branch_2.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลสาขาธนาคาร (เงินรายได้)' ,'../lov/branch_lov.aspx?branch_code='+document.forms[0]." +
                                                 strPrefixCtr_main + "TabPanel2$txtbranch_code_2.value+" + "'&branch_name='+document.forms[0]." + strPrefixCtr_main + "TabPanel2$txtbranch_name_2.value+" +
                                                 "'&ctrl1=" + txtbranch_code_2.ClientID + "&ctrl2=" + txtbranch_name_2.ClientID + "&ctrl3=" + txtbank_name_2.ClientID + "&show=2', '2');return false;");
-               
+
                 imgClear_branch_2.Attributes.Add("onclick", "document.forms[0]." + strPrefixCtr_main + "TabPanel2$txtbranch_code_2.value='';" +
                                                             "document.forms[0]." + strPrefixCtr_main + "TabPanel2$txtbranch_name_2.value=''; " +
                                                             "document.forms[0]." + strPrefixCtr_main + "TabPanel2$txtbank_name_2.value=''; " +
                                                             "return false;");
-                
-                
-                
+
+
+
                 imgList_person_manage.Attributes.Add("onclick", "OpenPopUp('800px','400px','93%','ค้นหาข้อมูลตำแหน่งทางการบริหาร' ,'../lov/person_manage_lov.aspx?" +
                                                             "person_manage_code='+document.forms[0]." + strPrefixCtr_main + "TabPanel2$txtperson_manage_code.value+" +
                                                             "'&person_manage_name='+document.forms[0]." + strPrefixCtr_main + "TabPanel2$txtperson_manage_name.value+" +
@@ -348,21 +348,44 @@ namespace myWeb.App_Control.person
             strSOS = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["SOS"].ToString();
             string strPVD = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["PVD"].ToString();
             string strPVD2 = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["PVD2"].ToString();
+            string strPVD3 = "08";
           
-            strmember_type = cboMember_type.SelectedValue;
+
+            foreach (ListItem item in cboMember_type_checkboxes.Items)
+            {
+                if (item.Selected)
+                {
+                    strmember_type += item.Value + ",";
+                }
+            }
+            if (strmember_type.Length > 0)
+                strmember_type = strmember_type.Substring(0, strmember_type.Length - 1);
+
             strperson_group_code = cboPerson_group.SelectedValue;
-            if (strperson_group_code.Equals(strGBK))
+
+            // ข้าราชการ
+            if (strperson_group_code.Equals("01"))
             {
                 strCriteria = " and member_type_code='" + strGBK + "' and c_active='Y' ";
             }
-            else if (strperson_group_code.Equals(strGSJ))
+            // ข้าราชการ ขร. พม.
+            else if (strperson_group_code.Equals("15"))
+            {
+                strCriteria = " and member_type_code IN ('" + strGBK + "','" + strSOS + "','" + strPVD3 + "') and c_active='Y' ";
+            }
+
+            // ลูกจ้าง
+            else if (strperson_group_code.Equals("02"))
             {
                 strCriteria = " and member_type_code='" + strGSJ + "' and c_active='Y' ";
             }
-            else if (strperson_group_code.Equals("03"))
+
+            // พนักงานมหาวิทยาลัย และ ลูกจ้าง พม.
+            else if (strperson_group_code.Equals("03") || strperson_group_code.Equals("16"))
             {
                 strCriteria = " and member_type_code IN ('" + strSOS + "','" + strPVD + "') and c_active='Y' ";
             }
+
             else if (strperson_group_code.Equals("11"))
             {
                 strCriteria = " and member_type_code IN ('" + strSOS + "','" + strPVD2 + "') and c_active='Y' ";
@@ -376,29 +399,18 @@ namespace myWeb.App_Control.person
             if (oMember_type.SP_MEMBER_TYPE_SEL(strCriteria, ref ds, ref strMessage))
             {
                 dt = ds.Tables[0];
-                cboMember_type.Items.Clear();
-                cboMember_type.Items.Add(new ListItem("N", ""));
-                //for (i = 0; i <= dt.Rows.Count - 1; i++)
-                //{
-                //    cboMember_type.Items.Add(new ListItem(dt.Rows[i]["member_type_name"].ToString(), dt.Rows[i]["member_type_code"].ToString()));
-                //}
-                string code = string.Empty;
-                string str = string.Empty;
+                cboMember_type_checkboxes.Items.Clear();
+
                 for (i = 0; i <= dt.Rows.Count - 1; i++)
                 {
-                    code += dt.Rows[i]["member_type_code"].ToString() + ",";
-                    str += dt.Rows[i]["member_type_name"].ToString() + ",";
-                    cboMember_type.Items.Add(new ListItem(dt.Rows[i]["member_type_name"].ToString(), dt.Rows[i]["member_type_code"].ToString()));
+                    cboMember_type_checkboxes.Items.Add(new ListItem(dt.Rows[i]["member_type_name"].ToString(), dt.Rows[i]["member_type_code"].ToString()));
                 }
-                if (dt.Rows.Count > 1)
-                {
-                    cboMember_type.Items.Add(new ListItem(str.Substring(0, str.Length - 1), code.Substring(0, code.Length - 1)));
-                } 
-                if (cboMember_type.Items.FindByValue(strmember_type) != null)
-                {
-                    cboMember_type.SelectedIndex = -1;
-                    cboMember_type.Items.FindByValue(strmember_type).Selected = true;
-                }
+
+                cboMember_type_checkboxes.Style.SelectBoxCssClass = "dd_chk_select_cust";
+                cboMember_type_checkboxes.Style.SelectBoxWidth = 200;
+                cboMember_type_checkboxes.Style.DropDownBoxBoxWidth = 300;
+
+
             }
         }
 
@@ -766,9 +778,9 @@ namespace myWeb.App_Control.person
 
                 strperson_postionno = txtperson_postionno.Text;
                 strbranch_code = txtbranch_code.Text;
-                strbank_no = txtbank_no.Text;            
-               
-                
+                strbank_no = txtbank_no.Text;
+
+
                 strperson_salaly = txtperson_salaly.Text;
                 strperson_group = cboPerson_group.SelectedValue;
                 if (Request.Form[strPrefixCtr_main + "TabPanel2$cboPerson_group"] != null)
@@ -777,11 +789,23 @@ namespace myWeb.App_Control.person
                 }
                 strperson_start = txtperson_start.Text;
                 strperson_end = txtperson_end.Text;
-                strmember_type = cboMember_type.SelectedValue;
-                if (Request.Form[strPrefixCtr_main + "TabPanel2$cboMember_type"] != null)
+
+                foreach (ListItem item in cboMember_type_checkboxes.Items)
                 {
-                    strmember_type = Request.Form[strPrefixCtr_main + "TabPanel2$cboMember_type"].ToString();
+                    if (item.Selected)
+                    {
+                        strmember_type += item.Value + ",";
+                    }
                 }
+                if (strmember_type.Length > 0)
+                    strmember_type = strmember_type.Substring(0, strmember_type.Length - 1);
+
+
+                //if (Request.Form[strPrefixCtr_main + "TabPanel2$cboMember_type"] != null)
+                //{
+                //    strmember_type = Request.Form[strPrefixCtr_main + "TabPanel2$cboMember_type"].ToString();
+                //}
+
                 strmember_type_add = txtmember_type_add.Text;
                 strperson_manage_code = txtperson_manage_code.Text;
                 strbudget_plan_code = txtbudget_plan_code.Text;
@@ -799,7 +823,7 @@ namespace myWeb.App_Control.person
                                                strbank_no, strperson_salaly, strperson_start, strperson_end, strperson_group,
                                                strmember_type, strmember_type_add, strperson_manage_code, strbudget_plan_code,
                                                strperson_work_status, strUpdatedBy, txttype_position_code.Text, strbranch_code_2,
-                                               strbank_no_2, ref strMessage))
+                                               strbank_no_2, txtperson_salaly_2.Text, txtperson_salaly_3.Text, ref strMessage))
                 {
                     blnResult = true;
                 }
@@ -809,7 +833,7 @@ namespace myWeb.App_Control.person
                 }
 
 
-                if (oPerson.SP_PERSON_CUMULATIVE_UPD(strperson_code, txtCumulative_acc.Text, txtCumulative_money.Text , ref strMessage))
+                if (oPerson.SP_PERSON_CUMULATIVE_UPD(strperson_code, txtCumulative_acc.Text, txtCumulative_money.Text, ref strMessage))
                 {
                     blnResult = true;
                 }
@@ -819,7 +843,7 @@ namespace myWeb.App_Control.person
                 }
 
 
-                
+
 
 
                 #endregion
@@ -1024,7 +1048,7 @@ namespace myWeb.App_Control.person
                 strtype_position_name = string.Empty,
 
                 strperson_postionno = string.Empty,
-                
+
                 strbranch_code = string.Empty,
                 strbranch_name = string.Empty,
                 strbank_name = string.Empty,
@@ -1033,9 +1057,12 @@ namespace myWeb.App_Control.person
                 strbranch_code2 = string.Empty,
                 strbranch_name2 = string.Empty,
                 strbank_name2 = string.Empty,
-                strbank_no2 = string.Empty,                
+                strbank_no2 = string.Empty,
 
                 strperson_salaly = string.Empty,
+                strperson_salaly_2 = string.Empty,
+                strperson_salaly_3 = string.Empty,
+
                 strperson_group = string.Empty,
                 strperson_start = string.Empty,
                 strperson_end = string.Empty,
@@ -1117,7 +1144,7 @@ namespace myWeb.App_Control.person
                         strtype_position_name = ds.Tables[0].Rows[0]["type_position_name"].ToString();
 
                         strperson_postionno = ds.Tables[0].Rows[0]["person_postionno"].ToString();
-                       
+
                         strbranch_code = ds.Tables[0].Rows[0]["branch_code"].ToString();
                         strbranch_name = ds.Tables[0].Rows[0]["branch_name"].ToString();
                         strbank_name = ds.Tables[0].Rows[0]["bank_name"].ToString();
@@ -1126,9 +1153,16 @@ namespace myWeb.App_Control.person
                         strbranch_code2 = ds.Tables[0].Rows[0]["branch_code_2"].ToString();
                         strbranch_name2 = ds.Tables[0].Rows[0]["branch_name_2"].ToString();
                         strbank_name2 = ds.Tables[0].Rows[0]["bank_name_2"].ToString();
-                        strbank_no2 = ds.Tables[0].Rows[0]["bank_no_2"].ToString();                        
-                        
+                        strbank_no2 = ds.Tables[0].Rows[0]["bank_no_2"].ToString();
+
                         strperson_salaly = ds.Tables[0].Rows[0]["person_salaly"].ToString();
+                        if (string.IsNullOrEmpty(strperson_salaly)) strperson_salaly = "0";
+
+                        strperson_salaly_2 = ds.Tables[0].Rows[0]["person_salaly_2"].ToString();
+                        if (string.IsNullOrEmpty(strperson_salaly_2)) strperson_salaly_2 = "0";
+                        strperson_salaly_3 = ds.Tables[0].Rows[0]["person_salaly_3"].ToString();
+                        if (string.IsNullOrEmpty(strperson_salaly_3)) strperson_salaly_3 = "0";
+
                         strperson_group = ds.Tables[0].Rows[0]["person_group_code"].ToString();
                         strperson_start = ds.Tables[0].Rows[0]["person_start"].ToString();
                         strperson_end = ds.Tables[0].Rows[0]["person_end"].ToString();
@@ -1254,8 +1288,8 @@ namespace myWeb.App_Control.person
                         txttype_position_name.Text = strtype_position_name;
 
                         txtperson_postionno.Text = strperson_postionno;
-                        
-                        txtbranch_code.Text = strbranch_code;                        
+
+                        txtbranch_code.Text = strbranch_code;
                         txtbranch_name.Text = strbranch_name;
                         txtbank_name.Text = strbank_name;
                         txtbank_no.Text = strbank_no;
@@ -1266,6 +1300,9 @@ namespace myWeb.App_Control.person
                         txtbank_no_2.Text = strbank_no2;
 
                         txtperson_salaly.Text = String.Format("{0:0.00}", decimal.Parse(strperson_salaly));
+                        txtperson_salaly_2.Text = String.Format("{0:0.00}", decimal.Parse(strperson_salaly_2));
+                        txtperson_salaly_3.Text = String.Format("{0:0.00}", decimal.Parse(strperson_salaly_3));
+
                         InitcboPerson_group();
                         if (cboPerson_group.Items.FindByValue(strperson_group) != null)
                         {
@@ -1275,12 +1312,11 @@ namespace myWeb.App_Control.person
                         txtperson_start.Text = cCommon.CheckDate(strperson_start);
                         txtperson_end.Text = cCommon.CheckDate(strperson_end);
                         InitcboMember_type();
-                        if (cboMember_type.Items.FindByValue(strmember_type) != null)
-                        {
-                            cboMember_type.SelectedIndex = -1;
-                            cboMember_type.Items.FindByValue(strmember_type).Selected = true;
-                        }
 
+                        foreach (ListItem item in cboMember_type_checkboxes.Items)
+                        {
+                            item.Selected = strmember_type.Contains(item.Value);
+                        }
 
 
                         txtmember_type_add.Text = String.Format("{0:0.00}", decimal.Parse(strmember_type_add));
@@ -1338,9 +1374,18 @@ namespace myWeb.App_Control.person
                         txtperson_contact.Text = strperson_contact;
                         txtperson_ralation.Text = strperson_ralation;
                         txtperson_contact_tel.Text = strperson_contact_tel;
-                        DateTime dperson_birth = DateTime.Parse(txtperson_birth.Text);
-                        long intperson_birth = cCommon.DateTimeUtil.DateDiff(cCommon.DateInterval.Year, dperson_birth.Date, DateTime.Now.Date);
-                        lblAge.Text = "อายุปัจจุบัน  " + intperson_birth.ToString() + "  ปี";
+                        try
+                        {
+                            var dateperson_birth = cCommon.SeekDate(txtperson_birth.Text);
+                            DateTime dperson_birth = DateTime.Parse(dateperson_birth);
+                            long intperson_birth = cCommon.DateTimeUtil.DateDiff(cCommon.DateInterval.Year, dperson_birth.Date, DateTime.Now.Date);
+                            lblAge.Text = "อายุปัจจุบัน  " + intperson_birth.ToString() + "  ปี";
+
+                        }
+                        catch
+                        {
+
+                        }
 
                         txtCumulative_acc.Text = ds.Tables[0].Rows[0]["cumulative_acc"].ToString();
                         string strCumulative_money = "0.00";
@@ -1348,12 +1393,12 @@ namespace myWeb.App_Control.person
                         {
                             strCumulative_money = String.Format("{0:0.00}", decimal.Parse(ds.Tables[0].Rows[0]["Cumulative_money"].ToString()));
                         }
-                        catch 
+                        catch
                         {
                             strCumulative_money = "0.00";
                         }
                         txtCumulative_money.Text = strCumulative_money;
-                        
+
                         BindGridView1();
                         BindGridView2();
                         BindGridView3();
@@ -1365,6 +1410,7 @@ namespace myWeb.App_Control.person
             catch (Exception ex)
             {
                 lblError.Text = ex.Message.ToString();
+                throw ex;
             }
         }
 
@@ -2152,7 +2198,7 @@ namespace myWeb.App_Control.person
             }
             else if (e.Row.RowType.Equals(DataControlRowType.DataRow) || e.Row.RowState.Equals(DataControlRowState.Alternate))
             {
-                
+
                 #region Set datagrid row color
                 string strEvenColor, strOddColor, strMouseOverColor;
                 strEvenColor = ((DataSet)Application["xmlconfig"]).Tables["colorDataGridRow"].Rows[0]["Even"].ToString();
@@ -2178,11 +2224,11 @@ namespace myWeb.App_Control.person
                 Label lblNo = (Label)e.Row.FindControl("lblNo");
                 int nNo = (GridView1.PageSize * GridView1.PageIndex) + e.Row.RowIndex + 1;
                 lblNo.Text = nNo.ToString();
-                
+
                 Label lblloan_code = (Label)e.Row.FindControl("lblloan_code");
                 Label lblloan_name = (Label)e.Row.FindControl("lblloan_name");
                 Label lblloan_acc = (Label)e.Row.FindControl("lblloan_acc");
-              
+
                 #region set Image Edit & Delete
 
                 ImageButton imgEdit = (ImageButton)e.Row.FindControl("imgEdit");
@@ -2193,7 +2239,7 @@ namespace myWeb.App_Control.person
                 Label lblCanEdit = (Label)e.Row.FindControl("lblCanEdit");
                 imgEdit.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["img"].ToString();
                 imgEdit.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgEdit"].Rows[0]["title"].ToString());
-              
+
                 ImageButton imgDelete = (ImageButton)e.Row.FindControl("imgDelete");
                 imgDelete.ImageUrl = ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["img"].ToString();
                 imgDelete.Attributes.Add("title", ((DataSet)Application["xmlconfig"]).Tables["imgDelete"].Rows[0]["title"].ToString());
@@ -2275,11 +2321,11 @@ namespace myWeb.App_Control.person
             cPerson oPerson = new cPerson();
             try
             {
-                if (!oPerson.SP_PERSON_LOAN_DEL(txtperson_code.Text,  lblloan_code.Text,lblloan_acc.Text , ref strMessage))
+                if (!oPerson.SP_PERSON_LOAN_DEL(txtperson_code.Text, lblloan_code.Text, lblloan_acc.Text, ref strMessage))
                 {
                     lblError.Text = strMessage;
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -2783,10 +2829,9 @@ namespace myWeb.App_Control.person
                         }
                         catch { }
                         InitcboMember_type();
-                        if (cboMember_type.Items.FindByValue(strmember_type) != null)
+                        foreach (ListItem item in cboMember_type_checkboxes.Items)
                         {
-                            cboMember_type.SelectedIndex = -1;
-                            cboMember_type.Items.FindByValue(strmember_type).Selected = true;
+                            item.Selected = strmember_type.Contains(item.Value);
                         }
 
 

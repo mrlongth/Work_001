@@ -289,48 +289,6 @@ namespace myWeb.App_Control.payment
             }
         }
 
-        //private void InitcboPerson_group()
-        //{
-        //    cPerson_group oPerson_group = new cPerson_group();
-        //    string strMessage = string.Empty,
-        //                strCriteria = string.Empty,
-        //                strperson_group_code = string.Empty;
-        //    strperson_group_code = cboPerson_group.SelectedValue;
-        //    int i;
-        //    DataSet ds = new DataSet();
-        //    DataTable dt = new DataTable();
-        //    strCriteria = " and c_active='Y'  " +
-        //                            " and person_group_code in " +
-        //                            " (Select person_group_code from dbo.view_payment_report " +
-        //                            " where report_group_code = '" + cboDoctype.SelectedValue + "' " +
-        //                            " and person_group_code IN (" + PersonGroupList + ") " +
-        //                            " group by person_group_code) ";
-        //    if (oPerson_group.SP_PERSON_GROUP_SEL(strCriteria, ref ds, ref strMessage))
-        //    {
-        //        dt = ds.Tables[0];
-        //        cboPerson_group.Items.Clear();
-        //        cboPerson_group.Items.Add(new ListItem("---- เลือกข้อมูลทั้งหมด ----", ""));
-        //        for (i = 0; i <= dt.Rows.Count - 1; i++)
-        //        {
-        //            cboPerson_group.Items.Add(new ListItem(dt.Rows[i]["person_group_name"].ToString(), dt.Rows[i]["person_group_code"].ToString()));
-        //        }
-        //        if (dt.Rows.Count == 1)
-        //        {
-        //            cboPerson_group.SelectedIndex = 1;
-        //            //cboPerson_group.Enabled = false;
-        //        }
-        //        else if (dt.Rows.Count == 0)
-        //        {
-        //            InitcboPerson_group_all();
-        //        }
-        //        else
-        //        {
-        //            //cboPerson_group.Enabled = true;
-        //        }
-        //    }
-        //}
-
-
         private void InitcboPerson_group()
         {
             cPerson_group oPerson_group = new cPerson_group();
@@ -523,82 +481,6 @@ namespace myWeb.App_Control.payment
                 }
             }
         }
-        //private void InitRadioList()
-        //{
-        //    cPayment oPayment = new cPayment();
-        //    string strMessage = string.Empty;
-        //    int i;
-        //    DataSet ds = new DataSet();
-        //    DataTable dt = new DataTable();
-        //    string strCriteria = " and c_active='A' ";
-        //    strCriteria += " and  report_year = '" + cboYear.SelectedValue + "' ";
-        //    strCriteria += " and  report_group_show in (Select report_group_show from view_payment_report  where  person_group_code IN (" + PersonGroupList + ",'') and  report_year = '" + cboYear.SelectedValue + "' ";
-        //    strCriteria += " and  budget_type IN ('B','M')) ";
-        //    //strCriteria += " and  item_code in (" +
-        //    //                        " select distinct substring(item_code,1,10) " +
-        //    //                        " from view_payment_item_all " +
-        //    //                        " where payment_year = '" + cboYear.SelectedValue + "' " +
-        //    //                        " and	pay_year = '" + cboPay_Year.SelectedValue + "' " +
-        //    //                        " and   pay_month = '" + cboPay_Month.SelectedValue + "' " +
-        //    //                        " and   payment_detail_budget_type = 'B' ";
-        //    //if (base.DirectorLock == "Y")
-        //    //{
-        //    //    strCriteria += " and substring(payment_detail_director_code,4,2) = substring('" + base.DirectorCode + "',4,2) ";
-        //    //}
-        //    strCriteria += " and  (item_code in (" +
-        //        " select distinct substring(pd.item_code,1,10) " +
-        //        " from payment_detail pd  " +
-        //        " inner join payment_head ph " +
-        //        " 	on ph.payment_doc = pd.payment_doc  " +
-        //        " inner join budget_plan " +
-        //        " 	on isnull(pd.budget_plan_code,ph.budget_plan_code) = budget_plan.budget_plan_code " +
-        //        " 	and	 ph.payment_year = budget_plan.budget_plan_year " +
-        //        " inner join unit " +
-        //        " 	on budget_plan.unit_code = unit.unit_code " +
-        //        " where ph.payment_year = '" + cboYear.SelectedValue + "'  and	ph.pay_year =  '" + cboPay_Year.SelectedValue + "'   " +
-        //        " and   ph.pay_month = '" + cboPay_Month.SelectedValue + "'   " +
-        //        " and   budget_plan.budget_type = 'B' ";
-        //        if (base.DirectorLock == "Y")
-        //        {
-        //            strCriteria += " and substring(unit.director_code,4,2) = substring('" + base.DirectorCode + "',4,2) ";
-        //        }
-        //       strCriteria += " union   select distinct substring(pd.item_code,1,10) " +
-        //        " from payment_acc_twin pd  " +
-        //        " inner join payment_head ph  	" +
-        //        " 	on ph.payment_doc = pd.payment_doc  " +
-        //        " inner join budget_plan " +
-        //        " 	on isnull(pd.budget_plan_code,ph.budget_plan_code) = budget_plan.budget_plan_code " +
-        //        " 	and	 ph.payment_year = budget_plan.budget_plan_year " +
-        //        " inner join unit " +
-        //        " 	on budget_plan.unit_code = unit.unit_code " +
-        //        " where ph.payment_year = '" + cboYear.SelectedValue + "'  and	ph.pay_year =  '" + cboPay_Year.SelectedValue + "'  " +
-        //        " and   ph.pay_month = '" + cboPay_Month.SelectedValue + "'  " +
-        //        " and   budget_plan.budget_type = 'B' ";
-        //        if (base.DirectorLock == "Y")
-        //        {
-        //            strCriteria += " and substring(unit.director_code,4,2) = substring('" + base.DirectorCode + "',4,2) ";
-        //        }
-
-        //    strCriteria += ") or c_active='A')";
-        //    RadioButtonList1.Items.Clear();
-        //    if (oPayment.SP_PAYMENT_REPORT_SEL(strCriteria, ref ds, ref strMessage))
-        //    {
-        //        dt = ds.Tables[0];
-
-        //        if (dt.Rows.Count > 0)
-        //        {
-        //            for (i = 0; i <= dt.Rows.Count - 1; i++)
-        //            {
-        //                RadioButtonList1.Items.Add(new ListItem(dt.Rows[i]["report_name"].ToString(), dt.Rows[i]["report_group_show"].ToString()));
-        //            }
-        //            if (RadioButtonList1.Items.Count > 0)
-        //            {
-        //                RadioButtonList1.SelectedIndex = 0;
-        //            }
-        //        }
-        //    }
-        //}
-
 
         private void InitcboDocType()
         {
@@ -833,7 +715,7 @@ namespace myWeb.App_Control.payment
 
         protected void cboPay_Month_SelectedIndexChanged(object sender, EventArgs e)
         {
-            InitRadioList();
+            //InitRadioList();
             InitcboPerson_group();
         }
 

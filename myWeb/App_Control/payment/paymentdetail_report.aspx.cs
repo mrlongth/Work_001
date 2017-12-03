@@ -52,6 +52,7 @@ namespace myWeb.App_Control.payment
                 InitcboBank();
                 InitcboRound();
                 InitcboPerson_group();
+                InitcboLot();
                 cboProduce.Visible = false;
                 lblBank.Visible = false;
                 cboBank.Visible = false;
@@ -400,7 +401,7 @@ namespace myWeb.App_Control.payment
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
             strCriteria = " and c_active='Y'  and lot_year='" + cboYear.SelectedValue + "'";
-            strCriteria = " and budget_type='" + this.BudgetType + "'";
+            strCriteria += " and budget_type='" + this.BudgetType + "'";
             if (oLot.SP_SEL_LOT(strCriteria, ref ds, ref strMessage))
             {
                 dt = ds.Tables[0];
@@ -593,7 +594,7 @@ namespace myWeb.App_Control.payment
                 strCriteria = strCriteria + "  And  view_payment.payment_detail_produce_code= '" + strProduce + "' ";
             }
 
-            if (!strLot.Equals(""))
+            if (!strLot.Equals("") && cboLot.Visible)
             {
                 strCriteria = strCriteria + "  And  view_payment.payment_detail_lot_code= '" + strLot + "' ";
             }
@@ -960,8 +961,7 @@ namespace myWeb.App_Control.payment
                 lblLot.Visible = true;
                 cboLot.Visible = true;
             }
-            else if (RadioButtonList1.SelectedValue == "A2" ||
-                RadioButtonList1.SelectedValue == "A4" ||
+            else if (RadioButtonList1.SelectedValue == "A4" ||
                 RadioButtonList1.SelectedValue == "A5")
             {
                 txtitem_code.Text = "";
@@ -979,6 +979,25 @@ namespace myWeb.App_Control.payment
 
                 InitcboBank();
             }
+
+            else if (RadioButtonList1.SelectedValue == "A2")
+            {
+                txtitem_code.Text = "";
+                txtitem_name.Text = "";
+                txtitem_code.CssClass = "textboxdis";
+                txtitem_name.CssClass = "textboxdis";
+                txtitem_code.Enabled = false;
+                txtitem_name.Enabled = false;
+                imgList_item.Enabled = false;
+                imgClear_item.Enabled = false;
+                lblLot.Visible = true;
+                cboLot.Visible = true;
+                lblBank.Visible = true;
+                cboBank.Visible = true;
+
+                InitcboBank();
+            }
+
 
             else if (RadioButtonList1.SelectedValue == "A6")
             {

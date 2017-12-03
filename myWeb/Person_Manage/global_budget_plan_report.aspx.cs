@@ -50,6 +50,8 @@ namespace myWeb.App_Control.Person_Manage
 
         }
 
+
+
         #region private function
 
         private void InitcboYear()

@@ -337,4 +337,28 @@ a:active { color: #495E88; }
 	height:20px ;
 }
 
+div.dd_chk_select_cust {
+    display: none;
+}
+
+    div.dd_chk_select_cust div#caption {
+        font-size: 13px;
+        background: #F2F9FF;
+        font-family: "Tahoma";
+    }
+
+div.dd_chk_drop_cust div#checks {
+    /*border-style: Solid !important;
+	border-width: 1px !important;
+	border-color: Black !important;*/
+}
+
+div.dd_chk_drop div#checks {
+    max-height: none !important;
+}
+
+div.dd_chk_select_cust:hover {
+    cursor: pointer;
+}
+
 

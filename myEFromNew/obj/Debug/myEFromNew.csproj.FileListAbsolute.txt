@@ -1,0 +1,7 @@
+E:\WorkAll\myData\MyWork\MJU\Payroll\Work_001\myEFromNew\obj\Debug\myEFromNew.csprojResolveAssemblyReference.cache
+E:\WorkAll\myData\MyWork\MJU\Payroll\Work_001\myEFromNew\obj\Debug\myEFromNew.csproj.CoreCompileInputs.cache
+E:\WorkAll\myData\MyWork\MJU\Payroll\Work_001\myEFromNew\bin\myEFrom.dll.config
+E:\WorkAll\myData\MyWork\MJU\Payroll\Work_001\myEFromNew\bin\myEFrom.dll
+E:\WorkAll\myData\MyWork\MJU\Payroll\Work_001\myEFromNew\bin\myEFrom.pdb
+E:\WorkAll\myData\MyWork\MJU\Payroll\Work_001\myEFromNew\obj\Debug\myEFrom.dll
+E:\WorkAll\myData\MyWork\MJU\Payroll\Work_001\myEFromNew\obj\Debug\myEFrom.pdb

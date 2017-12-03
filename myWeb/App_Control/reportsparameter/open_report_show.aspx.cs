@@ -116,7 +116,7 @@ namespace myWeb.App_Control.reportsparameter
                 Helper.DeleteUnusedFile(strReportDirectoryTempPhysicalPath, ReportAliveTime);
 
                 string strFilename;
-                strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
+                strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss-fff");
                 rptSource.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("~/temp/") + strFilename + ".pdf");
                 lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
                 imgPdf.Src = "~/images/icon_pdf.gif";
@@ -171,7 +171,7 @@ namespace myWeb.App_Control.reportsparameter
                 Helper.DeleteUnusedFile(strReportDirectoryTempPhysicalPath, ReportAliveTime);
 
                 string strFilename;
-                strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
+                strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss-fff");
                 rptSource.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("~/temp/") + strFilename + ".pdf");
                 lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
                 imgPdf.Src = "~/images/icon_pdf.gif";
@@ -184,6 +184,17 @@ namespace myWeb.App_Control.reportsparameter
                     lnkExcelFile.Visible = true;
                 }
                 CrystalReportViewer1.ReportSource = rptSource;
+            }
+        }
+
+        protected void Page_Unload(object sender, EventArgs e)
+        {
+            if (rptSource != null)
+            {
+                rptSource.Close();
+                rptSource.Dispose();
+                CrystalReportViewer1.Dispose();
+                GC.Collect();
             }
         }
 
@@ -366,7 +377,7 @@ namespace myWeb.App_Control.reportsparameter
             Helper.DeleteUnusedFile(strReportDirectoryTempPhysicalPath, ReportAliveTime);
 
             string strFilename;
-            strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
+            strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss-fff");
             rptSource.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("~/temp/") + strFilename + ".pdf");
             lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
             imgPdf.Src = "~/images/icon_pdf.gif";

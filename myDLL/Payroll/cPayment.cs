@@ -2006,6 +2006,39 @@ namespace myDLL
 
 
 
+        #region SP_UPDATEGBKCHANGE
+        public bool SP_UPDATEGBKCHANGE(ref string strMessage)
+        {
+            bool blnResult = false;
+            SqlConnection oConn = new SqlConnection();
+            SqlCommand oCommand = new SqlCommand();
+            SqlDataAdapter oAdapter = new SqlDataAdapter();
+            try
+            {
+                oConn.ConnectionString = _strConn;
+                oConn.Open();
+                oCommand.Connection = oConn;
+                oCommand.CommandType = CommandType.StoredProcedure;
+                oCommand.CommandText = "sp_UPDATEGBKCHANGE";
+                oCommand.ExecuteNonQuery();
+                blnResult = true;
+            }
+            catch (Exception ex)
+            {
+                strMessage = ex.Message.ToString();
+            }
+            finally
+            {
+                oConn.Close();
+                oCommand.Dispose();
+                oConn.Dispose();
+            }
+            return blnResult;
+        }
+        #endregion
+
+
+
         #region IDisposable Members
 
         void IDisposable.Dispose()

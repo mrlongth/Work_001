@@ -75,6 +75,17 @@ namespace myWeb.App_Control.reportsparameter
             set { ViewState["ReportAliveTime"] = value; }
         }
 
+        protected void Page_Unload(object sender, EventArgs e)
+        {
+            if (rptSource != null)
+            {
+                rptSource.Close();
+                rptSource.Dispose();
+                CrystalReportViewer1.Dispose();
+                GC.Collect();
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

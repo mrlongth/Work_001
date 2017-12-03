@@ -68,67 +68,6 @@ namespace myWeb.App_Control.reportsparameter
             set { ViewState["ReportAliveTime"] = value; }
         }
 
-        //protected void Page_Load(object sender, EventArgs e)
-        //{
-           //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
-            //lblError.Text = string.Empty;
-        //    if (!IsPostBack)
-        //    {
-        //        getQueryString();
-        //        printData();
-        //        crConnectionInfo.DatabaseName = strDbname;
-        //        crConnectionInfo.ServerName = strServername;
-        //        crConnectionInfo.UserID = strDbuser;
-        //        crConnectionInfo.Password = strDbpassword;
-        //        crTables = rptSource.Database.Tables;
-        //        //foreach (CrystalDecisions.CrystalReports.Engine.Table crTable in crTables)
-        //        //{
-        //        //    crTableLogOnInfo = crTable.LogOnInfo;
-        //        //    crTableLogOnInfo.ConnectionInfo = crConnectionInfo;
-        //        //    crTable.ApplyLogOnInfo(crTableLogOnInfo);
-        //        //}
-
-
-        //        //apply logon info
-        //        foreach (CrystalDecisions.CrystalReports.Engine.Table crTable in rptSource.Database.Tables)
-        //        {
-        //            crTableLogOnInfo = crTable.LogOnInfo;
-        //            crTableLogOnInfo.ConnectionInfo = crConnectionInfo;
-        //            crTable.ApplyLogOnInfo(crTableLogOnInfo);
-        //        }
-
-        //        //apply logon info for sub report
-        //        foreach (Section crSection in rptSource.ReportDefinition.Sections)
-        //        {
-        //            foreach (ReportObject crReportObject in crSection.ReportObjects)
-        //            {
-        //                if (crReportObject.Kind == ReportObjectKind.SubreportObject)
-        //                {
-        //                    SubreportObject crSubReportObj = (SubreportObject)(crReportObject);
-
-        //                    foreach (CrystalDecisions.CrystalReports.Engine.Table oTable in crSubReportObj.OpenSubreport(crSubReportObj.SubreportName).Database.Tables)
-        //                    {
-        //                        crTableLogOnInfo = oTable.LogOnInfo;
-        //                        crTableLogOnInfo.ConnectionInfo = crConnectionInfo;
-        //                        oTable.ApplyLogOnInfo(crTableLogOnInfo);
-        //                    }
-
-        //                }
-
-        //            }
-        //        }
-
-        //        string strReportDirectoryTempPhysicalPath = Server.MapPath(this.ReportDirectoryTemp);
-        //        Helper.DeleteUnusedFile(strReportDirectoryTempPhysicalPath, ReportAliveTime);
-
-        //        string strFilename;
-        //        strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
-        //        rptSource.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("~/temp/") + strFilename + ".pdf");
-        //        lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
-        //        imgPdf.Src = "~/images/icon_pdf.gif";
-        //        CrystalReportViewer1.ReportSource = rptSource;
-        //    }
-        //}
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -177,7 +116,7 @@ namespace myWeb.App_Control.reportsparameter
                 Helper.DeleteUnusedFile(strReportDirectoryTempPhysicalPath, ReportAliveTime);
 
                 string strFilename;
-                strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss");
+                strFilename = "report_" + DateTime.Now.ToString("yyyyMMddHH-mm-ss-fff");
                 rptSource.ExportToDisk(ExportFormatType.PortableDocFormat, Server.MapPath("~/temp/") + strFilename + ".pdf");
                 lnkPdfFile.NavigateUrl = "~/temp/" + strFilename + ".pdf";
                 imgPdf.Src = "~/images/icon_pdf.gif";              
@@ -186,13 +125,16 @@ namespace myWeb.App_Control.reportsparameter
         }
 
 
-        //protected void Page_Init(object sender, EventArgs e)
-        //{
-        //    System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("th-TH");
-        //    getQueryString();
-        //    printData();
-        //    CrystalReportViewer1.ReportSource = rptSource;
-        //}
+        protected void Page_Unload(object sender, EventArgs e)
+        {
+            if (rptSource != null)
+            {
+                rptSource.Close();
+                rptSource.Dispose();
+                CrystalReportViewer1.Dispose();
+                GC.Collect();
+            }
+        }
 
         private void printData()
         {

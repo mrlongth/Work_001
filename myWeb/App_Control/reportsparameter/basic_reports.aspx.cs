@@ -35,7 +35,18 @@ namespace myWeb.App_Control.reportsparameter
             getQueryString();
             RetiveReportStore();
         }
-        
+
+        protected void Page_Unload(object sender, EventArgs e)
+        {
+            if (rptSource != null)
+            {
+                rptSource.Close();
+                rptSource.Dispose();
+                CrystalReportViewer1.Dispose();
+                GC.Collect();
+            }
+        }
+
         private void getQueryString()
         {
             if (Request.QueryString["sp_name"] != null)

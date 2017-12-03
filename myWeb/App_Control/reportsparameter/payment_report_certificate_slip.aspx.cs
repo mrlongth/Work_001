@@ -106,6 +106,17 @@ namespace myWeb.App_Control.reportsparameter
             CrystalReportViewer1.ReportSource = rptSource;
         }
 
+        protected void Page_Unload(object sender, EventArgs e)
+        {
+            if (rptSource != null)
+            {
+                rptSource.Close();
+                rptSource.Dispose();
+                CrystalReportViewer1.Dispose();
+                GC.Collect();
+            }
+        }
+
         private string getMonth()
         {
             string strMonth = string.Empty;
