@@ -442,6 +442,28 @@ namespace myWeb.App_Control.payment_member_type
         }
         #endregion
 
+        private string getItemCode(string item_code, string person_code)
+        {
+            var result = item_code;
+            if (person_code == "15")
+            {
+                if (result.IndexOf("09-037") > 0)
+                    result = result.Replace("09-037", "09-148");
+                else if (result.IndexOf("08-001") > 0)
+                    result = result.Replace("08-001", "20-144");
+                else if (result.IndexOf("08-003") > 0)
+                    result = result.Replace("08-003", "20-145");
+            }
+            else if (person_code == "15" || person_code == "16")
+            {
+                if (result.IndexOf("09-045") > 0)
+                    result = result.Replace("09-045", "09-147");
+            }
+
+            return result;
+
+        }
+
         private bool saveData()
         {
             bool blnResult = false;
@@ -450,7 +472,7 @@ namespace myWeb.App_Control.payment_member_type
                 strCreatedBy = string.Empty,
                 strUpdatedBy = string.Empty;
             string strScript = string.Empty;
-            string pitem_code = string.Empty;
+            //string pitem_code = string.Empty;
             string ppayment_item_tax = "Y";
             string ppayment_item_sos = "Y";
             string pcomments_sub = string.Empty;
@@ -461,10 +483,11 @@ namespace myWeb.App_Control.payment_member_type
                 strActive = "Y";
                 strCreatedBy = Session["username"].ToString();
                 strUpdatedBy = Session["username"].ToString();
-                pitem_code = lblcredititem_code.Text;
+                //pitem_code = lblcredititem_code.Text;
 
                 var strGBK2 = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["GBK2"].ToString();
-                var strPVD1 = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["PVD1"].ToString();
+                //var strPVD1 = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["PVD1"].ToString();
+                var strPVD1 = "07";
                 var strPVD4 = "09";
 
 
@@ -478,14 +501,13 @@ namespace myWeb.App_Control.payment_member_type
                     AwNumeric txtmebertype_credit = (AwNumeric)gviewRow.FindControl("txtmebertype_credit");
                     AwNumeric txtcompany_credit = (AwNumeric)gviewRow.FindControl("txtcompany_credit");
                     AwNumeric txtextra_credit = (AwNumeric)gviewRow.FindControl("txtextra_credit");
-
-
+                    HiddenField hddperson_group_code = (HiddenField)gviewRow.FindControl("hddperson_group_code");
                     if (!txtrate1.Text.Equals("0.00") || cboMember_type.SelectedValue.Equals(strGBK2) || cboMember_type.SelectedValue.Equals(strPVD1) || cboMember_type.SelectedValue.Equals(strPVD4))
                     {
                         DataSet ds = new DataSet();
                         string strCheckDup = string.Empty;
                         strCheckDup = " and payment_doc = '" + hdfpayment_doc.Value + "' " +
-                                                      " and item_code = '" + pitem_code + "' ";
+                                                      " and item_code = '" + getItemCode(lblcredititem_code.Text, hddperson_group_code.Value) + "' ";
                         if (!oPayment.SP_PAYMENT_SEL(strCheckDup, ref ds, ref strMessage))
                         {
                             lblError.Text = strMessage;
@@ -496,7 +518,7 @@ namespace myWeb.App_Control.payment_member_type
                             {
                                 string strBudgetType = ds.Tables[0].Rows[0]["payment_detail_budget_type"].ToString();
                                 string strpayment_detail_id = ds.Tables[0].Rows[0]["payment_detail_id"].ToString();
-                                if (!oPayment.SP_PAYMENT_DETAIL_UPD(hdfpayment_doc.Value, pitem_code, "0", txtmebertype_credit.Value.ToString(), ppayment_item_tax,
+                                if (!oPayment.SP_PAYMENT_DETAIL_UPD(hdfpayment_doc.Value, getItemCode(lblcredititem_code.Text, hddperson_group_code.Value), "0", txtmebertype_credit.Value.ToString(), ppayment_item_tax,
                                                                                             ppayment_item_sos, pcomments_sub, strActive, strUpdatedBy, strBudgetType, strpayment_detail_id, ref strMessage))
                                 {
                                     lblError.Text = strMessage;
@@ -504,7 +526,7 @@ namespace myWeb.App_Control.payment_member_type
                             }
                             else
                             {
-                                if (!oPayment.SP_PAYMENT_DETAIL_INS(hdfpayment_doc.Value, pitem_code, "0", txtmebertype_credit.Value.ToString(), ppayment_item_tax,
+                                if (!oPayment.SP_PAYMENT_DETAIL_INS(hdfpayment_doc.Value, getItemCode(lblcredititem_code.Text, hddperson_group_code.Value), "0", txtmebertype_credit.Value.ToString(), ppayment_item_tax,
                                                                                             ppayment_item_sos, pcomments_sub, strActive, strCreatedBy, ref strMessage))
                                 {
                                     lblError.Text = strMessage;
@@ -517,7 +539,7 @@ namespace myWeb.App_Control.payment_member_type
                         DataSet ds2 = new DataSet();
                         string strCheckDup2 = string.Empty;
                         strCheckDup2 = " and payment_doc = '" + hdfpayment_doc.Value + "' " +
-                                                      " and item_code = '" + lbldebitcompany_code.Text + "' ";
+                                                      " and item_code = '" + getItemCode(lbldebitcompany_code.Text, hddperson_group_code.Value) + "' ";
                         if (!oPayment.SP_PAYMENT_ACC_SEL(strCheckDup2, ref ds2, ref strMessage))
                         {
                             lblError.Text = strMessage;
@@ -526,14 +548,15 @@ namespace myWeb.App_Control.payment_member_type
                         {
                             if (ds2.Tables[0].Rows.Count > 0)
                             {
-                                if (!oPayment.SP_PAYMENT_ACC_UPD(hdfpayment_doc.Value, lbldebitcompany_code.Text, txtcompany_credit.Value.ToString(), strActive, strUpdatedBy, ref strMessage))
+                                
+                                if (!oPayment.SP_PAYMENT_ACC_UPD(hdfpayment_doc.Value, getItemCode(lbldebitcompany_code.Text, hddperson_group_code.Value), txtcompany_credit.Value.ToString(), strActive, strUpdatedBy, ref strMessage))
                                 {
                                     lblError.Text = strMessage;
                                 }
                             }
                             else
                             {
-                                if (!oPayment.SP_PAYMENT_ACC_INS(hdfpayment_doc.Value, lbldebitcompany_code.Text, txtcompany_credit.Value.ToString(), strActive, strUpdatedBy, ref strMessage))
+                                if (!oPayment.SP_PAYMENT_ACC_INS(hdfpayment_doc.Value, getItemCode(lbldebitcompany_code.Text, hddperson_group_code.Value), txtcompany_credit.Value.ToString(), strActive, strUpdatedBy, ref strMessage))
                                 {
                                     lblError.Text = strMessage;
                                 }
@@ -547,7 +570,7 @@ namespace myWeb.App_Control.payment_member_type
                         DataSet ds3 = new DataSet();
                         string strCheckDup3 = string.Empty;
                         strCheckDup3 = " and payment_doc = '" + hdfpayment_doc.Value + "' " +
-                                                      " and item_code = '" + lbldebitextra_code.Text + "' ";
+                                                      " and item_code = '" + getItemCode(lbldebitextra_code.Text, hddperson_group_code.Value) + "' ";
                         if (!oPayment.SP_PAYMENT_ACC_SEL(strCheckDup3, ref ds3, ref strMessage))
                         {
                             lblError.Text = strMessage;
@@ -556,14 +579,14 @@ namespace myWeb.App_Control.payment_member_type
                         {
                             if (ds3.Tables[0].Rows.Count > 0)
                             {
-                                if (!oPayment.SP_PAYMENT_ACC_UPD(hdfpayment_doc.Value, lbldebitextra_code.Text, txtextra_credit.Value.ToString(), strActive, strUpdatedBy, ref strMessage))
+                                if (!oPayment.SP_PAYMENT_ACC_UPD(hdfpayment_doc.Value, getItemCode(lbldebitextra_code.Text, hddperson_group_code.Value), txtextra_credit.Value.ToString(), strActive, strUpdatedBy, ref strMessage))
                                 {
                                     lblError.Text = strMessage;
                                 }
                             }
                             else
                             {
-                                if (!oPayment.SP_PAYMENT_ACC_INS(hdfpayment_doc.Value, lbldebitextra_code.Text, txtextra_credit.Value.ToString(), strActive, strUpdatedBy, ref strMessage))
+                                if (!oPayment.SP_PAYMENT_ACC_INS(hdfpayment_doc.Value, getItemCode(lbldebitextra_code.Text, hddperson_group_code.Value), txtextra_credit.Value.ToString(), strActive, strUpdatedBy, ref strMessage))
                                 {
                                     lblError.Text = strMessage;
                                 }
@@ -617,9 +640,15 @@ namespace myWeb.App_Control.payment_member_type
             // กองทุนสำรองเลี้ยงชีพ (ขร. พม. ส่วนเพิ่ม)
             var strPVD4 = "09";
 
+            //กองทุนสำรองเลี้ยงชีพ (ขร. ลจ.)
+            var strPVD5 = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["PVD4"].ToString();
+            //กองทุนสำรองเลี้ยงชีพ (ขร. ลจ. ส่วนเพิ่ม)
+            var strPVD6 = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["PVD5"].ToString();
+
+
             try
             {
-                if (!strmember_type_code.Equals(strGBK2) && !strmember_type_code.Equals(strPVD1) && !strmember_type_code.Equals(strPVD4))
+                if (!strmember_type_code.Equals(strGBK2) && !strmember_type_code.Equals(strPVD1) && !strmember_type_code.Equals(strPVD4) && !strmember_type_code.Equals(strPVD6))
                 {
                     strCriteria = "  and  member_type_code like '%" + strmember_type_code + "%' " +
                                          " and person_work_status_code='01' " +
@@ -630,6 +659,20 @@ namespace myWeb.App_Control.payment_member_type
                 }
                 else
                 {
+                    var optionCritera = string.Empty;
+                    if (strmember_type_code.Equals(strGBK2))
+                    {
+                        optionCritera += " and person_group_code IN ('01','15') ";
+                    }
+                    else if (strmember_type_code.Equals(strPVD4))
+                    {
+                        optionCritera += " and person_group_code = '15' ";
+                    }
+                    else if (strmember_type_code.Equals(strPVD6))
+                    {
+                        optionCritera += " and person_group_code = '16' ";
+                    }
+
                     if (strmember_type_code.Equals(strGBK2))
                     {
                         strmember_type_code = strGBK;
@@ -642,18 +685,28 @@ namespace myWeb.App_Control.payment_member_type
                     {
                         strmember_type_code = strPVD3;
                     }
+                    if (strmember_type_code.Equals(strPVD6))
+                    {
+                        strmember_type_code = strPVD5;
+                    }
 
 
-                    strCriteria = "  and  member_type_code= '" + strmember_type_code + "' " +
+                    strCriteria = "  and  member_type_code LIKE '%" + strmember_type_code + "%' " +
                                            " and person_work_status_code='01' " +
                                            " and payment_year='" + strpayment_year + "' " +
                                            " and member_type_add > 0 " +
                                            " and pay_month='" + strpay_month + "' " +
                                            " and pay_year='" + strpay_year + "' " +
                                            " and person_group_code IN (" + PersonGroupList + ") ";
+
+                    if (!string.IsNullOrEmpty(optionCritera))
+                    {
+                        strCriteria += optionCritera;
+                    }
+
                 }
                 var result = false;
-                if (strmember_type_code.Equals(strPVD) || strmember_type_code.Equals(strPVD3))
+                if (strmember_type_code.Equals(strPVD) || strmember_type_code.Equals(strPVD3) || strmember_type_code.Equals(strPVD5))
                 {
                     result = oPayment.SP_PAYMENT_MEMBER_PVD_TEMP_SEL(strCriteria, ref ds, ref strMessage);
                 }
@@ -713,7 +766,7 @@ namespace myWeb.App_Control.payment_member_type
                         }
                         catch { }
                         double dblpayment_item_amt = 0;
-                        if (strmember_type_code != strGBK && strmember_type_code != strGBK2 && strmember_type_code != strPVD3)
+                        if (strmember_type_code != strGBK && strmember_type_code != strGBK2 && strmember_type_code != strPVD3 && strmember_type_code != strPVD5)
                         {
                             try
                             {
@@ -802,6 +855,11 @@ namespace myWeb.App_Control.payment_member_type
                             ds.Tables[0].Rows[i]["membertype_credit"] = Math.Round(((dblmember_type_add) * dblperson_salaly) / 100, 0, MidpointRounding.AwayFromZero);
                         }
 
+                        if (cboMember_type.SelectedValue.Equals(strPVD6))
+                        {
+                            ds.Tables[0].Rows[i]["membertype_credit"] = Math.Round(((dblmember_type_add) * dblperson_salaly) / 100, 0, MidpointRounding.AwayFromZero);
+                        }
+
 
 
                     }
@@ -836,7 +894,7 @@ namespace myWeb.App_Control.payment_member_type
                         GridView1.Columns[GridView1.Columns.Count - 1].Visible = false;
                     }
 
-                    if (cboMember_type.SelectedValue.Equals(strGBK2) || cboMember_type.SelectedValue.Equals(strPVD1) || cboMember_type.SelectedValue.Equals(strPVD4))
+                    if (cboMember_type.SelectedValue.Equals(strGBK2) || cboMember_type.SelectedValue.Equals(strPVD1) || cboMember_type.SelectedValue.Equals(strPVD4) || cboMember_type.SelectedValue.Equals(strPVD6))
                     {
                         GridView1.Columns[GridView1.Columns.Count - 3].Visible = true;
                     }

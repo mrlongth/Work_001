@@ -169,6 +169,7 @@
             <asp:TemplateField HeaderText="นามสกุล" SortExpression="person_thai_surname">
                 <ItemStyle HorizontalAlign="Left" Width="12%" Wrap="True" />
                 <ItemTemplate>
+                    <asp:HiddenField ID="hddperson_group_code" runat="server" Value='<% # DataBinder.Eval(Container, "DataItem.person_group_code") %>' />
                     <asp:Label ID="lblperson_thai_surname" runat="server" Text='<% # DataBinder.Eval(Container, "DataItem.person_thai_surname") %>'>
                     </asp:Label>
                 </ItemTemplate>

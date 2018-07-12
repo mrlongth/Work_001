@@ -196,9 +196,12 @@ namespace myDLL
 
         public static string SaveDate(string strinputDate)
         {
-            DateTime inputDate;
-            inputDate = DateTime.Parse(strinputDate);
-            // ----- Use For Add And Update Date Data Type-----
+            //DateTime inputDate;
+            var inputDate = DateTime.ParseExact(strinputDate,
+                         "MM/dd/yyyy",
+                         CultureInfo.InvariantCulture);
+
+             // ----- Use For Add And Update Date Data Type-----
             string inDay = inputDate.Day.ToString();
             string inMonth = inputDate.Month.ToString();
             string inYear = inputDate.Year.ToString();
@@ -215,9 +218,20 @@ namespace myDLL
             if (mChkyear > 2200)
             {
                 mChkyear = mChkyear - 543;
-            }
-            return (inMonth + "/" + inDay + "/" + mChkyear.ToString());
+            }            
+            return (inDay+ "/" + inMonth + "/" + mChkyear.ToString());
         }
+
+        public static DateTime SaveDate2(string strinputDate)
+        {
+            //DateTime inputDate;
+            var inputDate = DateTime.ParseExact(strinputDate,
+                         "d/M/yyyy", null );
+
+          
+            return inputDate;
+        }
+
 
         public static string GetDateTimeNow()
         {

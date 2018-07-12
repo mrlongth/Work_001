@@ -52,6 +52,7 @@
     <Reference Include="Aware.DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\360Feedback_Sln\Aware.DAL\bin\Debug\Aware.DAL.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Aware.WebControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="cAware, Version=1.0.2351.27739, Culture=neutral" />

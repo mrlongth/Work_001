@@ -233,7 +233,7 @@ namespace myWeb.App_Control.payment_back
 
                     if (stritem_code.Substring(4) == "09-039")
                     {
-                        if (oPayment_back.SP_PAYMENT_SOS_DETAIL_UPD(strpayment_back_detail_id, strpayment_back_id,
+                         if (oPayment_back.SP_PAYMENT_SOS_DETAIL_UPD(strpayment_back_detail_id, strpayment_back_id,
                             strdate_begin, strdate_end, strdate_count_day, strdate_count_month, strdate_count_year,
                             strdate_count_des, stritem_code, strpayment_item_old, strpayment_item_new, strpayment_item_diff,
                             strpayment_item_back, strcomments_sub, strUpdatedBy, ref strMessage))
@@ -263,6 +263,7 @@ namespace myWeb.App_Control.payment_back
                 }
                 else
                 {
+
                     #region insert
                     if (oPayment_back.SP_PAYMENT_BACK_DETAIL_INS(strpayment_back_id,
                         strdate_begin, strdate_end, strdate_count_day, strdate_count_month, strdate_count_year,
@@ -273,7 +274,9 @@ namespace myWeb.App_Control.payment_back
                     }
                     else
                     {
-                        lblError.Text = strMessage.ToString();
+                        txtcomments_sub.Text = strdate_begin + "   " + strdate_end;
+
+                       lblError.Text = strMessage.ToString();
                     }
                     #endregion
                 }

@@ -566,7 +566,7 @@ namespace myWeb.App_Control.payment
                     strCriteria = strCriteria + "  And  substring(view_payment.item_code,5,7) IN ('09-110A','09-154A') ";
                 }
             }
-            if (RadioButtonList1.SelectedValue.Equals("A03"))
+            if (RadioButtonList1.SelectedValue.Equals("A03") || RadioButtonList1.SelectedValue.Equals("A07"))
             {
                 if (cboPayType.SelectedValue == "N")
                 {

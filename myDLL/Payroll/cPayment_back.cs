@@ -237,8 +237,8 @@ namespace myDLL
                 oCommand.CommandType = CommandType.StoredProcedure;
                 oCommand.CommandText = "sp_PAYMENT_BACK_DETAIL_INS";
                 oCommand.Parameters.Add("@ppayment_back_id", SqlDbType.Int).Value = int.Parse(ppayment_back_id);
-                oCommand.Parameters.Add("@pdate_begin", SqlDbType.DateTime).Value = cCommon.SaveDate(pdate_begin);
-                oCommand.Parameters.Add("@pdate_end", SqlDbType.DateTime).Value = cCommon.SaveDate(pdate_end);
+                oCommand.Parameters.Add("@pdate_begin", SqlDbType.DateTime).Value = cCommon.SaveDate2(pdate_begin);
+                oCommand.Parameters.Add("@pdate_end", SqlDbType.DateTime).Value = cCommon.SaveDate2(pdate_end);
                 oCommand.Parameters.Add("@pdate_count_day", SqlDbType.Int).Value = int.Parse(pdate_count_day);
                 oCommand.Parameters.Add("@pdate_count_month", SqlDbType.Int).Value = int.Parse(pdate_count_month);
                 oCommand.Parameters.Add("@pdate_count_year", SqlDbType.Int).Value = int.Parse(pdate_count_year);
@@ -300,8 +300,8 @@ namespace myDLL
                 oCommand.CommandText = "SP_PAYMENT_BACK_DETAIL_UPD";
                 oCommand.Parameters.Add("@ppayment_back_detail_id", SqlDbType.Int).Value = int.Parse(ppayment_back_detail_id);
                 oCommand.Parameters.Add("@ppayment_back_id", SqlDbType.Int).Value = int.Parse(ppayment_back_id);
-                oCommand.Parameters.Add("@pdate_begin", SqlDbType.DateTime).Value = cCommon.CheckDate(pdate_begin);
-                oCommand.Parameters.Add("@pdate_end", SqlDbType.DateTime).Value = cCommon.CheckDate(pdate_end);
+                oCommand.Parameters.Add("@pdate_begin", SqlDbType.DateTime).Value = cCommon.SaveDate2(pdate_begin);
+                oCommand.Parameters.Add("@pdate_end", SqlDbType.DateTime).Value = cCommon.SaveDate2(pdate_end);
                 oCommand.Parameters.Add("@pdate_count_day", SqlDbType.Int).Value = int.Parse(pdate_count_day);
                 oCommand.Parameters.Add("@pdate_count_month", SqlDbType.Int).Value = int.Parse(pdate_count_month);
                 oCommand.Parameters.Add("@pdate_count_year", SqlDbType.Int).Value = int.Parse(pdate_count_year);
@@ -365,8 +365,8 @@ namespace myDLL
                 oCommand.CommandText = "sp_PAYMENT_SOS_DETAIL_UPD";
                 oCommand.Parameters.Add("@ppayment_back_detail_id", SqlDbType.Int).Value = int.Parse(ppayment_back_detail_id);
                 oCommand.Parameters.Add("@ppayment_back_id", SqlDbType.Int).Value = int.Parse(ppayment_back_id);
-                oCommand.Parameters.Add("@pdate_begin", SqlDbType.DateTime).Value = cCommon.CheckDate(pdate_begin);
-                oCommand.Parameters.Add("@pdate_end", SqlDbType.DateTime).Value = cCommon.CheckDate(pdate_end);
+                oCommand.Parameters.Add("@pdate_begin", SqlDbType.DateTime).Value = cCommon.SaveDate2(pdate_begin);
+                oCommand.Parameters.Add("@pdate_end", SqlDbType.DateTime).Value = cCommon.SaveDate2(pdate_end);
                 oCommand.Parameters.Add("@pdate_count_day", SqlDbType.Int).Value = int.Parse(pdate_count_day);
                 oCommand.Parameters.Add("@pdate_count_month", SqlDbType.Int).Value = int.Parse(pdate_count_month);
                 oCommand.Parameters.Add("@pdate_count_year", SqlDbType.Int).Value = int.Parse(pdate_count_year);
@@ -677,8 +677,8 @@ namespace myDLL
                 oCommand.CommandText = "sp_IMPORT_PAYMENT_BACK_SAVE";
                 oCommand.Parameters.Add("ppayment_doc", SqlDbType.VarChar).Value = ppayment_doc;
                 oCommand.Parameters.Add("ppayment_back_type", SqlDbType.VarChar).Value = ppayment_back_type;
-                oCommand.Parameters.Add("pdate_begin", SqlDbType.DateTime).Value = cCommon.CheckDate(pdate_begin); ;
-                oCommand.Parameters.Add("pdate_end", SqlDbType.DateTime).Value = cCommon.CheckDate(pdate_end); ;
+                oCommand.Parameters.Add("pdate_begin", SqlDbType.DateTime).Value = cCommon.SaveDate2(pdate_begin); ;
+                oCommand.Parameters.Add("pdate_end", SqlDbType.DateTime).Value = cCommon.SaveDate2(pdate_end); ;
                 oCommand.Parameters.Add("pdate_count_day", SqlDbType.Int).Value = int.Parse(pdate_count_day);
                 oCommand.Parameters.Add("pdate_count_month", SqlDbType.Int).Value = int.Parse(pdate_count_month);
                 oCommand.Parameters.Add("pdate_count_year", SqlDbType.Int).Value = int.Parse(pdate_count_year);

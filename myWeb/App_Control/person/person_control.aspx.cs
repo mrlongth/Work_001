@@ -349,7 +349,10 @@ namespace myWeb.App_Control.person
             string strPVD = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["PVD"].ToString();
             string strPVD2 = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["PVD2"].ToString();
             string strPVD3 = "08";
-          
+
+            string strPVD4 = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["PVD4"].ToString();
+            string strPVD5 = ((DataSet)Application["xmlconfig"]).Tables["MemberType"].Rows[0]["PVD5"].ToString();
+
 
             foreach (ListItem item in cboMember_type_checkboxes.Items)
             {
@@ -380,10 +383,16 @@ namespace myWeb.App_Control.person
                 strCriteria = " and member_type_code='" + strGSJ + "' and c_active='Y' ";
             }
 
-            // พนักงานมหาวิทยาลัย และ ลูกจ้าง พม.
-            else if (strperson_group_code.Equals("03") || strperson_group_code.Equals("16"))
+            // พนักงานมหาวิทยาลัย 
+            else if (strperson_group_code.Equals("03"))
             {
                 strCriteria = " and member_type_code IN ('" + strSOS + "','" + strPVD + "') and c_active='Y' ";
+            }
+
+            // ลูกจ้าง พม.
+            else if (strperson_group_code.Equals("16"))
+            {
+                strCriteria = " and member_type_code IN ('" + strSOS + "','" + strPVD4 + "') and c_active='Y' ";
             }
 
             else if (strperson_group_code.Equals("11"))

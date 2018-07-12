@@ -275,7 +275,15 @@
 
     <!--สำรองเลี้ยงชีพ ขร. พม.-->
     <entry name="PVD3">08</entry>
-    
+
+
+    <!--สำรองเลี้ยงชีพ พม ลจ.-->
+    <entry name="PVD4">10</entry>
+    <!--สำรองเลี้ยงชีพ พม ลจ. ส่วนเพิ่ม-->
+    <entry name="PVD5">11</entry>
+
+
+
   </section>
   <section name="PersonMange">
     <entry name="00001">00001</entry>
